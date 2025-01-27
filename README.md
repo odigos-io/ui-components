@@ -1,27 +1,35 @@
-# UI Components
+# Odigos UI Components
 
-### Install Library
+## Installation
+
+Using **npm**:
+
+```shell
+npm i @odigos/ui-components
+```
+
+Using **yarn**:
 
 ```shell
 yarn add @odigos/ui-components
 ```
 
-### Local Development
+## Usage
 
-1. Install dependencies:
+Import a component, and call it with it's props:
 
-   ```shell
-   yarn install
-   ```
+```tsx
+import { Button } from '@odigos/ui-components'
 
-2. Run Localhost (with Storybook):
+const App = () => {
+  const handleClick = () => {
+    console.log('clicked')
+  }
 
-   ```shell
-   yarn dev
-   ```
+  return <Button onClick={handleClick} />
+}
+```
 
-3. Commits must be semantic! e.g.
+## Options
 
-   ```shell
-   git commit -m "fix: a bug"
-   ```
+TODO...
