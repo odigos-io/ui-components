@@ -3,19 +3,20 @@ on:
   push:
     branches:
       - main
-
 jobs:
   release:
     name: Release NPM Package
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout code
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      # Step 2: Setup Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
@@ -25,17 +26,29 @@ jobs:
           always-auth: true
           scope: '@odigos'
 
+      # Step 3: Install compile dependencies
       - name: Install compile dependencies
-        run: yarn install --immutable
+        run: yarn install --ignore-engines --check-files
 
+      # Step 4: Compile the library
       - name: Compile library
         run: yarn build
 
+      # Step 5: Remove dev dependencies and install production-only dependencies
       - name: Remove dev dependencies and install prod only
-        run: yarn install --immutable --production --ignore-scripts
+        run: rm -rf node_modules && yarn install --production --ignore-scripts
 
+      # Step 6: Install release dependencies
+      - name: Install semantic-release dependencies
+        run: yarn add -D @semantic-release/changelog @semantic-release/git semantic-release
+
+      # Step 7: Run Semantic Release
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn dlx @semantic-release/changelog @semantic-release/git semantic-release
+        run: yarn semantic-release
+
+      # Step 8: Clean up release dependencies
+      - name: Clean up
+        run: yarn remove @semantic-release/changelog @semantic-release/git semantic-release
