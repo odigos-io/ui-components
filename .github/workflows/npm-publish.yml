@@ -1,0 +1,41 @@
+name: Release NPM Package
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Release NPM Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        with:
+          node-version: 20
+          check-latest: true
+          registry-url: https://npm.pkg.github.com
+          always-auth: true
+          scope: '@odigos'
+
+      - name: Install compile dependencies
+        run: yarn install --immutable
+
+      - name: Compile library
+        run: yarn build
+
+      - name: Remove dev dependencies and install prod only
+        run: yarn install --immutable --production --ignore-scripts
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn dlx @semantic-release/changelog @semantic-release/git semantic-release
