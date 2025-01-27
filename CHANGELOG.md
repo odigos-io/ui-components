@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.5](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.4...ui-components-v0.0.5) (2025-01-27)
+
+
+### Features
+
+* add .npmignore ([962e761](https://github.com/odigos-io/ui-components/commit/962e761311599f61d301a22953260a877d71a21a))
+
 ## [0.0.4](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.3...ui-components-v0.0.4) (2025-01-27)
 
 
