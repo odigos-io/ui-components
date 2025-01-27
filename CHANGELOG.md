@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.3...ui-components-v0.0.4) (2025-01-27)
+
+
+### Bug Fixes
+
+* latest deps ([6a6fda0](https://github.com/odigos-io/ui-components/commit/6a6fda07225077a3fe6d24179a94dc69cef43264))
+
 ## [0.0.3](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.2...ui-components-v0.0.3) (2025-01-27)
 
 
