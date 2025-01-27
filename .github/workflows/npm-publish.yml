@@ -1,54 +1,42 @@
-name: Release NPM Package
+name: Prepare Release
+
 on:
   push:
     branches:
-      - main
+      - 'main'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
-  release:
-    name: Release NPM Package
+  release-job:
     runs-on: ubuntu-latest
+
     steps:
-      # Step 1: Checkout code
-      - name: Checkout
+      - name: Check out code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # Step 2: Setup Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Create or Update Release PR
+        uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.RELEASE_BOT_TOKEN }}
+
+      # The logic below handles the npm publication:
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
-          check-latest: true
-          registry-url: https://npm.pkg.github.com
-          always-auth: true
-          scope: '@odigos'
-
-      # Step 3: Install compile dependencies
-      - name: Install compile dependencies
-        run: yarn install --ignore-engines --check-files
-
-      # Step 4: Compile the library
-      - name: Compile library
-        run: yarn build
-
-      # Step 5: Remove dev dependencies and install production-only dependencies
-      - name: Remove dev dependencies and install prod only
-        run: rm -rf node_modules && yarn install --production --ignore-scripts
-
-      # Step 6: Install release dependencies
-      - name: Install semantic-release dependencies
-        run: yarn add -D @semantic-release/changelog @semantic-release/git semantic-release
-
-      # Step 7: Run Semantic Release
-      - name: Release
+          registry-url: 'https://registry.npmjs.org'
+        if: ${{ steps.release.outputs.release_created }}
+      - run: yarn
+        if: ${{ steps.release.outputs.release_created }}
+      - run: yarn build
+        if: ${{ steps.release.outputs.release_created }}
+      - run: npm publish
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: yarn semantic-release
-
-      # Step 8: Clean up release dependencies
-      - name: Clean up
-        run: yarn remove @semantic-release/changelog @semantic-release/git semantic-release
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        if: ${{ steps.release.outputs.release_created }}
