@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/odigos-io/ui-components/compare/v1.0.0...v1.0.1) (2025-01-27)
+
+
+### Bug Fixes
+
+* readme ([1959dd8](https://github.com/odigos-io/ui-components/commit/1959dd823507231ce9b6442cae67ebea9da2ac7a))
+
 # 1.0.0 (2025-01-27)
 
 
