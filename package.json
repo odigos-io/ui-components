@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/odigos-io/ui-components.git"
+    "url": "git+https://github.com/odigos-io/ui-components.git"
   },
   "release": {
     "plugins": [
@@ -27,7 +27,7 @@
     ]
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "peerDependencies": {
     "react": "^18.2.0",
