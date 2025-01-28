@@ -24,8 +24,8 @@ export default {
     commonjs(),
     typescript({
       tsconfig: './tsconfig.json',
-      verbosity: 3,
-      clean: true,
+      clean: true, // Ensures cache is cleaned every time
+      cacheRoot: undefined, // Prevent cache from being created
     }),
     postcss({
       extensions: ['.css'],
