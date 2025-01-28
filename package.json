@@ -14,14 +14,6 @@
     "url": "git+https://github.com/odigos-io/ui-components.git"
   },
   "release": {
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/git",
-      "@semantic-release/github"
-    ],
     "branches": [
       "main"
     ]
@@ -30,8 +22,9 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "styled-components": "^6.1.14"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -45,8 +38,6 @@
     "@babel/preset-typescript": "^7.26.0",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
     "@storybook/addon-essentials": "^8.5.2",
     "@storybook/addon-webpack5-compiler-babel": "^3.0.5",
     "@storybook/react": "^8.5.2",
@@ -65,7 +56,6 @@
     "rollup": "^4.32.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
-    "semantic-release": "^24.2.1",
     "storybook": "^8.5.2",
     "typescript": "^5.7.3"
   }

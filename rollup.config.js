@@ -19,5 +19,16 @@ export default {
       sourcemap: true,
     },
   ],
-  plugins: [resolve(), commonjs(), typescript({ tsconfig: './tsconfig.json' }), postcss({ extensions: ['.css'] })],
+  plugins: [
+    resolve(),
+    commonjs(),
+    typescript({
+      tsconfig: './tsconfig.json',
+      clean: true, // Ensures cache is cleaned every time
+      cacheRoot: undefined, // Prevent cache from being created
+    }),
+    postcss({
+      extensions: ['.css'],
+    }),
+  ],
 }
