@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.8](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.7...ui-components-v0.0.8) (2025-01-28)
+
+
+### Bug Fixes
+
+* rollup config ([e14564f](https://github.com/odigos-io/ui-components/commit/e14564f82f7804aa6419737c9ba2892cf775b35a))
+* ts config ([4e20474](https://github.com/odigos-io/ui-components/commit/4e20474a27799893c8dbc921043e4350ce683b1c))
+
 ## [0.0.7](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.6...ui-components-v0.0.7) (2025-01-28)
 
 
