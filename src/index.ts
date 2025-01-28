@@ -1,4 +1,5 @@
-export * as types from './@types'
-export * as theme from './styles'
-export * as icons from './icons'
+export * as Types from './@types'
+export * as Theme from './styles'
+
 export * from './components'
+export * from './icons'
