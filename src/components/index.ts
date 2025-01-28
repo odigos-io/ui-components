@@ -1,5 +1,3 @@
 // Components should point at the specific files, to exclude Storybook stories
 
-import { Button, type ButtonProps } from './Button/Button'
-
-export { Button, type ButtonProps }
+export * from './button-2/button-2'
