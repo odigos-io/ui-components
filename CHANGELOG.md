@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.7](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.6...ui-components-v0.0.7) (2025-01-28)
+
+
+### Bug Fixes
+
+* build error ([470f3af](https://github.com/odigos-io/ui-components/commit/470f3af6a2ce85ae39c07ee143b8d03a7bddb383))
+
 ## [0.0.6](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.5...ui-components-v0.0.6) (2025-01-28)
 
 
