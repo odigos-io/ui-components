@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.9](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.8...ui-components-v0.0.9) (2025-01-28)
+
+
+### Bug Fixes
+
+* export using index ([c533cc0](https://github.com/odigos-io/ui-components/commit/c533cc033b062d8264b82e9c79c38c0a2a17ef6f))
+* imports/exports for comps ([3606a61](https://github.com/odigos-io/ui-components/commit/3606a618cc97d00048be5e19337aa184ef20fdc5))
+
 ## [0.0.8](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.7...ui-components-v0.0.8) (2025-01-28)
 
 
