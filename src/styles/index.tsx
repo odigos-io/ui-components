@@ -4,7 +4,6 @@ import { getTheme, type ITheme } from './theme'
 
 export * from './animations'
 export * from './opacity'
-export * from './styled-components'
 export { type ITheme }
 
 export const Provider: FC<PropsWithChildren<{ darkMode: boolean }>> = ({ children, darkMode }) => {

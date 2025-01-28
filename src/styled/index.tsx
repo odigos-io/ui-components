@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+// These are re-usable styled-components, they are not actual components
+
 export const FlexRow = styled.div<{ $gap?: number }>`
   display: flex;
   flex-direction: row;
