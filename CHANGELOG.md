@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.12](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.11...ui-components-v0.0.12) (2025-01-28)
+
+
+### Bug Fixes
+
+* add "external" to rollup config ([0d1a779](https://github.com/odigos-io/ui-components/commit/0d1a779415e8b11463f3d11341a64e7453d9443b))
+
 ## [0.0.11](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.10...ui-components-v0.0.11) (2025-01-28)
 
 
