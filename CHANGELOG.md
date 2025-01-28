@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.15](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.14...ui-components-v0.0.15) (2025-01-28)
+
+
+### Bug Fixes
+
+* exports for pre-defined styled-components ([edd81b1](https://github.com/odigos-io/ui-components/commit/edd81b1dc756662c6ff176a3a8cb3c7d5a7b536f))
+
 ## [0.0.14](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.13...ui-components-v0.0.14) (2025-01-28)
 
 
