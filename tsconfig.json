@@ -13,6 +13,8 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noEmit": true,
+    "allowJs": true,
     "strict": true,
     "jsx": "react"
   },
