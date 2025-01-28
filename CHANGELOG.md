@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.14](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.13...ui-components-v0.0.14) (2025-01-28)
+
+
+### Features
+
+* add theme provider ([80a0be9](https://github.com/odigos-io/ui-components/commit/80a0be9b88895f7234c0963e145a5d556c383ccb))
+
+
+### Bug Fixes
+
+* theme providers in storybook stories ([7fcfc2f](https://github.com/odigos-io/ui-components/commit/7fcfc2f9014484959189a98e1fc2abd716532f76))
+
 ## [0.0.13](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.12...ui-components-v0.0.13) (2025-01-28)
 
 
