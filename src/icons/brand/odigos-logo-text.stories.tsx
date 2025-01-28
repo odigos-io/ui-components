@@ -15,6 +15,7 @@ export default {
 }
 
 // Create a master template for mapping props to render the Button component
+// @ts-ignore
 const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
   useEffect(() => {
     document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
@@ -31,6 +32,7 @@ const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
 export const Default: StoryObj<Props> = Template.bind({})
 
 Default.args = {
+  // @ts-ignore
   darkMode: true,
   size: 150,
 }

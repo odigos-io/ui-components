@@ -36,13 +36,17 @@ const AppProviders = () => {
 Import a component, and call it with it's props:
 
 ```tsx
-import { Button } from '@odigos/ui-components'
+import { Button, icons } from '@odigos/ui-components'
 
 const App = () => {
   const handleClick = () => {
     console.log('clicked')
   }
 
-  return <Button onClick={handleClick} />
+  return (
+    <Button onClick={handleClick}>
+      <icons.PlusIcon /> Add New...
+    </Button>
+  )
 }
 ```
