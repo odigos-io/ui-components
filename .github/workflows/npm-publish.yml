@@ -32,15 +32,19 @@ jobs:
         with:
           token: ${{ secrets.RELEASE_BOT_TOKEN }}
 
-      # The logic below handles the npm publication:
+      # The logic below handles the npm publication (after the release-bot PR was merged):
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'yarn'
           registry-url: 'https://registry.npmjs.org'
+        if: ${{ steps.release.outputs.release_created }}
       - run: yarn cache clean
+        if: ${{ steps.release.outputs.release_created }}
       - run: yarn install --frozen-lockfile
+        if: ${{ steps.release.outputs.release_created }}
       - run: yarn build
+        if: ${{ steps.release.outputs.release_created }}
       - run: npm publish
         if: ${{ steps.release.outputs.release_created }}
         env:
