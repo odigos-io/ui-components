@@ -2,9 +2,6 @@ name: Prepare Build
 
 on:
   push:
-  pull_request:
-    branches:
-      - 'main'
 
 jobs:
   build-job:
