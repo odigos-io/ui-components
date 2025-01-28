@@ -16,19 +16,18 @@ yarn add @odigos/ui-components
 
 ## Usage
 
-Wrap your app with a `styled-components` theme provider:
+Wrap your app with the theme provider:
 
 ```tsx
-import { ThemeProvider } from 'styled-components'
 import { theme } from '@odigos/ui-components'
 
 const AppProviders = () => {
   const darkMode = true
 
   return (
-    <ThemeProvider theme={theme.getTheme(darkMode)}>
+    <theme.Provider theme={theme.getTheme(darkMode)}>
       <App />
-    </ThemeProvider>
+    </theme.Provider>
   )
 }
 ```
@@ -45,7 +44,8 @@ const App = () => {
 
   return (
     <Button onClick={handleClick}>
-      <icons.PlusIcon /> Add New...
+      <icons.PlusIcon size={20} />
+      Add New...
     </Button>
   )
 }
