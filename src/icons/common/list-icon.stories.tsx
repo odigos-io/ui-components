@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
-import { getTheme } from '../../styles'
-import { ThemeProvider } from 'styled-components'
-import { type StoryFn, type StoryObj } from '@storybook/react'
-import { type SVG } from '../../@types'
 import { ListIcon } from '.'
+import { type SVG } from '../../@types'
+import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '../..'
 
 interface Props extends SVG {
   darkMode: boolean
@@ -22,9 +21,9 @@ const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
   }, [darkMode])
 
   return (
-    <ThemeProvider theme={getTheme(darkMode)}>
+    <Theme.Provider darkMode={darkMode}>
       <ListIcon {...props} />
-    </ThemeProvider>
+    </Theme.Provider>
   )
 }
 

@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
-import { getTheme } from '../../styles'
-import { ThemeProvider } from 'styled-components'
-import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '../..'
 import { Button, type ButtonProps } from '.'
+import { type StoryFn, type StoryObj } from '@storybook/react'
 
 interface Props extends ButtonProps {
   darkMode: boolean
@@ -20,9 +19,9 @@ const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
   }, [darkMode])
 
   return (
-    <ThemeProvider theme={getTheme(darkMode)}>
+    <Theme.Provider darkMode={darkMode}>
       <Button {...props} />
-    </ThemeProvider>
+    </Theme.Provider>
   )
 }
 
