@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.16](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.15...ui-components-v0.0.16) (2025-01-28)
+
+
+### Bug Fixes
+
+* peer deps ([4f5e015](https://github.com/odigos-io/ui-components/commit/4f5e015f8f1d8e56c5a81cb646756351a6bd8259))
+
 ## [0.0.15](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.14...ui-components-v0.0.15) (2025-01-28)
 
 
