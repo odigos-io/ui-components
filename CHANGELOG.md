@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.0.6](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.5...ui-components-v0.0.6) (2025-01-28)
+
+
+### Features
+
+* add actual button component ([fa200b8](https://github.com/odigos-io/ui-components/commit/fa200b8d24dba90cf359ffa75721675549192c38))
+* add icons ([71a1f6a](https://github.com/odigos-io/ui-components/commit/71a1f6a565e02258a85b636d3b5d963381f42646))
+* add styles ([923dc89](https://github.com/odigos-io/ui-components/commit/923dc8936d1127c13deb8ecc2898dc5dad5148dd))
+* cleanup storybook addons ([ace4a30](https://github.com/odigos-io/ui-components/commit/ace4a30441ede94e8e54866dbea1f68473a5ff9f))
+* imports/exports ([7062c7d](https://github.com/odigos-io/ui-components/commit/7062c7d2e081c929959b4cf2d51a23b8fb76ed8a))
+
+
+### Bug Fixes
+
+* npm ignore README.dev.md ([6e98293](https://github.com/odigos-io/ui-components/commit/6e982931a168dd00f18ae36cd03483300305d57b))
+* readme ([7caa5c1](https://github.com/odigos-io/ui-components/commit/7caa5c12f6042d1f8bf57fd9c7dc19c9629a4f1a))
+
 ## [0.0.5](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.4...ui-components-v0.0.5) (2025-01-27)
 
 
