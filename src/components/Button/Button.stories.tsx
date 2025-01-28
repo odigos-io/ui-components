@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { getTheme } from '../../styles'
 import { ThemeProvider } from 'styled-components'
 import { type StoryFn, type StoryObj } from '@storybook/react'
-import { Button, type ButtonProps } from '.'
+import { Button, type ButtonProps } from './button'
 
 interface Props extends ButtonProps {
   darkMode: boolean
