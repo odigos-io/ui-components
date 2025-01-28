@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.13](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.12...ui-components-v0.0.13) (2025-01-28)
+
+
+### Features
+
+* provide the theme provider ([ca80f71](https://github.com/odigos-io/ui-components/commit/ca80f71570354905bb81d9d13caed4e5af50ff54))
+
 ## [0.0.12](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.11...ui-components-v0.0.12) (2025-01-28)
 
 
