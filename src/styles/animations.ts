@@ -68,3 +68,12 @@ export const ping = keyframes`
     opacity: 0;
   }
 `
+
+export const shimmer = keyframes<{ $width: string }>`
+  0% {
+    background-position: -500px 0;
+  }
+  100% {
+    background-position: 500px 0;
+  }
+`
