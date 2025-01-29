@@ -18,3 +18,11 @@ export type SVG = FC<{
    */
   onClick?: MouseEventHandler<SVGSVGElement>
 }>
+
+export enum NOTIFICATION_TYPE {
+  WARNING = 'warning',
+  ERROR = 'error',
+  SUCCESS = 'success',
+  INFO = 'info',
+  DEFAULT = 'default',
+}
