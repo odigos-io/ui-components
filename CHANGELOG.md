@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.19](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.18...ui-components-v0.0.19) (2025-01-29)
+
+
+### Features
+
+* add no-data-found ([04b2ca4](https://github.com/odigos-io/ui-components/commit/04b2ca4db30c4a7bd0d3ccac28f36a3f217e06ec))
+
+
+### Bug Fixes
+
+* toast size ([ee3e219](https://github.com/odigos-io/ui-components/commit/ee3e2198a12fae822aa5af53709b7f1c0eacb4b5))
+
 ## [0.0.18](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.17...ui-components-v0.0.18) (2025-01-29)
 
 
