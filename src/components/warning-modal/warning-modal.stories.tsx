@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Theme } from '../..'
 import { WarningModal, type WarningModalProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
-import { Text } from '../text'
 import { NOTIFICATION_TYPE } from '../../@types'
 
 interface Props extends WarningModalProps {
