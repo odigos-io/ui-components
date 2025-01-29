@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { OdigosLogo, SlackLogo, Theme } from '../..'
+import { SlackLogo, Theme } from '../..'
 import { IconWrapped, type IconWrappedProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
 import { NOTIFICATION_TYPE } from '../../@types'
