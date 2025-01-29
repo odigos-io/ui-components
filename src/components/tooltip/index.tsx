@@ -23,7 +23,7 @@ const TooltipContainer = styled.div`
   gap: 4px;
 `
 
-const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({ text, withIcon, children }) => {
+const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({ text, withIcon, children }, ref) => {
   const [isHovered, setIsHovered] = useState(false)
   const [popupPosition, setPopupPosition] = useState<Position>({ top: 0, left: 0 })
   const popupRef = useRef<HTMLDivElement>(null)
@@ -45,7 +45,7 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({ text, withIcon, chil
   if (!text) return <>{children}</>
 
   return (
-    <TooltipContainer onMouseEnter={handleMouseEvent} onMouseMove={handleMouseEvent} onMouseLeave={handleMouseEvent}>
+    <TooltipContainer ref={ref} onMouseEnter={handleMouseEvent} onMouseMove={handleMouseEvent} onMouseLeave={handleMouseEvent}>
       {children}
       {withIcon && <InfoIcon />}
       {isHovered && (
