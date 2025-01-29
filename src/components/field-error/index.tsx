@@ -13,9 +13,9 @@ const ErrorMessage = styled(Text)`
   color: ${({ theme }) => theme.text.error};
 `
 
-const FieldError = forwardRef<HTMLDivElement, FieldErrorProps>(({ children }) => {
+const FieldError = forwardRef<HTMLDivElement, FieldErrorProps>(({ children }, ref) => {
   return (
-    <ErrorWrapper>
+    <ErrorWrapper ref={ref}>
       <ErrorMessage>{children}</ErrorMessage>
     </ErrorWrapper>
   )
