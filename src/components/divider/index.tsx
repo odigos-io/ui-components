@@ -24,10 +24,8 @@ const StyledDivider = styled.div<{
   background-color: ${({ $type, theme }) => (!!$type ? theme.text[$type] : theme.colors.border) + hexPercent['050']};
 `
 
-const Divider: React.FC<DividerProps> = forwardRef<HTMLDivElement, DividerProps>(
-  ({ orientation = 'horizontal', type, thickness = 1, length, margin }, ref) => {
-    return <StyledDivider ref={ref} $orientation={orientation} $type={type} $thickness={thickness} $length={length} $margin={margin} />
-  }
-)
+const Divider = forwardRef<HTMLDivElement, DividerProps>(({ orientation = 'horizontal', type, thickness = 1, length, margin }, ref) => {
+  return <StyledDivider ref={ref} $orientation={orientation} $type={type} $thickness={thickness} $length={length} $margin={margin} />
+})
 
 export { Divider, type DividerProps }
