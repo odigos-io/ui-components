@@ -26,6 +26,7 @@ interface NotificationNoteProps {
 
 const Container = styled.div<{ $isLeaving?: boolean; $duration: number }>`
   position: relative;
+  width: fit-content;
   &.animated {
     overflow: hidden;
     padding-bottom: 1px;
@@ -62,7 +63,7 @@ const TextWrapper = styled.div<{ $withAction: boolean }>`
   margin: 0 auto 0 0;
   padding: 8px 0;
   max-width: ${({ $withAction }) => ($withAction ? '400px' : '500px')};
-  height: 12px;
+  min-height: 12px;
 `
 
 const Title = styled(Text)<{ $type: NotificationNoteProps['type'] }>`
