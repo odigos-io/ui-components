@@ -1,4 +1,4 @@
-import { keyframes } from 'styled-components';
+import { keyframes } from 'styled-components'
 
 export const slide = {
   in: {
@@ -45,7 +45,7 @@ export const slide = {
       to { transform: translate(-50%, 100%); }
     `,
   },
-};
+}
 
 export const progress = {
   in: keyframes`
@@ -56,4 +56,15 @@ export const progress = {
     from { width: 100%; }
     to { width: 0%; }
   `,
-};
+}
+
+export const ping = keyframes`
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+`
