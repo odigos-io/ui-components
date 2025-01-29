@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.0.20](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.19...ui-components-v0.0.20) (2025-01-29)
+
+
+### Features
+
+* add "closeOnEscape" prop to modals ([e8592ce](https://github.com/odigos-io/ui-components/commit/e8592ce6008a04d35bdb8af08f7e209486c2bdaf))
+* add "useCopy" common hook ([10e9c37](https://github.com/odigos-io/ui-components/commit/10e9c3772eecd3bc6dc76850f7ce9e2fdce21ee4))
+* add "useOnClickOutside" common hook ([c8f4750](https://github.com/odigos-io/ui-components/commit/c8f475085f819b24218baa0d7fa36de32f6e6794))
+* add common hooks ([1042f8d](https://github.com/odigos-io/ui-components/commit/1042f8d51b2d9c2ae096155e4c53017f78e440de))
+* add drawer ([aeaf8b2](https://github.com/odigos-io/ui-components/commit/aeaf8b2478c7b8c18166655db7e3a07396c59a5f))
+* add extend-arrow ([869bc26](https://github.com/odigos-io/ui-components/commit/869bc26bc6784c3064aea8d59b9469de173ce7de))
+* add icon wrapped ([cdf4cba](https://github.com/odigos-io/ui-components/commit/cdf4cbaba927363448c7235853c67cf037946df7))
+* add modal ([080c440](https://github.com/odigos-io/ui-components/commit/080c440ec1113be59360c5c05bb2e40527f918cb))
+* add warning-modal ([6107676](https://github.com/odigos-io/ui-components/commit/61076767a1f0d9296dc48e7ff1c7e46330ca5b67))
+
+
+### Bug Fixes
+
+* odigos logo width ([70d495c](https://github.com/odigos-io/ui-components/commit/70d495c63d94f85bb7fe58b63999b2cfb182914c))
+* toast width ([2d373a2](https://github.com/odigos-io/ui-components/commit/2d373a20c561726b4e34ccaed927b4e25e0310b0))
+* toast width ([a247dd7](https://github.com/odigos-io/ui-components/commit/a247dd79219afb1ed92163863d8483994da1a5d0))
+
 ## [0.0.19](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.18...ui-components-v0.0.19) (2025-01-29)
 
 
