@@ -25,6 +25,7 @@ interface WarningModalProps {
   }
   approveButton: ButtonParams
   denyButton: ButtonParams
+  closeOnEscape?: boolean
 }
 
 const Container = styled.div`
@@ -63,8 +64,8 @@ const NoteWrapper = styled.div`
 `
 
 const WarningModal = forwardRef<HTMLDivElement, WarningModalProps>(
-  ({ isOpen, noOverlay, title = '', description = '', note, approveButton, denyButton }, ref) => {
-    useKeyDown({ key: 'Enter', active: isOpen }, () => approveButton.onClick())
+  ({ isOpen, noOverlay, title = '', description = '', note, approveButton, denyButton, closeOnEscape = true }, ref) => {
+    useKeyDown({ key: 'Enter', active: isOpen && closeOnEscape }, () => approveButton.onClick())
 
     const onApprove = () => approveButton.onClick()
     const onDeny = () => denyButton.onClick()

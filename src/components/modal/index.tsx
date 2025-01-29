@@ -16,6 +16,7 @@ interface ModalProps {
   }
   actionComponent?: React.ReactNode
   children: React.ReactNode
+  closeOnEscape?: boolean
 }
 
 const Container = styled.div`
@@ -87,40 +88,42 @@ const CancelText = styled(Text)`
   cursor: pointer;
 `
 
-const Modal = forwardRef<HTMLDivElement, ModalProps>(({ isOpen, noOverlay, header, actionComponent, onClose, children }, ref) => {
-  useKeyDown({ key: 'Escape', active: isOpen }, () => onClose())
+const Modal = forwardRef<HTMLDivElement, ModalProps>(
+  ({ isOpen, noOverlay, header, actionComponent, onClose, children, closeOnEscape = true }, ref) => {
+    useKeyDown({ key: 'Escape', active: isOpen && closeOnEscape }, () => onClose())
 
-  const Transition = useTransition({
-    container: Container,
-    animateIn: slide.in['center'],
-    animateOut: slide.out['center'],
-  })
+    const Transition = useTransition({
+      container: Container,
+      animateIn: slide.in['center'],
+      animateOut: slide.out['center'],
+    })
 
-  if (!isOpen) return null
+    if (!isOpen) return null
 
-  return ReactDOM.createPortal(
-    <>
-      <Overlay hidden={!isOpen} onClick={onClose} style={{ opacity: noOverlay ? 0 : 1 }} />
+    return ReactDOM.createPortal(
+      <>
+        <Overlay hidden={!isOpen} onClick={onClose} style={{ opacity: noOverlay ? 0 : 1 }} />
 
-      <Transition data-id={`modal${header ? `-${header.title.replaceAll(' ', '-')}` : ''}`} enter={isOpen}>
-        {header && (
-          <ModalHeader>
-            <ModalCloseButton onClick={onClose}>
-              <XIcon />
-              <CancelText>Cancel</CancelText>
-            </ModalCloseButton>
-            <ModalTitleContainer>
-              <ModalTitle>{header.title}</ModalTitle>
-            </ModalTitleContainer>
-            <HeaderActionsWrapper>{actionComponent}</HeaderActionsWrapper>
-          </ModalHeader>
-        )}
+        <Transition data-id={`modal${header ? `-${header.title.replaceAll(' ', '-')}` : ''}`} enter={isOpen}>
+          {header && (
+            <ModalHeader>
+              <ModalCloseButton onClick={onClose}>
+                <XIcon />
+                <CancelText>Cancel</CancelText>
+              </ModalCloseButton>
+              <ModalTitleContainer>
+                <ModalTitle>{header.title}</ModalTitle>
+              </ModalTitleContainer>
+              <HeaderActionsWrapper>{actionComponent}</HeaderActionsWrapper>
+            </ModalHeader>
+          )}
 
-        <ModalContent ref={ref}>{children}</ModalContent>
-      </Transition>
-    </>,
-    document.body
-  )
-})
+          <ModalContent ref={ref}>{children}</ModalContent>
+        </Transition>
+      </>,
+      document.body
+    )
+  }
+)
 
 export { Modal, type ModalProps }
