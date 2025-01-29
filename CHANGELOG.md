@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.0.17](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.16...ui-components-v0.0.17) (2025-01-29)
+
+
+### Features
+
+* add badge ([81241fc](https://github.com/odigos-io/ui-components/commit/81241fc3752292deb25197a52116d69260f99842))
+* add divider ([778dc61](https://github.com/odigos-io/ui-components/commit/778dc6140504a975c9941afda7dcdb526039d957))
+* add globals.css ([f562024](https://github.com/odigos-io/ui-components/commit/f562024da71535065d2bdc0823fce83e8705930d))
+* add segment ([4a2fbd0](https://github.com/odigos-io/ui-components/commit/4a2fbd0243a72c9d50f7332d2ecc40f3c235601f))
+* add text ([97a2d86](https://github.com/odigos-io/ui-components/commit/97a2d86887187a7a8772863d0c5467b78186ddd4))
+* add toggle ([63fbacb](https://github.com/odigos-io/ui-components/commit/63fbacb0b0bc96bcb86fc63920367c81c2139240))
+* add tooltip ([bdff4cc](https://github.com/odigos-io/ui-components/commit/bdff4ccf3129fa85ed46782970d4aebb6112a7f0))
+
+
+### Bug Fixes
+
+* export for divider ([bcd4bf7](https://github.com/odigos-io/ui-components/commit/bcd4bf77514655b7a6eb5bfc24210fe82d7d55d3))
+* ref for tooltip ([8b75430](https://github.com/odigos-io/ui-components/commit/8b7543037e5f6e1a3a04826b4f95c37b83c41fa7))
+* stories for toggle ([efbc564](https://github.com/odigos-io/ui-components/commit/efbc56442747318afb35932886ec0470ef5645f3))
+* type of Divider ([559903a](https://github.com/odigos-io/ui-components/commit/559903a4272dc4fd2704ce4fbe777df2a7071af9))
+
 ## [0.0.16](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.15...ui-components-v0.0.16) (2025-01-28)
 
 
