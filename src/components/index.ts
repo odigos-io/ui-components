@@ -3,3 +3,4 @@
 export * from './badge/index'
 export * from './button/index'
 export * from './divider/index'
+export * from './text/index'
