@@ -3,6 +3,7 @@
 export * from './badge/index'
 export * from './button/index'
 export * from './divider/index'
+export * from './fade-loader/index'
 export * from './icon-button/index'
 export * from './notification-note/index'
 export * from './segment/index'
