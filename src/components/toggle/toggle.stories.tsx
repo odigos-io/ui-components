@@ -18,11 +18,11 @@ const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
     document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
   }, [darkMode])
 
-  const [bool, setBool] = useState(false)
+  const [val, setVal] = useState(false)
 
   return (
     <Theme.Provider darkMode={darkMode}>
-      <Toggle initialValue={bool} onChange={(v) => setBool(v)} {...props} />
+      <Toggle {...props} initialValue={val} onChange={setVal} />
     </Theme.Provider>
   )
 }
