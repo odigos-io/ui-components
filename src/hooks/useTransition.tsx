@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import type { IStyledComponentBase, Keyframes, Substitute } from 'styled-components/dist/types'
 
 interface HookProps {
-  container: IStyledComponentBase<'web', Substitute<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, {}>> & string
+  container: IStyledComponentBase<'web', Substitute<React.DetailedHTMLProps<React.HTMLAttributes<any>, any>, {}>> & string
   animateIn: Keyframes
   animateOut?: Keyframes
   duration?: number // in milliseconds
