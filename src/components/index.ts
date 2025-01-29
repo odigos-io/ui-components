@@ -3,6 +3,7 @@
 export * from './badge/index'
 export * from './button/index'
 export * from './divider/index'
+export * from './drawer/index'
 export * from './extend-arrow/index'
 export * from './fade-loader/index'
 export * from './field-error/index'
