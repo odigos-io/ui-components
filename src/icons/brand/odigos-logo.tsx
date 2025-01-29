@@ -10,8 +10,8 @@ export const OdigosLogo: SVG = ({ size = 16, fill: f, rotate = 0, onClick }) => 
     <svg
       xmlns='http://www.w3.org/2000/svg'
       width={size}
-      height={size * (431 / 552)}
-      viewBox='0 0 552 431'
+      height={size * (431 / 511)}
+      viewBox='0 0 511 431'
       fill={fill}
       style={{ transform: `rotate(${rotate}deg)` }}
       onClick={onClick}
