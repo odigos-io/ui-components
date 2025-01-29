@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.0.18](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.17...ui-components-v0.0.18) (2025-01-29)
+
+
+### Features
+
+* add fade-loader ([69e399c](https://github.com/odigos-io/ui-components/commit/69e399c9f70383fcecd29b703d0f2cdc39139cb2))
+* add field-error ([6301be3](https://github.com/odigos-io/ui-components/commit/6301be3740bf7656adf74d4926a868edc7148de7))
+* add field-label ([276af3b](https://github.com/odigos-io/ui-components/commit/276af3b9b527fdbfc49f65adca17c87f96cb65d1))
+* add icon-button ([1a8fa41](https://github.com/odigos-io/ui-components/commit/1a8fa417ebbf7f1e7e316c6f1a7fa44900d24718))
+* add notifiation-note ([32c6509](https://github.com/odigos-io/ui-components/commit/32c650982292137f7640ec389999e88423375e00))
+* add skeleton-loader ([a380638](https://github.com/odigos-io/ui-components/commit/a3806387e815ef97fcabe8348b22df8f47c35db5))
+* add status ([c05af9c](https://github.com/odigos-io/ui-components/commit/c05af9ce7b96c5b77e7934a182ce9d390dc9c264))
+
+
+### Bug Fixes
+
+* ref for field-error ([4b5cb30](https://github.com/odigos-io/ui-components/commit/4b5cb304163069f08dfef9b058d92c74c82106e1))
+
 ## [0.0.17](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.16...ui-components-v0.0.17) (2025-01-29)
 
 
