@@ -26,7 +26,7 @@ interface NotificationNoteProps {
 
 const Container = styled.div<{ $isLeaving?: boolean; $duration: number }>`
   position: relative;
-  width: fit-content;
+  width: 600px;
   &.animated {
     overflow: hidden;
     padding-bottom: 1px;
