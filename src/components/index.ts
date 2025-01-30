@@ -2,6 +2,7 @@
 
 export * from './badge/index'
 export * from './button/index'
+export * from './checkbox/index'
 export * from './divider/index'
 export * from './drawer/index'
 export * from './extend-arrow/index'
