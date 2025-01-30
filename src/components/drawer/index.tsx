@@ -54,7 +54,7 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
       position = 'right',
       width = '300px',
       children,
-      header: { icon, iconSrc, title, titleTooltip, actionButtons },
+      header: { icon, iconSrc, title, titleTooltip, replaceTitleWith, actionButtons },
       footer: { isOpen: footerIsOpen, leftButtons, rightButtons },
     },
     ref
@@ -75,7 +75,15 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 
         <Transition ref={ref} data-id='drawer' enter={isOpen} $position={position} $width={width}>
           <DrawerBody>
-            <DrawerHeader onClose={onClose} icon={icon} iconSrc={iconSrc} title={title} titleTooltip={titleTooltip} actionButtons={actionButtons} />
+            <DrawerHeader
+              onClose={onClose}
+              icon={icon}
+              iconSrc={iconSrc}
+              title={title}
+              titleTooltip={titleTooltip}
+              replaceTitleWith={replaceTitleWith}
+              actionButtons={actionButtons}
+            />
             <Content>{children}</Content>
             <DrawerFooter isOpen={footerIsOpen} leftButtons={leftButtons} rightButtons={rightButtons} />
           </DrawerBody>
