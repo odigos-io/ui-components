@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { AddClusterInfoIcon, DeleteAttributeIcon, PiiMaskingIcon, RenameAttributeIcon, SamplerIcon, Theme } from '../..'
 import { AutocompleteInput, type AutocompleteInputProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
@@ -17,8 +17,6 @@ const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
   useEffect(() => {
     document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
   }, [darkMode])
-
-  const [val, setVal] = useState('')
 
   return (
     <Theme.Provider darkMode={darkMode}>
