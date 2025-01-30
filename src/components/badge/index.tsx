@@ -7,12 +7,12 @@ interface BadgeProps {
 }
 
 const Styled = styled.span<{ $filled: BadgeProps['filled'] }>`
-  width: 22px;
-  height: 22px;
+  min-width: 18px;
+  padding: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 100%;
+  border-radius: 50px;
   border: 1px solid ${({ theme, $filled }) => ($filled ? theme.colors.majestic_blue : theme.colors.border)};
   background-color: ${({ theme, $filled }) => ($filled ? theme.colors.majestic_blue : 'transparent')};
   color: ${({ theme, $filled }) => ($filled ? theme.text.white : theme.text.grey)};
