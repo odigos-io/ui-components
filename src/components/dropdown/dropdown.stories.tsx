@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Theme } from '../..'
 import { Dropdown, type DropdownProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
@@ -18,9 +18,21 @@ const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
     document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
   }, [darkMode])
 
+  const [val, setVal] = useState({ id: '', value: '' })
+
   return (
     <Theme.Provider darkMode={darkMode}>
-      <Dropdown {...props} />
+      <Dropdown
+        {...props}
+        value={val}
+        onSelect={setVal}
+        onDeselect={(obj) =>
+          setVal((prev) => {
+            if (prev.id === obj.id) return { id: '', value: '' }
+            return prev
+          })
+        }
+      />
     </Theme.Provider>
   )
 }
@@ -33,11 +45,11 @@ Default.args = {
   title: 'Gender',
   options: [
     {
-      id: 'male',
+      id: 'Male',
       value: 'Male',
     },
     {
-      id: 'female',
+      id: 'Female',
       value: 'Female',
     },
   ],
