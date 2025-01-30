@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import { Overlay } from '../../styled'
 import { hexPercent, slide } from '../../styles'
 import { useKeyDown, useTransition } from '../../hooks'
+import { DrawerHeader, DrawerHeaderProps } from './header'
+import { DrawerFooter, DrawerFooterProps } from './footer'
 
 interface DrawerProps {
   isOpen: boolean
@@ -12,6 +14,8 @@ interface DrawerProps {
   position?: 'right' | 'left'
   width?: string
   children: React.ReactNode
+  header: Omit<DrawerHeaderProps, 'onClose'>
+  footer: DrawerFooterProps
 }
 
 const Container = styled.div<{
@@ -29,8 +33,32 @@ const Container = styled.div<{
   overflow-y: auto;
 `
 
+const DrawerBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
+
+const Content = styled.div`
+  flex-grow: 1;
+  padding: 24px 32px;
+  overflow-y: auto;
+`
+
 const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
-  ({ isOpen, onClose, position = 'right', width = '300px', children, closeOnEscape = true }, ref) => {
+  (
+    {
+      isOpen,
+      onClose,
+      closeOnEscape = true,
+      position = 'right',
+      width = '300px',
+      children,
+      header: { icon, iconSrc, title, titleTooltip, actionButtons },
+      footer: { isOpen: footerIsOpen, leftButtons, rightButtons },
+    },
+    ref
+  ) => {
     useKeyDown({ key: 'Escape', active: isOpen && closeOnEscape }, () => onClose())
 
     const Transition = useTransition({
@@ -46,7 +74,11 @@ const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
         <Overlay hidden={!isOpen} onClick={onClose} />
 
         <Transition ref={ref} data-id='drawer' enter={isOpen} $position={position} $width={width}>
-          {children}
+          <DrawerBody>
+            <DrawerHeader onClose={onClose} icon={icon} iconSrc={iconSrc} title={title} titleTooltip={titleTooltip} actionButtons={actionButtons} />
+            <Content>{children}</Content>
+            <DrawerFooter isOpen={footerIsOpen} leftButtons={leftButtons} rightButtons={rightButtons} />
+          </DrawerBody>
         </Transition>
       </>,
       document.body
