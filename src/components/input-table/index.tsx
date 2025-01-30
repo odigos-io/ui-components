@@ -60,7 +60,7 @@ const ButtonText = styled(Text)`
   text-decoration-line: underline;
 `
 
-const InputTable = forwardRef<HTMLInputElement, InputTableProps>(({ columns, initialValues = [], value, onChange, errorMessage }, ref = null) => {
+const InputTable = forwardRef<HTMLDivElement, InputTableProps>(({ columns, initialValues = [], value, onChange, errorMessage }, ref = null) => {
   // INITIAL_ROW as state, because it's dynamic to the "columns" prop
   const [initialRow, setInitialRow] = useState<Row>({})
   const [rows, setRows] = useState<Row[]>(value || initialValues)
@@ -119,7 +119,7 @@ const InputTable = forwardRef<HTMLInputElement, InputTableProps>(({ columns, ini
   const maxWidth = `${Math.floor(640 / (columns.length + 0.4))}px`
 
   return (
-    <Container>
+    <Container ref={ref}>
       <table style={{ borderCollapse: 'collapse' }}>
         <thead>
           <tr>
@@ -142,7 +142,6 @@ const InputTable = forwardRef<HTMLInputElement, InputTableProps>(({ columns, ini
                 return (
                   <td key={`input-table-${idx}-${keyName}`} style={{ maxWidth, padding: '4px 6px 4px 0' }}>
                     <Input
-                      ref={!isMinRows && idx === rows.length - 1 && innerIdx === 0 ? ref : null}
                       autoFocus={isEmpty(value) && !isMinRows && idx === rows.length - 1 && innerIdx === 0}
                       type={type}
                       placeholder={placeholder}
