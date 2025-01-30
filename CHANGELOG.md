@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.26](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.25...ui-components-v0.0.26) (2025-01-30)
+
+
+### Features
+
+* add type and const for instru. rules ([95e9513](https://github.com/odigos-io/ui-components/commit/95e95136f8bd622fc2096fc4292c614c1d8b9689))
+
 ## [0.0.25](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.24...ui-components-v0.0.25) (2025-01-30)
 
 
