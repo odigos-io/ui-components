@@ -26,3 +26,9 @@ export enum NOTIFICATION_TYPE {
   INFO = 'info',
   DEFAULT = 'default',
 }
+
+export enum SIGNAL_TYPE {
+  LOGS = 'logs',
+  METRICS = 'metrics',
+  TRACES = 'traces',
+}
