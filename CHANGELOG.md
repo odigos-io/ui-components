@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.23](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.22...ui-components-v0.0.23) (2025-01-30)
+
+
+### Bug Fixes
+
+* pass "replaceTitleWith" prop form drawer to drawer-header ([07fa7e5](https://github.com/odigos-io/ui-components/commit/07fa7e5198e454848b9ebe2df626ee1b061e0520))
+
 ## [0.0.22](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.21...ui-components-v0.0.22) (2025-01-30)
 
 
