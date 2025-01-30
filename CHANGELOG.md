@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.0.24](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.23...ui-components-v0.0.24) (2025-01-30)
+
+
+### Features
+
+* add auto-complete-input ([3e1d6d8](https://github.com/odigos-io/ui-components/commit/3e1d6d8e7773babbb9dceb4740ef0164fd68a613))
+* add checkbox ([863c5ae](https://github.com/odigos-io/ui-components/commit/863c5aedd658fb9be6dff76af4628971da8910c5))
+* add dropdown ([8ee8d93](https://github.com/odigos-io/ui-components/commit/8ee8d931408c7f45cd3e930415a80c1b253cf6c2))
+* add input ([04c42bb](https://github.com/odigos-io/ui-components/commit/04c42bb9e7c1f2794bfa25ce07e4190c2620e424))
+* add input-list ([5c41579](https://github.com/odigos-io/ui-components/commit/5c41579e2450ac8780673d6144081ea0ffc094c0))
+* add input-table ([6614e3e](https://github.com/odigos-io/ui-components/commit/6614e3efada2b732fa69b2d52b90029da283c2f1))
+* add key-value-input-list ([28dd2db](https://github.com/odigos-io/ui-components/commit/28dd2db55f28713c499dff2b01a19bb4cfca6053))
+* add ref to input list ([81dbaab](https://github.com/odigos-io/ui-components/commit/81dbaabb4ac3797901bd4a252046debd95ffe7c0))
+* add textarea ([dc6d030](https://github.com/odigos-io/ui-components/commit/dc6d030c65f6a50bd6a4f6eeb3d3b66735ef6aed))
+* add toggle-dark-mode ([b550d31](https://github.com/odigos-io/ui-components/commit/b550d3157784ae2b3ff8ffe5f04455ea5c05db25))
+
+
+### Bug Fixes
+
+* comment in stories ([01e780d](https://github.com/odigos-io/ui-components/commit/01e780dcb5b0440ded323d3634e636b5cb002f9e))
+* ref for input-table ([2d75643](https://github.com/odigos-io/ui-components/commit/2d75643d654225f5d21f8e439546bd0c7480fcd5))
+* remove forwardRef from non-exported components ([28d9755](https://github.com/odigos-io/ui-components/commit/28d975555dae64bfcd5a9f1dd4c8742309f9d955))
+
 ## [0.0.23](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.22...ui-components-v0.0.23) (2025-01-30)
 
 
