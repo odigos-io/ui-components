@@ -93,3 +93,14 @@ export interface ActionOption {
   docsDescription?: string
   items?: ActionOption[]
 }
+
+export type InstrumentationRuleOption = {
+  id: string
+  type?: INSTRUMENTATION_RULE_TYPE
+  icon?: SVG
+  label: string
+  description?: string
+  docsEndpoint?: string
+  docsDescription?: string
+  items?: InstrumentationRuleOption[]
+}
