@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.22](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.21...ui-components-v0.0.22) (2025-01-30)
+
+
+### Bug Fixes
+
+* assign default null to refs ([fbf150a](https://github.com/odigos-io/ui-components/commit/fbf150a59799e92513910eefde7d8d45a880ae1a))
+
 ## [0.0.21](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.20...ui-components-v0.0.21) (2025-01-30)
 
 
