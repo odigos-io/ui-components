@@ -13,7 +13,7 @@ export default {
   component: DestinationsIcon,
 }
 
-// Create a master template for mapping props to render the Button component
+// Create a master template for mapping props to render
 // @ts-ignore
 const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
   useEffect(() => {

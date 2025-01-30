@@ -12,7 +12,7 @@ export default {
   component: FieldError,
 }
 
-// Create a master template for mapping props to render the Button component
+// Create a master template for mapping props to render
 const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
   useEffect(() => {
     document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
