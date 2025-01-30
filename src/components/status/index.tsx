@@ -47,7 +47,7 @@ const TextWrapper = styled.div`
 `
 
 const Status = forwardRef<HTMLDivElement, StatusProps>(
-  ({ title, subtitle, size = 12, family = 'secondary', status, withIcon, withBorder, withBackground }, ref) => {
+  ({ title, subtitle, size = 12, family = 'secondary', status, withIcon, withBorder, withBackground }, ref = null) => {
     const statusType = status || NOTIFICATION_TYPE.DEFAULT
     const StatusIcon = getStatusIcon(statusType)
     const theme = useTheme()

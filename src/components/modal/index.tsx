@@ -89,7 +89,7 @@ const CancelText = styled(Text)`
 `
 
 const Modal = forwardRef<HTMLDivElement, ModalProps>(
-  ({ isOpen, noOverlay, header, actionComponent, onClose, children, closeOnEscape = true }, ref) => {
+  ({ isOpen, noOverlay, header, actionComponent, onClose, children, closeOnEscape = true }, ref = null) => {
     useKeyDown({ key: 'Escape', active: isOpen && closeOnEscape }, () => onClose())
 
     const Transition = useTransition({

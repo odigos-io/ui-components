@@ -45,7 +45,7 @@ const ToggleSwitch = styled.div<{ $isActive: boolean; $disabled?: ToggleProps['d
 `
 
 const Toggle = forwardRef<HTMLDivElement, ToggleProps>(
-  ({ title, tooltip, initialValue = false, onChange, disabled, allowPropagation = false }, ref) => {
+  ({ title, tooltip, initialValue = false, onChange, disabled, allowPropagation = false }, ref = null) => {
     const [isActive, setIsActive] = useState(initialValue)
     useEffect(() => setIsActive(initialValue), [initialValue])
 

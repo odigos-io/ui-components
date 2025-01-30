@@ -46,7 +46,7 @@ const Line = styled.div<{ $width: string }>`
   border-radius: 4px;
 `
 
-const SkeletonLoader = forwardRef<HTMLDivElement, SkeletonLoaderProps>(({ size = 5, maxWidth }, ref) => {
+const SkeletonLoader = forwardRef<HTMLDivElement, SkeletonLoaderProps>(({ size = 5, maxWidth }, ref = null) => {
   return (
     <Container ref={ref} $maxWidth={maxWidth}>
       {[...Array(size)].map((_, index) => (

@@ -25,7 +25,7 @@ const Container = styled.div<{ $status: IconWrappedProps['status']; $size: numbe
   }};
 `
 
-const IconWrapped = forwardRef<HTMLDivElement, IconWrappedProps>(({ icon: Icon, src = '', alt = '', status, size = 36 }, ref) => {
+const IconWrapped = forwardRef<HTMLDivElement, IconWrappedProps>(({ icon: Icon, src = '', alt = '', status, size = 36 }, ref = null) => {
   const [srcHasError, setSrcHasError] = useState(false)
 
   if (!!src && !srcHasError) {

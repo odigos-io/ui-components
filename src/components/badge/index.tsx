@@ -21,7 +21,7 @@ const Styled = styled.span<{ $filled: BadgeProps['filled'] }>`
   white-space: nowrap;
 `
 
-const Badge = forwardRef<HTMLSpanElement, BadgeProps>(({ label, filled }, ref) => {
+const Badge = forwardRef<HTMLSpanElement, BadgeProps>(({ label, filled }, ref = null) => {
   return (
     <Styled ref={ref} $filled={filled}>
       {label}

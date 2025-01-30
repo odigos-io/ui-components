@@ -64,7 +64,7 @@ const NoteWrapper = styled.div`
 `
 
 const WarningModal = forwardRef<HTMLDivElement, WarningModalProps>(
-  ({ isOpen, noOverlay, title = '', description = '', note, approveButton, denyButton, closeOnEscape = true }, ref) => {
+  ({ isOpen, noOverlay, title = '', description = '', note, approveButton, denyButton, closeOnEscape = true }, ref = null) => {
     useKeyDown({ key: 'Enter', active: isOpen && closeOnEscape }, () => approveButton.onClick())
 
     const onApprove = () => approveButton.onClick()

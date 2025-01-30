@@ -33,7 +33,7 @@ const SubTitle = styled(Text)`
 `
 
 const NoDataFound = forwardRef<HTMLDivElement, NoDataFoundProps>(
-  ({ title = 'No data found', subTitle = 'Check your search phrase and try one more time' }, ref) => {
+  ({ title = 'No data found', subTitle = 'Check your search phrase and try one more time' }, ref = null) => {
     const theme = useTheme()
 
     return (

@@ -58,7 +58,7 @@ const Background = styled.div<{
   transition: all 0.3s;
 `
 
-const Segment = forwardRef<HTMLDivElement, SegmentProps>(({ options = [], selected, setSelected }, ref) => {
+const Segment = forwardRef<HTMLDivElement, SegmentProps>(({ options = [], selected, setSelected }, ref = null) => {
   const selectedIdx = options.findIndex((option) => option.value === selected)
   const [bgColor, setBgColor] = useState(options[selectedIdx]?.selectedBgColor || '')
   const [bgSize, setBgSize] = useState({ width: 0, height: 0 })

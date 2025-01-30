@@ -92,7 +92,7 @@ const ActionButton = styled(Text)`
 `
 
 const NotificationNote = forwardRef<HTMLDivElement, NotificationNoteProps>(
-  ({ type, title, message, action, onClose, duration = 5000, style }, ref) => {
+  ({ type, title, message, action, onClose, duration = 5000, style }, ref = null) => {
     const theme = useTheme()
 
     // These are for handling transitions:

@@ -31,7 +31,7 @@ const TextWrapper = styled.div<{
   font-family: ${({ theme, $family = 'primary' }) => theme.font_family[$family]};
 `
 
-const Text = forwardRef<HTMLDivElement, TextProps>(({ children, color, size, weight, align, family, opacity, decoration, ...props }, ref) => {
+const Text = forwardRef<HTMLDivElement, TextProps>(({ children, color, size, weight, align, family, opacity, decoration, ...props }, ref = null) => {
   return (
     <TextWrapper
       ref={ref}

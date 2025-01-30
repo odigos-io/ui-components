@@ -49,13 +49,13 @@ const ActionButton = styled(Button)`
 const CloseButton = styled(Button)``
 
 const DrawerHeader = forwardRef<HTMLDivElement, DrawerHeaderProps>(
-  ({ icon, iconSrc, title, titleTooltip, replaceTitleWith: ReplaceTitleWith, actionButtons = [], onClose }, ref) => {
+  ({ icon, iconSrc, title, titleTooltip, replaceTitleWith: ReplaceTitleWith, actionButtons = [], onClose }, ref = null) => {
     return (
       <Container ref={ref}>
         <SectionItemsWrapper>
           {(!!icon || !!iconSrc) && <IconWrapped icon={icon} src={iconSrc} alt='Drawer Item' />}
 
-          {ReplaceTitleWith ? (
+          {!!ReplaceTitleWith ? (
             <ReplaceTitleWith />
           ) : (
             <Tooltip text={titleTooltip} withIcon>

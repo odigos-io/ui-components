@@ -23,7 +23,7 @@ const TooltipContainer = styled.div`
   gap: 4px;
 `
 
-const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({ text, withIcon, children }, ref) => {
+const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({ text, withIcon, children }, ref = null) => {
   const [isHovered, setIsHovered] = useState(false)
   const [popupPosition, setPopupPosition] = useState<Position>({ top: 0, left: 0 })
   const popupRef = useRef<HTMLDivElement>(null)
@@ -72,7 +72,7 @@ const PopupContainer = styled.div<{ $top: number; $left: number }>`
   pointer-events: none;
 `
 
-const Popup = forwardRef<HTMLDivElement, PopupProps>(({ top, left, children }, ref) => {
+const Popup = forwardRef<HTMLDivElement, PopupProps>(({ top, left, children }, ref = null) => {
   const theme = useTheme()
 
   return ReactDOM.createPortal(

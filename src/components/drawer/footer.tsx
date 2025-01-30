@@ -34,7 +34,7 @@ const FooterButton = styled(Button)`
   font-size: 14px;
 `
 
-const DrawerFooter = forwardRef<HTMLDivElement, DrawerFooterProps>(({ isOpen, leftButtons = [], rightButtons = [] }, ref) => {
+const DrawerFooter = forwardRef<HTMLDivElement, DrawerFooterProps>(({ isOpen, leftButtons = [], rightButtons = [] }, ref = null) => {
   const Transition = useTransition({
     container: Container,
     animateIn: slide.in['bottom'],

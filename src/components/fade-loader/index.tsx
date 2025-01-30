@@ -14,7 +14,7 @@ interface FadeLoaderProps extends DetailedHTMLProps<HTMLAttributes<HTMLSpanEleme
 const fade = createAnimation('FadeLoader', '50% {opacity: 0.3} 100% {opacity: 1}', 'fade')
 
 const FadeLoader = forwardRef<HTMLSpanElement, FadeLoaderProps>(
-  ({ loading = true, color: clr, scale = 1, speedMultiplier = 1, cssOverride = {}, style = {}, ...additionalprops }, ref) => {
+  ({ loading = true, color: clr, scale = 1, speedMultiplier = 1, cssOverride = {}, style = {}, ...additionalprops }, ref = null) => {
     const theme = useTheme()
     if (!loading) return null
 

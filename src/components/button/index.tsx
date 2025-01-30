@@ -108,7 +108,7 @@ const StyledButton = styled.button<{ $variant: ButtonProps['variant'] }>`
     `}
 `
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ children, variant = 'primary', ...props }, ref) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ children, variant = 'primary', ...props }, ref = null) => {
   return (
     <Container $variant={variant}>
       <StyledButton ref={ref} $variant={variant} {...props}>

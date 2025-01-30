@@ -32,7 +32,7 @@ const OptionalText = styled(Text)`
   opacity: 0.8;
 `
 
-const FieldLabel = forwardRef<HTMLDivElement, FieldLabelProps>(({ title, required, tooltip, style }, ref) => {
+const FieldLabel = forwardRef<HTMLDivElement, FieldLabelProps>(({ title, required, tooltip, style }, ref = null) => {
   if (!title) return null
 
   return (

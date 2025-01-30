@@ -24,7 +24,7 @@ const StyledDivider = styled.div<{
   background-color: ${({ $type, theme }) => (!!$type ? theme.text[$type] : theme.colors.border) + hexPercent['050']};
 `
 
-const Divider = forwardRef<HTMLDivElement, DividerProps>(({ orientation = 'horizontal', type, thickness = 1, length, margin }, ref) => {
+const Divider = forwardRef<HTMLDivElement, DividerProps>(({ orientation = 'horizontal', type, thickness = 1, length, margin }, ref = null) => {
   return <StyledDivider ref={ref} $orientation={orientation} $type={type} $thickness={thickness} $length={length} $margin={margin} />
 })
 
