@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from 'react'
+import React, { type FC, type ReactNode } from 'react'
 import { Text } from '../text'
 import { SVG } from '../../@types'
 import { XIcon } from '../../icons'
@@ -48,34 +48,40 @@ const ActionButton = styled(Button)`
 
 const CloseButton = styled(Button)``
 
-const DrawerHeader = forwardRef<HTMLDivElement, DrawerHeaderProps>(
-  ({ icon, iconSrc, title, titleTooltip, replaceTitleWith: ReplaceTitleWith, actionButtons = [], onClose }, ref = null) => {
-    return (
-      <Container ref={ref}>
-        <SectionItemsWrapper>
-          {(!!icon || !!iconSrc) && <IconWrapped icon={icon} src={iconSrc} alt='Drawer Item' />}
+const DrawerHeader: FC<DrawerHeaderProps> = ({
+  icon,
+  iconSrc,
+  title,
+  titleTooltip,
+  replaceTitleWith: ReplaceTitleWith,
+  actionButtons = [],
+  onClose,
+}) => {
+  return (
+    <Container>
+      <SectionItemsWrapper>
+        {(!!icon || !!iconSrc) && <IconWrapped icon={icon} src={iconSrc} alt='Drawer Item' />}
 
-          {!!ReplaceTitleWith ? (
-            <ReplaceTitleWith />
-          ) : (
-            <Tooltip text={titleTooltip} withIcon>
-              {title && <Title>{title}</Title>}
-            </Tooltip>
-          )}
-        </SectionItemsWrapper>
+        {!!ReplaceTitleWith ? (
+          <ReplaceTitleWith />
+        ) : (
+          <Tooltip text={titleTooltip} withIcon>
+            {title && <Title>{title}</Title>}
+          </Tooltip>
+        )}
+      </SectionItemsWrapper>
 
-        <SectionItemsWrapper $gap={2}>
-          {actionButtons.map((btn, i) => (
-            <ActionButton key={`header-action-button-${i}`} {...btn} />
-          ))}
+      <SectionItemsWrapper $gap={2}>
+        {actionButtons.map((btn, i) => (
+          <ActionButton key={`header-action-button-${i}`} {...btn} />
+        ))}
 
-          <CloseButton data-id='drawer-close' variant='secondary' onClick={onClose}>
-            <XIcon size={12} />
-          </CloseButton>
-        </SectionItemsWrapper>
-      </Container>
-    )
-  }
-)
+        <CloseButton data-id='drawer-close' variant='secondary' onClick={onClose}>
+          <XIcon size={12} />
+        </CloseButton>
+      </SectionItemsWrapper>
+    </Container>
+  )
+}
 
 export { DrawerHeader, type DrawerHeaderProps }

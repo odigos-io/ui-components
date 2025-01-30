@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { type FC } from 'react'
 import { slide } from '../../styles'
 import { FlexRow } from '../../styled'
 import styled from 'styled-components'
@@ -34,7 +34,7 @@ const FooterButton = styled(Button)`
   font-size: 14px;
 `
 
-const DrawerFooter = forwardRef<HTMLDivElement, DrawerFooterProps>(({ isOpen, leftButtons = [], rightButtons = [] }, ref = null) => {
+const DrawerFooter: FC<DrawerFooterProps> = ({ isOpen, leftButtons = [], rightButtons = [] }) => {
   const Transition = useTransition({
     container: Container,
     animateIn: slide.in['bottom'],
@@ -42,7 +42,7 @@ const DrawerFooter = forwardRef<HTMLDivElement, DrawerFooterProps>(({ isOpen, le
   })
 
   return (
-    <Transition ref={ref} enter={isOpen}>
+    <Transition enter={isOpen}>
       <AlignLeft>
         {leftButtons.map((btn, i) => (
           <FooterButton key={`footer-left-button-${i}`} {...btn} />
@@ -56,6 +56,6 @@ const DrawerFooter = forwardRef<HTMLDivElement, DrawerFooterProps>(({ isOpen, le
       </AlignRight>
     </Transition>
   )
-})
+}
 
 export { DrawerFooter, type DrawerFooterProps }
