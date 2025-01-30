@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.0.25](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.24...ui-components-v0.0.25) (2025-01-30)
+
+
+### Features
+
+* add enums, consts, and icon functions ([a9be77c](https://github.com/odigos-io/ui-components/commit/a9be77c9be09392c30e5e82515d203cab0939b32))
+* add monitors-checkboxes ([2a6b6a5](https://github.com/odigos-io/ui-components/commit/2a6b6a599acc208de8d77738c805f7390b095bd0))
+* add monitors-icons ([3275747](https://github.com/odigos-io/ui-components/commit/3275747633ef39f49c9a982df18115a6faeb78fb))
+
+
+### Bug Fixes
+
+* remove unused prop "initialValue" ([c4b83e7](https://github.com/odigos-io/ui-components/commit/c4b83e76e0b4f128f8ff0f64a834d9147f33b684))
+
 ## [0.0.24](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.23...ui-components-v0.0.24) (2025-01-30)
 
 
