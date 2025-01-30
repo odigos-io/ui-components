@@ -1,15 +1,14 @@
 import React, { useState, forwardRef, type ChangeEvent, type KeyboardEventHandler, type InputHTMLAttributes } from 'react'
-import styled, { css, useTheme } from 'styled-components'
 import { type SVG } from '../../@types'
 import { FieldLabel } from '../field-label'
-import { EyeClosedIcon, EyeOpenIcon } from '../../icons'
 import { FieldError } from '../field-error'
+import { EyeClosedIcon, EyeOpenIcon } from '../../icons'
+import styled, { css, useTheme } from 'styled-components'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   title?: string
   icon?: SVG
   tooltip?: string
-  initialValue?: string
   buttonLabel?: string
   onButtonClick?: () => void
   required?: boolean
