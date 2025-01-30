@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.21](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.20...ui-components-v0.0.21) (2025-01-30)
+
+
+### Features
+
+* enhance drawer with header and footer ([c3c1722](https://github.com/odigos-io/ui-components/commit/c3c1722d995567b14ac4f8a7af125191e6b77895))
+
 ## [0.0.20](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.19...ui-components-v0.0.20) (2025-01-29)
 
 
