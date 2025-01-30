@@ -1,5 +1,6 @@
 // Components should point at the index files, to exclude Storybook stories
 
+export * from './auto-complete-input/index'
 export * from './badge/index'
 export * from './button/index'
 export * from './checkbox/index'
