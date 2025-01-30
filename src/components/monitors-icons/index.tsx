@@ -4,8 +4,8 @@ import { Tooltip } from '../tooltip'
 import { FlexRow } from '../../styled'
 import { SIGNAL_TYPE } from '../../@types'
 import { useTheme } from 'styled-components'
+import { getMonitorIcon } from '../../functions'
 import { MONITORS_OPTIONS } from '../../constants'
-import { getMonitorIcon } from '../../functions/get-monitor-icon'
 
 interface MonitorsIconsProps {
   monitors?: SIGNAL_TYPE[]
