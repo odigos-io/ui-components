@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { safeJsonStringify, Theme } from '../..'
-import { Code, type CodeProps } from '.'
-import { ToggleCodeComponent } from './toggle-code-component'
+import { Code, type CodeProps, ToggleCodeComponent } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
 
 interface Props extends CodeProps {
