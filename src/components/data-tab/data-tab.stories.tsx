@@ -21,9 +21,7 @@ const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
 
   return (
     <Theme.Provider darkMode={darkMode}>
-      <div style={{ width: '270px' }}>
-        <DataTab {...props} />
-      </div>
+      <DataTab {...props} />
     </Theme.Provider>
   )
 }
