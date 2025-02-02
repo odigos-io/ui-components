@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.0.29](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.28...ui-components-v0.0.29) (2025-02-02)
+
+
+### Features
+
+* add cancel warning-modal ([613b381](https://github.com/odigos-io/ui-components/commit/613b3813a5a0e7ce3496e82f77ee6891bc35b34c))
+* add delete warning-modal ([2d3136e](https://github.com/odigos-io/ui-components/commit/2d3136ec10f4fe32f47f42c3034b96bd9cffdfa8))
+* add docs button ([d3683a8](https://github.com/odigos-io/ui-components/commit/d3683a86ec87973443b7cb809d7226328b64894f))
+* deperacte the "useCallback" hook (except for in "useTransition") ([0bf5ced](https://github.com/odigos-io/ui-components/commit/0bf5cedf821c859a5376d7dcbc611cdc1a95ae7d))
+* deprecate the "useMemo" hook ([9264576](https://github.com/odigos-io/ui-components/commit/9264576ccf1d13110171926dbf48c1a9ac019f50))
+
+
+### Bug Fixes
+
+* case where MonitorsIcons would crash the UI ([dda742a](https://github.com/odigos-io/ui-components/commit/dda742a22b998681cabd1f441365bac32edae9f1))
+* default ref values for "forwardRef" ([c4467f3](https://github.com/odigos-io/ui-components/commit/c4467f3ede1e68a252049837db75171fd3b62f7b))
+* exports for data card fields ([f51d25b](https://github.com/odigos-io/ui-components/commit/f51d25b9d4081db14927799d8b61ce588de48bdf))
+* exports for new comps ([b6a65e6](https://github.com/odigos-io/ui-components/commit/b6a65e6e8810f90e19795164064e09f405745590))
+* names for drawer header and footer ([60b6251](https://github.com/odigos-io/ui-components/commit/60b6251d33598dd557f290ab87770cb4cacfacac))
+* toast width ([260ad43](https://github.com/odigos-io/ui-components/commit/260ad436cc2f2f7c95fe478642bdcd43965c9c42))
+
 ## [0.0.28](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.27...ui-components-v0.0.28) (2025-02-02)
 
 
