@@ -2,7 +2,7 @@ import React, { type ReactNode, type FC } from 'react'
 import { Text } from '../text'
 import { Badge } from '../badge'
 import styled from 'styled-components'
-import { DataCardFields, type DataCardFieldsProps } from './data-card-fields'
+import { DataCardFields, type DataCardFieldsProps, DATA_CARD_FIELD_TYPES } from './data-card-fields'
 
 interface DataCardProps {
   title?: string
@@ -70,5 +70,4 @@ const DataCard: FC<DataCardProps> = ({ title = 'Details', titleBadge, descriptio
   )
 }
 
-export { DataCard, type DataCardProps }
-export * from './data-card-fields'
+export { DataCard, type DataCardProps, DataCardFields, type DataCardFieldsProps, DATA_CARD_FIELD_TYPES }
