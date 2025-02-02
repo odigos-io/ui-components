@@ -72,7 +72,7 @@ const PopupContainer = styled.div<{ $top: number; $left: number }>`
   pointer-events: none;
 `
 
-const Popup = forwardRef<HTMLDivElement, PopupProps>(({ top, left, children }, ref = null) => {
+const Popup = forwardRef<HTMLDivElement, PopupProps>(({ top, left, children }, ref) => {
   const theme = useTheme()
 
   return ReactDOM.createPortal(

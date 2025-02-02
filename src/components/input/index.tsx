@@ -115,7 +115,10 @@ const Button = styled.button`
 `
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ icon: Icon, buttonLabel, onButtonClick, hasError, errorMessage, title, tooltip, required, onChange, type = 'text', name, ...props }, ref) => {
+  (
+    { icon: Icon, buttonLabel, onButtonClick, hasError, errorMessage, title, tooltip, required, onChange, type = 'text', name, ...props },
+    ref = null
+  ) => {
     const theme = useTheme()
 
     const isSecret = type === 'password'
