@@ -1,9 +1,9 @@
 import React, { type FC } from 'react'
-import { slide } from '../../styles'
-import { FlexRow } from '../../styled'
+import { slide } from '../../../styles'
+import { FlexRow } from '../../../styled'
 import styled from 'styled-components'
-import { useTransition } from '../../hooks'
-import { Button, type ButtonProps } from '../button'
+import { useTransition } from '../../../hooks'
+import { Button, type ButtonProps } from '../../button'
 
 interface DrawerFooterProps {
   isOpen: boolean
