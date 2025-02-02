@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { CopyIcon, FlexRow, getStatusIcon, IconButton, isOverTime, isWithinTime, KeyIcon, Text, Theme, useCopy } from '../..'
+import { CopyIcon, FlexRow, getStatusIcon, IconButton, isOverTime, KeyIcon, Text, Theme, useCopy } from '../..'
 import { InteractiveTable, type InteractiveTableProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
 import { getTheme } from '../../styles/theme'
@@ -31,8 +31,6 @@ const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
 // Reuse that template for creating different stories
 export const Default: StoryObj<Props> = Template.bind({})
 
-const SEVEN_DAYS_IN_MS = 604800000
-
 Default.args = {
   darkMode: true,
   columns: [
@@ -53,10 +51,10 @@ Default.args = {
           <Text
             size={14}
             color={
-              isWithinTime(expiresAt, SEVEN_DAYS_IN_MS)
-                ? getTheme(true).text.warning
-                : isOverTime(expiresAt, SEVEN_DAYS_IN_MS)
+              isOverTime(expiresAt, 0)
                 ? getTheme(true).text.error
+                : isOverTime(expiresAt, 604800000)
+                ? getTheme(true).text.warning
                 : getTheme(true).text.success
             }
           >
