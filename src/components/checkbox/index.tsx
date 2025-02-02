@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from 'react'
+import React, { type CSSProperties, type FC, type MouseEventHandler, useEffect, useState } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
 import { CheckIcon } from '../../icons'
@@ -8,12 +8,12 @@ import styled, { useTheme } from 'styled-components'
 
 interface CheckboxProps {
   title?: string
-  titleColor?: React.CSSProperties['color']
+  titleColor?: CSSProperties['color']
   tooltip?: string
   value?: boolean
   onChange?: (value: boolean) => void
   disabled?: boolean
-  style?: React.CSSProperties
+  style?: CSSProperties
   errorMessage?: string
   allowPropagation?: boolean
 }
@@ -39,41 +39,49 @@ const CheckboxWrapper = styled.div<{ $isChecked: boolean; $disabled?: CheckboxPr
   transition: border 0.3s, background-color 0.3s;
 `
 
-const Checkbox = forwardRef<HTMLDivElement, CheckboxProps>(
-  ({ title, titleColor, tooltip, value = false, onChange, disabled, style, errorMessage, allowPropagation = false }, ref = null) => {
-    const theme = useTheme()
+const Checkbox: FC<CheckboxProps> = ({
+  title,
+  titleColor,
+  tooltip,
+  value = false,
+  onChange,
+  disabled,
+  style,
+  errorMessage,
+  allowPropagation = false,
+}) => {
+  const theme = useTheme()
 
-    const [isChecked, setIsChecked] = useState(value)
-    useEffect(() => setIsChecked(value), [value])
+  const [isChecked, setIsChecked] = useState(value)
+  useEffect(() => setIsChecked(value), [value])
 
-    const handleToggle: React.MouseEventHandler<HTMLDivElement> = (e) => {
-      if (disabled) return
-      if (!allowPropagation) e.stopPropagation()
+  const handleToggle: MouseEventHandler<HTMLDivElement> = (e) => {
+    if (disabled) return
+    if (!allowPropagation) e.stopPropagation()
 
-      if (onChange) onChange(!isChecked)
-      else setIsChecked((prev) => !prev)
-    }
-
-    return (
-      <FlexColumn>
-        <Container ref={ref} data-id={`checkbox${!!title ? `-${title}` : ''}`} $disabled={disabled} onClick={handleToggle} style={style}>
-          <CheckboxWrapper $isChecked={isChecked} $disabled={disabled}>
-            {isChecked && <CheckIcon fill={theme.text.white} />}
-          </CheckboxWrapper>
-
-          {title && (
-            <Tooltip text={tooltip} withIcon>
-              <Text size={12} color={titleColor || theme.text.grey} style={{ maxWidth: '90%' }}>
-                {title}
-              </Text>
-            </Tooltip>
-          )}
-        </Container>
-
-        {!!errorMessage && <FieldError>{errorMessage}</FieldError>}
-      </FlexColumn>
-    )
+    if (onChange) onChange(!isChecked)
+    else setIsChecked((prev) => !prev)
   }
-)
+
+  return (
+    <FlexColumn>
+      <Container data-id={`checkbox${!!title ? `-${title}` : ''}`} $disabled={disabled} onClick={handleToggle} style={style}>
+        <CheckboxWrapper $isChecked={isChecked} $disabled={disabled}>
+          {isChecked && <CheckIcon fill={theme.text.white} />}
+        </CheckboxWrapper>
+
+        {title && (
+          <Tooltip text={tooltip} withIcon>
+            <Text size={12} color={titleColor || theme.text.grey} style={{ maxWidth: '90%' }}>
+              {title}
+            </Text>
+          </Tooltip>
+        )}
+      </Container>
+
+      {!!errorMessage && <FieldError>{errorMessage}</FieldError>}
+    </FlexColumn>
+  )
+}
 
 export { Checkbox, type CheckboxProps }

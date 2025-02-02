@@ -1,4 +1,4 @@
-import React, { type FC } from 'react'
+import React, { type ReactNode, type FC } from 'react'
 import { Text } from '../text'
 import { Badge } from '../badge'
 import styled from 'styled-components'
@@ -9,7 +9,7 @@ interface DataCardProps {
   titleBadge?: string | number
   description?: string
   data: DataCardFieldsProps['data']
-  action?: React.ReactNode
+  action?: ReactNode
 }
 
 const CardContainer = styled.div`

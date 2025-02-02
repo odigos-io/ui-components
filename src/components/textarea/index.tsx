@@ -1,9 +1,9 @@
-import React, { type ChangeEventHandler, type FC, type KeyboardEventHandler, useRef } from 'react'
+import React, { type ChangeEventHandler, type FC, type KeyboardEventHandler, type TextareaHTMLAttributes, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
 
-interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   errorMessage?: string
   title?: string
   tooltip?: string

@@ -1,4 +1,4 @@
-import React, { useState, PropsWithChildren, useRef, MouseEvent, forwardRef } from 'react'
+import React, { useState, type PropsWithChildren, useRef, type MouseEvent, forwardRef, type FC } from 'react'
 import ReactDOM from 'react-dom'
 import { Text } from '../text'
 import { InfoIcon } from '../../icons'
@@ -23,7 +23,7 @@ const TooltipContainer = styled.div`
   gap: 4px;
 `
 
-const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({ text, withIcon, children }, ref = null) => {
+const Tooltip: FC<TooltipProps> = ({ text, withIcon, children }) => {
   const [isHovered, setIsHovered] = useState(false)
   const [popupPosition, setPopupPosition] = useState<Position>({ top: 0, left: 0 })
   const popupRef = useRef<HTMLDivElement>(null)
@@ -45,7 +45,7 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({ text, withIcon, chil
   if (!text) return <>{children}</>
 
   return (
-    <TooltipContainer ref={ref} onMouseEnter={handleMouseEvent} onMouseMove={handleMouseEvent} onMouseLeave={handleMouseEvent}>
+    <TooltipContainer onMouseEnter={handleMouseEvent} onMouseMove={handleMouseEvent} onMouseLeave={handleMouseEvent}>
       {children}
       {withIcon && <InfoIcon />}
       {isHovered && (
@@ -55,7 +55,7 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(({ text, withIcon, chil
       )}
     </TooltipContainer>
   )
-})
+}
 
 const PopupContainer = styled.div<{ $top: number; $left: number }>`
   position: absolute;

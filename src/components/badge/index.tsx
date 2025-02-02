@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react'
+import React, { type ReactNode, type FC } from 'react'
 import styled from 'styled-components'
 
 interface BadgeProps {
-  label: string | number | React.ReactNode
+  label: string | number | ReactNode
   filled?: boolean
 }
 
@@ -21,12 +21,8 @@ const Styled = styled.span<{ $filled: BadgeProps['filled'] }>`
   white-space: nowrap;
 `
 
-const Badge = forwardRef<HTMLSpanElement, BadgeProps>(({ label, filled }, ref = null) => {
-  return (
-    <Styled ref={ref} $filled={filled}>
-      {label}
-    </Styled>
-  )
-})
+const Badge: FC<BadgeProps> = ({ label, filled }) => {
+  return <Styled $filled={filled}>{label}</Styled>
+}
 
 export { Badge, type BadgeProps }

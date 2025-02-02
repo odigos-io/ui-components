@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { type FC } from 'react'
 import { Text } from '../text'
 import { Modal } from '../modal'
 import styled from 'styled-components'
@@ -63,40 +63,47 @@ const NoteWrapper = styled.div`
   margin-bottom: 12px;
 `
 
-const WarningModal = forwardRef<HTMLDivElement, WarningModalProps>(
-  ({ isOpen, noOverlay, title = '', description = '', note, approveButton, denyButton, closeOnEscape = true }, ref = null) => {
-    useKeyDown({ key: 'Enter', active: isOpen && closeOnEscape }, () => approveButton.onClick())
+const WarningModal: FC<WarningModalProps> = ({
+  isOpen,
+  noOverlay,
+  title = '',
+  description = '',
+  note,
+  approveButton,
+  denyButton,
+  closeOnEscape = true,
+}) => {
+  useKeyDown({ key: 'Enter', active: isOpen && closeOnEscape }, () => approveButton.onClick())
 
-    const onApprove = () => approveButton.onClick()
-    const onDeny = () => denyButton.onClick()
+  const onApprove = () => approveButton.onClick()
+  const onDeny = () => denyButton.onClick()
 
-    return (
-      <Modal isOpen={isOpen} noOverlay={noOverlay} onClose={onDeny}>
-        <Container ref={ref}>
-          <Title>{title}</Title>
+  return (
+    <Modal isOpen={isOpen} noOverlay={noOverlay} onClose={onDeny}>
+      <Container>
+        <Title>{title}</Title>
 
-          <Content $withNote={!!note}>
-            <Description>{description}</Description>
-          </Content>
+        <Content $withNote={!!note}>
+          <Description>{description}</Description>
+        </Content>
 
-          {!!note && (
-            <NoteWrapper>
-              <NotificationNote type={note.type} title={note.title} message={note.message} />
-            </NoteWrapper>
-          )}
+        {!!note && (
+          <NoteWrapper>
+            <NotificationNote type={note.type} title={note.title} message={note.message} />
+          </NoteWrapper>
+        )}
 
-          <Footer>
-            <FooterButton data-id='approve' variant={approveButton.variant || 'primary'} onClick={onApprove}>
-              {approveButton.text}
-            </FooterButton>
-            <FooterButton data-id='deny' variant={denyButton.variant || 'secondary'} onClick={onDeny}>
-              {denyButton.text}
-            </FooterButton>
-          </Footer>
-        </Container>
-      </Modal>
-    )
-  }
-)
+        <Footer>
+          <FooterButton data-id='approve' variant={approveButton.variant || 'primary'} onClick={onApprove}>
+            {approveButton.text}
+          </FooterButton>
+          <FooterButton data-id='deny' variant={denyButton.variant || 'secondary'} onClick={onDeny}>
+            {denyButton.text}
+          </FooterButton>
+        </Footer>
+      </Container>
+    </Modal>
+  )
+}
 
 export { WarningModal, type WarningModalProps }

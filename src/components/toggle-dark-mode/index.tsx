@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect } from 'react'
+import React, { type FC, useEffect } from 'react'
 import styled from 'styled-components'
 import { FlexRow } from '../../styled'
 import { MoonIcon, SunIcon } from '../../icons'
@@ -38,7 +38,7 @@ const Background = styled.div<{ $darkMode: boolean }>`
   transition: all 0.3s;
 `
 
-const ToggleDarkMode = forwardRef<HTMLDivElement, ToggleDarkModeProps>(({ darkMode, setDarkMode }, ref = null) => {
+const ToggleDarkMode: FC<ToggleDarkModeProps> = ({ darkMode, setDarkMode }) => {
   useEffect(() => {
     const lsValue = localStorage.getItem('darkMode')
     if (!!lsValue) setDarkMode(lsValue == 'true')
@@ -51,12 +51,12 @@ const ToggleDarkMode = forwardRef<HTMLDivElement, ToggleDarkModeProps>(({ darkMo
   }
 
   return (
-    <Container ref={ref} onClick={() => handleToggle()}>
+    <Container onClick={() => handleToggle()}>
       <MoonIcon />
       <SunIcon />
       <Background $darkMode={darkMode} />
     </Container>
   )
-})
+}
 
 export { ToggleDarkMode, type ToggleDarkModeProps }

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { type FC } from 'react'
 import { Text } from '../text'
 import { Divider } from '../divider'
 import { hexPercent } from '../../styles'
@@ -46,41 +46,39 @@ const TextWrapper = styled.div`
   align-items: center;
 `
 
-const Status = forwardRef<HTMLDivElement, StatusProps>(
-  ({ title, subtitle, size = 12, family = 'secondary', status, withIcon, withBorder, withBackground }, ref = null) => {
-    const statusType = status || NOTIFICATION_TYPE.DEFAULT
-    const StatusIcon = getStatusIcon(statusType)
-    const theme = useTheme()
+const Status: FC<StatusProps> = ({ title, subtitle, size = 12, family = 'secondary', status, withIcon, withBorder, withBackground }) => {
+  const statusType = status || NOTIFICATION_TYPE.DEFAULT
+  const StatusIcon = getStatusIcon(statusType)
+  const theme = useTheme()
 
-    return (
-      <Container ref={ref} $size={size} $status={statusType} $withIcon={withIcon} $withBorder={withBorder} $withBackground={withBackground}>
-        {withIcon && (
-          <IconWrapper>
-            <StatusIcon size={size + 2} />
-          </IconWrapper>
-        )}
+  return (
+    <Container $size={size} $status={statusType} $withIcon={withIcon} $withBorder={withBorder} $withBackground={withBackground}>
+      {withIcon && (
+        <IconWrapper>
+          <StatusIcon size={size + 2} />
+        </IconWrapper>
+      )}
 
-        {(!!title || !!subtitle) && (
-          <TextWrapper>
-            {!!title && (
-              <Text size={size} family={family} color={theme.text[statusType]}>
-                {title}
+      {(!!title || !!subtitle) && (
+        <TextWrapper>
+          {!!title && (
+            <Text size={size} family={family} color={theme.text[statusType]}>
+              {title}
+            </Text>
+          )}
+
+          {!!subtitle && (
+            <TextWrapper>
+              <Divider orientation='vertical' length={`${size - 2}px`} type={statusType} />
+              <Text size={size - 2} family={family} color={theme.text[`${statusType}_secondary`]}>
+                {subtitle}
               </Text>
-            )}
-
-            {!!subtitle && (
-              <TextWrapper>
-                <Divider orientation='vertical' length={`${size - 2}px`} type={statusType} />
-                <Text size={size - 2} family={family} color={theme.text[`${statusType}_secondary`]}>
-                  {subtitle}
-                </Text>
-              </TextWrapper>
-            )}
-          </TextWrapper>
-        )}
-      </Container>
-    )
-  }
-)
+            </TextWrapper>
+          )}
+        </TextWrapper>
+      )}
+    </Container>
+  )
+}
 
 export { Status, type StatusProps }

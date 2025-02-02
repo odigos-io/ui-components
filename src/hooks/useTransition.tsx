@@ -1,9 +1,9 @@
-import React, { PropsWithChildren, useCallback, useEffect, useState } from 'react'
+import React, { type DetailedHTMLProps, type HTMLAttributes, type PropsWithChildren, useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import type { IStyledComponentBase, Keyframes, Substitute } from 'styled-components/dist/types'
 
 interface HookProps {
-  container: IStyledComponentBase<'web', Substitute<React.DetailedHTMLProps<React.HTMLAttributes<any>, any>, any>> & string
+  container: IStyledComponentBase<'web', Substitute<DetailedHTMLProps<HTMLAttributes<any>, any>, any>> & string
   animateIn: Keyframes
   animateOut?: Keyframes
   duration?: number // in milliseconds

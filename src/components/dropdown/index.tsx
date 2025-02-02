@@ -1,4 +1,4 @@
-import React, { useState, useRef, forwardRef, type FC } from 'react'
+import React, { useState, useRef, type FC } from 'react'
 import { Text } from '../text'
 import { Badge } from '../badge'
 import { Input } from '../input'
@@ -80,75 +80,82 @@ const IconWrapper = styled.div`
   gap: 4px;
 `
 
-const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
-  (
-    { options, value, onSelect, onDeselect, title, tooltip, placeholder, isMulti = false, showSearch = false, required = false, errorMessage },
-    ref = null
-  ) => {
-    const [isOpen, setIsOpen] = useState(false)
-    const [openUpwards, setOpenUpwards] = useState(false)
+const Dropdown: FC<DropdownProps> = ({
+  options,
+  value,
+  onSelect,
+  onDeselect,
+  title,
+  tooltip,
+  placeholder,
+  isMulti = false,
+  showSearch = false,
+  required = false,
+  errorMessage,
+}) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [openUpwards, setOpenUpwards] = useState(false)
 
-    const containerRef = useRef<HTMLDivElement>(null)
-    useOnClickOutside(containerRef, () => setIsOpen(false))
+  const containerRef = useRef<HTMLDivElement>(null)
+  useOnClickOutside(containerRef, () => setIsOpen(false))
 
-    const handleDirection = () => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect()
-        const isNearBottom = rect.bottom + 300 > window.innerHeight
-        setOpenUpwards(isNearBottom)
-      }
+  const handleDirection = () => {
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect()
+      const isNearBottom = rect.bottom + 300 > window.innerHeight
+      setOpenUpwards(isNearBottom)
     }
-
-    const toggleOpen = () => {
-      handleDirection()
-      setIsOpen((prev) => !prev)
-    }
-
-    const arrLen = Array.isArray(value) ? value.length : 0
-
-    return (
-      <RootContainer ref={ref}>
-        <FieldLabel title={title} required={required} tooltip={tooltip} />
-
-        <RelativeContainer ref={containerRef}>
-          <DropdownHeader
-            $isOpen={isOpen}
-            $isMulti={isMulti}
-            $hasSelections={Array.isArray(value) ? !!value.length : false}
-            $hasError={!!errorMessage}
-            onClick={toggleOpen}
-          >
-            <DropdownPlaceholder value={value} placeholder={placeholder} onDeselect={onDeselect} />
-            <IconWrapper>
-              {isMulti && <Badge label={arrLen} filled={!!arrLen} />}
-              <ExtendArrow extend={isOpen} />
-            </IconWrapper>
-          </DropdownHeader>
-
-          {isOpen && (
-            <DropdownList
-              openUpwards={openUpwards}
-              options={options}
-              value={value}
-              onSelect={(option) => {
-                onSelect?.(option)
-                if (!isMulti) toggleOpen()
-              }}
-              onDeselect={(option) => {
-                onDeselect?.(option)
-                if (!isMulti) toggleOpen()
-              }}
-              isMulti={isMulti}
-              showSearch={showSearch}
-            />
-          )}
-        </RelativeContainer>
-
-        {!!errorMessage && <FieldError>{errorMessage}</FieldError>}
-      </RootContainer>
-    )
   }
-)
+
+  const toggleOpen = () => {
+    handleDirection()
+    setIsOpen((prev) => !prev)
+  }
+
+  const arrLen = Array.isArray(value) ? value.length : 0
+
+  return (
+    <RootContainer>
+      <FieldLabel title={title} required={required} tooltip={tooltip} />
+
+      <RelativeContainer ref={containerRef}>
+        <DropdownHeader
+          $isOpen={isOpen}
+          $isMulti={isMulti}
+          $hasSelections={Array.isArray(value) ? !!value.length : false}
+          $hasError={!!errorMessage}
+          onClick={toggleOpen}
+        >
+          <DropdownPlaceholder value={value} placeholder={placeholder} onDeselect={onDeselect} />
+          <IconWrapper>
+            {isMulti && <Badge label={arrLen} filled={!!arrLen} />}
+            <ExtendArrow extend={isOpen} />
+          </IconWrapper>
+        </DropdownHeader>
+
+        {isOpen && (
+          <DropdownList
+            openUpwards={openUpwards}
+            options={options}
+            value={value}
+            onSelect={(option) => {
+              onSelect?.(option)
+              if (!isMulti) toggleOpen()
+            }}
+            onDeselect={(option) => {
+              onDeselect?.(option)
+              if (!isMulti) toggleOpen()
+            }}
+            isMulti={isMulti}
+            showSearch={showSearch}
+          />
+        )}
+      </RelativeContainer>
+
+      {!!errorMessage && <FieldError>{errorMessage}</FieldError>}
+    </RootContainer>
+  )
+}
 
 const MultiLabelWrapper = styled(IconWrapper)`
   max-width: calc(100% - 50px);

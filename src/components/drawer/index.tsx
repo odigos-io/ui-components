@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { type ReactNode, type FC } from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import { Overlay } from '../../styled'
@@ -13,7 +13,7 @@ interface DrawerProps {
   closeOnEscape?: boolean
   position?: 'right' | 'left'
   width?: string
-  children: React.ReactNode
+  children: ReactNode
   header: Omit<DrawerHeaderProps, 'onClose'>
   footer: DrawerFooterProps
 }
@@ -45,53 +45,48 @@ const Content = styled.div`
   overflow-y: auto;
 `
 
-const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
-  (
-    {
-      isOpen,
-      onClose,
-      closeOnEscape = true,
-      position = 'right',
-      width = '300px',
-      children,
-      header: { icon, iconSrc, title, titleTooltip, replaceTitleWith, actionButtons },
-      footer: { isOpen: footerIsOpen, leftButtons, rightButtons },
-    },
-    ref
-  ) => {
-    useKeyDown({ key: 'Escape', active: isOpen && closeOnEscape }, () => onClose())
+const Drawer: FC<DrawerProps> = ({
+  isOpen,
+  onClose,
+  closeOnEscape = true,
+  position = 'right',
+  width = '300px',
+  children,
+  header: { icon, iconSrc, title, titleTooltip, replaceTitleWith, actionButtons },
+  footer: { isOpen: footerIsOpen, leftButtons, rightButtons },
+}) => {
+  useKeyDown({ key: 'Escape', active: isOpen && closeOnEscape }, () => onClose())
 
-    const Transition = useTransition({
-      container: Container,
-      animateIn: slide.in[position],
-      animateOut: slide.out[position],
-    })
+  const Transition = useTransition({
+    container: Container,
+    animateIn: slide.in[position],
+    animateOut: slide.out[position],
+  })
 
-    if (!isOpen) return null
+  if (!isOpen) return null
 
-    return ReactDOM.createPortal(
-      <>
-        <Overlay hidden={!isOpen} onClick={onClose} />
+  return ReactDOM.createPortal(
+    <>
+      <Overlay hidden={!isOpen} onClick={onClose} />
 
-        <Transition ref={ref} data-id='drawer' enter={isOpen} $position={position} $width={width}>
-          <DrawerBody>
-            <DrawerHeader
-              onClose={onClose}
-              icon={icon}
-              iconSrc={iconSrc}
-              title={title}
-              titleTooltip={titleTooltip}
-              replaceTitleWith={replaceTitleWith}
-              actionButtons={actionButtons}
-            />
-            <Content>{children}</Content>
-            <DrawerFooter isOpen={footerIsOpen} leftButtons={leftButtons} rightButtons={rightButtons} />
-          </DrawerBody>
-        </Transition>
-      </>,
-      document.body
-    )
-  }
-)
+      <Transition data-id='drawer' enter={isOpen} $position={position} $width={width}>
+        <DrawerBody>
+          <DrawerHeader
+            onClose={onClose}
+            icon={icon}
+            iconSrc={iconSrc}
+            title={title}
+            titleTooltip={titleTooltip}
+            replaceTitleWith={replaceTitleWith}
+            actionButtons={actionButtons}
+          />
+          <Content>{children}</Content>
+          <DrawerFooter isOpen={footerIsOpen} leftButtons={leftButtons} rightButtons={rightButtons} />
+        </DrawerBody>
+      </Transition>
+    </>,
+    document.body
+  )
+}
 
 export { Drawer, type DrawerProps }

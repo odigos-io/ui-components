@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, forwardRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo, type FC } from 'react'
 import { Text } from '../text'
 import { Input } from '../input'
 import { Button } from '../button'
@@ -60,7 +60,7 @@ const ButtonText = styled(Text)`
   text-decoration-line: underline;
 `
 
-const InputTable = forwardRef<HTMLDivElement, InputTableProps>(({ columns, initialValues = [], value, onChange, errorMessage }, ref = null) => {
+const InputTable: FC<InputTableProps> = ({ columns, initialValues = [], value, onChange, errorMessage }) => {
   // INITIAL_ROW as state, because it's dynamic to the "columns" prop
   const [initialRow, setInitialRow] = useState<Row>({})
   const [rows, setRows] = useState<Row[]>(value || initialValues)
@@ -119,7 +119,7 @@ const InputTable = forwardRef<HTMLDivElement, InputTableProps>(({ columns, initi
   const maxWidth = `${Math.floor(640 / (columns.length + 0.4))}px`
 
   return (
-    <Container ref={ref}>
+    <Container>
       <table style={{ borderCollapse: 'collapse' }}>
         <thead>
           <tr>
@@ -181,6 +181,6 @@ const InputTable = forwardRef<HTMLDivElement, InputTableProps>(({ columns, initi
       </AddButton>
     </Container>
   )
-})
+}
 
 export { InputTable, type InputTableProps }

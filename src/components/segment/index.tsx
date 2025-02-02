@@ -1,4 +1,4 @@
-import React, { CSSProperties, forwardRef, useEffect, useId, useRef, useState } from 'react'
+import React, { type CSSProperties, type FC, useEffect, useId, useRef, useState } from 'react'
 import { Text } from '../text'
 import styled from 'styled-components'
 import { FlexRow } from '../../styled'
@@ -58,7 +58,7 @@ const Background = styled.div<{
   transition: all 0.3s;
 `
 
-const Segment = forwardRef<HTMLDivElement, SegmentProps>(({ options = [], selected, setSelected }, ref = null) => {
+const Segment: FC<SegmentProps> = ({ options = [], selected, setSelected }) => {
   const selectedIdx = options.findIndex((option) => option.value === selected)
   const [bgColor, setBgColor] = useState(options[selectedIdx]?.selectedBgColor || '')
   const [bgSize, setBgSize] = useState({ width: 0, height: 0 })
@@ -79,7 +79,7 @@ const Segment = forwardRef<HTMLDivElement, SegmentProps>(({ options = [], select
   }, [selected, selectedIdx])
 
   return (
-    <Container ref={ref}>
+    <Container>
       {options.map(({ icon: Icon, label, value, selectedBgColor }, idx) => {
         const isSelected = selected === value
 
@@ -115,6 +115,6 @@ const Segment = forwardRef<HTMLDivElement, SegmentProps>(({ options = [], select
       />
     </Container>
   )
-})
+}
 
 export { Segment, type SegmentProps }

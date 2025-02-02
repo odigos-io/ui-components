@@ -1,4 +1,4 @@
-import React, { type FC, Fragment, useCallback, useEffect, useRef, useState } from 'react'
+import React, { type FC, Fragment, type ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 import { Text } from '../text'
 import { Status } from '../status'
 import { Tooltip } from '../tooltip'
@@ -24,8 +24,8 @@ interface DataTabProps {
   isError?: boolean
   withExtend?: boolean
   isExtended?: boolean
-  renderExtended?: () => React.ReactNode
-  renderActions?: () => React.ReactNode
+  renderExtended?: () => ReactNode
+  renderActions?: () => ReactNode
   onClick?: () => void
 }
 

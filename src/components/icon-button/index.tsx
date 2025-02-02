@@ -1,4 +1,4 @@
-import React, { CSSProperties, forwardRef, PropsWithChildren } from 'react'
+import React, { type CSSProperties, type FC, type PropsWithChildren } from 'react'
 import { ping } from '../../styles'
 import { Tooltip } from '../tooltip'
 import styled from 'styled-components'
@@ -46,17 +46,15 @@ const Ping = styled.div<{ $size: number; $color: IconButtonProps['pingColor'] }>
   }
 `
 
-const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ children, onClick, tooltip, size = 36, withPing, pingColor, ...props }, ref = null) => {
-    return (
-      <Tooltip text={tooltip}>
-        <Button ref={ref} $size={size} onClick={onClick} {...props}>
-          {withPing && <Ping $size={size} $color={pingColor} />}
-          {children}
-        </Button>
-      </Tooltip>
-    )
-  }
-)
+const IconButton: FC<IconButtonProps> = ({ children, onClick, tooltip, size = 36, withPing, pingColor, ...props }) => {
+  return (
+    <Tooltip text={tooltip}>
+      <Button $size={size} onClick={onClick} {...props}>
+        {withPing && <Ping $size={size} $color={pingColor} />}
+        {children}
+      </Button>
+    </Tooltip>
+  )
+}
 
 export { IconButton, type IconButtonProps }

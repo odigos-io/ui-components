@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { type FC } from 'react'
 import { Text } from '../text'
 import { NoDataIcon } from '../../icons'
 import styled, { useTheme } from 'styled-components'
@@ -32,20 +32,18 @@ const SubTitle = styled(Text)`
   line-height: 20px;
 `
 
-const NoDataFound = forwardRef<HTMLDivElement, NoDataFoundProps>(
-  ({ title = 'No data found', subTitle = 'Check your search phrase and try one more time' }, ref = null) => {
-    const theme = useTheme()
+const NoDataFound: FC<NoDataFoundProps> = ({ title = 'No data found', subTitle = 'Check your search phrase and try one more time' }) => {
+  const theme = useTheme()
 
-    return (
-      <Container ref={ref}>
-        <TitleWrapper>
-          <NoDataIcon fill={theme.text.dark_grey} />
-          <Title>{title}</Title>
-        </TitleWrapper>
-        {subTitle && <SubTitle>{subTitle}</SubTitle>}
-      </Container>
-    )
-  }
-)
+  return (
+    <Container>
+      <TitleWrapper>
+        <NoDataIcon fill={theme.text.dark_grey} />
+        <Title>{title}</Title>
+      </TitleWrapper>
+      {subTitle && <SubTitle>{subTitle}</SubTitle>}
+    </Container>
+  )
+}
 
 export { NoDataFound, type NoDataFoundProps }

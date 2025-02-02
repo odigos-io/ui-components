@@ -1,4 +1,4 @@
-import React, { forwardRef, type CSSProperties } from 'react'
+import React, { type FC, type CSSProperties } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
 import styled from 'styled-components'
@@ -32,17 +32,17 @@ const OptionalText = styled(Text)`
   opacity: 0.8;
 `
 
-const FieldLabel = forwardRef<HTMLDivElement, FieldLabelProps>(({ title, required, tooltip, style }, ref = null) => {
+const FieldLabel: FC<FieldLabelProps> = ({ title, required, tooltip, style }) => {
   if (!title) return null
 
   return (
-    <Wrapper ref={ref} style={style}>
+    <Wrapper style={style}>
       <Tooltip text={tooltip} withIcon>
         <Title>{title}</Title>
         {!required && <OptionalText>(optional)</OptionalText>}
       </Tooltip>
     </Wrapper>
   )
-})
+}
 
 export { FieldLabel, type FieldLabelProps }

@@ -1,4 +1,4 @@
-import React, { useState, type ChangeEvent, type KeyboardEvent, type FC, type InputHTMLAttributes, forwardRef } from 'react'
+import React, { useState, type ChangeEvent, type KeyboardEvent, type FC, type InputHTMLAttributes, type CSSProperties } from 'react'
 import { Text } from '../text'
 import styled from 'styled-components'
 import { type SVG } from '../../@types'
@@ -16,7 +16,7 @@ interface AutocompleteInputProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string
   selectedOption?: Option
   onOptionSelect?: (option?: Option) => void
-  style?: React.CSSProperties
+  style?: CSSProperties
   disabled?: boolean
 }
 
@@ -148,88 +148,93 @@ const filterOptions = (optionsList: Option[], input: string): Option[] => {
   }, [])
 }
 
-const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>(
-  ({ placeholder = 'Type to search...', options, selectedOption, onOptionSelect, style, disabled, ...props }, ref = null) => {
-    const [query, setQuery] = useState(selectedOption?.label || '')
-    const [filteredOptions, setFilteredOptions] = useState<Option[]>(filterOptions(options, ''))
-    const [showOptions, setShowOptions] = useState(false)
-    const [activeIndex, setActiveIndex] = useState(-1)
+const AutocompleteInput: FC<AutocompleteInputProps> = ({
+  placeholder = 'Type to search...',
+  options,
+  selectedOption,
+  onOptionSelect,
+  style,
+  disabled,
+  ...props
+}) => {
+  const [query, setQuery] = useState(selectedOption?.label || '')
+  const [filteredOptions, setFilteredOptions] = useState<Option[]>(filterOptions(options, ''))
+  const [showOptions, setShowOptions] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(-1)
 
-    const Icon = selectedOption?.icon
+  const Icon = selectedOption?.icon
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      e.stopPropagation()
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.stopPropagation()
 
-      const input = e.target.value
-      const filtered = filterOptions(options, input)
-      const matched = filtered.length === 1 && filtered[0].label === input ? filtered[0] : undefined
+    const input = e.target.value
+    const filtered = filterOptions(options, input)
+    const matched = filtered.length === 1 && filtered[0].label === input ? filtered[0] : undefined
 
-      setQuery(input)
-      setFilteredOptions(filtered)
-      handleOptionClick(matched)
-    }
-
-    const handleOptionClick = (option?: Option) => {
-      if (!!option) setQuery(option.label)
-      setShowOptions(!option)
-      onOptionSelect?.(option)
-    }
-
-    const flattenOptions = (options: Option[]): Option[] => {
-      return options.reduce<Option[]>((acc, option) => {
-        acc.push(option)
-        if (option.items) {
-          acc = acc.concat(flattenOptions(option.items))
-        }
-        return acc
-      }, [])
-    }
-
-    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-      if (!['Enter'].includes(e.key)) e.stopPropagation()
-
-      // Flatten the options to handle keyboard navigation - TODO: Refactor this
-      return
-
-      const flatOptions = flattenOptions(filteredOptions)
-      if (e.key === 'ArrowDown' && activeIndex < flatOptions.length - 1) {
-        setActiveIndex(activeIndex + 1)
-      } else if (e.key === 'ArrowUp' && activeIndex > 0) {
-        setActiveIndex(activeIndex - 1)
-      } else if (e.key === 'Enter' && activeIndex >= 0) {
-        handleOptionClick(flatOptions[activeIndex])
-      }
-    }
-
-    return (
-      <AutocompleteContainer style={style}>
-        <InputWrapper>
-          {Icon && <Icon />}
-          <StyledInput
-            ref={ref}
-            type='text'
-            value={query}
-            placeholder={placeholder}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-            disabled={disabled}
-            onBlur={() => !disabled && setShowOptions(false)}
-            onFocus={() => !disabled && setShowOptions(true)}
-            {...props}
-          />
-        </InputWrapper>
-
-        {showOptions && (
-          <OptionsList>
-            {filteredOptions.map((option, index) => (
-              <OptionItem key={option.id} option={option} onClick={handleOptionClick} />
-            ))}
-          </OptionsList>
-        )}
-      </AutocompleteContainer>
-    )
+    setQuery(input)
+    setFilteredOptions(filtered)
+    handleOptionClick(matched)
   }
-)
+
+  const handleOptionClick = (option?: Option) => {
+    if (!!option) setQuery(option.label)
+    setShowOptions(!option)
+    onOptionSelect?.(option)
+  }
+
+  const flattenOptions = (options: Option[]): Option[] => {
+    return options.reduce<Option[]>((acc, option) => {
+      acc.push(option)
+      if (option.items) {
+        acc = acc.concat(flattenOptions(option.items))
+      }
+      return acc
+    }, [])
+  }
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (!['Enter'].includes(e.key)) e.stopPropagation()
+
+    // Flatten the options to handle keyboard navigation - TODO: Refactor this
+    return
+
+    const flatOptions = flattenOptions(filteredOptions)
+    if (e.key === 'ArrowDown' && activeIndex < flatOptions.length - 1) {
+      setActiveIndex(activeIndex + 1)
+    } else if (e.key === 'ArrowUp' && activeIndex > 0) {
+      setActiveIndex(activeIndex - 1)
+    } else if (e.key === 'Enter' && activeIndex >= 0) {
+      handleOptionClick(flatOptions[activeIndex])
+    }
+  }
+
+  return (
+    <AutocompleteContainer style={style}>
+      <InputWrapper>
+        {Icon && <Icon />}
+        <StyledInput
+          type='text'
+          value={query}
+          placeholder={placeholder}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          disabled={disabled}
+          onBlur={() => !disabled && setShowOptions(false)}
+          onFocus={() => !disabled && setShowOptions(true)}
+          {...props}
+        />
+      </InputWrapper>
+
+      {showOptions && (
+        <OptionsList>
+          {filteredOptions.map((option, index) => (
+            <OptionItem key={option.id} option={option} onClick={handleOptionClick} />
+          ))}
+        </OptionsList>
+      )}
+    </AutocompleteContainer>
+  )
+}
 
 interface OptionItemProps {
   option: Option

@@ -1,4 +1,4 @@
-import React, { CSSProperties, forwardRef } from 'react'
+import React, { type CSSProperties, type FC } from 'react'
 import styled from 'styled-components'
 import { shimmer } from '../../styles'
 import { FlexColumn } from '../../styled'
@@ -46,9 +46,9 @@ const Line = styled.div<{ $width: string }>`
   border-radius: 4px;
 `
 
-const SkeletonLoader = forwardRef<HTMLDivElement, SkeletonLoaderProps>(({ size = 5, maxWidth }, ref = null) => {
+const SkeletonLoader: FC<SkeletonLoaderProps> = ({ size = 5, maxWidth }) => {
   return (
-    <Container ref={ref} $maxWidth={maxWidth}>
+    <Container $maxWidth={maxWidth}>
       {[...Array(size)].map((_, index) => (
         <SkeletonItem key={index}>
           <Thumbnail />
@@ -60,6 +60,6 @@ const SkeletonLoader = forwardRef<HTMLDivElement, SkeletonLoaderProps>(({ size =
       ))}
     </Container>
   )
-})
+}
 
 export { SkeletonLoader, type SkeletonLoaderProps }

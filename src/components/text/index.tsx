@@ -1,4 +1,4 @@
-import React, { type DetailedHTMLProps, forwardRef, type HTMLAttributes, type ReactNode } from 'react'
+import React, { type DetailedHTMLProps, type FC, type HTMLAttributes, type ReactNode } from 'react'
 import styled from 'styled-components'
 
 interface TextProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -31,22 +31,12 @@ const TextWrapper = styled.div<{
   font-family: ${({ theme, $family = 'primary' }) => theme.font_family[$family]};
 `
 
-const Text = forwardRef<HTMLDivElement, TextProps>(({ children, color, size, weight, align, family, opacity, decoration, ...props }, ref = null) => {
+const Text: FC<TextProps> = ({ children, color, size, weight, align, family, opacity, decoration, ...props }) => {
   return (
-    <TextWrapper
-      ref={ref}
-      $color={color}
-      $size={size}
-      $weight={weight}
-      $align={align}
-      $family={family}
-      $opacity={opacity}
-      $decoration={decoration}
-      {...props}
-    >
+    <TextWrapper $color={color} $size={size} $weight={weight} $align={align} $family={family} $opacity={opacity} $decoration={decoration} {...props}>
       {children}
     </TextWrapper>
   )
-})
+}
 
 export { Text, type TextProps }

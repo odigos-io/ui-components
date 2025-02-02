@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
+import React, { type CSSProperties, type FC, useCallback, useEffect, useRef, useState } from 'react'
 import { Text } from '../text'
 import { XIcon } from '../../icons'
 import { Divider } from '../divider'
@@ -21,7 +21,7 @@ interface NotificationNoteProps {
   action?: { label: string; onClick: () => void }
   onClose?: (params: OnCloseParams) => void
   duration?: number
-  style?: React.CSSProperties
+  style?: CSSProperties
 }
 
 const Container = styled.div<{ $isLeaving?: boolean; $duration: number }>`
@@ -91,89 +91,86 @@ const ActionButton = styled(Text)`
   }
 `
 
-const NotificationNote = forwardRef<HTMLDivElement, NotificationNoteProps>(
-  ({ type, title, message, action, onClose, duration = 5000, style }, ref = null) => {
-    const theme = useTheme()
+const NotificationNote: FC<NotificationNoteProps> = ({ type, title, message, action, onClose, duration = 5000, style }) => {
+  const theme = useTheme()
 
-    // These are for handling transitions:
-    // isLeaving - to trigger the slide-out animation
-    const [isLeaving, setIsLeaving] = useState(false)
+  // These are for handling transitions:
+  // isLeaving - to trigger the slide-out animation
+  const [isLeaving, setIsLeaving] = useState(false)
 
-    // These are for handling on-hover events (pause/resume the progress bar animation & timeout for auto-close/dismiss)
-    const timerForClosure = useRef<NodeJS.Timeout | null>(null)
-    const progress = useRef<HTMLDivElement | null>(null)
+  // These are for handling on-hover events (pause/resume the progress bar animation & timeout for auto-close/dismiss)
+  const timerForClosure = useRef<NodeJS.Timeout | null>(null)
+  const progress = useRef<HTMLDivElement | null>(null)
 
-    const closeToast = useCallback(
-      (params: OnCloseParams) => {
-        if (onClose) {
-          setIsLeaving(true)
-          onClose({ asSeen: params?.asSeen })
-        }
-      },
-      [onClose, duration]
-    )
-
-    useEffect(() => {
-      timerForClosure.current = setTimeout(() => closeToast({ asSeen: false }), duration)
-      return () => {
-        if (timerForClosure.current) clearTimeout(timerForClosure.current)
+  const closeToast = useCallback(
+    (params: OnCloseParams) => {
+      if (onClose) {
+        setIsLeaving(true)
+        onClose({ asSeen: params?.asSeen })
       }
-    }, [duration])
+    },
+    [onClose, duration]
+  )
 
-    const handleMouseEnter = () => {
+  useEffect(() => {
+    timerForClosure.current = setTimeout(() => closeToast({ asSeen: false }), duration)
+    return () => {
       if (timerForClosure.current) clearTimeout(timerForClosure.current)
-      if (progress.current) progress.current.style.animationPlayState = 'paused'
     }
+  }, [duration])
 
-    const handleMouseLeave = () => {
-      if (progress.current) {
-        const remainingTime = (progress.current.offsetWidth / (progress.current.parentElement as HTMLDivElement).offsetWidth) * duration
-
-        timerForClosure.current = setTimeout(() => closeToast({ asSeen: false }), remainingTime)
-        progress.current.style.animationPlayState = 'running'
-      }
-    }
-
-    const StatusIcon = getStatusIcon(type)
-
-    return (
-      <Container
-        ref={ref}
-        className={onClose ? 'animated' : ''}
-        $duration={duration}
-        $isLeaving={isLeaving}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <Content data-id='toast' $type={type} style={style}>
-          <StatusIcon fill={theme.text[type]} />
-
-          <TextWrapper $withAction={!!action}>
-            {title && <Title $type={type}>{title}</Title>}
-            {title && message && <Divider orientation='vertical' type={type} />}
-            {message && <Message $type={type}>{message}</Message>}
-          </TextWrapper>
-
-          {(!!action || !!onClose) && (
-            <ButtonsWrapper>
-              {action && (
-                <ActionButton data-id='toast-action' onClick={action.onClick}>
-                  {action.label}
-                </ActionButton>
-              )}
-              {onClose && (
-                <IconButton data-id='toast-close' onClick={() => closeToast({ asSeen: true })}>
-                  <XIcon size={12} />
-                </IconButton>
-              )}
-            </ButtonsWrapper>
-          )}
-        </Content>
-
-        {onClose && <DurationAnimation ref={progress} $duration={duration} $type={type} />}
-      </Container>
-    )
+  const handleMouseEnter = () => {
+    if (timerForClosure.current) clearTimeout(timerForClosure.current)
+    if (progress.current) progress.current.style.animationPlayState = 'paused'
   }
-)
+
+  const handleMouseLeave = () => {
+    if (progress.current) {
+      const remainingTime = (progress.current.offsetWidth / (progress.current.parentElement as HTMLDivElement).offsetWidth) * duration
+
+      timerForClosure.current = setTimeout(() => closeToast({ asSeen: false }), remainingTime)
+      progress.current.style.animationPlayState = 'running'
+    }
+  }
+
+  const StatusIcon = getStatusIcon(type)
+
+  return (
+    <Container
+      className={onClose ? 'animated' : ''}
+      $duration={duration}
+      $isLeaving={isLeaving}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Content data-id='toast' $type={type} style={style}>
+        <StatusIcon fill={theme.text[type]} />
+
+        <TextWrapper $withAction={!!action}>
+          {title && <Title $type={type}>{title}</Title>}
+          {title && message && <Divider orientation='vertical' type={type} />}
+          {message && <Message $type={type}>{message}</Message>}
+        </TextWrapper>
+
+        {(!!action || !!onClose) && (
+          <ButtonsWrapper>
+            {action && (
+              <ActionButton data-id='toast-action' onClick={action.onClick}>
+                {action.label}
+              </ActionButton>
+            )}
+            {onClose && (
+              <IconButton data-id='toast-close' onClick={() => closeToast({ asSeen: true })}>
+                <XIcon size={12} />
+              </IconButton>
+            )}
+          </ButtonsWrapper>
+        )}
+      </Content>
+
+      {onClose && <DurationAnimation ref={progress} $duration={duration} $type={type} />}
+    </Container>
+  )
+}
 
 export { NotificationNote, type NotificationNoteProps }

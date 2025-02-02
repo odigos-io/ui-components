@@ -1,4 +1,4 @@
-import React, { type FC } from 'react'
+import React, { type ReactNode, type FC } from 'react'
 import styled from 'styled-components'
 import { type SVG } from '../../@types'
 import { isEmpty } from '../../functions'
@@ -14,7 +14,7 @@ interface RowCell {
   columnKey: string // used to bind the row cell to the column
   icon?: SVG
   value?: string
-  component?: () => React.ReactNode
+  component?: () => ReactNode
 }
 
 interface InteractiveTableProps {

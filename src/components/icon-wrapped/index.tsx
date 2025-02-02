@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react'
+import React, { type FC, useState } from 'react'
 import styled from 'styled-components'
 import { OdigosLogo } from '../../icons'
 import { hexPercent } from '../../styles'
@@ -25,22 +25,22 @@ const Container = styled.div<{ $status: IconWrappedProps['status']; $size: numbe
   }};
 `
 
-const IconWrapped = forwardRef<HTMLDivElement, IconWrappedProps>(({ icon: Icon, src = '', alt = '', status, size = 36 }, ref = null) => {
+const IconWrapped: FC<IconWrappedProps> = ({ icon: Icon, src = '', alt = '', status, size = 36 }) => {
   const [srcHasError, setSrcHasError] = useState(false)
 
   if (!!src && !srcHasError) {
     return (
-      <Container ref={ref} $status={status} $size={size}>
+      <Container $status={status} $size={size}>
         <img src={src} alt={alt} width={size - 16} height={size - 16} onError={() => setSrcHasError(true)} />
       </Container>
     )
   }
 
   return (
-    <Container ref={ref} $status={status} $size={size}>
+    <Container $status={status} $size={size}>
       {!!Icon ? <Icon size={size - 16} /> : <OdigosLogo size={size - 16} />}
     </Container>
   )
-})
+}
 
 export { IconWrapped, type IconWrappedProps }

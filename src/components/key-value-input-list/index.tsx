@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, forwardRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo, type FC } from 'react'
 import { Text } from '../text'
 import { Input } from '../input'
 import { Button } from '../button'
@@ -73,105 +73,103 @@ const INITIAL_ROW: Row = {
   value: '',
 }
 
-const KeyValueInputsList = forwardRef<HTMLDivElement, KeyValueInputsListProps>(
-  ({ initialKeyValuePairs = [], value, onChange, title, tooltip, required, errorMessage }, ref = null) => {
-    const theme = useTheme()
-    const [rows, setRows] = useState<Row[]>(value || initialKeyValuePairs)
+const KeyValueInputsList: FC<KeyValueInputsListProps> = ({ initialKeyValuePairs = [], value, onChange, title, tooltip, required, errorMessage }) => {
+  const theme = useTheme()
+  const [rows, setRows] = useState<Row[]>(value || initialKeyValuePairs)
 
-    useEffect(() => {
-      if (!rows.length) setRows([{ ...INITIAL_ROW }])
-    }, [])
+  useEffect(() => {
+    if (!rows.length) setRows([{ ...INITIAL_ROW }])
+  }, [])
 
-    // Filter out rows where either key or value is empty
-    const validRows = useMemo(() => rows.filter(({ key, value }) => !isEmpty(key.trim()) && !isEmpty(value.trim())), [rows])
-    const recordedRows = useRef(JSON.stringify(validRows))
+  // Filter out rows where either key or value is empty
+  const validRows = useMemo(() => rows.filter(({ key, value }) => !isEmpty(key.trim()) && !isEmpty(value.trim())), [rows])
+  const recordedRows = useRef(JSON.stringify(validRows))
 
-    useEffect(() => {
-      const stringified = JSON.stringify(validRows)
+  useEffect(() => {
+    const stringified = JSON.stringify(validRows)
 
-      // Only trigger onChange if valid key-value pairs have changed
-      if (recordedRows.current !== stringified) {
-        recordedRows.current = stringified
+    // Only trigger onChange if valid key-value pairs have changed
+    if (recordedRows.current !== stringified) {
+      recordedRows.current = stringified
 
-        if (onChange) onChange(validRows)
-      }
-    }, [validRows, onChange])
-
-    const handleAddRow = () => {
-      setRows((prev) => {
-        const payload = [...prev]
-        payload.push({ ...INITIAL_ROW })
-        return payload
-      })
+      if (onChange) onChange(validRows)
     }
+  }, [validRows, onChange])
 
-    const handleDeleteRow = (idx: number) => {
-      setRows((prev) => prev.filter((_, i) => i !== idx))
-    }
-
-    const handleChange = (key: 'key' | 'value', val: string, idx: number) => {
-      setRows((prev) => {
-        const payload = [...prev]
-        payload[idx][key] = val
-        return payload
-      })
-    }
-
-    // Check if any key or value field is empty
-    const isMinRows = rows.length <= 1
-    const isAddButtonDisabled = rows.some(({ key, value }) => key.trim() === '' || value.trim() === '')
-    const isDelButtonDisabled = isMinRows && isAddButtonDisabled
-
-    return (
-      <Container ref={ref}>
-        <FieldLabel title={title} required={required} tooltip={tooltip} />
-
-        <ListContainer>
-          {rows.map(({ key, value }, idx) => (
-            <RowWrapper key={`key-value-input-list-${idx}`}>
-              <Input
-                placeholder='Attribute name'
-                value={key}
-                onChange={(e) => handleChange('key', e.target.value, idx)}
-                hasError={!!errorMessage && (!required || (required && !key))}
-                autoFocus={isEmpty(value) && !isMinRows && idx === rows.length - 1}
-              />
-              <div>
-                <ArrowIcon rotate={180} fill={theme.text.darker_grey} />
-              </div>
-              <Input
-                placeholder='Attribute value'
-                value={value}
-                onChange={(e) => handleChange('value', e.target.value, idx)}
-                hasError={!!errorMessage && (!required || (required && isEmpty(value)))}
-                autoFocus={false}
-              />
-              <DeleteButton
-                disabled={isDelButtonDisabled}
-                onClick={() => {
-                  if (isMinRows) {
-                    handleChange('key', '', idx)
-                    handleChange('value', '', idx)
-                  } else {
-                    handleDeleteRow(idx)
-                  }
-                }}
-              >
-                <TrashIcon />
-              </DeleteButton>
-            </RowWrapper>
-          ))}
-        </ListContainer>
-
-        {!!errorMessage && <FieldError>{errorMessage}</FieldError>}
-
-        <AddButton disabled={isAddButtonDisabled} variant='tertiary' onClick={handleAddRow}>
-          <PlusIcon />
-          <ButtonText>ADD ATTRIBUTE</ButtonText>
-        </AddButton>
-      </Container>
-    )
+  const handleAddRow = () => {
+    setRows((prev) => {
+      const payload = [...prev]
+      payload.push({ ...INITIAL_ROW })
+      return payload
+    })
   }
-)
+
+  const handleDeleteRow = (idx: number) => {
+    setRows((prev) => prev.filter((_, i) => i !== idx))
+  }
+
+  const handleChange = (key: 'key' | 'value', val: string, idx: number) => {
+    setRows((prev) => {
+      const payload = [...prev]
+      payload[idx][key] = val
+      return payload
+    })
+  }
+
+  // Check if any key or value field is empty
+  const isMinRows = rows.length <= 1
+  const isAddButtonDisabled = rows.some(({ key, value }) => key.trim() === '' || value.trim() === '')
+  const isDelButtonDisabled = isMinRows && isAddButtonDisabled
+
+  return (
+    <Container>
+      <FieldLabel title={title} required={required} tooltip={tooltip} />
+
+      <ListContainer>
+        {rows.map(({ key, value }, idx) => (
+          <RowWrapper key={`key-value-input-list-${idx}`}>
+            <Input
+              placeholder='Attribute name'
+              value={key}
+              onChange={(e) => handleChange('key', e.target.value, idx)}
+              hasError={!!errorMessage && (!required || (required && !key))}
+              autoFocus={isEmpty(value) && !isMinRows && idx === rows.length - 1}
+            />
+            <div>
+              <ArrowIcon rotate={180} fill={theme.text.darker_grey} />
+            </div>
+            <Input
+              placeholder='Attribute value'
+              value={value}
+              onChange={(e) => handleChange('value', e.target.value, idx)}
+              hasError={!!errorMessage && (!required || (required && isEmpty(value)))}
+              autoFocus={false}
+            />
+            <DeleteButton
+              disabled={isDelButtonDisabled}
+              onClick={() => {
+                if (isMinRows) {
+                  handleChange('key', '', idx)
+                  handleChange('value', '', idx)
+                } else {
+                  handleDeleteRow(idx)
+                }
+              }}
+            >
+              <TrashIcon />
+            </DeleteButton>
+          </RowWrapper>
+        ))}
+      </ListContainer>
+
+      {!!errorMessage && <FieldError>{errorMessage}</FieldError>}
+
+      <AddButton disabled={isAddButtonDisabled} variant='tertiary' onClick={handleAddRow}>
+        <PlusIcon />
+        <ButtonText>ADD ATTRIBUTE</ButtonText>
+      </AddButton>
+    </Container>
+  )
+}
 
 export { KeyValueInputsList, type KeyValueInputsListProps }

@@ -1,4 +1,4 @@
-import React, { forwardRef, type PropsWithChildren } from 'react'
+import React, { type FC, type PropsWithChildren } from 'react'
 import { Text } from '../text'
 import styled from 'styled-components'
 
@@ -13,12 +13,12 @@ const ErrorMessage = styled(Text)`
   color: ${({ theme }) => theme.text.error};
 `
 
-const FieldError = forwardRef<HTMLDivElement, FieldErrorProps>(({ children }, ref = null) => {
+const FieldError: FC<FieldErrorProps> = ({ children }) => {
   return (
-    <ErrorWrapper ref={ref}>
+    <ErrorWrapper>
       <ErrorMessage>{children}</ErrorMessage>
     </ErrorWrapper>
   )
-})
+}
 
 export { FieldError, type FieldErrorProps }

@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from 'react'
+import React, { type FC, type MouseEventHandler, useEffect, useState } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
 import styled from 'styled-components'
@@ -44,34 +44,32 @@ const ToggleSwitch = styled.div<{ $isActive: boolean; $disabled?: ToggleProps['d
   }
 `
 
-const Toggle = forwardRef<HTMLDivElement, ToggleProps>(
-  ({ title, tooltip, initialValue = false, onChange, disabled, allowPropagation = false }, ref = null) => {
-    const [isActive, setIsActive] = useState(initialValue)
-    useEffect(() => setIsActive(initialValue), [initialValue])
+const Toggle: FC<ToggleProps> = ({ title, tooltip, initialValue = false, onChange, disabled, allowPropagation = false }) => {
+  const [isActive, setIsActive] = useState(initialValue)
+  useEffect(() => setIsActive(initialValue), [initialValue])
 
-    const handleToggle: React.MouseEventHandler<HTMLDivElement> = (e) => {
-      if (disabled) return
-      if (!allowPropagation) e.stopPropagation()
+  const handleToggle: MouseEventHandler<HTMLDivElement> = (e) => {
+    if (disabled) return
+    if (!allowPropagation) e.stopPropagation()
 
-      setIsActive((prev) => {
-        const newValue = !prev
-        if (onChange) onChange(newValue)
-        return newValue
-      })
+    setIsActive((prev) => {
+      const newValue = !prev
+      if (onChange) onChange(newValue)
+      return newValue
+    })
 
-      if (onChange) onChange(!isActive)
-      else setIsActive((prev) => !prev)
-    }
-
-    return (
-      <Container ref={ref} $disabled={disabled} onClick={handleToggle}>
-        <ToggleSwitch $disabled={disabled} $isActive={isActive} />
-        <Tooltip text={tooltip} withIcon>
-          <Text size={14}>{title}</Text>
-        </Tooltip>
-      </Container>
-    )
+    if (onChange) onChange(!isActive)
+    else setIsActive((prev) => !prev)
   }
-)
+
+  return (
+    <Container $disabled={disabled} onClick={handleToggle}>
+      <ToggleSwitch $disabled={disabled} $isActive={isActive} />
+      <Tooltip text={tooltip} withIcon>
+        <Text size={14}>{title}</Text>
+      </Tooltip>
+    </Container>
+  )
+}
 
 export { Toggle, type ToggleProps }
