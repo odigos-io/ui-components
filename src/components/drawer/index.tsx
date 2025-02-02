@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import { Overlay } from '../../styled'
 import { hexPercent, slide } from '../../styles'
 import { useKeyDown, useTransition } from '../../hooks'
-import { DrawerHeader, DrawerHeaderProps } from './header'
-import { DrawerFooter, DrawerFooterProps } from './footer'
+import { DrawerHeader, DrawerHeaderProps } from './drawer-header'
+import { DrawerFooter, DrawerFooterProps } from './drawer-footer'
 
 interface DrawerProps {
   isOpen: boolean
@@ -89,4 +89,4 @@ const Drawer: FC<DrawerProps> = ({
   )
 }
 
-export { Drawer, type DrawerProps }
+export { Drawer, type DrawerProps, DrawerHeader, type DrawerHeaderProps, DrawerFooter, type DrawerFooterProps }
