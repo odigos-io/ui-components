@@ -32,6 +32,18 @@ export enum PLATFORM_TYPE {
   VM = 'vm',
 }
 
+export enum K8S_RESOURCE_KIND {
+  DEPLOYMENT = 'Deployment',
+  DAEMON_SET = 'DaemonSet',
+  STATEFUL_SET = 'StatefulSet',
+}
+
+export interface WorkloadId {
+  namespace: string
+  name: string
+  kind: K8S_RESOURCE_KIND | '' // Empty string is important for default values
+}
+
 export enum PROGRAMMING_LANGUAGES {
   GO = 'go',
   JAVASCRIPT = 'javascript',
@@ -46,6 +58,11 @@ export enum PROGRAMMING_LANGUAGES {
   PROCESSING = 'processing', // language detection is not yet complotted, data is not available
   NO_CONTAINERS = 'no containers', // language detection completed but no containers found or they are ignored
   NO_RUNNING_PODS = 'no running pods', // no running pods are available for language detection
+}
+
+export enum HEALTH_STATUS {
+  HEALTHY = 'healthy',
+  UNHEALTHY = 'unhealthy',
 }
 
 export enum SIGNAL_TYPE {
