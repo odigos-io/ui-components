@@ -1,11 +1,11 @@
 import React, { type FC, type ReactNode } from 'react'
-import { Text } from '../text'
-import { SVG } from '../../@types'
-import { XIcon } from '../../icons'
-import { Tooltip } from '../tooltip'
+import { Text } from '../../text'
+import { SVG } from '../../../@types'
+import { XIcon } from '../../../icons'
+import { Tooltip } from '../../tooltip'
 import styled from 'styled-components'
-import { IconWrapped } from '../icon-wrapped'
-import { Button, type ButtonProps } from '../button'
+import { IconWrapped } from '../../icon-wrapped'
+import { Button, type ButtonProps } from '../../button'
 
 interface DrawerHeaderProps {
   onClose: () => void
