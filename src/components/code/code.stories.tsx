@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { safeJsonStringify, Theme } from '../..'
 import { Code, type CodeProps } from '.'
+import { ToggleCodeComponent } from './toggle-code-component'
 import { type StoryFn, type StoryObj } from '@storybook/react'
 
 interface Props extends CodeProps {
@@ -18,9 +19,12 @@ const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
     document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
   }, [darkMode])
 
+  const [val, setVal] = useState(false)
+
   return (
     <Theme.Provider darkMode={darkMode}>
-      <Code darkMode={darkMode} {...props} />
+      <ToggleCodeComponent isPrettyMode={val} setIsPrettyMode={setVal} />
+      <Code darkMode={darkMode} pretty={val} {...props} />
     </Theme.Provider>
   )
 }
@@ -32,7 +36,6 @@ Default.args = {
   darkMode: true,
   language: 'json',
   flatten: false,
-  pretty: false,
   code: safeJsonStringify({
     odigosVersion: {
       name: 'Odigos Version',

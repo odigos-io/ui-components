@@ -200,3 +200,4 @@ const PrettyJsonCode: FC<{ darkMode: boolean; str: string }> = ({ darkMode, str 
 }
 
 export { Code, type CodeProps }
+export * from './toggle-code-component/index'
