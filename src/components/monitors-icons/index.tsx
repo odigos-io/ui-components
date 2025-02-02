@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type FC } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
 import { FlexRow } from '../../styled'
@@ -17,7 +17,7 @@ interface MonitorsIconsProps {
 
 const defaultMonitors = MONITORS_OPTIONS.map(({ id }) => id) as SIGNAL_TYPE[]
 
-const MonitorsIcons: React.FC<MonitorsIconsProps> = ({ monitors = defaultMonitors, withTooltips, withLabels, size = 12, color: clr }) => {
+const MonitorsIcons: FC<MonitorsIconsProps> = ({ monitors = defaultMonitors, withTooltips, withLabels, size = 12, color: clr }) => {
   const theme = useTheme()
   const color = clr || theme.text.grey
 

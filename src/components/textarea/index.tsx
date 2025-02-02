@@ -1,4 +1,4 @@
-import React, { type ChangeEventHandler, type KeyboardEventHandler, useRef } from 'react'
+import React, { type ChangeEventHandler, type FC, type KeyboardEventHandler, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
@@ -78,7 +78,7 @@ const StyledTextArea = styled.textarea`
   }
 `
 
-const TextArea: React.FC<TextAreaProps> = ({ errorMessage, title, tooltip, required, onChange, name, ...props }) => {
+const TextArea: FC<TextAreaProps> = ({ errorMessage, title, tooltip, required, onChange, name, ...props }) => {
   const ref = useRef<HTMLTextAreaElement>(null)
 
   const resize = (focused: boolean) => {

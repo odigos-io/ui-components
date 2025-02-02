@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { type FC, useEffect, useRef, useState } from 'react'
 import { Checkbox } from '../checkbox'
 import { SIGNAL_TYPE } from '../../@types'
 import { FieldLabel } from '../field-label'
@@ -37,7 +37,7 @@ const isSelected = (type: SIGNAL_TYPE, selectedSignals: MonitorsCheckboxesProps[
   return !!selectedSignals?.find((str) => str === type)
 }
 
-const MonitorsCheckboxes: React.FC<MonitorsCheckboxesProps> = ({
+const MonitorsCheckboxes: FC<MonitorsCheckboxesProps> = ({
   isVertical,
   title = 'Monitors',
   required,

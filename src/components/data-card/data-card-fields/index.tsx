@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type FC } from 'react'
 import { Text } from '../../text'
 import { Code } from '../../code'
 import { Status } from '../../status'
@@ -51,7 +51,7 @@ const ItemTitle = styled(Text)`
   line-height: 16px;
 `
 
-const DataCardFields: React.FC<DataCardFieldsProps> = ({ data }) => {
+const DataCardFields: FC<DataCardFieldsProps> = ({ data }) => {
   return (
     <ListContainer>
       {data.map(({ type, title, tooltip, value, width = 'unset' }) => (

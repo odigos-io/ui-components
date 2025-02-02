@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type FC } from 'react'
 import { Text } from '../text'
 import { Badge } from '../badge'
 import styled from 'styled-components'
@@ -36,7 +36,7 @@ const Title = styled(Text)``
 
 const Description = styled(Text)``
 
-const SectionTitle: React.FC<SectionTitleProps> = ({ title, description, badgeLabel, icon: Icon, actionButton, size = 'medium' }) => {
+const SectionTitle: FC<SectionTitleProps> = ({ title, description, badgeLabel, icon: Icon, actionButton, size = 'medium' }) => {
   const titleSize = size === 'small' ? 16 : size === 'medium' ? 20 : 24
   const descriptionSize = size === 'small' ? 12 : size === 'medium' ? 14 : 16
 

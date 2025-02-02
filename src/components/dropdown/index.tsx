@@ -1,4 +1,4 @@
-import React, { useState, useRef, forwardRef } from 'react'
+import React, { useState, useRef, forwardRef, type FC } from 'react'
 import { Text } from '../text'
 import { Badge } from '../badge'
 import { Input } from '../input'
@@ -174,7 +174,7 @@ const MultiLabel = styled(Text)`
 
 const Label = styled(Text)``
 
-const DropdownPlaceholder: React.FC<{
+const DropdownPlaceholder: FC<{
   value: DropdownProps['value']
   placeholder: DropdownProps['placeholder']
   onDeselect: DropdownProps['onDeselect']
@@ -235,7 +235,7 @@ const SearchInputContainer = styled.div`
   align-items: center;
 `
 
-const DropdownList: React.FC<{
+const DropdownList: FC<{
   openUpwards: boolean
   options: DropdownProps['options']
   value: DropdownProps['value']
@@ -287,7 +287,7 @@ const DropdownItem = styled.div`
   }
 `
 
-const DropdownListItem: React.FC<{
+const DropdownListItem: FC<{
   option: DropdownOption
   value: DropdownProps['value']
   isMulti: DropdownProps['isMulti']
