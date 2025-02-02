@@ -25,9 +25,12 @@ const MonitorsIcons: FC<MonitorsIconsProps> = ({ monitors = defaultMonitors, wit
     <FlexRow $gap={withLabels ? size : size / 2}>
       {monitors
         .filter((str) => !!str)
-        .map((signal) => {
+        .map((str) => {
+          const signal = str.toLowerCase() as SIGNAL_TYPE
           const displayName = capitalizeFirstLetter(signal)
           const Icon = getMonitorIcon(signal)
+
+          if (!Icon) return null
 
           return (
             <Tooltip key={signal} text={withTooltips ? displayName : ''}>
