@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.32](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.31...ui-components-v0.0.32) (2025-02-02)
+
+
+### Bug Fixes
+
+* comparison logic for isTimeElapsed ([46005ad](https://github.com/odigos-io/ui-components/commit/46005adcae3e1ea6b54859869b962cac423909d7))
+
 ## [0.0.31](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.30...ui-components-v0.0.31) (2025-02-02)
 
 
