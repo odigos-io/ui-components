@@ -4,8 +4,8 @@ import { Tooltip } from '../tooltip'
 import { FlexRow } from '../../styled'
 import { SIGNAL_TYPE } from '../../@types'
 import { useTheme } from 'styled-components'
-import { getMonitorIcon } from '../../functions'
 import { MONITORS_OPTIONS } from '../../constants'
+import { capitalizeFirstLetter, getMonitorIcon } from '../../functions'
 
 interface MonitorsIconsProps {
   monitors?: SIGNAL_TYPE[]
@@ -26,7 +26,7 @@ const MonitorsIcons: React.FC<MonitorsIconsProps> = ({ monitors = defaultMonitor
       {monitors
         .filter((str) => !!str)
         .map((signal) => {
-          const displayName = signal.charAt(0).toUpperCase() + signal.slice(1)
+          const displayName = capitalizeFirstLetter(signal)
           const Icon = getMonitorIcon(signal)
 
           return (

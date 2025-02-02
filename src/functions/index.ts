@@ -1,3 +1,4 @@
+export * from './capitalize-first-letter'
 export * from './compare-condition'
 export * from './derive-type-from-rule'
 export * from './flatten-object-keys'
