@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.31](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.30...ui-components-v0.0.31) (2025-02-02)
+
+
+### Features
+
+* add isTimeElapsed function ([4674df7](https://github.com/odigos-io/ui-components/commit/4674df78ff332d4306873e2aaedacc2be26123ba))
+
 ## [0.0.30](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.29...ui-components-v0.0.30) (2025-02-02)
 
 
