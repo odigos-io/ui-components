@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.0.28](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.27...ui-components-v0.0.28) (2025-02-02)
+
+
+### Features
+
+* add code component ([496e901](https://github.com/odigos-io/ui-components/commit/496e9014a1bbf31d672f161c66d43fa11c0ab8cd))
+* add common func ([f84d202](https://github.com/odigos-io/ui-components/commit/f84d202b40cf14d275734600930ba479a6f58210))
+* add condition-details ([9d4eeea](https://github.com/odigos-io/ui-components/commit/9d4eeea8bde6c4e2ccdd1374f8585faf032332f4))
+* add data-card ([477ee37](https://github.com/odigos-io/ui-components/commit/477ee37acafbc9016c6d95972270a0c01590eff5))
+* add data-tab ([8744e79](https://github.com/odigos-io/ui-components/commit/8744e79ed28a47272b6ef3a1d922d46c289d176e))
+* add more common funcs ([5a71836](https://github.com/odigos-io/ui-components/commit/5a71836348006f3373015b0275763ba56c0d7ad7))
+* add more common functions ([40e416d](https://github.com/odigos-io/ui-components/commit/40e416de87f0fdc723402d8a3f3fc6ac8a952b18))
+* add navigation-buttons ([75b4152](https://github.com/odigos-io/ui-components/commit/75b4152898305ddfbfb5b93b8818f58e24794f8a))
+* enhance code with toggle ([25e9e71](https://github.com/odigos-io/ui-components/commit/25e9e7107aff4acb66e68a2d8d47548086c490e3))
+* export useTheme ([bd7f046](https://github.com/odigos-io/ui-components/commit/bd7f046f12cd561b3d381f8683a1caf891e77863))
+* use darkMode from theme in code comp ([fa58c3a](https://github.com/odigos-io/ui-components/commit/fa58c3a9b40916d2b1351809a877226aa537f997))
+
+
+### Bug Fixes
+
+* build error ([0a4ebdf](https://github.com/odigos-io/ui-components/commit/0a4ebdf49b56e831907059be32babbbec8880d02))
+* export types ([8e979e5](https://github.com/odigos-io/ui-components/commit/8e979e5780c443399270e4a5720fc9b2c8f0cd72))
+
 ## [0.0.27](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.26...ui-components-v0.0.27) (2025-01-30)
 
 
