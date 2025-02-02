@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.30](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.29...ui-components-v0.0.30) (2025-02-02)
+
+
+### Features
+
+* remove buggy func is-within-time ([f475839](https://github.com/odigos-io/ui-components/commit/f475839907a35dd2bc34316bf8bac9855ad0ecd6))
+
+
+### Bug Fixes
+
+* stories ([011ad3f](https://github.com/odigos-io/ui-components/commit/011ad3f6f80c2ba297ef6c02bdc363cc9ce95aed))
+
 ## [0.0.29](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.28...ui-components-v0.0.29) (2025-02-02)
 
 
