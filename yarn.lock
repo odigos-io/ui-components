@@ -1341,7 +1341,7 @@
     react-dom "^16.8.0 || ^17.0.0 || ^18.0.0"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-essentials@^8.5.2":
+"@storybook/addon-essentials@^8.5.3":
   version "8.5.3"
   resolved "https://registry.yarnpkg.com/@storybook/addon-essentials/-/addon-essentials-8.5.3.tgz#9abc68ca15e8f546259fe4faa73262d0909688b7"
   integrity sha512-0zbEWQQZCiYRUxMo6FrfwQER/vi+B8mCLLivdjbSVSvZsjmlpcaBA5uBjbsXfIRcedHlou4QiJXn+nR8thDlKA==
@@ -1544,7 +1544,7 @@
   resolved "https://registry.yarnpkg.com/@storybook/react-dom-shim/-/react-dom-shim-8.5.3.tgz#422d6437872c69dda482016a06cad18f42325992"
   integrity sha512-kNIGk6mpXW3Wy+uS9pH9b9w/54EPJnH+QXA6MX4EQgmxhMQlGlS/l/YZp+3jsVQW4YgTmqe740qB+ccJAKZxBQ==
 
-"@storybook/react-webpack5@^8.5.2":
+"@storybook/react-webpack5@^8.5.3":
   version "8.5.3"
   resolved "https://registry.yarnpkg.com/@storybook/react-webpack5/-/react-webpack5-8.5.3.tgz#481e7c1724a4b7048329de9457f6387181cdb56a"
   integrity sha512-zxdjOzi57mFiOkczMFRTEurCs7Ax2XS8D1W+JpmLoKqNgf7rKtiCU0SuPwjpcAN9iDlky0rCbSj9+dzd4tDr4Q==
@@ -1553,7 +1553,7 @@
     "@storybook/preset-react-webpack" "8.5.3"
     "@storybook/react" "8.5.3"
 
-"@storybook/react@8.5.3", "@storybook/react@^8.5.2":
+"@storybook/react@8.5.3", "@storybook/react@^8.5.3":
   version "8.5.3"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-8.5.3.tgz#4f1c6cf68081b50434edbf9f6c0585c9f5121dee"
   integrity sha512-QIdBSjsnwV/J919i4Fi7DlwxDKHU815t0c4B/w2KTMtKKBkk+Bge+vgVi0/lNqD3eF4w3yjVWGbkzUQZ63yiPg==
@@ -1649,7 +1649,7 @@
   resolved "https://registry.yarnpkg.com/@types/mdx/-/mdx-2.0.13.tgz#68f6877043d377092890ff5b298152b0a21671bd"
   integrity sha512-+OWZQfAYyio6YkJb3HLxDrvnx6SWWDbC0zVPfBRzUk0/nqoDyf6dNxQi3eArPe8rJ473nobTMQ/8Zk+LxJ+Yuw==
 
-"@types/node@*", "@types/node@^22.10.10":
+"@types/node@*", "@types/node@^22.13.0":
   version "22.13.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-22.13.0.tgz#d376dd9a0ee2f9382d86c2d5d7beb4d198b4ea8c"
   integrity sha512-ClIbNe36lawluuvq3+YYhnIN2CELi+6q8NpnM7PYp4hBn/TatfboPgVSm2rwKRfnV2M+Ty9GWDFI64KEe+kysA==
@@ -1703,7 +1703,7 @@
   resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-9.0.8.tgz#7545ba4fc3c003d6c756f651f3bf163d8f0f29ba"
   integrity sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==
 
-"@typescript-eslint/eslint-plugin@^8.21.0":
+"@typescript-eslint/eslint-plugin@^8.22.0":
   version "8.22.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.22.0.tgz#63a1b0d24d85a971949f8d71d693019f58d2e861"
   integrity sha512-4Uta6REnz/xEJMvwf72wdUnC3rr4jAQf5jnTkeRQ9b6soxLxhDEbS/pfMPoJLDfFPNVRdryqWUIV/2GZzDJFZw==
@@ -1718,7 +1718,7 @@
     natural-compare "^1.4.0"
     ts-api-utils "^2.0.0"
 
-"@typescript-eslint/parser@^8.21.0":
+"@typescript-eslint/parser@^8.22.0":
   version "8.22.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-8.22.0.tgz#f21c5db24271f182ebbb4ba8c7ad3eb76e5f5f3a"
   integrity sha512-MqtmbdNEdoNxTPzpWiWnqNac54h8JDAmkWtJExBVVnSrSmi9z+sZUt0LfKqk9rjqmKOIeRhO4fHHJ1nQIjduIQ==
@@ -4977,7 +4977,7 @@ rollup-pluginutils@^2.8.2:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^4.32.0:
+rollup@^4.34.0:
   version "4.34.0"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-4.34.0.tgz#355a2da8f9cf07c2f465163c6608efb26c9cc833"
   integrity sha512-+4C/cgJ9w6sudisA0nZz0+O7lTP9a3CzNLsoDwaRumM8QHwghUsu6tqHXiTmNUp/rqNiM14++7dkzHDyCRs0Jg==
@@ -5209,7 +5209,7 @@ stable@^0.1.8:
   resolved "https://registry.yarnpkg.com/stable/-/stable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"
   integrity sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==
 
-storybook@^8.5.2:
+storybook@^8.5.3:
   version "8.5.3"
   resolved "https://registry.yarnpkg.com/storybook/-/storybook-8.5.3.tgz#9758f0da8a9ee4f6a600370f64833fa5d3079c96"
   integrity sha512-2WtNBZ45u1AhviRU+U+ld588tH8gDa702dNSq5C8UBaE9PlOsazGsyp90dw1s9YRvi+ejrjKAupQAU0GwwUiVg==
