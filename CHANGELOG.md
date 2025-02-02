@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.0.27](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.26...ui-components-v0.0.27) (2025-01-30)
+
+
+### Features
+
+* add interactive table ([4340421](https://github.com/odigos-io/ui-components/commit/43404214852f5ad0cc5d855428c70faf79a38f23))
+* add more common functions and hooks ([7ac760f](https://github.com/odigos-io/ui-components/commit/7ac760f9c2909cf6846f73642b2a90ead005bd83))
+* add section-title ([b8d290b](https://github.com/odigos-io/ui-components/commit/b8d290b763239e8ccf7a62068d7b09d8650a4df8))
+
+
+### Bug Fixes
+
+* badge sizing ([98e9c96](https://github.com/odigos-io/ui-components/commit/98e9c9662a42eb9623ec03b104776c1f732a92e9))
+
 ## [0.0.26](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.25...ui-components-v0.0.26) (2025-01-30)
 
 
