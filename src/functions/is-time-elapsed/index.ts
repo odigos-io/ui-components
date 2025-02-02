@@ -2,5 +2,5 @@ export const isTimeElapsed = (originDate: Date | string | number, difference: nu
   const now = new Date().getTime()
   const compareWith = new Date(originDate).getTime()
 
-  return now - compareWith <= difference
+  return now - compareWith >= difference
 }
