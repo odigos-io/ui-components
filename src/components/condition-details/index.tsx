@@ -1,4 +1,4 @@
-import React, { type FC, useMemo, useState } from 'react'
+import React, { type FC, useState } from 'react'
 import { Text } from '../text'
 import { hexPercent } from '../../styles'
 import { FadeLoader } from '../fade-loader'
@@ -54,8 +54,8 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
   const theme = useTheme()
   const [extend, setExtend] = useState(false)
 
-  const loading = useMemo(() => !conditions.length, [conditions])
-  const errors = useMemo(() => conditions.filter(({ status }) => status === NOTIFICATION_TYPE.ERROR), [conditions])
+  const loading = !conditions.length
+  const errors = conditions.filter(({ status }) => status === NOTIFICATION_TYPE.ERROR)
   const hasErrors = !!errors.length
   const headerText = loading ? 'Loading...' : hasErrors ? headerLabelFailed : headerLabelSuccess
   const HeaderIcon = getStatusIcon(hasErrors ? NOTIFICATION_TYPE.ERROR : NOTIFICATION_TYPE.SUCCESS)

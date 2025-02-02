@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, type FC } from 'react'
+import React, { useState, useEffect, useRef, type FC } from 'react'
 import { Text } from '../text'
 import { Input } from '../input'
 import { Button } from '../button'
@@ -75,7 +75,7 @@ const InputTable: FC<InputTableProps> = ({ columns, initialValues = [], value, o
   }, [])
 
   // Filter out rows where either key or value is empty
-  const validRows = useMemo(() => rows.filter((row) => !Object.values(row).filter((val) => isEmpty(val)).length), [rows])
+  const validRows = rows.filter((row) => !Object.values(row).filter((val) => isEmpty(val)).length)
   const recordedRows = useRef(JSON.stringify(validRows))
 
   useEffect(() => {

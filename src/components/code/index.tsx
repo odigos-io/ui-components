@@ -1,4 +1,4 @@
-import React, { type FC, Fragment, type HTMLAttributes, useId, useMemo } from 'react'
+import React, { type FC, Fragment, type HTMLAttributes, useId } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
 import { FlexRow } from '../../styled'
@@ -48,17 +48,17 @@ const CodeLineToken = styled.span<{ $noWrap?: boolean }>`
 const Code: FC<CodeProps> = ({ language, code, flatten, pretty }) => {
   const { darkMode } = useTheme()
 
-  const str = useMemo(() => {
-    if (language === 'json') {
-      const obj = safeJsonParse(code, {})
-      const objNoNull = removeEmptyValuesFromObject(obj)
+  let str = ''
 
-      if (flatten) return safeJsonStringify(flattenObjectKeys(objNoNull))
-      return safeJsonStringify(objNoNull)
-    }
+  if (language === 'json') {
+    const obj = safeJsonParse(code, {})
+    const objNoNull = removeEmptyValuesFromObject(obj)
 
-    return code
-  }, [code, language, flatten])
+    if (flatten) str = safeJsonStringify(flattenObjectKeys(objNoNull))
+    else str = safeJsonStringify(objNoNull)
+  } else {
+    str = code
+  }
 
   if (pretty && language === 'json') {
     return <PrettyJsonCode darkMode={darkMode} str={str} />
