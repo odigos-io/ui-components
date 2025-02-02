@@ -8,7 +8,6 @@ import { Highlight, themes as prismThemes, type Token } from 'prism-react-render
 import { flattenObjectKeys, getStatusIcon, removeEmptyValuesFromObject, safeJsonParse, safeJsonStringify } from '../../functions'
 
 interface CodeProps {
-  darkMode: boolean
   language: string
   code: string
   flatten?: boolean
@@ -46,7 +45,9 @@ const CodeLineToken = styled.span<{ $noWrap?: boolean }>`
   font-size: 12px;
 `
 
-const Code: FC<CodeProps> = ({ darkMode, language, code, flatten, pretty }) => {
+const Code: FC<CodeProps> = ({ language, code, flatten, pretty }) => {
+  const { darkMode } = useTheme()
+
   const str = useMemo(() => {
     if (language === 'json') {
       const obj = safeJsonParse(code, {})

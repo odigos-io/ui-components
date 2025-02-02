@@ -16,9 +16,10 @@ const baseTheme = {
     secondary: 'Kode Mono, sans-serif',
     code: 'IBM Plex Mono, monospace',
   },
-};
+}
 
 const darkModeTheme = {
+  darkMode: true,
   colors: {
     ...baseTheme.colors,
     // Base Colors
@@ -59,9 +60,10 @@ const darkModeTheme = {
     default_secondary: '#8CBEFF',
   },
   font_family: baseTheme.font_family,
-};
+}
 
 const lightModeTheme = {
+  darkMode: false,
   colors: {
     ...baseTheme.colors,
     // Base Colors
@@ -102,7 +104,7 @@ const lightModeTheme = {
     default_secondary: '#6C7AE8',
   },
   font_family: baseTheme.font_family,
-};
+}
 
-export type ITheme = typeof darkModeTheme & typeof lightModeTheme;
-export const getTheme = (darkMode: boolean): ITheme => (darkMode ? darkModeTheme : lightModeTheme);
+export type ITheme = typeof darkModeTheme & typeof lightModeTheme
+export const getTheme = (darkMode: boolean): ITheme => (darkMode ? darkModeTheme : lightModeTheme)

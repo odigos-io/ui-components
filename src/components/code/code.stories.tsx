@@ -24,7 +24,7 @@ const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
   return (
     <Theme.Provider darkMode={darkMode}>
       <ToggleCodeComponent isPrettyMode={val} setIsPrettyMode={setVal} />
-      <Code darkMode={darkMode} pretty={val} {...props} />
+      <Code pretty={val} {...props} />
     </Theme.Provider>
   )
 }
