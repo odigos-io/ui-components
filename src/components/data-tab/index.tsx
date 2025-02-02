@@ -1,4 +1,4 @@
-import React, { type FC, Fragment, type ReactNode, useCallback, useEffect, useRef, useState } from 'react'
+import React, { type FC, Fragment, type ReactNode, useEffect, useRef, useState } from 'react'
 import { Text } from '../text'
 import { Status } from '../status'
 import { Tooltip } from '../tooltip'
@@ -143,33 +143,27 @@ const DataTab: FC<DataTabProps> = ({
     }
   }, [title, maxWidth])
 
-  const renderMonitors = useCallback(
-    (withSeperator: boolean) => {
-      if (!monitors || !monitors.length) return null
+  const renderMonitors = (withSeperator: boolean) => {
+    if (!monitors || !monitors.length) return null
 
-      return (
-        <>
-          {withSeperator && <SubTitle>{'•'}</SubTitle>}
-          <MonitorsIcons monitors={monitors} withLabels={monitorsWithLabels} size={10} />
-        </>
-      )
-    },
-    [monitors]
-  )
+    return (
+      <>
+        {withSeperator && <SubTitle>{'•'}</SubTitle>}
+        <MonitorsIcons monitors={monitors} withLabels={monitorsWithLabels} size={10} />
+      </>
+    )
+  }
 
-  const renderActiveStatus = useCallback(
-    (withSeperator: boolean) => {
-      if (typeof isActive !== 'boolean') return null
+  const renderActiveStatus = (withSeperator: boolean) => {
+    if (typeof isActive !== 'boolean') return null
 
-      return (
-        <>
-          {withSeperator && <SubTitle>{'•'}</SubTitle>}
-          <Status status={isActive ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.ERROR} size={10} />
-        </>
-      )
-    },
-    [isActive]
-  )
+    return (
+      <>
+        {withSeperator && <SubTitle>{'•'}</SubTitle>}
+        <Status status={isActive ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.ERROR} size={10} />
+      </>
+    )
+  }
 
   return (
     <Container ref={containerRef} $isError={isError} $withClick={!!onClick} onClick={onClick} {...props}>

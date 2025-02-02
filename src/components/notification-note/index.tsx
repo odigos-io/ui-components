@@ -1,4 +1,4 @@
-import React, { type CSSProperties, type FC, useCallback, useEffect, useRef, useState } from 'react'
+import React, { type CSSProperties, type FC, useEffect, useRef, useState } from 'react'
 import { Text } from '../text'
 import { XIcon } from '../../icons'
 import { Divider } from '../divider'
@@ -101,15 +101,12 @@ const NotificationNote: FC<NotificationNoteProps> = ({ type, title, message, act
   const timerForClosure = useRef<NodeJS.Timeout | null>(null)
   const progress = useRef<HTMLDivElement | null>(null)
 
-  const closeToast = useCallback(
-    (params: OnCloseParams) => {
-      if (onClose) {
-        setIsLeaving(true)
-        onClose({ asSeen: params?.asSeen })
-      }
-    },
-    [onClose, duration]
-  )
+  const closeToast = (params: OnCloseParams) => {
+    if (onClose) {
+      setIsLeaving(true)
+      onClose({ asSeen: params?.asSeen })
+    }
+  }
 
   useEffect(() => {
     timerForClosure.current = setTimeout(() => closeToast({ asSeen: false }), duration)
