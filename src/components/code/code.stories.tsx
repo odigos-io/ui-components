@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { safeJsonStringify, Theme } from '../..'
-import { Code, type CodeProps, ToggleCodeComponent } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { safeJsonStringify } from '@odigos/ui-utils'
+import { Theme } from '@odigos/ui-theme'
+import { Code, type CodeProps, ToggleCodeComponent } from '.'
 
 interface Props extends CodeProps {
   darkMode: boolean

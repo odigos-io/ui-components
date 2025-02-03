@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { NotificationIcon, Theme } from '../..'
-import { IconButton, type IconButtonProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { NotificationIcon } from '@odigos/ui-icons'
+import { Theme } from '@odigos/ui-theme'
+import { IconButton, type IconButtonProps } from '.'
 
 interface Props extends IconButtonProps {
   darkMode: boolean

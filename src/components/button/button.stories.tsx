@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Theme } from '../..'
-import { Button, type ButtonProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '@odigos/ui-theme'
+import { Button, type ButtonProps } from '.'
 
 interface Props extends ButtonProps {
   darkMode: boolean

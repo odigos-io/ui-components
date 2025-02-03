@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Theme } from '../..'
-import { CancelWarning, type CancelWarningProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '@odigos/ui-theme'
+import { CancelWarning, type CancelWarningProps } from '.'
 
 interface Props extends CancelWarningProps {
   darkMode: boolean

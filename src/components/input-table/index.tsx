@@ -3,10 +3,10 @@ import { Text } from '../text'
 import { Input } from '../input'
 import { Button } from '../button'
 import styled from 'styled-components'
-import { isEmpty } from '../../functions'
+import { isEmpty } from '@odigos/ui-utils'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
-import { PlusIcon, TrashIcon } from '../../icons'
+import { PlusIcon, TrashIcon } from '@odigos/ui-icons'
 
 type Row = {
   [key: string]: any

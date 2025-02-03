@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
-import { CopyIcon, FlexRow, getStatusIcon, IconButton, isOverTime, KeyIcon, Text, Theme, useCopy } from '../..'
-import { InteractiveTable, type InteractiveTableProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
-import { getTheme } from '../../styles/theme'
-import { NOTIFICATION_TYPE } from '../../@types'
-import { useTimeAgo } from '../../hooks'
+import { useTheme } from 'styled-components'
+import { getStatusIcon, isOverTime, NOTIFICATION_TYPE, useCopy, useTimeAgo } from '@odigos/ui-utils'
+import { CopyIcon, KeyIcon } from '@odigos/ui-icons'
+import { Theme } from '@odigos/ui-theme'
+import { InteractiveTable, type InteractiveTableProps } from '.'
+import { IconButton } from '../icon-button'
+import { FlexRow } from '../../styled'
+import { Text } from '../text'
 
 interface Props extends InteractiveTableProps {
   darkMode: boolean
@@ -47,16 +50,12 @@ Default.args = {
     {
       columnKey: 'expires_at',
       component: () => {
+        const theme = useTheme()
+
         return (
           <Text
             size={14}
-            color={
-              isOverTime(expiresAt, 0)
-                ? getTheme(true).text.error
-                : isOverTime(expiresAt, 604800000)
-                ? getTheme(true).text.warning
-                : getTheme(true).text.success
-            }
+            color={isOverTime(expiresAt, 0) ? theme.text.error : isOverTime(expiresAt, 604800000) ? theme.text.warning : theme.text.success}
           >
             {useTimeAgo().format(expiresAt)} ({new Date(expiresAt).toDateString().split(' ').slice(1).join(' ')})
           </Text>

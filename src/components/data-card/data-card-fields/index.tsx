@@ -9,8 +9,14 @@ import styled, { useTheme } from 'styled-components'
 import { MonitorsIcons } from '../../monitors-icons'
 import { NotificationNote } from '../../notification-note'
 import { InteractiveTable } from '../../interactive-table'
-import { NOTIFICATION_TYPE, PROGRAMMING_LANGUAGES } from '../../../@types'
-import { capitalizeFirstLetter, getProgrammingLanguageIcon, parseJsonStringToPrettyString, safeJsonParse } from '../../../functions'
+import {
+  capitalizeFirstLetter,
+  getProgrammingLanguageIcon,
+  NOTIFICATION_TYPE,
+  parseJsonStringToPrettyString,
+  PROGRAMMING_LANGUAGES,
+  safeJsonParse,
+} from '@odigos/ui-utils'
 
 enum DATA_CARD_FIELD_TYPES {
   DIVIDER = 'divider',

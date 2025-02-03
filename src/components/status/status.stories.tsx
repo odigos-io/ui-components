@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { Theme } from '../..'
-import { Status, type StatusProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
-import { NOTIFICATION_TYPE } from '../../@types'
+import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import { Theme } from '@odigos/ui-theme'
+import { Status, type StatusProps } from '.'
 
 interface Props extends StatusProps {
   darkMode: boolean

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
-import { Checkbox, ErrorTriangleIcon, getProgrammingLanguageIcon, Theme } from '../..'
-import { DataTab, type DataTabProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
-import { PROGRAMMING_LANGUAGES } from '../../@types'
+import { getProgrammingLanguageIcon, PROGRAMMING_LANGUAGES } from '@odigos/ui-utils'
+import { ErrorTriangleIcon } from '@odigos/ui-icons'
+import { Theme } from '@odigos/ui-theme'
+import { DataTab, type DataTabProps } from '.'
+import { Checkbox } from '../..'
 
 interface Props extends DataTabProps {
   darkMode: boolean

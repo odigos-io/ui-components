@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Theme } from '../..'
-import { MonitorsCheckboxes, type MonitorsCheckboxesProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
-import { SIGNAL_TYPE } from '../../@types'
+import { SIGNAL_TYPE } from '@odigos/ui-utils'
+import { Theme } from '@odigos/ui-theme'
+import { MonitorsCheckboxes, type MonitorsCheckboxesProps } from '.'
 
 interface Props extends MonitorsCheckboxesProps {
   darkMode: boolean

@@ -1,13 +1,12 @@
 import React, { type CSSProperties, type FC, useEffect, useRef, useState } from 'react'
 import { Text } from '../text'
-import { XIcon } from '../../icons'
 import { Divider } from '../divider'
 import { FlexRow } from '../../styled'
+import { Theme } from '@odigos/ui-theme'
+import { XIcon } from '@odigos/ui-icons'
 import { IconButton } from '../icon-button'
-import { progress, slide } from '../../styles'
-import { getStatusIcon } from '../../functions'
-import { NOTIFICATION_TYPE } from '../../@types'
 import styled, { useTheme } from 'styled-components'
+import { getStatusIcon, NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface OnCloseParams {
   asSeen: boolean
@@ -30,7 +29,7 @@ const Container = styled.div<{ $isLeaving?: boolean; $duration: number }>`
     overflow: hidden;
     padding-bottom: 1px;
     border-radius: 32px;
-    animation: ${({ $isLeaving }) => ($isLeaving ? slide.out['top'] : slide.in['top'])} ${({ $duration }) => $duration / 10}ms forwards;
+    animation: ${({ $isLeaving }) => ($isLeaving ? Theme.slide.out['top'] : Theme.slide.in['top'])} ${({ $duration }) => $duration / 10}ms forwards;
   }
 `
 
@@ -43,7 +42,7 @@ const DurationAnimation = styled.div<{ $type: NotificationNoteProps['type']; $du
   height: 100%;
   border-radius: 32px;
   background-color: ${({ $type, theme }) => theme.text[$type]};
-  animation: ${progress.out} ${({ $duration }) => `${$duration - $duration / 10}`}ms forwards;
+  animation: ${Theme.progress.out} ${({ $duration }) => `${$duration - $duration / 10}`}ms forwards;
 `
 
 const Content = styled.div<{ $type: NotificationNoteProps['type'] }>`

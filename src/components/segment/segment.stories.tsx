@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { CheckCircledIcon, CrossCircledIcon, Theme } from '../..'
-import { Segment, type SegmentProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { CheckCircledIcon, CrossCircledIcon } from '@odigos/ui-icons'
+import { Theme } from '@odigos/ui-theme'
+import { Segment, type SegmentProps } from '.'
 
 interface Props extends SegmentProps {
   darkMode: boolean

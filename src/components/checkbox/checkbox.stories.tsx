@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Theme } from '../..'
-import { Checkbox, type CheckboxProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '@odigos/ui-theme'
+import { Checkbox, type CheckboxProps } from '.'
 
 interface Props extends CheckboxProps {
   darkMode: boolean

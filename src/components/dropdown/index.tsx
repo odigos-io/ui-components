@@ -4,14 +4,14 @@ import { Badge } from '../badge'
 import { Input } from '../input'
 import { Divider } from '../divider'
 import { Checkbox } from '../checkbox'
-import { hexPercent } from '../../styles'
+import { Theme } from '@odigos/ui-theme'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
 import { ExtendArrow } from '../extend-arrow'
 import { NoDataFound } from '../no-data-found'
-import { useOnClickOutside } from '../../hooks'
+import { useOnClickOutside } from '@odigos/ui-utils'
 import styled, { css, useTheme } from 'styled-components'
-import { CheckIcon, CrossIcon, SearchIcon } from '../../icons'
+import { CheckIcon, CrossIcon, SearchIcon } from '@odigos/ui-icons'
 
 interface DropdownOption {
   id: string
@@ -290,7 +290,7 @@ const DropdownItem = styled.div`
   border-radius: 32px;
   &:hover,
   &.selected {
-    background: ${({ theme }) => theme.colors.majestic_blue + hexPercent['024']};
+    background: ${({ theme }) => theme.colors.majestic_blue + Theme.hexPercent['024']};
   }
 `
 

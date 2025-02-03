@@ -3,14 +3,15 @@ import { Text } from '../text'
 import { Status } from '../status'
 import { Tooltip } from '../tooltip'
 import { Divider } from '../divider'
-import { hexPercent } from '../../styles'
+import { Theme } from '@odigos/ui-theme'
+import { type SVG } from '@odigos/ui-icons'
 import { IconButton } from '../icon-button'
 import { IconWrapped } from '../icon-wrapped'
 import { ExtendArrow } from '../extend-arrow'
 import styled, { css } from 'styled-components'
 import { MonitorsIcons } from '../monitors-icons'
 import { FlexColumn, FlexRow } from '../../styled'
-import { NOTIFICATION_TYPE, SIGNAL_TYPE, type SVG } from '../../@types'
+import { NOTIFICATION_TYPE, SIGNAL_TYPE } from '@odigos/ui-utils'
 
 interface DataTabProps {
   title: string
@@ -40,14 +41,15 @@ const Container = styled.div<{ $withClick: boolean; $isError: DataTabProps['isEr
   padding: 16px;
   width: calc(100% - 32px);
   border-radius: 16px;
-  background-color: ${({ $isError, theme }) => ($isError ? theme.text.error + hexPercent['010'] : theme.colors.secondary + hexPercent['005'])};
+  background-color: ${({ $isError, theme }) =>
+    $isError ? theme.text.error + Theme.hexPercent['010'] : theme.colors.secondary + Theme.hexPercent['005']};
 
   ${({ $withClick, $isError, theme }) =>
     $withClick &&
     css`
       &:hover {
         cursor: pointer;
-        background-color: ${$isError ? theme.text.error + hexPercent['020'] : theme.colors.secondary + hexPercent['010']};
+        background-color: ${$isError ? theme.text.error + Theme.hexPercent['020'] : theme.colors.secondary + Theme.hexPercent['010']};
         ${ControlledVisibility} {
           visibility: visible;
         }

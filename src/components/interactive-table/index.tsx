@@ -1,8 +1,8 @@
 import React, { type ReactNode, type FC } from 'react'
 import styled from 'styled-components'
-import { type SVG } from '../../@types'
-import { isEmpty } from '../../functions'
-import { hexPercent } from '../../styles'
+import { Theme } from '@odigos/ui-theme'
+import { isEmpty } from '@odigos/ui-utils'
+import { type SVG } from '@odigos/ui-icons'
 import { IconWrapped } from '../icon-wrapped'
 
 interface ColumnCell {
@@ -71,7 +71,7 @@ const RowBackground = styled.div<{ $index: number }>`
   height: 68px;
   margin: 12px 0;
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.dropdown_bg_2 + hexPercent['040']};
+  background-color: ${({ theme }) => theme.colors.dropdown_bg_2 + Theme.hexPercent['040']};
 `
 
 const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows }) => {

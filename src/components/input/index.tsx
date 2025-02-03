@@ -1,9 +1,8 @@
 import React, { useState, forwardRef, type ChangeEvent, type KeyboardEventHandler, type InputHTMLAttributes } from 'react'
-import { type SVG } from '../../@types'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
-import { EyeClosedIcon, EyeOpenIcon } from '../../icons'
 import styled, { css, useTheme } from 'styled-components'
+import { EyeClosedIcon, EyeOpenIcon, type SVG } from '@odigos/ui-icons'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   title?: string

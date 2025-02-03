@@ -1,6 +1,6 @@
 import React from 'react'
 import { WarningModal } from '..'
-import { NOTIFICATION_TYPE } from '../../@types'
+import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface CancelWarningProps {
   isOpen: boolean

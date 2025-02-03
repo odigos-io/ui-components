@@ -2,10 +2,8 @@ import React, { type FC } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
 import { FlexRow } from '../../styled'
-import { SIGNAL_TYPE } from '../../@types'
 import { useTheme } from 'styled-components'
-import { MONITORS_OPTIONS } from '../../constants'
-import { capitalizeFirstLetter, getMonitorIcon } from '../../functions'
+import { capitalizeFirstLetter, getMonitorIcon, MONITORS_OPTIONS, SIGNAL_TYPE } from '@odigos/ui-utils'
 
 interface MonitorsIconsProps {
   monitors?: SIGNAL_TYPE[]

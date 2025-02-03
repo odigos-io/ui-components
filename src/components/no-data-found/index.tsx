@@ -1,6 +1,6 @@
 import React, { type FC } from 'react'
 import { Text } from '../text'
-import { NoDataIcon } from '../../icons'
+import { NoDataIcon } from '@odigos/ui-icons'
 import styled, { useTheme } from 'styled-components'
 
 interface NoDataFoundProps {

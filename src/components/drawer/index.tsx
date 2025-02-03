@@ -2,8 +2,8 @@ import React, { type ReactNode, type FC } from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import { Overlay } from '../../styled'
-import { hexPercent, slide } from '../../styles'
-import { useKeyDown, useTransition } from '../../hooks'
+import { Theme } from '@odigos/ui-theme'
+import { useKeyDown, useTransition } from '@odigos/ui-utils'
 import { DrawerHeader, DrawerHeaderProps } from './drawer-header'
 import { DrawerFooter, DrawerFooterProps } from './drawer-footer'
 
@@ -29,7 +29,7 @@ const Container = styled.div<{
   z-index: 1000;
   width: ${({ $width }) => $width};
   background: ${({ theme }) => theme.colors.translucent_bg};
-  box-shadow: 0 2px 10px ${({ theme }) => theme.colors.primary + hexPercent['010']};
+  box-shadow: 0 2px 10px ${({ theme }) => theme.colors.primary + Theme.hexPercent['010']};
   overflow-y: auto;
 `
 
@@ -55,12 +55,18 @@ const Drawer: FC<DrawerProps> = ({
   header: { icon, iconSrc, title, titleTooltip, replaceTitleWith, actionButtons },
   footer: { isOpen: footerIsOpen, leftButtons, rightButtons },
 }) => {
-  useKeyDown({ key: 'Escape', active: isOpen && closeOnEscape }, () => onClose())
+  useKeyDown(
+    {
+      key: 'Escape',
+      active: isOpen && closeOnEscape,
+    },
+    () => onClose()
+  )
 
   const Transition = useTransition({
     container: Container,
-    animateIn: slide.in[position],
-    animateOut: slide.out[position],
+    animateIn: Theme.slide.in[position],
+    animateOut: Theme.slide.out[position],
   })
 
   if (!isOpen) return null

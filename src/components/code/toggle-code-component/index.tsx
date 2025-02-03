@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { FlexRow } from '../../../styled'
-import { CodeIcon, ListIcon } from '../../../icons'
+import { CodeIcon, ListIcon } from '@odigos/ui-icons'
 
 interface ToggleCodeComponentProps {
   isPrettyMode: boolean

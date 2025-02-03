@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { NotificationIcon, Theme } from '../..'
-import { NotificationNote, type NotificationNoteProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
-import { NOTIFICATION_TYPE } from '../../@types'
+import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import { Theme } from '@odigos/ui-theme'
+import { NotificationNote, type NotificationNoteProps } from '.'
 
 interface Props extends NotificationNoteProps {
   darkMode: boolean

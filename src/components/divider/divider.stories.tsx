@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Theme } from '../..'
-import { Divider, type DividerProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '@odigos/ui-theme'
+import { Divider, type DividerProps } from '.'
 
 interface Props extends DividerProps {
   darkMode: boolean

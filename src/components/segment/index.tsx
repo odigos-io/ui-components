@@ -1,8 +1,8 @@
 import React, { type CSSProperties, type FC, useEffect, useId, useRef, useState } from 'react'
 import { Text } from '../text'
-import styled from 'styled-components'
 import { FlexRow } from '../../styled'
-import { type SVG } from '../../@types'
+import styled from 'styled-components'
+import { type SVG } from '@odigos/ui-icons'
 
 type SelectedValue = any
 

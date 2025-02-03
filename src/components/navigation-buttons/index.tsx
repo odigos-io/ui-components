@@ -1,7 +1,7 @@
 import React, { type FC } from 'react'
 import { Button } from '../button'
 import { Tooltip } from '../tooltip'
-import { type SVG } from '../../@types'
+import { type SVG } from '@odigos/ui-icons'
 import styled, { useTheme } from 'styled-components'
 
 interface IButton {

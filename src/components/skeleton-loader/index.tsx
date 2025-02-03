@@ -1,6 +1,6 @@
 import React, { type CSSProperties, type FC } from 'react'
 import styled from 'styled-components'
-import { shimmer } from '../../styles'
+import { Theme } from '@odigos/ui-theme'
 import { FlexColumn } from '../../styled'
 
 interface SkeletonLoaderProps {
@@ -28,7 +28,7 @@ const Thumbnail = styled.div`
   background: ${({ theme }) =>
     `linear-gradient(90deg, ${theme.colors.dropdown_bg_2} 25%, ${theme.colors.dropdown_bg_2} 50%, ${theme.colors.border} 75%)`};
   background-size: 200% 100%;
-  animation: ${shimmer} 10s infinite linear;
+  animation: ${Theme.shimmer} 10s infinite linear;
 `
 
 const LineWrapper = styled(FlexColumn)`
@@ -42,7 +42,7 @@ const Line = styled.div<{ $width: string }>`
   background: ${({ theme }) =>
     `linear-gradient(90deg, ${theme.colors.dropdown_bg_2} 25%, ${theme.colors.dropdown_bg_2} 50%, ${theme.colors.border} 75%)`};
   background-size: 200% 100%;
-  animation: ${shimmer} 1.5s infinite linear;
+  animation: ${Theme.shimmer} 1.5s infinite linear;
   border-radius: 4px;
 `
 

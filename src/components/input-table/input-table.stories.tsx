@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Theme } from '../..'
-import { InputTable, type InputTableProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '@odigos/ui-theme'
+import { InputTable, type InputTableProps } from '.'
 
 interface Props extends InputTableProps {
   darkMode: boolean

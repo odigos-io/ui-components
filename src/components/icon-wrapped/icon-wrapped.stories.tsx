@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
-import { SlackLogo, Theme } from '../..'
-import { IconWrapped, type IconWrappedProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
-import { NOTIFICATION_TYPE } from '../../@types'
+import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import { SlackLogo } from '@odigos/ui-icons'
+import { Theme } from '@odigos/ui-theme'
+import { IconWrapped, type IconWrappedProps } from '.'
 
 interface Props extends IconWrappedProps {
   darkMode: boolean

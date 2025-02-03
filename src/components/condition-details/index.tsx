@@ -1,11 +1,10 @@
 import React, { type FC, useState } from 'react'
 import { Text } from '../text'
-import { hexPercent } from '../../styles'
+import { Theme } from '@odigos/ui-theme'
 import { FadeLoader } from '../fade-loader'
 import { ExtendArrow } from '../extend-arrow'
-import { getStatusIcon } from '../../functions'
-import { NOTIFICATION_TYPE } from '../../@types'
 import styled, { useTheme } from 'styled-components'
+import { getStatusIcon, NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface ConditionDetailsProps {
   conditions: {
@@ -18,10 +17,12 @@ interface ConditionDetailsProps {
 
 const Container = styled.div<{ $hasErrors: boolean }>`
   border-radius: 24px;
-  background-color: ${({ theme, $hasErrors }) => ($hasErrors ? theme.text.error + hexPercent['010'] : theme.colors.secondary + hexPercent['005'])};
+  background-color: ${({ theme, $hasErrors }) =>
+    $hasErrors ? theme.text.error + Theme.hexPercent['010'] : theme.colors.secondary + Theme.hexPercent['005']};
   cursor: pointer;
   &:hover {
-    background-color: ${({ theme, $hasErrors }) => ($hasErrors ? theme.text.error + hexPercent['020'] : theme.colors.secondary + hexPercent['010'])};
+    background-color: ${({ theme, $hasErrors }) =>
+      $hasErrors ? theme.text.error + Theme.hexPercent['020'] : theme.colors.secondary + Theme.hexPercent['010']};
   }
   transition: background 0.3s;
 `

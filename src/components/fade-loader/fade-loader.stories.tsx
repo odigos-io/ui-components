@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Theme } from '../..'
-import { FadeLoader, type FadeLoaderProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '@odigos/ui-theme'
+import { FadeLoader, type FadeLoaderProps } from '.'
 
 interface Props extends FadeLoaderProps {
   darkMode: boolean

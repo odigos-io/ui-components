@@ -1,6 +1,6 @@
 import React from 'react'
 import { WarningModal } from '..'
-import { ENTITY_TYPES, NOTIFICATION_TYPE } from '../../@types'
+import { ENTITY_TYPES, NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface DeleteWarningProps {
   isOpen: boolean

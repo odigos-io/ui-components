@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
-import { Text } from '../text'
-import { Drawer, type DrawerProps } from '.'
-import { getTheme } from '../../styles/theme'
 import { type StoryFn, type StoryObj } from '@storybook/react'
-import { EditIcon, NoDataFound, TerminalIcon, Theme, TrashIcon } from '../..'
+import { useTheme } from 'styled-components'
+import { EditIcon, TerminalIcon, TrashIcon } from '@odigos/ui-icons'
+import { Theme } from '@odigos/ui-theme'
+import { Drawer, type DrawerProps } from '.'
+import { NoDataFound } from '../..'
+import { Text } from '../text'
 
 interface Props extends DrawerProps {
   darkMode: boolean
@@ -80,7 +82,7 @@ Default.args = {
         children: (
           <>
             <TrashIcon />
-            <Text size={14} color={getTheme(true).text.error} family='secondary' decoration='underline'>
+            <Text size={14} family='secondary' decoration='underline'>
               delete
             </Text>
           </>

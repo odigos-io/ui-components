@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Theme } from '../..'
-import { FieldLabel, type FieldLabelProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '@odigos/ui-theme'
+import { FieldLabel, type FieldLabelProps } from '.'
 
 interface Props extends FieldLabelProps {
   darkMode: boolean

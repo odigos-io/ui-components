@@ -1,10 +1,9 @@
 import React, { type FC, useEffect, useRef, useState } from 'react'
 import { Checkbox } from '../checkbox'
-import { SIGNAL_TYPE } from '../../@types'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
 import styled, { css } from 'styled-components'
-import { MONITORS_OPTIONS } from '../../constants'
+import { MONITORS_OPTIONS, SIGNAL_TYPE } from '@odigos/ui-utils'
 
 interface MonitorsCheckboxesProps {
   isVertical?: boolean

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { SlackLogo, Theme } from '../..'
-import { SectionTitle, type SectionTitleProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { SlackLogo } from '@odigos/ui-icons'
+import { Theme } from '@odigos/ui-theme'
+import { SectionTitle, type SectionTitleProps } from '.'
 
 interface Props extends SectionTitleProps {
   darkMode: boolean

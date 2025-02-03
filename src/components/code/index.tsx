@@ -2,10 +2,9 @@ import React, { type FC, Fragment, type HTMLAttributes, useId } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
 import { FlexRow } from '../../styled'
-import { NOTIFICATION_TYPE } from '../../@types'
 import styled, { useTheme } from 'styled-components'
 import { Highlight, themes as prismThemes, type Token } from 'prism-react-renderer'
-import { flattenObjectKeys, getStatusIcon, removeEmptyValuesFromObject, safeJsonParse, safeJsonStringify } from '../../functions'
+import { flattenObjectKeys, getStatusIcon, NOTIFICATION_TYPE, removeEmptyValuesFromObject, safeJsonParse, safeJsonStringify } from '@odigos/ui-utils'
 
 interface CodeProps {
   language: string

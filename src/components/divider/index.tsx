@@ -1,7 +1,7 @@
 import React, { type FC } from 'react'
 import styled from 'styled-components'
-import { hexPercent } from '../../styles'
-import { NOTIFICATION_TYPE } from '../../@types'
+import { Theme } from '@odigos/ui-theme'
+import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface DividerProps {
   orientation?: 'horizontal' | 'vertical'
@@ -21,7 +21,7 @@ const StyledDivider = styled.div<{
   width: ${({ $orientation, $thickness, $length }) => ($orientation === 'vertical' ? `${$thickness}px` : $length || '100%')};
   height: ${({ $orientation, $thickness, $length }) => ($orientation === 'horizontal' ? `${$thickness}px` : $length || '100%')};
   margin: ${({ $orientation, $margin }) => $margin || ($orientation === 'horizontal' ? '8px 0' : '0 8px')};
-  background-color: ${({ $type, theme }) => (!!$type ? theme.text[$type] : theme.colors.border) + hexPercent['050']};
+  background-color: ${({ $type, theme }) => (!!$type ? theme.text[$type] : theme.colors.border) + Theme.hexPercent['050']};
 `
 
 const Divider: FC<DividerProps> = ({ orientation = 'horizontal', type, thickness = 1, length, margin }) => {

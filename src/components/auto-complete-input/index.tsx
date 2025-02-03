@@ -1,7 +1,7 @@
 import React, { useState, type ChangeEvent, type KeyboardEvent, type FC, type InputHTMLAttributes, type CSSProperties } from 'react'
-import { Text } from '../text'
+import { type SVG } from '@odigos/ui-icons'
 import styled from 'styled-components'
-import { type SVG } from '../../@types'
+import { Text } from '../text'
 
 interface Option {
   id: string

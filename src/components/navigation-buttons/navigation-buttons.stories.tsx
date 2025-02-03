@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { ArrowIcon, Theme } from '../..'
-import { NavigationButtons, type NavigationButtonsProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { ArrowIcon } from '@odigos/ui-icons'
+import { Theme } from '@odigos/ui-theme'
+import { NavigationButtons, type NavigationButtonsProps } from '.'
 
 interface Props extends NavigationButtonsProps {
   darkMode: boolean

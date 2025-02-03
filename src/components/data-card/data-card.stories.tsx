@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { Theme } from '../..'
-import { DATA_CARD_FIELD_TYPES, DataCard, type DataCardProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
-import { PROGRAMMING_LANGUAGES } from '../../@types'
+import { PROGRAMMING_LANGUAGES } from '@odigos/ui-utils'
+import { Theme } from '@odigos/ui-theme'
+import { DATA_CARD_FIELD_TYPES, DataCard, type DataCardProps } from '.'
 
 interface Props extends DataCardProps {
   darkMode: boolean

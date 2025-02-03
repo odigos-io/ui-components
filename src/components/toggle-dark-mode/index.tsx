@@ -1,7 +1,7 @@
 import React, { type FC, useEffect } from 'react'
 import styled from 'styled-components'
 import { FlexRow } from '../../styled'
-import { MoonIcon, SunIcon } from '../../icons'
+import { MoonIcon, SunIcon } from '@odigos/ui-icons'
 
 interface ToggleDarkModeProps {
   darkMode: boolean

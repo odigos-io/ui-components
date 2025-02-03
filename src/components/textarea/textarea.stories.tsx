@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Theme } from '../..'
-import { TextArea, type TextAreaProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '@odigos/ui-theme'
+import { TextArea, type TextAreaProps } from '.'
 
 interface Props extends TextAreaProps {
   darkMode: boolean

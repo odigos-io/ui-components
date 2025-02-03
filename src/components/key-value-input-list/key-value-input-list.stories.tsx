@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Theme } from '../..'
-import { KeyValueInputsList, type KeyValueInputsListProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '@odigos/ui-theme'
+import { KeyValueInputsList, type KeyValueInputsListProps } from '.'
 
 interface Props extends KeyValueInputsListProps {
   darkMode: boolean

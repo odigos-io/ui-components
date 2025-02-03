@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef, type FC } from 'react'
 import { Text } from '../text'
 import { Input } from '../input'
 import { Button } from '../button'
-import { isEmpty } from '../../functions'
+import { isEmpty } from '@odigos/ui-utils'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
 import styled, { useTheme } from 'styled-components'
-import { ArrowIcon, PlusIcon, TrashIcon } from '../../icons'
+import { ArrowIcon, PlusIcon, TrashIcon } from '@odigos/ui-icons'
 
 type Row = {
   key: string

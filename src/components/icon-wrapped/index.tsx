@@ -1,8 +1,8 @@
 import React, { type FC, useState } from 'react'
 import styled from 'styled-components'
-import { OdigosLogo } from '../../icons'
-import { hexPercent } from '../../styles'
-import { NOTIFICATION_TYPE, type SVG } from '../../@types'
+import { Theme } from '@odigos/ui-theme'
+import { OdigosLogo, SVG } from '@odigos/ui-icons'
+import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface IconWrappedProps {
   icon?: SVG
@@ -21,7 +21,7 @@ const Container = styled.div<{ $status: IconWrappedProps['status']; $size: numbe
   border-radius: 8px;
   background: ${({ $status, theme }) => {
     const clr = $status ? theme.text[$status] : theme.text.secondary
-    return `linear-gradient(180deg, ${clr + hexPercent['020']} 0%, ${clr + hexPercent['005']} 100%)`
+    return `linear-gradient(180deg, ${clr + Theme.hexPercent['020']} 0%, ${clr + Theme.hexPercent['005']} 100%)`
   }};
 `
 

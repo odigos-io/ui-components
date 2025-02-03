@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Theme } from '../..'
-import { FieldError, type FieldErrorProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '@odigos/ui-theme'
+import { FieldError, type FieldErrorProps } from '.'
 
 interface Props extends FieldErrorProps {
   darkMode: boolean

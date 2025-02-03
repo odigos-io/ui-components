@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Theme } from '../..'
-import { ToggleDarkMode, type ToggleDarkModeProps } from '.'
 import { type StoryFn, type StoryObj } from '@storybook/react'
+import { Theme } from '@odigos/ui-theme'
+import { ToggleDarkMode, type ToggleDarkModeProps } from '.'
 
 interface Props extends ToggleDarkModeProps {
   darkMode: boolean
