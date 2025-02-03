@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.33](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.32...ui-components-v0.0.33) (2025-02-03)
+
+
+### Features
+
+* use smaller libs (theme, icons, utils) ([69febef](https://github.com/odigos-io/ui-components/commit/69febef33da4c5596c17a5443bf52430245719bb))
+
 ## [0.0.32](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.31...ui-components-v0.0.32) (2025-02-02)
 
 
