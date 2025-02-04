@@ -112,13 +112,18 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
     }
 
     case DATA_CARD_FIELD_TYPES.SOURCE_CONTAINER: {
-      const { containerName, language, runtimeVersion, otherAgent, hasPresenceOfOtherAgent } = safeJsonParse(value, {
-        containerName: '-',
-        language: PROGRAMMING_LANGUAGES.UNKNOWN,
-        runtimeVersion: '-',
-        otherAgent: null,
-        hasPresenceOfOtherAgent: false,
-      })
+      const { containerName, language, runtimeVersion, instrumented, instrumentationMessage, otherAgent, hasPresenceOfOtherAgent } = safeJsonParse(
+        value,
+        {
+          containerName: '',
+          language: PROGRAMMING_LANGUAGES.UNKNOWN,
+          runtimeVersion: '',
+          instrumented: false,
+          instrumentationMessage: '',
+          otherAgent: null,
+          hasPresenceOfOtherAgent: false,
+        }
+      )
 
       // Determine if running concurrently is possible based on language and other_agent
       const canRunInParallel = !hasPresenceOfOtherAgent && (language === PROGRAMMING_LANGUAGES.PYTHON || language === PROGRAMMING_LANGUAGES.JAVA)
@@ -145,18 +150,12 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
             />
           )}
           renderActions={() => {
-            const isActive = ![
-              PROGRAMMING_LANGUAGES.IGNORED,
-              PROGRAMMING_LANGUAGES.UNKNOWN,
-              PROGRAMMING_LANGUAGES.PROCESSING,
-              PROGRAMMING_LANGUAGES.NO_CONTAINERS,
-              PROGRAMMING_LANGUAGES.NO_RUNNING_PODS,
-            ].includes(language)
+            const awaitingInstrumentation = !instrumented && !instrumentationMessage
 
             return (
               <Status
-                status={isActive ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.ERROR}
-                title={isActive ? 'Instrumented' : 'Uninstrumented'}
+                status={instrumented ? NOTIFICATION_TYPE.SUCCESS : awaitingInstrumentation ? NOTIFICATION_TYPE.WARNING : NOTIFICATION_TYPE.ERROR}
+                title={instrumented ? 'Instrumented' : awaitingInstrumentation ? 'Instrumenting...' : 'Uninstrumented'}
                 withIcon
                 withBorder
               />
