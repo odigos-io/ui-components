@@ -52,12 +52,6 @@ const Toggle: FC<ToggleProps> = ({ title, tooltip, initialValue = false, onChang
     if (disabled) return
     if (!allowPropagation) e.stopPropagation()
 
-    setIsActive((prev) => {
-      const newValue = !prev
-      if (onChange) onChange(newValue)
-      return newValue
-    })
-
     if (onChange) onChange(!isActive)
     else setIsActive((prev) => !prev)
   }
