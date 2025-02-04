@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.34](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.33...ui-components-v0.0.34) (2025-02-04)
+
+
+### Bug Fixes
+
+* bad setState in toggle ([e5aaf91](https://github.com/odigos-io/ui-components/commit/e5aaf9170834f5c47f4a284c8e2c99e4ed29fd94))
+
 ## [0.0.33](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.32...ui-components-v0.0.33) (2025-02-03)
 
 
