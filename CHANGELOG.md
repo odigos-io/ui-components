@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.40](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.39...ui-components-v0.0.40) (2025-02-04)
+
+
+### Features
+
+* update condition details to include new timestamp ([f9914c0](https://github.com/odigos-io/ui-components/commit/f9914c0f04a2a6c5587ffac252adb5801a4dffab))
+
 ## [0.0.39](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.38...ui-components-v0.0.39) (2025-02-04)
 
 
