@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.41](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.40...ui-components-v0.0.41) (2025-02-04)
+
+
+### Bug Fixes
+
+* not instrumented message in displayed containers ([0bdab18](https://github.com/odigos-io/ui-components/commit/0bdab18185afe816bd26e2767a85d4f0877f999b))
+
 ## [0.0.40](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.39...ui-components-v0.0.40) (2025-02-04)
 
 
