@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.39](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.38...ui-components-v0.0.39) (2025-02-04)
+
+
+### Features
+
+* add message to container note ([1bb8c5e](https://github.com/odigos-io/ui-components/commit/1bb8c5eee75dc7d233ffd5d88f6abccdd9ccaa1a))
+
 ## [0.0.38](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.37...ui-components-v0.0.38) (2025-02-04)
 
 
