@@ -35,18 +35,22 @@ Default.args = {
     {
       status: NOTIFICATION_TYPE.SUCCESS,
       message: 'Created successfully',
+      lastTransitionTime: new Date().toISOString(),
     },
     {
       status: NOTIFICATION_TYPE.SUCCESS,
       message: 'Language detected successfully',
+      lastTransitionTime: new Date().toISOString(),
     },
     {
       status: NOTIFICATION_TYPE.SUCCESS,
       message: 'Instrumented successfully',
+      lastTransitionTime: new Date().toISOString(),
     },
     {
       status: NOTIFICATION_TYPE.ERROR,
       message: 'Failed to collect data',
+      lastTransitionTime: new Date().toISOString(),
     },
   ],
 }

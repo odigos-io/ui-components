@@ -1,5 +1,6 @@
 import React, { type FC, useState } from 'react'
 import { Text } from '../text'
+import { FlexRow } from '../../styled'
 import { Theme } from '@odigos/ui-theme'
 import { FadeLoader } from '../fade-loader'
 import { ExtendArrow } from '../extend-arrow'
@@ -10,6 +11,7 @@ interface ConditionDetailsProps {
   conditions: {
     status: NOTIFICATION_TYPE
     message: string
+    lastTransitionTime: string
   }[]
   headerLabelFailed?: string
   headerLabelSuccess?: string
@@ -78,15 +80,21 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
 
       {extend && (
         <Body>
-          {conditions.map(({ status, message }, idx) => {
+          {conditions.map(({ status, message, lastTransitionTime }, idx) => {
             const Icon = getStatusIcon(status)
+            const color = status === NOTIFICATION_TYPE.ERROR ? theme.text.error : theme.text.darker_grey
 
             return (
               <Row key={`condition-${idx}`}>
                 <Icon />
-                <Text color={status === NOTIFICATION_TYPE.ERROR ? theme.text.error : theme.text.darker_grey} size={12}>
-                  {message}
-                </Text>
+                <FlexRow style={{ width: '100%', justifyContent: 'space-between' }}>
+                  <Text color={color} size={12}>
+                    {message}
+                  </Text>
+                  <Text color={color} size={12}>
+                    {new Date(lastTransitionTime).toLocaleTimeString()}
+                  </Text>
+                </FlexRow>
               </Row>
             )
           })}
