@@ -142,7 +142,7 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
           isExtended={!!otherAgent || failedInstrumentation}
           renderExtended={() => (
             <Fragment>
-              {failedInstrumentation && <NotificationNote type={NOTIFICATION_TYPE.ERROR} message={instrumentationMessage} overrideMaxWidth='100%' />}
+              {failedInstrumentation && <NotificationNote type={NOTIFICATION_TYPE.INFO} message={instrumentationMessage} />}
               {!!otherAgent && (
                 <NotificationNote
                   type={NOTIFICATION_TYPE.INFO}
