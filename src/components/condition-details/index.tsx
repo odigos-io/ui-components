@@ -57,10 +57,15 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
   const theme = useTheme()
   const [extend, setExtend] = useState(false)
 
-  const loading = !conditions.length
   const errors = conditions.filter(({ status }) => status === NOTIFICATION_TYPE.ERROR)
   const hasErrors = !!errors.length
-  const headerText = loading ? 'Loading...' : hasErrors ? headerLabelFailed : headerLabelSuccess
+
+  const warnings = conditions.filter(({ status }) => status === NOTIFICATION_TYPE.WARNING)
+  const hasWarnings = !!warnings.length
+
+  const loading = !conditions.length || hasWarnings
+
+  const headerText = loading || hasWarnings ? 'Loading...' : hasErrors ? headerLabelFailed : headerLabelSuccess
   const HeaderIcon = getStatusIcon(hasErrors ? NOTIFICATION_TYPE.ERROR : NOTIFICATION_TYPE.SUCCESS)
 
   return (
