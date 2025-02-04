@@ -41,6 +41,9 @@ Default.args = {
       value: JSON.stringify({
         containerName: 'my-container',
         language: PROGRAMMING_LANGUAGES.PYTHON,
+        instrumented: false,
+        instrumentationMessage:
+          'failed to instrument because you never update your operating system, or any of your softwares... simple rooky mistake bruh',
         runtimeVersion: '3.8',
         otherAgent: null,
       }),

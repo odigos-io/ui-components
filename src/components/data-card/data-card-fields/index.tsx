@@ -1,4 +1,4 @@
-import React, { type FC } from 'react'
+import React, { Fragment, type FC } from 'react'
 import { Text } from '../../text'
 import { Code } from '../../code'
 import { Status } from '../../status'
@@ -125,6 +125,9 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
         }
       )
 
+      const awaitingInstrumentation = !instrumented && !instrumentationMessage
+      const failedInstrumentation = !instrumented && !!instrumentationMessage
+
       // Determine if running concurrently is possible based on language and other_agent
       const canRunInParallel = !hasPresenceOfOtherAgent && (language === PROGRAMMING_LANGUAGES.PYTHON || language === PROGRAMMING_LANGUAGES.JAVA)
 
@@ -136,27 +139,29 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
             (!!runtimeVersion ? ` • Runtime Version: ${runtimeVersion}` : '')
           }
           iconSrc={getProgrammingLanguageIcon(language)}
-          isExtended={!!otherAgent}
+          isExtended={!!otherAgent || failedInstrumentation}
           renderExtended={() => (
-            <NotificationNote
-              type={NOTIFICATION_TYPE.INFO}
-              message={
-                hasPresenceOfOtherAgent
-                  ? `By default, we do not operate alongside the ${otherAgent}. Please contact the Odigos team for guidance on enabling this configuration.`
-                  : canRunInParallel
-                  ? `We are operating alongside the ${otherAgent}, which is not the recommended configuration. We suggest disabling the ${otherAgent} for optimal performance.`
-                  : `Concurrent execution with the ${otherAgent} is not supported. Please disable one of the agents to enable proper instrumentation.`
-              }
-            />
+            <Fragment>
+              {failedInstrumentation && <NotificationNote type={NOTIFICATION_TYPE.ERROR} message={instrumentationMessage} overrideMaxWidth='100%' />}
+              {!!otherAgent && (
+                <NotificationNote
+                  type={NOTIFICATION_TYPE.INFO}
+                  message={
+                    hasPresenceOfOtherAgent
+                      ? `By default, we do not operate alongside the ${otherAgent}. Please contact the Odigos team for guidance on enabling this configuration.`
+                      : canRunInParallel
+                      ? `We are operating alongside the ${otherAgent}, which is not the recommended configuration. We suggest disabling the ${otherAgent} for optimal performance.`
+                      : `Concurrent execution with the ${otherAgent} is not supported. Please disable one of the agents to enable proper instrumentation.`
+                  }
+                />
+              )}
+            </Fragment>
           )}
           renderActions={() => {
-            const awaitingInstrumentation = !instrumented && !instrumentationMessage
-
             return (
               <Status
                 status={instrumented ? NOTIFICATION_TYPE.SUCCESS : awaitingInstrumentation ? NOTIFICATION_TYPE.WARNING : NOTIFICATION_TYPE.ERROR}
                 title={instrumented ? 'Instrumented' : awaitingInstrumentation ? 'Instrumenting...' : 'Uninstrumented'}
-                subtitle={!instrumented && !awaitingInstrumentation ? instrumentationMessage : ''}
                 withIcon
                 withBorder
               />

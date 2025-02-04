@@ -20,6 +20,7 @@ interface NotificationNoteProps {
   action?: { label: string; onClick: () => void }
   onClose?: (params: OnCloseParams) => void
   duration?: number
+  overrideMaxWidth?: CSSProperties['width']
   style?: CSSProperties
 }
 
@@ -55,12 +56,12 @@ const Content = styled.div<{ $type: NotificationNoteProps['type'] }>`
   background-color: ${({ $type, theme }) => theme.colors[$type]};
 `
 
-const TextWrapper = styled.div<{ $withAction: boolean }>`
+const TextWrapper = styled.div<{ $withAction: boolean; $overrideMaxWidth: NotificationNoteProps['overrideMaxWidth'] }>`
   display: flex;
   align-items: center;
   margin: 0 auto 0 0;
   padding: 8px 0;
-  max-width: ${({ $withAction }) => ($withAction ? '400px' : '500px')};
+  max-width: ${({ $withAction, $overrideMaxWidth }) => $overrideMaxWidth || ($withAction ? '400px' : '500px')};
   min-height: 12px;
 `
 
@@ -89,7 +90,7 @@ const ActionButton = styled(Text)`
   }
 `
 
-const NotificationNote: FC<NotificationNoteProps> = ({ type, title, message, action, onClose, duration = 5000, style }) => {
+const NotificationNote: FC<NotificationNoteProps> = ({ type, title, message, action, onClose, duration = 5000, overrideMaxWidth, style }) => {
   const theme = useTheme()
 
   // These are for handling transitions:
@@ -141,7 +142,7 @@ const NotificationNote: FC<NotificationNoteProps> = ({ type, title, message, act
       <Content data-id='toast' $type={type} style={style}>
         <StatusIcon fill={theme.text[type]} />
 
-        <TextWrapper $withAction={!!action}>
+        <TextWrapper $withAction={!!action} $overrideMaxWidth={overrideMaxWidth}>
           {title && <Title $type={type}>{title}</Title>}
           {title && message && <Divider orientation='vertical' type={type} />}
           {message && <Message $type={type}>{message}</Message>}
