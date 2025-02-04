@@ -112,18 +112,17 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
     }
 
     case DATA_CARD_FIELD_TYPES.SOURCE_CONTAINER: {
-      const { containerName, language, runtimeVersion, instrumented, instrumentationMessage, otherAgent, hasPresenceOfOtherAgent } = safeJsonParse(
-        value,
-        {
+      const { containerName, language, runtimeVersion, instrumented, instrumentationMessage, otelDistroName, otherAgent, hasPresenceOfOtherAgent } =
+        safeJsonParse(value, {
           containerName: '',
           language: PROGRAMMING_LANGUAGES.UNKNOWN,
           runtimeVersion: '',
           instrumented: false,
           instrumentationMessage: '',
+          otelDistroName: '',
           otherAgent: null,
           hasPresenceOfOtherAgent: false,
-        }
-      )
+        })
 
       const awaitingInstrumentation = !instrumented && !instrumentationMessage
       const failedInstrumentation = !instrumented && !!instrumentationMessage
@@ -162,6 +161,7 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
               <Status
                 status={instrumented ? NOTIFICATION_TYPE.SUCCESS : awaitingInstrumentation ? NOTIFICATION_TYPE.WARNING : NOTIFICATION_TYPE.ERROR}
                 title={instrumented ? 'Instrumented' : awaitingInstrumentation ? 'Instrumenting...' : 'Uninstrumented'}
+                subtitle={otelDistroName}
                 withIcon
                 withBorder
               />
