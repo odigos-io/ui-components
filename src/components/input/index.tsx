@@ -113,6 +113,7 @@ const Button = styled.button`
   }
 `
 
+// eslint-disable-next-line react/display-name, react/forward-ref-exotic-components
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     { icon: Icon, buttonLabel, onButtonClick, hasError, errorMessage, title, tooltip, required, onChange, type = 'text', name, ...props },
