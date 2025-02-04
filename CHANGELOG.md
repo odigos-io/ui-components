@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.38](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.37...ui-components-v0.0.38) (2025-02-04)
+
+
+### Features
+
+* support containers from instru config spec ([0bf6392](https://github.com/odigos-io/ui-components/commit/0bf6392fceafab8f3baf8db2e83e688864bb37d0))
+
 ## [0.0.37](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.36...ui-components-v0.0.37) (2025-02-04)
 
 
