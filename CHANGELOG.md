@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.36](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.35...ui-components-v0.0.36) (2025-02-04)
+
+
+### Bug Fixes
+
+* react/forward-ref-exotic-components ([98d1503](https://github.com/odigos-io/ui-components/commit/98d15034f339727634bbc1a18d9a351e8314e89c))
+
 ## [0.0.35](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.34...ui-components-v0.0.35) (2025-02-04)
 
 
