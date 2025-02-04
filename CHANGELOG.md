@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.37](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.36...ui-components-v0.0.37) (2025-02-04)
+
+
+### Bug Fixes
+
+* eslint rules ([9c505be](https://github.com/odigos-io/ui-components/commit/9c505bedcb80e92da72099bfa0e6dcd2f7199e63))
+
 ## [0.0.36](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.35...ui-components-v0.0.36) (2025-02-04)
 
 
