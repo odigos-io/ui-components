@@ -156,6 +156,7 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
               <Status
                 status={instrumented ? NOTIFICATION_TYPE.SUCCESS : awaitingInstrumentation ? NOTIFICATION_TYPE.WARNING : NOTIFICATION_TYPE.ERROR}
                 title={instrumented ? 'Instrumented' : awaitingInstrumentation ? 'Instrumenting...' : 'Uninstrumented'}
+                subtitle={!instrumented && !awaitingInstrumentation ? instrumentationMessage : ''}
                 withIcon
                 withBorder
               />
