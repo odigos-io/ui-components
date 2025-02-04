@@ -1,4 +1,4 @@
-import React, { type ButtonHTMLAttributes, forwardRef } from 'react'
+import React, { type ButtonHTMLAttributes, FC, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { Theme } from '@odigos/ui-theme'
 
@@ -108,14 +108,24 @@ const StyledButton = styled.button<{ $variant: ButtonProps['variant'] }>`
     `}
 `
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ children, variant = 'primary', ...props }, ref = null) => {
+const Button: FC<ButtonProps> = ({ children, variant = 'primary', onClick, ...props }) => {
+  const ref = useRef<HTMLButtonElement>(null)
+
   return (
     <Container $variant={variant}>
-      <StyledButton ref={ref} $variant={variant} {...props}>
+      <StyledButton
+        ref={ref}
+        $variant={variant}
+        onClick={(e) => {
+          if (onClick) onClick(e)
+          ref.current?.blur()
+        }}
+        {...props}
+      >
         {children}
       </StyledButton>
     </Container>
   )
-})
+}
 
 export { Button, type ButtonProps }

@@ -20,17 +20,8 @@ const StyledButton = styled(Button)`
 const DOCS_LINK = 'https://docs.odigos.io'
 
 const DocsButton: FC<DocsButtonProps> = ({ endpoint = '/', variant = 'secondary' }) => {
-  const ref = useRef<HTMLButtonElement>(null)
-
   return (
-    <StyledButton
-      ref={ref}
-      variant={variant}
-      onClick={() => {
-        window.open(`${DOCS_LINK}${endpoint}`, '_blank', 'noopener noreferrer')
-        ref.current?.blur()
-      }}
-    >
+    <StyledButton variant={variant} onClick={() => window.open(`${DOCS_LINK}${endpoint}`, '_blank', 'noopener noreferrer')}>
       <NotebookIcon size={18} />
       Docs
     </StyledButton>

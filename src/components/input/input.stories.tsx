@@ -20,7 +20,7 @@ const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
 
   return (
     <Theme.Provider darkMode={darkMode}>
-      <Input {...props} />
+      <Input ref={null} {...props} />
     </Theme.Provider>
   )
 }
