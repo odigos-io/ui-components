@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.42](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.41...ui-components-v0.0.42) (2025-02-04)
+
+
+### Bug Fixes
+
+* use info status ([5210c2b](https://github.com/odigos-io/ui-components/commit/5210c2b2d06135d8c7eb1fedbfd00ee2913c999e))
+
 ## [0.0.41](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.40...ui-components-v0.0.41) (2025-02-04)
 
 
