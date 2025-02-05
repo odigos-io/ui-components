@@ -5,14 +5,10 @@ import { Theme } from '@odigos/ui-theme'
 import { FadeLoader } from '../fade-loader'
 import { ExtendArrow } from '../extend-arrow'
 import styled, { useTheme } from 'styled-components'
-import { getStatusIcon, NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import { type Condition, type FetchedCondition, getStatusIcon, mapConditions, NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface ConditionDetailsProps {
-  conditions: {
-    status: NOTIFICATION_TYPE
-    message: string
-    lastTransitionTime: string
-  }[]
+  conditions: (FetchedCondition | Condition)[]
   headerLabelFailed?: string
   headerLabelSuccess?: string
 }
@@ -50,12 +46,14 @@ const Row = styled.div`
 `
 
 const ConditionDetails: FC<ConditionDetailsProps> = ({
-  conditions = [],
+  conditions: c,
   headerLabelFailed = 'Something Failed',
   headerLabelSuccess = 'Everything Successful',
 }) => {
   const theme = useTheme()
   const [extend, setExtend] = useState(false)
+
+  const conditions = mapConditions(c)
 
   const errors = conditions.filter(({ status }) => status === NOTIFICATION_TYPE.ERROR)
   const hasErrors = !!errors.length

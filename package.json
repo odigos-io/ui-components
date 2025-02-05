@@ -28,15 +28,17 @@
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-lottie": "^1.2.10",
     "styled-components": "^6.1.14"
   },
   "dependencies": {
     "@odigos/ui-icons": "^0.0.2",
     "@odigos/ui-theme": "^0.0.2",
-    "@odigos/ui-utils": "^0.0.6",
+    "@odigos/ui-utils": "^0.0.8",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-lottie": "^1.2.10",
     "styled-components": "^6.1.14"
   },
   "devDependencies": {
