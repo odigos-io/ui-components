@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.43](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.42...ui-components-v0.0.43) (2025-02-04)
+
+
+### Features
+
+* add support for "otelDistroName" in containers ([c812e51](https://github.com/odigos-io/ui-components/commit/c812e516407f6cb401d666818939191483aad63c))
+
+
+### Bug Fixes
+
+* title for conditions ([d5388c4](https://github.com/odigos-io/ui-components/commit/d5388c4a43810c6bc96bae61fb46d900e508e015))
+
 ## [0.0.42](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.41...ui-components-v0.0.42) (2025-02-04)
 
 
