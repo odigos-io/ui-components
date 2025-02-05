@@ -112,23 +112,16 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
     }
 
     case DATA_CARD_FIELD_TYPES.SOURCE_CONTAINER: {
-      const { containerName, language, runtimeVersion, instrumented, instrumentationMessage, otelDistroName, otherAgent, hasPresenceOfOtherAgent } =
-        safeJsonParse(value, {
-          containerName: '',
-          language: PROGRAMMING_LANGUAGES.UNKNOWN,
-          runtimeVersion: '',
-          instrumented: false,
-          instrumentationMessage: '',
-          otelDistroName: '',
-          otherAgent: null,
-          hasPresenceOfOtherAgent: false,
-        })
+      const { containerName, language, runtimeVersion, instrumented, instrumentationMessage, otelDistroName } = safeJsonParse(value, {
+        containerName: '',
+        language: PROGRAMMING_LANGUAGES.UNKNOWN,
+        runtimeVersion: '',
+        instrumented: false,
+        instrumentationMessage: '',
+        otelDistroName: '',
+      })
 
       const awaitingInstrumentation = !instrumented && !instrumentationMessage
-      const failedInstrumentation = !instrumented && !!instrumentationMessage
-
-      // Determine if running concurrently is possible based on language and other_agent
-      const canRunInParallel = !hasPresenceOfOtherAgent && (language === PROGRAMMING_LANGUAGES.PYTHON || language === PROGRAMMING_LANGUAGES.JAVA)
 
       return (
         <DataTab
@@ -138,24 +131,14 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
             (!!runtimeVersion ? ` • Runtime Version: ${runtimeVersion}` : '')
           }
           iconSrc={getProgrammingLanguageIcon(language)}
-          isExtended={!!otherAgent || failedInstrumentation}
-          renderExtended={() => (
-            <Fragment>
-              {failedInstrumentation && <NotificationNote type={NOTIFICATION_TYPE.INFO} message={instrumentationMessage} />}
-              {!!otherAgent && (
-                <NotificationNote
-                  type={NOTIFICATION_TYPE.INFO}
-                  message={
-                    hasPresenceOfOtherAgent
-                      ? `By default, we do not operate alongside the ${otherAgent}. Please contact the Odigos team for guidance on enabling this configuration.`
-                      : canRunInParallel
-                      ? `We are operating alongside the ${otherAgent}, which is not the recommended configuration. We suggest disabling the ${otherAgent} for optimal performance.`
-                      : `Concurrent execution with the ${otherAgent} is not supported. Please disable one of the agents to enable proper instrumentation.`
-                  }
-                />
-              )}
-            </Fragment>
-          )}
+          isExtended={!!instrumentationMessage}
+          renderExtended={() => {
+            if (!!instrumentationMessage) {
+              return <NotificationNote type={NOTIFICATION_TYPE.INFO} message={instrumentationMessage} />
+            }
+
+            return null
+          }}
           renderActions={() => {
             return (
               <Status
