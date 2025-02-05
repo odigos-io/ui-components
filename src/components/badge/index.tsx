@@ -7,8 +7,8 @@ interface BadgeProps {
 }
 
 const Styled = styled.span<{ $filled: BadgeProps['filled'] }>`
-  min-width: 18px;
-  padding: 2px;
+  min-width: 16px;
+  padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
