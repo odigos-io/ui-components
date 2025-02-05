@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.0.44](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.43...ui-components-v0.0.44) (2025-02-05)
+
+
+### Features
+
+* add trace-loader ([81152b7](https://github.com/odigos-io/ui-components/commit/81152b7be8bbcccd886113e83e53de768851a957))
+* map conditions in component ([d9cbccd](https://github.com/odigos-io/ui-components/commit/d9cbccd72eebff757881078b4ee99412453c9d74))
+
+
+### Bug Fixes
+
+* badge size ([06dda82](https://github.com/odigos-io/ui-components/commit/06dda824d44ef18f6419341cef674b984282153c))
+
 ## [0.0.43](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.42...ui-components-v0.0.43) (2025-02-04)
 
 
