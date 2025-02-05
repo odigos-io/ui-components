@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.45](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.44...ui-components-v0.0.45) (2025-02-05)
+
+
+### Bug Fixes
+
+* remove other agent from source containers ([399e4a9](https://github.com/odigos-io/ui-components/commit/399e4a9f18b223e1e20ad106de2197512f73c97c))
+
 ## [0.0.44](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.43...ui-components-v0.0.44) (2025-02-05)
 
 
