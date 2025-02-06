@@ -1,6 +1,6 @@
 import React from 'react'
 import Lottie from 'react-lottie'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import animationData from './lottie.json'
 
 interface TraceLoaderProps {
@@ -14,6 +14,7 @@ const Container = styled.div<{ $width: number; $height: number }>`
 `
 
 const TraceLoader: React.FC<TraceLoaderProps> = ({ width: w = 620 }) => {
+  const { darkMode } = useTheme()
   const ratio = 620 / 220 // preserve aspect ratio
   const width = w / ratio
   const height = w
@@ -35,6 +36,7 @@ const TraceLoader: React.FC<TraceLoaderProps> = ({ width: w = 620 }) => {
           position: 'absolute',
           top: -(width - width / 10),
           left: width - width / 10,
+          filter: darkMode ? 'invert(0)' : 'invert(1)',
         }}
       />
     </Container>
