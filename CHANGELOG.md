@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.0.46](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.45...ui-components-v0.0.46) (2025-02-06)
+
+
+### Features
+
+* checkbox with partial-checked, and color edits ([6455e69](https://github.com/odigos-io/ui-components/commit/6455e690b0f24b0216d5316599bd74b7429971ff))
+
+
+### Bug Fixes
+
+* dropdown stories to inclue search ([8f4a528](https://github.com/odigos-io/ui-components/commit/8f4a5283f46b526ca9721740258edf8877de4218))
+* type for "IconButton" onClick prop ([6938384](https://github.com/odigos-io/ui-components/commit/693838449a9a34b4e6ea921de9aad379b0e7c75e))
+
 ## [0.0.45](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.44...ui-components-v0.0.45) (2025-02-05)
 
 
