@@ -42,15 +42,28 @@ export const Default: StoryObj<Props> = Template.bind({})
 
 Default.args = {
   darkMode: true,
-  title: 'Gender',
+  showSearch: true,
+  title: 'Languages',
   options: [
     {
-      id: 'Male',
-      value: 'Male',
+      id: 'Go',
+      value: 'Go',
     },
     {
-      id: 'Female',
-      value: 'Female',
+      id: 'JavaScript',
+      value: 'JavaScript',
+    },
+    {
+      id: 'Python',
+      value: 'Python',
+    },
+    {
+      id: 'Java',
+      value: 'Java',
+    },
+    {
+      id: '.NET',
+      value: '.NET',
     },
   ],
 }
