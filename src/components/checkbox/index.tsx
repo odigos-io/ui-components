@@ -36,7 +36,7 @@ const CheckboxWrapper = styled.div<{ $isChecked: boolean; $disabled?: CheckboxPr
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ $isChecked, theme }) => ($isChecked ? theme.colors.majestic_blue : theme.colors.secondary + Theme.hexPercent['025'])};
+  background-color: ${({ $isChecked, theme }) => ($isChecked ? theme.colors.majestic_blue : theme.colors.secondary + Theme.hexPercent['020'])};
   pointer-events: ${({ $disabled }) => ($disabled ? 'none' : 'auto')};
   transition: border 0.3s, background-color 0.3s;
 `
