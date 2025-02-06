@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.0.47](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.46...ui-components-v0.0.47) (2025-02-06)
+
+
+### Features
+
+* use "preview" for storybook stories ([bc2484f](https://github.com/odigos-io/ui-components/commit/bc2484f547fc57e3c09c70f12666ac5e5156f5c7))
+
+
+### Bug Fixes
+
+* badge width ([71b4304](https://github.com/odigos-io/ui-components/commit/71b43042738f97ada09484d36c60f3d5ae5ce36c))
+* checkbox bg color ([3acb23f](https://github.com/odigos-io/ui-components/commit/3acb23f144f805fc99a7b53fea862ac78af0ff6b))
+* light mode for trace-loader lottie animation ([1344ff8](https://github.com/odigos-io/ui-components/commit/1344ff850106cd20d18bca7a10cabfdf8c265aaa))
+* peer deps ([9482ed0](https://github.com/odigos-io/ui-components/commit/9482ed08ff93f8c7dc81c3f8ed65b2bee8553c9c))
+
 ## [0.0.46](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.45...ui-components-v0.0.46) (2025-02-06)
 
 
