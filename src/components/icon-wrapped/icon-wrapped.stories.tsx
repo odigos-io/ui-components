@@ -1,13 +1,8 @@
-import React, { useEffect } from 'react'
-import { type StoryFn, type StoryObj } from '@storybook/react'
-import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import React from 'react'
 import { SlackLogo } from '@odigos/ui-icons'
-import { Theme } from '@odigos/ui-theme'
+import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
 import { IconWrapped, type IconWrappedProps } from '.'
-
-interface Props extends IconWrappedProps {
-  darkMode: boolean
-}
+import { type StoryFn, type StoryObj } from '@storybook/react'
 
 export default {
   title: 'Components/IconWrapped',
@@ -15,31 +10,20 @@ export default {
 }
 
 // Create a master template for mapping props to render
-const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
-  useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
-  }, [darkMode])
-
-  return (
-    <Theme.Provider darkMode={darkMode}>
-      <IconWrapped {...props} />
-    </Theme.Provider>
-  )
+const Template: StoryFn<IconWrappedProps> = (props) => {
+  return <IconWrapped {...props} />
 }
 
-// Reuse that template for creating different stories
-export const SvgImport: StoryObj<Props> = Template.bind({})
+export const SvgImport: StoryObj<IconWrappedProps> = Template.bind({})
 
 SvgImport.args = {
-  darkMode: true,
   icon: SlackLogo,
   size: 69,
 }
 
-export const ImageUrl: StoryObj<Props> = Template.bind({})
+export const ImageUrl: StoryObj<IconWrappedProps> = Template.bind({})
 
 ImageUrl.args = {
-  darkMode: true,
   src: 'https://odigos.io/images/logo/text-logo.svg',
   alt: 'logo',
   size: 420,

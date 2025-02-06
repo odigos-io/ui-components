@@ -1,41 +1,23 @@
-import React, { useEffect } from 'react'
-import { type StoryFn, type StoryObj } from '@storybook/react'
-import { useTheme } from 'styled-components'
-import { getStatusIcon, isOverTime, NOTIFICATION_TYPE, useCopy, useTimeAgo } from '@odigos/ui-utils'
-import { CopyIcon, KeyIcon } from '@odigos/ui-icons'
-import { Theme } from '@odigos/ui-theme'
-import { InteractiveTable, type InteractiveTableProps } from '.'
-import { IconButton } from '../icon-button'
-import { FlexRow } from '../../styled'
+import React from 'react'
 import { Text } from '../text'
-
-interface Props extends InteractiveTableProps {
-  darkMode: boolean
-}
+import { FlexRow } from '../../styled'
+import { IconButton } from '../icon-button'
+import { useTheme } from 'styled-components'
+import { type StoryFn } from '@storybook/react'
+import { CopyIcon, KeyIcon } from '@odigos/ui-icons'
+import { InteractiveTable, type InteractiveTableProps } from '.'
+import { getStatusIcon, isOverTime, NOTIFICATION_TYPE, useCopy, useTimeAgo } from '@odigos/ui-utils'
 
 export default {
   title: 'Components/InteractiveTable',
   component: InteractiveTable,
 }
 
-// Create a master template for mapping props to render
-const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
-  useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
-  }, [darkMode])
-
-  return (
-    <Theme.Provider darkMode={darkMode}>
-      <InteractiveTable {...props} />
-    </Theme.Provider>
-  )
+export const Default: StoryFn<InteractiveTableProps> = (props) => {
+  return <InteractiveTable {...props} />
 }
 
-// Reuse that template for creating different stories
-export const Default: StoryObj<Props> = Template.bind({})
-
 Default.args = {
-  darkMode: true,
   columns: [
     { key: 'icon', title: '' },
     { key: 'name', title: 'Name' },

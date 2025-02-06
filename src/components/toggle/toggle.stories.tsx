@@ -1,37 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { type StoryFn, type StoryObj } from '@storybook/react'
-import { Theme } from '@odigos/ui-theme'
+import React, { useState } from 'react'
 import { Toggle, type ToggleProps } from '.'
-
-interface Props extends ToggleProps {
-  darkMode: boolean
-}
+import { type StoryFn } from '@storybook/react'
 
 export default {
   title: 'Components/Toggle',
   component: Toggle,
 }
 
-// Create a master template for mapping props to render
-const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
-  useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
-  }, [darkMode])
-
+export const Default: StoryFn<ToggleProps> = (props) => {
   const [val, setVal] = useState(false)
 
-  return (
-    <Theme.Provider darkMode={darkMode}>
-      <Toggle {...props} initialValue={val} onChange={setVal} />
-    </Theme.Provider>
-  )
+  return <Toggle {...props} initialValue={val} onChange={setVal} />
 }
 
-// Reuse that template for creating different stories
-export const Default: StoryObj<Props> = Template.bind({})
-
 Default.args = {
-  darkMode: true,
   title: 'Deploy on Friday',
   tooltip: 'We don’t recommend deploying on Fridays',
 }

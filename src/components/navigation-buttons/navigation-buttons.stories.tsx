@@ -1,36 +1,18 @@
-import React, { useEffect } from 'react'
-import { type StoryFn, type StoryObj } from '@storybook/react'
+import React from 'react'
 import { ArrowIcon } from '@odigos/ui-icons'
-import { Theme } from '@odigos/ui-theme'
+import { type StoryFn } from '@storybook/react'
 import { NavigationButtons, type NavigationButtonsProps } from '.'
-
-interface Props extends NavigationButtonsProps {
-  darkMode: boolean
-}
 
 export default {
   title: 'Components/NavigationButtons',
   component: NavigationButtons,
 }
 
-// Create a master template for mapping props to render
-const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
-  useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
-  }, [darkMode])
-
-  return (
-    <Theme.Provider darkMode={darkMode}>
-      <NavigationButtons {...props} />
-    </Theme.Provider>
-  )
+export const Default: StoryFn<NavigationButtonsProps> = (props) => {
+  return <NavigationButtons {...props} />
 }
 
-// Reuse that template for creating different stories
-export const Default: StoryObj<Props> = Template.bind({})
-
 Default.args = {
-  darkMode: true,
   buttons: [
     {
       label: 'BACK',

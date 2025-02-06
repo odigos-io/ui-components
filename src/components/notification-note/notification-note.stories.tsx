@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react'
-import { type StoryFn, type StoryObj } from '@storybook/react'
+import React from 'react'
 import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
-import { Theme } from '@odigos/ui-theme'
+import { type StoryFn, type StoryObj } from '@storybook/react'
 import { NotificationNote, type NotificationNoteProps } from '.'
-
-interface Props extends NotificationNoteProps {
-  darkMode: boolean
-}
 
 export default {
   title: 'Components/NotificationNote',
@@ -14,35 +9,24 @@ export default {
 }
 
 // Create a master template for mapping props to render
-const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
-  useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
-  }, [darkMode])
-
-  return (
-    <Theme.Provider darkMode={darkMode}>
-      <NotificationNote {...props} />
-    </Theme.Provider>
-  )
+const Template: StoryFn<NotificationNoteProps> = (props) => {
+  return <NotificationNote {...props} />
 }
 
-// Reuse that template for creating different stories
-export const Default: StoryObj<Props> = Template.bind({})
+export const Default: StoryObj<NotificationNoteProps> = Template.bind({})
 
 Default.args = {
-  darkMode: true,
   type: NOTIFICATION_TYPE.WARNING,
   title: 'Stop right there!',
   message: 'You have violated the law!',
 }
 
-export const Toast: StoryObj<Props> = Template.bind({})
+export const LongText: StoryObj<NotificationNoteProps> = Template.bind({})
 
-Toast.args = {
-  darkMode: true,
+LongText.args = {
   type: NOTIFICATION_TYPE.DEFAULT,
+  overrideMaxWidth: '100%',
   title: 'Testing long texts...',
   message:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula porta nisl a commodo. Donec eu lectus vel lacus bibendum commodo. Morbi semper feugiat cursus. Proin blandit consequat condimentum. Duis vel hendrerit augue, at porttitor ligula. Aliquam erat volutpat. Vestibulum non mollis urna, sit amet ornare urna. Vestibulum ullamcorper urna quis nulla finibus, ut sodales nisl euismod.',
-  onClose: () => console.log('Closed!'),
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula porta nisl a commodo. Donec eu lectus vel lacus bibendum commodo. Morbi semper feugiat cursus. Proin blandit consequat condimentum. Duis vel hendrerit augue, at porttitor ligula. Aliquam erat volutpat. Vestibulum non mollis urna, sit amet ornare urna. Vestibulum ullamcorper urna quis nulla finibus, ut sodales nisl euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula porta nisl a commodo. Donec eu lectus vel lacus bibendum commodo. Morbi semper feugiat cursus. Proin blandit consequat condimentum. Duis vel hendrerit augue, at porttitor ligula. Aliquam erat volutpat. Vestibulum non mollis urna, sit amet ornare urna. Vestibulum ullamcorper urna quis nulla finibus, ut sodales nisl euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula porta nisl a commodo. Donec eu lectus vel lacus bibendum commodo. Morbi semper feugiat cursus. Proin blandit consequat condimentum. Duis vel hendrerit augue, at porttitor ligula. Aliquam erat volutpat. Vestibulum non mollis urna, sit amet ornare urna. Vestibulum ullamcorper urna quis nulla finibus, ut sodales nisl euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula porta nisl a commodo. Donec eu lectus vel lacus bibendum commodo. Morbi semper feugiat cursus. Proin blandit consequat condimentum. Duis vel hendrerit augue, at porttitor ligula. Aliquam erat volutpat. Vestibulum non mollis urna, sit amet ornare urna. Vestibulum ullamcorper urna quis nulla finibus, ut sodales nisl euismod.',
 }

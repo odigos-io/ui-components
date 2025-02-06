@@ -1,39 +1,20 @@
-import React, { useEffect } from 'react'
-import { type StoryFn, type StoryObj } from '@storybook/react'
-import { useTheme } from 'styled-components'
-import { EditIcon, TerminalIcon, TrashIcon } from '@odigos/ui-icons'
-import { Theme } from '@odigos/ui-theme'
-import { Drawer, type DrawerProps } from '.'
-import { NoDataFound } from '../..'
+import React from 'react'
 import { Text } from '../text'
-
-interface Props extends DrawerProps {
-  darkMode: boolean
-}
+import { NoDataFound } from '../..'
+import { Drawer, type DrawerProps } from '.'
+import { type StoryFn } from '@storybook/react'
+import { EditIcon, TerminalIcon, TrashIcon } from '@odigos/ui-icons'
 
 export default {
   title: 'Components/Drawer',
   component: Drawer,
 }
 
-// Create a master template for mapping props to render
-const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
-  useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
-  }, [darkMode])
-
-  return (
-    <Theme.Provider darkMode={darkMode}>
-      <Drawer {...props} />
-    </Theme.Provider>
-  )
+export const Default: StoryFn<DrawerProps> = (props) => {
+  return <Drawer {...props} />
 }
 
-// Reuse that template for creating different stories
-export const Default: StoryObj<Props> = Template.bind({})
-
 Default.args = {
-  darkMode: true,
   isOpen: true,
   onClose: () => {},
   width: '700px',

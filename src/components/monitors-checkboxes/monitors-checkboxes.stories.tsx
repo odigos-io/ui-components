@@ -1,36 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { type StoryFn, type StoryObj } from '@storybook/react'
+import React, { useState } from 'react'
 import { SIGNAL_TYPE } from '@odigos/ui-utils'
-import { Theme } from '@odigos/ui-theme'
+import { type StoryFn } from '@storybook/react'
 import { MonitorsCheckboxes, type MonitorsCheckboxesProps } from '.'
-
-interface Props extends MonitorsCheckboxesProps {
-  darkMode: boolean
-}
 
 export default {
   title: 'Components/MonitorsCheckboxes',
   component: MonitorsCheckboxes,
 }
 
-// Create a master template for mapping props to render
-const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
-  useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
-  }, [darkMode])
-
+export const Default: StoryFn<MonitorsCheckboxesProps> = (props) => {
   const [val, setVal] = useState<SIGNAL_TYPE[]>([SIGNAL_TYPE.LOGS])
 
-  return (
-    <Theme.Provider darkMode={darkMode}>
-      <MonitorsCheckboxes {...props} selectedSignals={val} setSelectedSignals={setVal} />
-    </Theme.Provider>
-  )
+  return <MonitorsCheckboxes {...props} selectedSignals={val} setSelectedSignals={setVal} />
 }
 
-// Reuse that template for creating different stories
-export const Default: StoryObj<Props> = Template.bind({})
-
-Default.args = {
-  darkMode: true,
-}
+Default.args = {}

@@ -1,39 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import { type StoryFn, type StoryObj } from '@storybook/react'
+import React, { Fragment, useState } from 'react'
+import { type StoryFn } from '@storybook/react'
 import { safeJsonStringify } from '@odigos/ui-utils'
-import { Theme } from '@odigos/ui-theme'
 import { Code, type CodeProps, ToggleCodeComponent } from '.'
-
-interface Props extends CodeProps {
-  darkMode: boolean
-}
 
 export default {
   title: 'Components/Code',
   component: Code,
 }
 
-// Create a master template for mapping props to render the component
-const Template: StoryFn<Props> = ({ darkMode, ...props }) => {
-  useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
-  }, [darkMode])
-
+export const Default: StoryFn<CodeProps> = (props) => {
   const [val, setVal] = useState(false)
 
   return (
-    <Theme.Provider darkMode={darkMode}>
+    <Fragment>
       <ToggleCodeComponent isPrettyMode={val} setIsPrettyMode={setVal} />
       <Code pretty={val} {...props} />
-    </Theme.Provider>
+    </Fragment>
   )
 }
 
-// Reuse that template for creating different stories
-export const Default: StoryObj<Props> = Template.bind({})
-
 Default.args = {
-  darkMode: true,
   language: 'json',
   flatten: false,
   code: safeJsonStringify({
