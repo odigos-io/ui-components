@@ -1,10 +1,10 @@
-import React, { type CSSProperties, type FC, type PropsWithChildren } from 'react'
+import React, { type MouseEvent, type CSSProperties, type FC, type PropsWithChildren } from 'react'
 import { Tooltip } from '../tooltip'
 import styled from 'styled-components'
 import { Theme } from '@odigos/ui-theme'
 
 interface IconButtonProps extends PropsWithChildren {
-  onClick?: () => void
+  onClick?: (e: MouseEvent) => void
   tooltip?: string
   size?: number
   withPing?: boolean
