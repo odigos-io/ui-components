@@ -1,7 +1,7 @@
 import React, { type FC, useState } from 'react'
 import { Text } from '../text'
+import Theme from '@odigos/ui-theme'
 import { FlexRow } from '../../styled'
-import { Theme } from '@odigos/ui-theme'
 import { FadeLoader } from '../fade-loader'
 import { ExtendArrow } from '../extend-arrow'
 import styled, { useTheme } from 'styled-components'
@@ -16,11 +16,11 @@ interface ConditionDetailsProps {
 const Container = styled.div<{ $hasErrors: boolean }>`
   border-radius: 24px;
   background-color: ${({ theme, $hasErrors }) =>
-    $hasErrors ? theme.text.error + Theme.hexPercent['010'] : theme.colors.secondary + Theme.hexPercent['005']};
+    $hasErrors ? theme.text.error + Theme.opacity.hex['010'] : theme.colors.secondary + Theme.opacity.hex['005']};
   cursor: pointer;
   &:hover {
     background-color: ${({ theme, $hasErrors }) =>
-      $hasErrors ? theme.text.error + Theme.hexPercent['020'] : theme.colors.secondary + Theme.hexPercent['010']};
+      $hasErrors ? theme.text.error + Theme.opacity.hex['020'] : theme.colors.secondary + Theme.opacity.hex['010']};
   }
   transition: background 0.3s;
 `

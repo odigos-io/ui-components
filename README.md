@@ -1,5 +1,7 @@
 # Odigos UI Components
 
+This library contains re-usable components for various Odigos UI deployments, and a library ([ui-containers](https://github.com/odigos-io/ui-containers)).
+
 ## Installation
 
 Using **npm**:
@@ -16,16 +18,14 @@ yarn add @odigos/ui-components
 
 ## Usage
 
-Wrap your app with the theme provider from [`@odigos/ui-theme`](https://github.com/odigos-io/ui-theme):
+Wrap your app with the theme provider from [@odigos/ui-theme](https://github.com/odigos-io/ui-theme):
 
 ```tsx
-import { Theme } from '@odigos/ui-theme'
+import Theme from '@odigos/ui-theme'
 
 const AppProviders = () => {
-  const darkMode = true
-
   return (
-    <Theme.Provider darkMode={darkMode}>
+    <Theme.Provider>
       <App />
     </Theme.Provider>
   )

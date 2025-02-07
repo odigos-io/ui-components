@@ -1,6 +1,6 @@
 import React, { type FC } from 'react'
+import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
-import { Theme } from '@odigos/ui-theme'
 import { FlexRow } from '../../../styled'
 import { useTransition } from '@odigos/ui-utils'
 import { Button, type ButtonProps } from '../../button'
@@ -37,8 +37,8 @@ const FooterButton = styled(Button)`
 const DrawerFooter: FC<DrawerFooterProps> = ({ isOpen, leftButtons = [], rightButtons = [] }) => {
   const Transition = useTransition({
     container: Container,
-    animateIn: Theme.slide.in['bottom'],
-    animateOut: Theme.slide.out['bottom'],
+    animateIn: Theme.animations.slide.in['bottom'],
+    animateOut: Theme.animations.slide.out['bottom'],
   })
 
   return (

@@ -1,6 +1,6 @@
 import React, { type FC, useState } from 'react'
+import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
-import { Theme } from '@odigos/ui-theme'
 import { OdigosLogo, SVG } from '@odigos/ui-icons'
 import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
@@ -21,7 +21,7 @@ const Container = styled.div<{ $status: IconWrappedProps['status']; $size: numbe
   border-radius: 8px;
   background: ${({ $status, theme }) => {
     const clr = $status ? theme.text[$status] : theme.text.secondary
-    return `linear-gradient(180deg, ${clr + Theme.hexPercent['020']} 0%, ${clr + Theme.hexPercent['005']} 100%)`
+    return `linear-gradient(180deg, ${clr + Theme.opacity.hex['020']} 0%, ${clr + Theme.opacity.hex['005']} 100%)`
   }};
 `
 

@@ -3,7 +3,7 @@ import { Text } from '../text'
 import { Status } from '../status'
 import { Tooltip } from '../tooltip'
 import { Divider } from '../divider'
-import { Theme } from '@odigos/ui-theme'
+import Theme from '@odigos/ui-theme'
 import { type SVG } from '@odigos/ui-icons'
 import { IconButton } from '../icon-button'
 import { IconWrapped } from '../icon-wrapped'
@@ -42,14 +42,14 @@ const Container = styled.div<{ $withClick: boolean; $isError: DataTabProps['isEr
   width: calc(100% - 32px);
   border-radius: 16px;
   background-color: ${({ $isError, theme }) =>
-    $isError ? theme.text.error + Theme.hexPercent['010'] : theme.colors.secondary + Theme.hexPercent['005']};
+    $isError ? theme.text.error + Theme.opacity.hex['010'] : theme.colors.secondary + Theme.opacity.hex['005']};
 
   ${({ $withClick, $isError, theme }) =>
     $withClick &&
     css`
       &:hover {
         cursor: pointer;
-        background-color: ${$isError ? theme.text.error + Theme.hexPercent['020'] : theme.colors.secondary + Theme.hexPercent['010']};
+        background-color: ${$isError ? theme.text.error + Theme.opacity.hex['020'] : theme.colors.secondary + Theme.opacity.hex['010']};
         ${ControlledVisibility} {
           visibility: visible;
         }

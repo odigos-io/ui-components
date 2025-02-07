@@ -1,7 +1,7 @@
 import React, { type MouseEvent, type CSSProperties, type FC, type PropsWithChildren } from 'react'
 import { Tooltip } from '../tooltip'
+import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
-import { Theme } from '@odigos/ui-theme'
 
 interface IconButtonProps extends PropsWithChildren {
   onClick?: (e: MouseEvent) => void
@@ -42,7 +42,7 @@ const Ping = styled.div<{ $size: number; $color: IconButtonProps['pingColor'] }>
     inset: 0;
     border-radius: 100%;
     background-color: ${({ theme, $color }) => $color || theme.colors.secondary};
-    animation: ${Theme.ping} 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    animation: ${Theme.animations.ping} 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
 `
 

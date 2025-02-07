@@ -1,8 +1,8 @@
 import React, { type ReactNode, type FC } from 'react'
 import ReactDOM from 'react-dom'
+import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
 import { Overlay } from '../../styled'
-import { Theme } from '@odigos/ui-theme'
 import { useKeyDown, useTransition } from '@odigos/ui-utils'
 import { DrawerHeader, DrawerHeaderProps } from './drawer-header'
 import { DrawerFooter, DrawerFooterProps } from './drawer-footer'
@@ -29,7 +29,7 @@ const Container = styled.div<{
   z-index: 1000;
   width: ${({ $width }) => $width};
   background: ${({ theme }) => theme.colors.translucent_bg};
-  box-shadow: 0 2px 10px ${({ theme }) => theme.colors.primary + Theme.hexPercent['010']};
+  box-shadow: 0 2px 10px ${({ theme }) => theme.colors.primary + Theme.opacity.hex['010']};
   overflow-y: auto;
 `
 
@@ -65,8 +65,8 @@ const Drawer: FC<DrawerProps> = ({
 
   const Transition = useTransition({
     container: Container,
-    animateIn: Theme.slide.in[position],
-    animateOut: Theme.slide.out[position],
+    animateIn: Theme.animations.slide.in[position],
+    animateOut: Theme.animations.slide.out[position],
   })
 
   if (!isOpen) return null

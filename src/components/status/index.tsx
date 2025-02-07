@@ -1,7 +1,7 @@
 import React, { type FC } from 'react'
 import { Text } from '../text'
 import { Divider } from '../divider'
-import { Theme } from '@odigos/ui-theme'
+import Theme from '@odigos/ui-theme'
 import styled, { useTheme } from 'styled-components'
 import { getStatusIcon, NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
@@ -30,9 +30,9 @@ const Container = styled.div<{
     $withBorder || $withBackground ? `${$size / ($withBorder ? 3 : 2)}px ${$size / ($withBorder ? 1.5 : 1)}px` : '0'};
   width: fit-content;
   border-radius: 360px;
-  border: ${({ $withBorder, $status, theme }) => ($withBorder ? `1px solid ${theme.text[$status] + Theme.hexPercent['050']}` : 'none')};
+  border: ${({ $withBorder, $status, theme }) => ($withBorder ? `1px solid ${theme.text[$status] + Theme.opacity.hex['050']}` : 'none')};
   background: ${({ $withBackground, $status, theme }) =>
-    $withBackground ? `linear-gradient(90deg, transparent 0%, ${theme.text[$status] + Theme.hexPercent['030']} 100%)` : 'transparent'};
+    $withBackground ? `linear-gradient(90deg, transparent 0%, ${theme.text[$status] + Theme.opacity.hex['030']} 100%)` : 'transparent'};
 `
 
 const IconWrapper = styled.div`

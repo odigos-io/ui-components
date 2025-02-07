@@ -1,8 +1,8 @@
 import React, { type ReactNode, type FC } from 'react'
 import ReactDOM from 'react-dom'
 import { Text } from '../text'
+import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
-import { Theme } from '@odigos/ui-theme'
 import { XIcon } from '@odigos/ui-icons'
 import { CenterThis, Overlay } from '../../styled'
 import { useKeyDown, useTransition } from '@odigos/ui-utils'
@@ -30,7 +30,7 @@ const Container = styled.div`
   border: ${({ theme }) => `1px solid ${theme.colors.border}`};
   border-radius: 40px;
   box-shadow: ${({ theme }) => {
-    const color = theme.colors.primary + Theme.hexPercent['010']
+    const color = theme.colors.primary + Theme.opacity.hex['010']
     return `0px 1px 1px 0px ${color}, 0px 2px 2px 0px ${color}, 0px 5px 5px 0px ${color}, 0px 10px 10px 0px ${color}, 0px 0px 8px 0px ${color}`
   }};
 `
@@ -99,8 +99,8 @@ const Modal: FC<ModalProps> = ({ isOpen, noOverlay, header, actionComponent, onC
 
   const Transition = useTransition({
     container: Container,
-    animateIn: Theme.slide.in['center'],
-    animateOut: Theme.slide.out['center'],
+    animateIn: Theme.animations.slide.in['center'],
+    animateOut: Theme.animations.slide.out['center'],
   })
 
   if (!isOpen) return null

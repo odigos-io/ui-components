@@ -1,4 +1,4 @@
-// Components should point at the index files, to exclude Storybook stories
+// Exports should point at the index files, to exclude Storybook stories
 
 export * from './auto-complete-input/index'
 export * from './badge/index'

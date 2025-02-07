@@ -1,12 +1,10 @@
-import React, { type FC, useEffect } from 'react'
+import React, { type FC } from 'react'
+import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
 import { FlexRow } from '../../styled'
 import { MoonIcon, SunIcon } from '@odigos/ui-icons'
 
-interface ToggleDarkModeProps {
-  darkMode: boolean
-  setDarkMode: (darkMode: boolean) => void
-}
+interface ToggleDarkModeProps {}
 
 const Container = styled(FlexRow)`
   position: relative;
@@ -38,20 +36,11 @@ const Background = styled.div<{ $darkMode: boolean }>`
   transition: all 0.3s;
 `
 
-const ToggleDarkMode: FC<ToggleDarkModeProps> = ({ darkMode, setDarkMode }) => {
-  useEffect(() => {
-    const lsValue = localStorage.getItem('darkMode')
-    if (!!lsValue) setDarkMode(lsValue == 'true')
-  }, [])
-
-  const handleToggle = (bool?: boolean) => {
-    const val = typeof bool === 'boolean' ? bool : !darkMode
-    setDarkMode(val)
-    localStorage.setItem('darkMode', JSON.stringify(val))
-  }
+const ToggleDarkMode: FC<ToggleDarkModeProps> = () => {
+  const { darkMode, setDarkMode } = Theme.useDarkMode()
 
   return (
-    <Container onClick={() => handleToggle()}>
+    <Container onClick={() => setDarkMode(!darkMode)}>
       <MoonIcon />
       <SunIcon />
       <Background $darkMode={darkMode} />

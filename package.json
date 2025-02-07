@@ -22,9 +22,9 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@odigos/ui-icons": "^0.0.5",
-    "@odigos/ui-theme": "^0.0.4",
-    "@odigos/ui-utils": "^0.0.10",
+    "@odigos/ui-icons": "^0.0.6",
+    "@odigos/ui-theme": "^0.0.7",
+    "@odigos/ui-utils": "^0.0.11",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -32,9 +32,9 @@
     "styled-components": "^6.1.15"
   },
   "dependencies": {
-    "@odigos/ui-icons": "^0.0.5",
-    "@odigos/ui-theme": "^0.0.4",
-    "@odigos/ui-utils": "^0.0.10",
+    "@odigos/ui-icons": "^0.0.6",
+    "@odigos/ui-theme": "^0.0.7",
+    "@odigos/ui-utils": "^0.0.11",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -65,7 +65,7 @@
     "eslint-plugin-storybook": "^0.11.2",
     "html-webpack-plugin": "^5.6.3",
     "postcss": "^8.5.1",
-    "rollup": "^4.34.4",
+    "rollup": "^4.34.6",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.36.0",
     "storybook": "^8.5.3",

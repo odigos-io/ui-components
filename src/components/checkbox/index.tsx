@@ -1,7 +1,7 @@
 import React, { type CSSProperties, type FC, type MouseEventHandler, useEffect, useState } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
-import { Theme } from '@odigos/ui-theme'
+import Theme from '@odigos/ui-theme'
 import { FlexColumn } from '../../styled'
 import { FieldError } from '../field-error'
 import styled, { useTheme } from 'styled-components'
@@ -36,7 +36,7 @@ const CheckboxWrapper = styled.div<{ $isChecked: boolean; $disabled?: CheckboxPr
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ $isChecked, theme }) => ($isChecked ? theme.colors.majestic_blue : theme.colors.secondary + Theme.hexPercent['020'])};
+  background-color: ${({ $isChecked, theme }) => ($isChecked ? theme.colors.majestic_blue : theme.colors.secondary + Theme.opacity.hex['020'])};
   pointer-events: ${({ $disabled }) => ($disabled ? 'none' : 'auto')};
   transition: border 0.3s, background-color 0.3s;
 `

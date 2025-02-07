@@ -2,9 +2,9 @@ import React, { useState, useRef, type FC } from 'react'
 import { Text } from '../text'
 import { Badge } from '../badge'
 import { Input } from '../input'
+import Theme from '@odigos/ui-theme'
 import { Divider } from '../divider'
 import { Checkbox } from '../checkbox'
-import { Theme } from '@odigos/ui-theme'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
 import { ExtendArrow } from '../extend-arrow'
@@ -296,7 +296,7 @@ const DropdownItem = styled.div`
   border-radius: 32px;
   &:hover,
   &.selected {
-    background: ${({ theme }) => theme.colors.majestic_blue + Theme.hexPercent['024']};
+    background: ${({ theme }) => theme.colors.majestic_blue + Theme.opacity.hex['024']};
   }
 `
 
