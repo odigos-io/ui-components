@@ -1,11 +1,12 @@
-import React, { Fragment, type FC } from 'react'
+import React, { type FC } from 'react'
 import { Text } from '../../text'
 import { Code } from '../../code'
+import Theme from '@odigos/ui-theme'
 import { Status } from '../../status'
+import styled from 'styled-components'
 import { Tooltip } from '../../tooltip'
 import { Divider } from '../../divider'
 import { DataTab } from '../../data-tab'
-import styled, { useTheme } from 'styled-components'
 import { MonitorsIcons } from '../../monitors-icons'
 import { NotificationNote } from '../../notification-note'
 import { InteractiveTable } from '../../interactive-table'
@@ -79,7 +80,7 @@ const PreWrap = styled(Text)`
 
 // We need to maintain this with new components every time we add a new type to "DATA_CARD_FIELD_TYPES"
 const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCardFieldsProps['data'][0]['value']) => {
-  const theme = useTheme()
+  const theme = Theme.useTheme()
 
   switch (type) {
     case DATA_CARD_FIELD_TYPES.DIVIDER:

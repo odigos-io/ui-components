@@ -2,9 +2,9 @@ import React, { type CSSProperties, type FC, type MouseEventHandler, useEffect, 
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
 import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { FlexColumn } from '../../styled'
 import { FieldError } from '../field-error'
-import styled, { useTheme } from 'styled-components'
 import { CheckIcon, MinusIcon } from '@odigos/ui-icons'
 
 interface CheckboxProps {
@@ -53,7 +53,7 @@ const Checkbox: FC<CheckboxProps> = ({
   errorMessage,
   allowPropagation = false,
 }) => {
-  const theme = useTheme()
+  const theme = Theme.useTheme()
 
   const [isChecked, setIsChecked] = useState(value)
   useEffect(() => setIsChecked(value), [value])

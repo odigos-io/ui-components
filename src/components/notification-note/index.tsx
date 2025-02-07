@@ -3,9 +3,9 @@ import { Text } from '../text'
 import Theme from '@odigos/ui-theme'
 import { Divider } from '../divider'
 import { FlexRow } from '../../styled'
+import styled from 'styled-components'
 import { XIcon } from '@odigos/ui-icons'
 import { IconButton } from '../icon-button'
-import styled, { useTheme } from 'styled-components'
 import { getStatusIcon, NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface OnCloseParams {
@@ -92,7 +92,7 @@ const ActionButton = styled(Text)`
 `
 
 const NotificationNote: FC<NotificationNoteProps> = ({ type, title, message, action, onClose, duration = 5000, overrideMaxWidth, style }) => {
-  const theme = useTheme()
+  const theme = Theme.useTheme()
 
   // These are for handling transitions:
   // isLeaving - to trigger the slide-out animation

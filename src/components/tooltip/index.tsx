@@ -1,8 +1,9 @@
 import React, { useState, type PropsWithChildren, useRef, type MouseEvent, forwardRef, type FC } from 'react'
 import ReactDOM from 'react-dom'
 import { Text } from '../text'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { InfoIcon } from '@odigos/ui-icons'
-import styled, { useTheme } from 'styled-components'
 
 interface Position {
   top: number
@@ -73,7 +74,7 @@ const PopupContainer = styled.div<{ $top: number; $left: number }>`
 `
 
 const Popup = forwardRef<HTMLDivElement, PopupProps>(({ top, left, children }, ref) => {
-  const theme = useTheme()
+  const theme = Theme.useTheme()
 
   return ReactDOM.createPortal(
     <PopupContainer ref={ref} $top={top} $left={left}>

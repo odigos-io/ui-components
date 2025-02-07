@@ -1,7 +1,8 @@
 import React, { type FC } from 'react'
 import { Text } from '../text'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { NoDataIcon } from '@odigos/ui-icons'
-import styled, { useTheme } from 'styled-components'
 
 interface NoDataFoundProps {
   title?: string
@@ -33,7 +34,7 @@ const SubTitle = styled(Text)`
 `
 
 const NoDataFound: FC<NoDataFoundProps> = ({ title = 'No data found', subTitle = 'Check your search phrase and try one more time' }) => {
-  const theme = useTheme()
+  const theme = Theme.useTheme()
 
   return (
     <Container>

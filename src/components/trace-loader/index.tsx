@@ -1,6 +1,7 @@
 import React from 'react'
 import Lottie from 'react-lottie'
-import styled, { useTheme } from 'styled-components'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import animationData from './lottie.json'
 
 interface TraceLoaderProps {
@@ -14,7 +15,7 @@ const Container = styled.div<{ $width: number; $height: number }>`
 `
 
 const TraceLoader: React.FC<TraceLoaderProps> = ({ width: w = 620 }) => {
-  const { darkMode } = useTheme()
+  const { darkMode } = Theme.useDarkMode()
   const ratio = 620 / 220 // preserve aspect ratio
   const width = w / ratio
   const height = w

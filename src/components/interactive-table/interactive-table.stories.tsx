@@ -1,8 +1,8 @@
 import React from 'react'
 import { Text } from '../text'
+import Theme from '@odigos/ui-theme'
 import { FlexRow } from '../../styled'
 import { IconButton } from '../icon-button'
-import { useTheme } from 'styled-components'
 import { type StoryFn } from '@storybook/react'
 import { CopyIcon, KeyIcon } from '@odigos/ui-icons'
 import { InteractiveTable, type InteractiveTableProps } from '.'
@@ -32,7 +32,7 @@ Default.args = {
     {
       columnKey: 'expires_at',
       component: () => {
-        const theme = useTheme()
+        const theme = Theme.useTheme()
 
         return (
           <Text

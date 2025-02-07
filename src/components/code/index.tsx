@@ -1,8 +1,9 @@
 import React, { type FC, Fragment, type HTMLAttributes, useId } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { FlexRow } from '../../styled'
-import styled, { useTheme } from 'styled-components'
 import { Highlight, themes as prismThemes, type Token } from 'prism-react-renderer'
 import { flattenObjectKeys, getStatusIcon, NOTIFICATION_TYPE, removeEmptyValuesFromObject, safeJsonParse, safeJsonStringify } from '@odigos/ui-utils'
 
@@ -45,7 +46,7 @@ const CodeLineToken = styled.span<{ $noWrap?: boolean }>`
 `
 
 const Code: FC<CodeProps> = ({ language, code, flatten, pretty }) => {
-  const { darkMode } = useTheme()
+  const { darkMode } = Theme.useDarkMode()
 
   let str = ''
 
@@ -129,7 +130,7 @@ const getComponentsFromPropertyString = (propertyString: string) => {
 }
 
 const PrettyJsonCode: FC<{ darkMode: boolean; str: string }> = ({ darkMode, str }) => {
-  const theme = useTheme()
+  const theme = Theme.useTheme()
 
   const renderEmptyRows = (count: number = 2) => {
     const rows = new Array(count).fill((props: HTMLAttributes<HTMLTableRowElement>) => (

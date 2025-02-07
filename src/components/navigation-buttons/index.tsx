@@ -1,8 +1,9 @@
 import React, { type FC } from 'react'
 import { Button } from '../button'
 import { Tooltip } from '../tooltip'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { type SVG } from '@odigos/ui-icons'
-import styled, { useTheme } from 'styled-components'
 
 interface IButton {
   label: string
@@ -33,7 +34,7 @@ const StyledButton = styled(Button)`
 `
 
 const NavigationButtons: FC<NavigationButtonsProps> = ({ buttons }) => {
-  const theme = useTheme()
+  const theme = Theme.useTheme()
 
   const shouldRenderBackButton = ({ button, index }: { button: IButton; index: number }) => {
     return buttons.length > 1 && index === 0 && (button.icon || button.iconSrc)

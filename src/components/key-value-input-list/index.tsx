@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef, type FC } from 'react'
 import { Text } from '../text'
 import { Input } from '../input'
 import { Button } from '../button'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { isEmpty } from '@odigos/ui-utils'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
-import styled, { useTheme } from 'styled-components'
 import { ArrowIcon, PlusIcon, TrashIcon } from '@odigos/ui-icons'
 
 type Row = {
@@ -74,7 +75,7 @@ const INITIAL_ROW: Row = {
 }
 
 const KeyValueInputsList: FC<KeyValueInputsListProps> = ({ initialKeyValuePairs = [], value, onChange, title, tooltip, required, errorMessage }) => {
-  const theme = useTheme()
+  const theme = Theme.useTheme()
   const [rows, setRows] = useState<Row[]>(value || initialKeyValuePairs)
 
   useEffect(() => {

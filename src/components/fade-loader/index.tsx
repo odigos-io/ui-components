@@ -1,5 +1,5 @@
 import React, { type CSSProperties, type DetailedHTMLProps, type FC, type HTMLAttributes } from 'react'
-import { useTheme } from 'styled-components'
+import Theme from '@odigos/ui-theme'
 import { createAnimation } from './helpers/animation'
 import { cssValue, parseLengthAndUnit } from './helpers/unitConverter'
 
@@ -22,7 +22,7 @@ const FadeLoader: FC<FadeLoaderProps> = ({
   style = {},
   ...additionalprops
 }) => {
-  const theme = useTheme()
+  const theme = Theme.useTheme()
   if (!loading) return null
 
   const color = clr || theme.text.secondary

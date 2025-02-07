@@ -9,8 +9,8 @@ import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
 import { ExtendArrow } from '../extend-arrow'
 import { NoDataFound } from '../no-data-found'
+import styled, { css } from 'styled-components'
 import { useOnClickOutside } from '@odigos/ui-utils'
-import styled, { css, useTheme } from 'styled-components'
 import { CheckIcon, CrossIcon, SearchIcon } from '@odigos/ui-icons'
 
 interface DropdownOption {
@@ -186,7 +186,7 @@ const DropdownPlaceholder: FC<{
   placeholder: DropdownProps['placeholder']
   onDeselect: DropdownProps['onDeselect']
 }> = ({ value, placeholder, onDeselect }) => {
-  const theme = useTheme()
+  const theme = Theme.useTheme()
 
   if (Array.isArray(value)) {
     return !!value.length ? (
@@ -307,7 +307,7 @@ const DropdownListItem: FC<{
   onSelect: DropdownProps['onSelect']
   onDeselect: DropdownProps['onDeselect']
 }> = ({ option, value, isMulti, onSelect, onDeselect }) => {
-  const theme = useTheme()
+  const theme = Theme.useTheme()
   const isSelected = Array.isArray(value) ? !!value?.find((s) => s.id === option.id) : value?.id === option.id
 
   if (isMulti) {

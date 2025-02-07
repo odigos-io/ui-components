@@ -1172,10 +1172,10 @@
     react-dom "^19.0.0"
     styled-components "^6.1.15"
 
-"@odigos/ui-icons@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@odigos/ui-icons/-/ui-icons-0.0.6.tgz#f1ba1f2a39bf0c4ebe02c0c3f0be3ad617140f76"
-  integrity sha512-oC2F1yIWuAWueMjY/rjxJhPvckjZmDgwH9RdTdAFQiOCfIMR8YbEFbn+QBSlESyOhA0+T97ui/HcSIiQXFnf8A==
+"@odigos/ui-icons@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@odigos/ui-icons/-/ui-icons-0.0.7.tgz#959d34b66a990fdbdd7f25258c4d55a93dc3e6b5"
+  integrity sha512-74sMXgtvFTJw/KMY4scy5/UBYwyqrFAAVH3fA80kVVpGvI7+MVKziYzixms1Ptn16IGL2ruqy3rFG3uyx5mW3g==
   dependencies:
     "@odigos/ui-theme" "^0.0.7"
     react "^19.0.0"

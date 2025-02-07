@@ -2,7 +2,7 @@ import React, { type FC } from 'react'
 import { Text } from '../text'
 import { Divider } from '../divider'
 import Theme from '@odigos/ui-theme'
-import styled, { useTheme } from 'styled-components'
+import styled from 'styled-components'
 import { getStatusIcon, NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface StatusProps {
@@ -46,9 +46,10 @@ const TextWrapper = styled.div`
 `
 
 const Status: FC<StatusProps> = ({ title, subtitle, size = 12, family = 'secondary', status, withIcon, withBorder, withBackground }) => {
+  const theme = Theme.useTheme()
+
   const statusType = status || NOTIFICATION_TYPE.DEFAULT
   const StatusIcon = getStatusIcon(statusType)
-  const theme = useTheme()
 
   return (
     <Container $size={size} $status={statusType} $withIcon={withIcon} $withBorder={withBorder} $withBackground={withBackground}>

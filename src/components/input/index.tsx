@@ -1,7 +1,8 @@
 import React, { useState, forwardRef, type ChangeEvent, type KeyboardEventHandler, type InputHTMLAttributes } from 'react'
+import Theme from '@odigos/ui-theme'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
-import styled, { css, useTheme } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { EyeClosedIcon, EyeOpenIcon, type SVG } from '@odigos/ui-icons'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -119,7 +120,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     { icon: Icon, buttonLabel, onButtonClick, hasError, errorMessage, title, tooltip, required, onChange, type = 'text', name, ...props },
     ref = null
   ) => {
-    const theme = useTheme()
+    const theme = Theme.useTheme()
 
     const isSecret = type === 'password'
     const [revealSecret, setRevealSecret] = useState(false)

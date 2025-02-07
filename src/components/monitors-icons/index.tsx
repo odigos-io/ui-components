@@ -1,8 +1,8 @@
 import React, { type FC } from 'react'
 import { Text } from '../text'
+import Theme from '@odigos/ui-theme'
 import { Tooltip } from '../tooltip'
 import { FlexRow } from '../../styled'
-import { useTheme } from 'styled-components'
 import { capitalizeFirstLetter, getMonitorIcon, MONITORS_OPTIONS, SIGNAL_TYPE } from '@odigos/ui-utils'
 
 interface MonitorsIconsProps {
@@ -16,7 +16,7 @@ interface MonitorsIconsProps {
 const defaultMonitors = MONITORS_OPTIONS.map(({ id }) => id) as SIGNAL_TYPE[]
 
 const MonitorsIcons: FC<MonitorsIconsProps> = ({ monitors = defaultMonitors, withTooltips, withLabels, size = 12, color: clr }) => {
-  const theme = useTheme()
+  const theme = Theme.useTheme()
   const color = clr || theme.text.grey
 
   return (
