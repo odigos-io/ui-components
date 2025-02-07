@@ -1172,19 +1172,19 @@
     react-dom "^19.0.0"
     styled-components "^6.1.15"
 
-"@odigos/ui-icons@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@odigos/ui-icons/-/ui-icons-0.0.8.tgz#1deefb9e7379d14ee32a42e07976532e6c82b956"
-  integrity sha512-TwM/e4/EcSxGdRRKNRZhUl7EZdgHPvEd7qy7+p29m2/03Xetkoy1IAo3Tr92jM7omUU8FRXEFIdAKEzSdtFIXA==
+"@odigos/ui-icons@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@odigos/ui-icons/-/ui-icons-0.0.9.tgz#ba2a927bc2eb549126a914b92fa2e54aa8554922"
+  integrity sha512-xR0Uho7xwQuMy5E6ZMrs0fnKGeIrhW6khXwMaRYPb4ppYdu/AScI1PZ4bm4dGra5GdAr5ea1GAfQz7JYniJ0vg==
   dependencies:
-    "@odigos/ui-theme" "^0.0.8"
+    "@odigos/ui-theme" "^0.0.11"
     react "^19.0.0"
     react-dom "^19.0.0"
 
-"@odigos/ui-theme@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@odigos/ui-theme/-/ui-theme-0.0.8.tgz#78eb7ad191ed655d7f90165ed20002c89c1b4073"
-  integrity sha512-FXRnqek2gD7+SxS/yHERjIA50cMbPaAmiAdk3VwYhesPRK3GHdElByofW1K8A2FyAdqhco0HpqaHL0eix40XAA==
+"@odigos/ui-theme@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@odigos/ui-theme/-/ui-theme-0.0.11.tgz#deb7114694f80a744155a6aca5e11fe1f44315c1"
+  integrity sha512-u0CsHR39cGTjUBoucZsagHO9rQIScW4CDrArQd1DmLVZavkTytbuvp9m2lsLl6ZXS48DLetkXWRLJaSOfWa6CA==
   dependencies:
     react "^19.0.0"
     react-dom "^19.0.0"
