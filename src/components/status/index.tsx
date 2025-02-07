@@ -49,7 +49,7 @@ const Status: FC<StatusProps> = ({ title, subtitle, size = 12, family = 'seconda
   const theme = Theme.useTheme()
 
   const statusType = status || NOTIFICATION_TYPE.DEFAULT
-  const StatusIcon = getStatusIcon(statusType)
+  const StatusIcon = getStatusIcon(statusType, theme)
 
   return (
     <Container $size={size} $status={statusType} $withIcon={withIcon} $withBorder={withBorder} $withBackground={withBackground}>

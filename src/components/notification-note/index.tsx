@@ -130,7 +130,7 @@ const NotificationNote: FC<NotificationNoteProps> = ({ type, title, message, act
     }
   }
 
-  const StatusIcon = getStatusIcon(type)
+  const StatusIcon = getStatusIcon(type, theme)
 
   return (
     <Container

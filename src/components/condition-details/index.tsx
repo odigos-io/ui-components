@@ -64,7 +64,7 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
   const loading = !conditions.length || hasWarnings
 
   const headerText = loading || hasWarnings ? 'Loading...' : hasErrors ? headerLabelFailed : headerLabelSuccess
-  const HeaderIcon = getStatusIcon(hasErrors ? NOTIFICATION_TYPE.ERROR : NOTIFICATION_TYPE.SUCCESS)
+  const HeaderIcon = getStatusIcon(hasErrors ? NOTIFICATION_TYPE.ERROR : NOTIFICATION_TYPE.SUCCESS, theme)
 
   return (
     <Container onClick={() => setExtend((prev) => !prev)} $hasErrors={hasErrors}>
@@ -84,7 +84,7 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
       {extend && (
         <Body>
           {conditions.map(({ status, message, lastTransitionTime }, idx) => {
-            const Icon = getStatusIcon(status)
+            const Icon = getStatusIcon(status, theme)
             const color = status === NOTIFICATION_TYPE.ERROR ? theme.text.error : theme.text.darker_grey
 
             return (

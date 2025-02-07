@@ -103,7 +103,7 @@ const formatLineForPrettyMode = (line: Token[]) => {
     })
 }
 
-const getComponentsFromPropertyString = (propertyString: string) => {
+const getComponentsFromPropertyString = (propertyString: string, theme: any) => {
   const [text, ...rest] = propertyString.split('@')
   const components =
     rest
@@ -116,8 +116,8 @@ const getComponentsFromPropertyString = (propertyString: string) => {
             return <Tooltip key={useId()} withIcon text={value} />
           case 'status':
             if (value === 'none') return <div key={useId()} style={{ width: 16, height: 16 }} />
-            let Icon = getStatusIcon(value as NOTIFICATION_TYPE)
-            if (!Icon) Icon = getStatusIcon(NOTIFICATION_TYPE.WARNING)
+            let Icon = getStatusIcon(value as NOTIFICATION_TYPE, theme)
+            if (!Icon) Icon = getStatusIcon(NOTIFICATION_TYPE.WARNING, theme)
             return <Icon key={useId()} />
           default:
             console.warn('unexpected component type!', type)
@@ -174,7 +174,7 @@ const PrettyJsonCode: FC<{ darkMode: boolean; str: string }> = ({ darkMode, str 
                 return (
                   <TableRow key={`line-${i}`} {...lineProps}>
                     {formattedLine.map((token, ii) => {
-                      const { text, components } = getComponentsFromPropertyString(token.content)
+                      const { text, components } = getComponentsFromPropertyString(token.content, theme)
                       const isRowTitle = ii === 0
 
                       return (

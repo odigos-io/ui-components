@@ -47,8 +47,9 @@ Default.args = {
     {
       columnKey: 'actions',
       component: () => {
+        const theme = Theme.useTheme()
         const { isCopied, copiedIndex, clickCopy } = useCopy()
-        const SuccessIcon = getStatusIcon(NOTIFICATION_TYPE.SUCCESS)
+        const SuccessIcon = getStatusIcon(NOTIFICATION_TYPE.SUCCESS, theme)
 
         return (
           <FlexRow $gap={0}>
