@@ -22,8 +22,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@odigos/ui-icons": "^0.0.7",
-    "@odigos/ui-theme": "^0.0.7",
+    "@odigos/ui-icons": "^0.0.8",
+    "@odigos/ui-theme": "^0.0.8",
     "@odigos/ui-utils": "^0.0.11",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
@@ -32,8 +32,8 @@
     "styled-components": "^6.1.15"
   },
   "dependencies": {
-    "@odigos/ui-icons": "^0.0.7",
-    "@odigos/ui-theme": "^0.0.7",
+    "@odigos/ui-icons": "^0.0.8",
+    "@odigos/ui-theme": "^0.0.8",
     "@odigos/ui-utils": "^0.0.11",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",

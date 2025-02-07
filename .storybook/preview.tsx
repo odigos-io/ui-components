@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Theme from '@odigos/ui-theme'
 import type { Preview } from '@storybook/react'
-import { ToggleDarkMode } from '../src/components/toggle-dark-mode'
 
 const DarkModeSettings = () => {
   const { darkMode } = Theme.useDarkMode()
@@ -19,7 +18,7 @@ const preview: Preview = {
     (Story, {}) => {
       return (
         <Theme.Provider>
-          <ToggleDarkMode />
+          <Theme.ToggleDarkMode />
           <DarkModeSettings />
 
           <div style={{ marginTop: '1rem' }}>
