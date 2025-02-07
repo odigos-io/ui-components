@@ -22,7 +22,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@odigos/ui-icons": "^0.0.6",
+    "@odigos/ui-icons": "^0.0.7",
     "@odigos/ui-theme": "^0.0.7",
     "@odigos/ui-utils": "^0.0.11",
     "prism-react-renderer": "^2.4.1",
