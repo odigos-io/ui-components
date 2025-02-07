@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.52](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.51...ui-components-v0.0.52) (2025-02-07)
+
+
+### Bug Fixes
+
+* checkbox bg-colors and hover state ([5ebe7db](https://github.com/odigos-io/ui-components/commit/5ebe7dbc538daa3465184ff5a9ebf2854b460ed2))
+
 ## [0.0.51](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.50...ui-components-v0.0.51) (2025-02-07)
 
 
