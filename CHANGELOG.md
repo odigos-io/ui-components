@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.54](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.53...ui-components-v0.0.54) (2025-02-07)
+
+
+### Features
+
+* update deps ([ef66477](https://github.com/odigos-io/ui-components/commit/ef664774be46068f1965283fbb4ceff6ac24be06))
+
 ## [0.0.53](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.52...ui-components-v0.0.53) (2025-02-07)
 
 
