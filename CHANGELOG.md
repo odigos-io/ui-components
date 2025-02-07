@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.48](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.47...ui-components-v0.0.48) (2025-02-07)
+
+
+### Features
+
+* refactor lib theme ([35eb5dc](https://github.com/odigos-io/ui-components/commit/35eb5dc41a599733e73a3e7de6c4258599a7cf55))
+
+
+### Bug Fixes
+
+* build error ([0b66a96](https://github.com/odigos-io/ui-components/commit/0b66a96ff83dd0390a3b7373a31cbc97ffba3109))
+
 ## [0.0.47](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.46...ui-components-v0.0.47) (2025-02-06)
 
 
