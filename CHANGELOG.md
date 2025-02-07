@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.49](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.48...ui-components-v0.0.49) (2025-02-07)
+
+
+### Features
+
+* apply Theme.useTheme instead of styled.useTheme ([d02f981](https://github.com/odigos-io/ui-components/commit/d02f98138f5abab87c3f4e9116ce7cc24ed51f2c))
+
+
+### Bug Fixes
+
+* peer deps ([c795a32](https://github.com/odigos-io/ui-components/commit/c795a32993f2a4c0545e554bfc0016c1798cf706))
+
 ## [0.0.48](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.47...ui-components-v0.0.48) (2025-02-07)
 
 
