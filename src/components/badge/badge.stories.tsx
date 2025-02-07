@@ -14,4 +14,5 @@ export const Default: StoryFn<BadgeProps> = (props) => {
 Default.args = {
   label: 69,
   filled: true,
+  onClick: () => {},
 }
