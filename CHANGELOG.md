@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.53](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.52...ui-components-v0.0.53) (2025-02-07)
+
+
+### Features
+
+* badge clickable ([bd44408](https://github.com/odigos-io/ui-components/commit/bd44408a50929695fdafed704fc487fdddf1bede))
+* remove from input ([ee4d871](https://github.com/odigos-io/ui-components/commit/ee4d871ed1ce5fb28c7b8b5244d2159d4d798c98))
+
 ## [0.0.52](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.51...ui-components-v0.0.52) (2025-02-07)
 
 
