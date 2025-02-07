@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.51](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.50...ui-components-v0.0.51) (2025-02-07)
+
+
+### Bug Fixes
+
+* theme deps ([8a865ea](https://github.com/odigos-io/ui-components/commit/8a865ea161da2c8de656a608e144acde7387188f))
+
 ## [0.0.50](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.49...ui-components-v0.0.50) (2025-02-07)
 
 
