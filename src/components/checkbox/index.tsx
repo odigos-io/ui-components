@@ -28,17 +28,25 @@ const Container = styled.div<{ $disabled?: CheckboxProps['disabled'] }>`
   opacity: ${({ $disabled }) => ($disabled ? 0.6 : 1)};
 `
 
-const CheckboxWrapper = styled.div<{ $isChecked: boolean; $disabled?: CheckboxProps['disabled'] }>`
+const CheckboxWrapper = styled.div<{ $isChecked: boolean; $isPartiallyChecked: boolean; $disabled?: CheckboxProps['disabled'] }>`
   width: 18px;
   height: 18px;
   border-radius: 6px;
-  border: 1px dashed ${({ $isChecked, theme }) => ($isChecked ? 'transparent' : theme.colors.secondary)};
+  border: 1px dashed ${({ $isChecked, $isPartiallyChecked, theme }) => ($isChecked || $isPartiallyChecked ? 'transparent' : theme.colors.secondary)};
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${({ $isChecked, theme }) => ($isChecked ? theme.colors.majestic_blue : theme.colors.secondary + Theme.opacity.hex['020'])};
+  background-color: ${({ $isChecked, $isPartiallyChecked, theme }) =>
+    $isChecked
+      ? theme.colors.majestic_blue
+      : $isPartiallyChecked
+      ? theme.colors.majestic_blue_soft
+      : theme.colors.secondary + Theme.opacity.hex['020']};
   pointer-events: ${({ $disabled }) => ($disabled ? 'none' : 'auto')};
-  transition: border 0.3s, background-color 0.3s;
+  transition: border 0.3s;
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.colors.secondary};
+  }
 `
 
 const Checkbox: FC<CheckboxProps> = ({
@@ -69,7 +77,7 @@ const Checkbox: FC<CheckboxProps> = ({
   return (
     <FlexColumn>
       <Container data-id={`checkbox${!!title ? `-${title}` : ''}`} $disabled={disabled} onClick={handleToggle} style={style}>
-        <CheckboxWrapper $isChecked={isChecked || partiallyChecked} $disabled={disabled}>
+        <CheckboxWrapper $isChecked={isChecked} $isPartiallyChecked={partiallyChecked} $disabled={disabled}>
           {partiallyChecked ? <MinusIcon fill={theme.text.white} /> : isChecked ? <CheckIcon fill={theme.text.white} /> : null}
         </CheckboxWrapper>
 
