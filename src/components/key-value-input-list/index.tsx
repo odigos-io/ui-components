@@ -130,7 +130,6 @@ const KeyValueInputsList: FC<KeyValueInputsListProps> = ({ initialKeyValuePairs 
         {rows.map(({ key, value }, idx) => (
           <RowWrapper key={`key-value-input-list-${idx}`}>
             <Input
-              ref={null}
               placeholder='Attribute name'
               value={key}
               onChange={(e) => handleChange('key', e.target.value, idx)}
@@ -141,7 +140,6 @@ const KeyValueInputsList: FC<KeyValueInputsListProps> = ({ initialKeyValuePairs 
               <ArrowIcon rotate={180} fill={theme.text.darker_grey} />
             </div>
             <Input
-              ref={null}
               placeholder='Attribute value'
               value={value}
               onChange={(e) => handleChange('value', e.target.value, idx)}

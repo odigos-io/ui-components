@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, type ChangeEvent, type KeyboardEventHandler, type InputHTMLAttributes } from 'react'
+import React, { type ChangeEvent, type KeyboardEventHandler, useState, type FC, type InputHTMLAttributes } from 'react'
 import Theme from '@odigos/ui-theme'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
@@ -114,68 +114,74 @@ const Button = styled.button`
   }
 `
 
-// eslint-disable-next-line react/display-name, react/forward-ref-exotic-components
-const Input = forwardRef<HTMLInputElement, InputProps>(
-  (
-    { icon: Icon, buttonLabel, onButtonClick, hasError, errorMessage, title, tooltip, required, onChange, type = 'text', name, ...props },
-    ref = null
-  ) => {
-    const theme = Theme.useTheme()
+const Input: FC<InputProps> = ({
+  icon: Icon,
+  buttonLabel,
+  onButtonClick,
+  hasError,
+  errorMessage,
+  title,
+  tooltip,
+  required,
+  onChange,
+  type = 'text',
+  name,
+  ...props
+}) => {
+  const theme = Theme.useTheme()
 
-    const isSecret = type === 'password'
-    const [revealSecret, setRevealSecret] = useState(false)
+  const isSecret = type === 'password'
+  const [revealSecret, setRevealSecret] = useState(false)
 
-    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-      e.stopPropagation()
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.stopPropagation()
 
-      const v = e.target.value
-      const actualValue = type === 'number' ? v.replace(/[^\d]/g, '') : v
-      e.target.value = actualValue
+    const v = e.target.value
+    const actualValue = type === 'number' ? v.replace(/[^\d]/g, '') : v
+    e.target.value = actualValue
 
-      onChange?.(e)
-    }
-
-    const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
-      if (!['Enter'].includes(e.key)) e.stopPropagation()
-    }
-
-    return (
-      <Container>
-        <FieldLabel title={title} required={required} tooltip={tooltip} />
-
-        <InputWrapper $disabled={props.disabled} $hasError={hasError || !!errorMessage} $isActive={!!props.autoFocus}>
-          {isSecret ? (
-            <IconWrapperClickable onClick={() => setRevealSecret((prev) => !prev)}>
-              {revealSecret ? <EyeClosedIcon size={14} fill={theme.text.grey} /> : <EyeOpenIcon size={14} fill={theme.text.grey} />}
-            </IconWrapperClickable>
-          ) : Icon ? (
-            <IconWrapper>
-              <Icon size={14} fill={theme.text.grey} />
-            </IconWrapper>
-          ) : null}
-
-          <StyledInput
-            ref={ref}
-            data-id={name}
-            type={revealSecret ? 'text' : type}
-            $hasIcon={!!Icon || isSecret}
-            name={name}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyDown}
-            {...props}
-          />
-
-          {buttonLabel && onButtonClick && (
-            <Button onClick={onButtonClick} disabled={props.disabled}>
-              {buttonLabel}
-            </Button>
-          )}
-        </InputWrapper>
-
-        {!!errorMessage && <FieldError>{errorMessage}</FieldError>}
-      </Container>
-    )
+    onChange?.(e)
   }
-)
+
+  const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (!['Enter'].includes(e.key)) e.stopPropagation()
+  }
+
+  return (
+    <Container>
+      <FieldLabel title={title} required={required} tooltip={tooltip} />
+
+      <InputWrapper $disabled={props.disabled} $hasError={hasError || !!errorMessage} $isActive={!!props.autoFocus}>
+        {isSecret ? (
+          <IconWrapperClickable onClick={() => setRevealSecret((prev) => !prev)}>
+            {revealSecret ? <EyeClosedIcon size={14} fill={theme.text.grey} /> : <EyeOpenIcon size={14} fill={theme.text.grey} />}
+          </IconWrapperClickable>
+        ) : Icon ? (
+          <IconWrapper>
+            <Icon size={14} fill={theme.text.grey} />
+          </IconWrapper>
+        ) : null}
+
+        <StyledInput
+          data-id={name}
+          type={revealSecret ? 'text' : type}
+          $hasIcon={!!Icon || isSecret}
+          name={name}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+          {...props}
+        />
+
+        {buttonLabel && onButtonClick && (
+          <Button onClick={onButtonClick} disabled={props.disabled}>
+            {buttonLabel}
+          </Button>
+        )}
+      </InputWrapper>
+
+      {!!errorMessage && <FieldError>{errorMessage}</FieldError>}
+    </Container>
+  )
+}
 
 export { Input, type InputProps }

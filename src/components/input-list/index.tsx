@@ -124,7 +124,6 @@ const InputList: FC<InputListProps> = ({ initialValues = [], value, onChange, ti
           return (
             <RowWrapper key={`input-list-${idx}`}>
               <Input
-                ref={null}
                 value={val}
                 onChange={(e) => handleInputChange(e.target.value, idx)}
                 hasError={!!errorMessage}

@@ -142,7 +142,6 @@ const InputTable: FC<InputTableProps> = ({ columns, initialValues = [], value, o
                 return (
                   <td key={`input-table-${idx}-${keyName}`} style={{ maxWidth, padding: '4px 6px 4px 0' }}>
                     <Input
-                      ref={null}
                       autoFocus={isEmpty(value) && !isMinRows && idx === rows.length - 1 && innerIdx === 0}
                       type={type}
                       placeholder={placeholder}

@@ -8,7 +8,7 @@ export default {
 }
 
 export const Default: StoryFn<InputProps> = (props) => {
-  return <Input ref={null} {...props} />
+  return <Input {...props} />
 }
 
 Default.args = {

@@ -258,13 +258,7 @@ const DropdownList: FC<{
     <AbsoluteContainer $openUpwards={openUpwards}>
       {showSearch && (
         <SearchInputContainer>
-          <Input
-            ref={null}
-            placeholder='Search...'
-            icon={SearchIcon}
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value.toLowerCase())}
-          />
+          <Input placeholder='Search...' icon={SearchIcon} value={searchText} onChange={(e) => setSearchText(e.target.value.toLowerCase())} />
           <Divider thickness={1} margin='8px 0 0 0' />
         </SearchInputContainer>
       )}
