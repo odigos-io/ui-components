@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.57](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.56...ui-components-v0.0.57) (2025-02-08)
+
+
+### Bug Fixes
+
+* children.map keys for header comp ([a8ed4fe](https://github.com/odigos-io/ui-components/commit/a8ed4feb1c60aa0ce60f8717e1f431c2b0cede06))
+* optional children ([e903af1](https://github.com/odigos-io/ui-components/commit/e903af17ade1744ce6eace40ac953aba2a83e376))
+
 ## [0.0.56](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.55...ui-components-v0.0.56) (2025-02-08)
 
 
