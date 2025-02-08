@@ -39,23 +39,9 @@ const PositionCenter = styled(FlexRow)`
 const Header: FC<HeaderProps> = ({ left = [], center = [], right = [] }) => {
   return (
     <Container>
-      <AlignLeft>
-        {left.map((child, index) => (
-          <Fragment key={index}>{child}</Fragment>
-        ))}
-      </AlignLeft>
-
-      <PositionCenter>
-        {center.map((child, index) => (
-          <Fragment key={index}>{child}</Fragment>
-        ))}
-      </PositionCenter>
-
-      <AlignRight>
-        {right.map((child, index) => (
-          <Fragment key={index}>{child}</Fragment>
-        ))}
-      </AlignRight>
+      <AlignLeft>{left.map((child, index) => child && <Fragment key={index}>{child}</Fragment>)}</AlignLeft>
+      <PositionCenter>{center.map((child, index) => child && <Fragment key={index}>{child}</Fragment>)}</PositionCenter>
+      <AlignRight>{right.map((child, index) => child && <Fragment key={index}>{child}</Fragment>)}</AlignRight>
     </Container>
   )
 }
