@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.0.56](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.55...ui-components-v0.0.56) (2025-02-08)
+
+
+### Features
+
+* add header ([f18e3f2](https://github.com/odigos-io/ui-components/commit/f18e3f25105edb317b31880875cd2c15a0b4442c))
+* add platform-select ([3731320](https://github.com/odigos-io/ui-components/commit/373132074871ba80477f3d5f0b568f2e00300085))
+* add stepper ([6deea36](https://github.com/odigos-io/ui-components/commit/6deea3688897d2b8340fe2c2b0fdb548ea9fb053))
+
 ## [0.0.55](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.54...ui-components-v0.0.55) (2025-02-07)
 
 
