@@ -1,4 +1,4 @@
-import React, { type ReactNode } from 'react'
+import React, { type FC, Fragment, type ReactNode } from 'react'
 import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
 import { FlexRow } from '../../styled'
@@ -12,7 +12,7 @@ interface HeaderProps {
 const Container = styled(FlexRow)`
   position: relative;
   width: 100%;
-  padding: 12px 0;
+  padding: 12px;
   background-color: ${({ theme }) => theme.colors.dark_grey};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border + Theme.opacity.hex['050']};
 `
@@ -36,12 +36,26 @@ const PositionCenter = styled(FlexRow)`
   gap: 12px;
 `
 
-const Header: React.FC<HeaderProps> = ({ left = [], center = [], right = [] }) => {
+const Header: FC<HeaderProps> = ({ left = [], center = [], right = [] }) => {
   return (
     <Container>
-      <AlignLeft>{left}</AlignLeft>
-      <PositionCenter>{center}</PositionCenter>
-      <AlignRight>{right}</AlignRight>
+      <AlignLeft>
+        {left.map((child, index) => (
+          <Fragment key={index}>{child}</Fragment>
+        ))}
+      </AlignLeft>
+
+      <PositionCenter>
+        {center.map((child, index) => (
+          <Fragment key={index}>{child}</Fragment>
+        ))}
+      </PositionCenter>
+
+      <AlignRight>
+        {right.map((child, index) => (
+          <Fragment key={index}>{child}</Fragment>
+        ))}
+      </AlignRight>
     </Container>
   )
 }
