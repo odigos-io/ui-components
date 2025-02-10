@@ -1,7 +1,6 @@
 import React, { type MouseEvent, type CSSProperties, type FC, type PropsWithChildren } from 'react'
 import { Tooltip } from '../tooltip'
-import Theme from '@odigos/ui-theme'
-import styled from 'styled-components'
+import Theme, { styled } from '@odigos/ui-theme'
 
 interface IconButtonProps extends PropsWithChildren {
   onClick?: (e: MouseEvent) => void

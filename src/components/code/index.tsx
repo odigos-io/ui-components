@@ -1,9 +1,8 @@
 import React, { type FC, Fragment, type HTMLAttributes, useId } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
-import Theme from '@odigos/ui-theme'
-import styled from 'styled-components'
 import { FlexRow } from '../../styled'
+import Theme, { styled } from '@odigos/ui-theme'
 import { Highlight, themes as prismThemes, type Token } from 'prism-react-renderer'
 import { flattenObjectKeys, getStatusIcon, NOTIFICATION_TYPE, removeEmptyValuesFromObject, safeJsonParse, safeJsonStringify } from '@odigos/ui-utils'
 

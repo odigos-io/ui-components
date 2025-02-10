@@ -1,8 +1,7 @@
 import React from 'react'
 import Lottie from 'react-lottie'
-import Theme from '@odigos/ui-theme'
-import styled from 'styled-components'
 import animationData from './lottie.json'
+import Theme, { styled } from '@odigos/ui-theme'
 
 interface TraceLoaderProps {
   width?: number

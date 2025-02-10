@@ -1,7 +1,6 @@
 import React, { type FC } from 'react'
-import Theme from '@odigos/ui-theme'
-import styled from 'styled-components'
 import { FlexRow } from '../../../styled'
+import Theme, { styled } from '@odigos/ui-theme'
 import { useTransition } from '@odigos/ui-utils'
 import { Button, type ButtonProps } from '../../button'
 

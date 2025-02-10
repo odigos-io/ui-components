@@ -1,7 +1,7 @@
 import React, { type FC, type MouseEventHandler, useEffect, useState } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
-import styled from 'styled-components'
+import { styled } from '@odigos/ui-theme'
 
 interface ToggleProps {
   title: string

@@ -1,10 +1,9 @@
 import React, { type FC, useState } from 'react'
 import { Text } from '../text'
-import Theme from '@odigos/ui-theme'
-import styled from 'styled-components'
 import { FlexRow } from '../../styled'
 import { FadeLoader } from '../fade-loader'
 import { ExtendArrow } from '../extend-arrow'
+import Theme, { styled } from '@odigos/ui-theme'
 import { type Condition, type FetchedCondition, getStatusIcon, mapConditions, NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface ConditionDetailsProps {

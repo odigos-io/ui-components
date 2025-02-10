@@ -1,5 +1,5 @@
 import React, { type DetailedHTMLProps, type FC, type HTMLAttributes, type ReactNode } from 'react'
-import styled from 'styled-components'
+import { styled } from '@odigos/ui-theme'
 
 interface TextProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   children: ReactNode

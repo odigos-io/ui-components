@@ -1,8 +1,7 @@
 import React, { type FC } from 'react'
 import { Text } from '../text'
 import { Divider } from '../divider'
-import Theme from '@odigos/ui-theme'
-import styled from 'styled-components'
+import Theme, { styled } from '@odigos/ui-theme'
 import { getStatusIcon, NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface StatusProps {

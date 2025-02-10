@@ -1,5 +1,5 @@
 import React, { type FC } from 'react'
-import styled from 'styled-components'
+import { styled } from '@odigos/ui-theme'
 import { ExtendArrowIcon } from '@odigos/ui-icons'
 
 interface ExtendArrowProps {

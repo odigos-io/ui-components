@@ -1,5 +1,5 @@
 import React, { type FC, useRef } from 'react'
-import styled from 'styled-components'
+import { styled } from '@odigos/ui-theme'
 import { NotebookIcon } from '@odigos/ui-icons'
 import { Button, type ButtonProps } from '../button'
 

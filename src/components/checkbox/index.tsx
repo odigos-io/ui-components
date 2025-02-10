@@ -1,10 +1,9 @@
 import React, { type CSSProperties, type FC, type MouseEventHandler, useEffect, useState } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
-import Theme from '@odigos/ui-theme'
-import styled from 'styled-components'
 import { FlexColumn } from '../../styled'
 import { FieldError } from '../field-error'
+import Theme, { styled } from '@odigos/ui-theme'
 import { CheckIcon, MinusIcon } from '@odigos/ui-icons'
 
 interface CheckboxProps {

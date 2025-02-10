@@ -1,7 +1,7 @@
 import React, { type FC } from 'react'
 import { Text } from '../text'
 import { Modal } from '../modal'
-import styled from 'styled-components'
+import { styled } from '@odigos/ui-theme'
 import { Button, type ButtonProps } from '../button'
 import { NotificationNote } from '../notification-note'
 import { NOTIFICATION_TYPE, useKeyDown } from '@odigos/ui-utils'

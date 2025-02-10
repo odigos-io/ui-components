@@ -1,8 +1,7 @@
 import React, { type ChangeEvent, type KeyboardEventHandler, useState, type FC, type InputHTMLAttributes } from 'react'
-import Theme from '@odigos/ui-theme'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
-import styled, { css } from 'styled-components'
+import Theme, { css, styled } from '@odigos/ui-theme'
 import { EyeClosedIcon, EyeOpenIcon, type SVG } from '@odigos/ui-icons'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {

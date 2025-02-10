@@ -1,7 +1,7 @@
 import React, { type ReactNode, type FC } from 'react'
 import { Text } from '../text'
 import { Badge } from '../badge'
-import styled from 'styled-components'
+import { styled } from '@odigos/ui-theme'
 import { type SVG } from '@odigos/ui-icons'
 
 interface SectionTitleProps {

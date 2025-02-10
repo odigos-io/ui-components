@@ -1,6 +1,5 @@
-import Theme from '@odigos/ui-theme'
 import React, { type ReactNode, type FC } from 'react'
-import styled from 'styled-components'
+import Theme, { styled } from '@odigos/ui-theme'
 
 interface BadgeProps {
   label: string | number | ReactNode

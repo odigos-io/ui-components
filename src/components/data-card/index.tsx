@@ -1,7 +1,7 @@
 import React, { type ReactNode, type FC } from 'react'
 import { Text } from '../text'
 import { Badge } from '../badge'
-import styled from 'styled-components'
+import { styled } from '@odigos/ui-theme'
 import { DataCardFields, type DataCardFieldsProps, DATA_CARD_FIELD_TYPES } from './data-card-fields'
 
 interface DataCardProps {

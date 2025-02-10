@@ -1,6 +1,6 @@
 import React, { type FC, type ReactNode } from 'react'
 import { Text } from '../../text'
-import styled from 'styled-components'
+import { styled } from '@odigos/ui-theme'
 import { Tooltip } from '../../tooltip'
 import { IconWrapped } from '../../icon-wrapped'
 import { XIcon, type SVG } from '@odigos/ui-icons'
