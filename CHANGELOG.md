@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.58](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.57...ui-components-v0.0.58) (2025-02-10)
+
+
+### Features
+
+* kill styled-components, use from odigos theme ([2103d03](https://github.com/odigos-io/ui-components/commit/2103d035a5e831db87f224a4287ae0be5635061e))
+
+
+### Bug Fixes
+
+* cleanup pakcage.json ([f5df9b4](https://github.com/odigos-io/ui-components/commit/f5df9b44ff12b3bc1127626deea09f6fbbf60cb4))
+
 ## [0.0.57](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.56...ui-components-v0.0.57) (2025-02-08)
 
 
