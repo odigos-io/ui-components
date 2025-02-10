@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.59](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.58...ui-components-v0.0.59) (2025-02-10)
+
+
+### Bug Fixes
+
+* bring back styled components ([0ad62ad](https://github.com/odigos-io/ui-components/commit/0ad62adb35c0dd94d005b01afc703675a56d9420))
+
 ## [0.0.58](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.57...ui-components-v0.0.58) (2025-02-10)
 
 
