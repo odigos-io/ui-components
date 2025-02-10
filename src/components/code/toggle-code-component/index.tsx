@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { styled } from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { FlexRow } from '../../../styled'
 import { CodeIcon, ListIcon } from '@odigos/ui-icons'
 

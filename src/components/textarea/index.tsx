@@ -1,7 +1,7 @@
 import React, { type ChangeEventHandler, type FC, type KeyboardEventHandler, type TextareaHTMLAttributes, useRef } from 'react'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
-import { css, styled } from '@odigos/ui-theme'
+import styled, { css } from 'styled-components'
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   errorMessage?: string

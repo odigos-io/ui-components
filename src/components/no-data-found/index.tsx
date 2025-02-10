@@ -1,7 +1,8 @@
 import React, { type FC } from 'react'
 import { Text } from '../text'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { NoDataIcon } from '@odigos/ui-icons'
-import Theme, { styled } from '@odigos/ui-theme'
 
 interface NoDataFoundProps {
   title?: string

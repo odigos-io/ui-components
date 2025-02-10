@@ -1,6 +1,6 @@
 import React, { type FC, type PropsWithChildren } from 'react'
 import { Text } from '../text'
-import { styled } from '@odigos/ui-theme'
+import styled from 'styled-components'
 
 interface FieldErrorProps extends PropsWithChildren {}
 

@@ -1,8 +1,9 @@
 import React, { useState, type PropsWithChildren, useRef, type MouseEvent, forwardRef, type FC } from 'react'
 import ReactDOM from 'react-dom'
 import { Text } from '../text'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { InfoIcon } from '@odigos/ui-icons'
-import Theme, { styled } from '@odigos/ui-theme'
 
 interface Position {
   top: number

@@ -1,5 +1,6 @@
 import React, { type FC, useState } from 'react'
-import Theme, { styled } from '@odigos/ui-theme'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { OdigosLogo, SVG } from '@odigos/ui-icons'
 import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
 

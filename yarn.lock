@@ -57,7 +57,7 @@
     "@jridgewell/trace-mapping" "^0.3.25"
     jsesc "^3.0.2"
 
-"@babel/helper-annotate-as-pure@^7.25.9":
+"@babel/helper-annotate-as-pure@^7.22.5", "@babel/helper-annotate-as-pure@^7.25.9":
   version "7.25.9"
   resolved "https://registry.yarnpkg.com/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.25.9.tgz#d8eac4d2dc0d7b6e11fa6e535332e0d3184f06b4"
   integrity sha512-gv7320KBUFJz1RnylIg5WWYPRXKZ884AGkYpgpWW02TH66Dl+HaC1t1CKd0z3R4b6hdYEcmrNZHUmfCP+1u3/g==
@@ -116,7 +116,7 @@
     "@babel/traverse" "^7.25.9"
     "@babel/types" "^7.25.9"
 
-"@babel/helper-module-imports@^7.25.9":
+"@babel/helper-module-imports@^7.22.5", "@babel/helper-module-imports@^7.25.9":
   version "7.25.9"
   resolved "https://registry.yarnpkg.com/@babel/helper-module-imports/-/helper-module-imports-7.25.9.tgz#e7f8d20602ebdbf9ebbea0a0751fb0f2a4141715"
   integrity sha512-tnUA4RsrmflIM6W6RFTLFSXITtl0wKjgpnLgXyowocVPrbYrLUXSBXDgTs8BlbmIzIdlBySRQjINYs2BAkiLtw==
@@ -268,7 +268,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.25.9"
 
-"@babel/plugin-syntax-jsx@^7.25.9":
+"@babel/plugin-syntax-jsx@^7.22.5", "@babel/plugin-syntax-jsx@^7.25.9":
   version "7.25.9"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-jsx/-/plugin-syntax-jsx-7.25.9.tgz#a34313a178ea56f1951599b929c1ceacee719290"
   integrity sha512-ld6oezHQMZsZfp6pWtbjaNDF2tiiCYYDqQszHt5VV437lewP9aSi2Of99CK0D0XB21k7FLgnLcmQKyKzynfeAA==
@@ -1171,14 +1171,15 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@odigos/ui-icons@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@odigos/ui-icons/-/ui-icons-0.0.11.tgz#eb2163eebd55c0984e39c8e8d566364da2acf1f7"
-  integrity sha512-v9P1YiuGonSLKPkQxfRR/pA19FFdHX06+jY0wJWMHMqIxMSKozJ9AR44FC2C1ueNG6c0wzL/7p3ZB+KxNlzwrg==
+"@odigos/ui-icons@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@odigos/ui-icons/-/ui-icons-0.0.12.tgz#cfe9b10ad83372a4b60ab7bf49d00c01744e04e4"
+  integrity sha512-IYK8KfJ4m1xx5X1dCtAYoeBh9szI4p5XET/J4DKRN/mgKKKOp1+cbAmIDbaflY6RWGRu8RtVqA2dqDx5MNdfHA==
   dependencies:
-    "@odigos/ui-theme" "^0.0.15"
+    "@odigos/ui-theme" "^0.0.16"
     react "^19.0.0"
     react-dom "^19.0.0"
+    styled-components "^6.1.15"
 
 "@odigos/ui-theme@^0.0.15":
   version "0.0.15"
@@ -1190,16 +1191,27 @@
     styled-components "^6.1.15"
     zustand "^5.0.3"
 
-"@odigos/ui-utils@^0.0.20":
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/@odigos/ui-utils/-/ui-utils-0.0.20.tgz#1f2f1f87e9cd6aef92c87214e030190303396aac"
-  integrity sha512-qHVLS80o3zKve3QwWwb9sUYWPJz/8LT4o0rtF470wsxnuNhHuNjRsjET7SgBZAN6Tope5xP+N/XO03JCXnelMA==
+"@odigos/ui-theme@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@odigos/ui-theme/-/ui-theme-0.0.16.tgz#99e1b584877e5482ce3b4fc5217cba9e89cd1400"
+  integrity sha512-1ov3imeubDKLyXCqJ9gaTp5UxBqT3/A8UzgokywHx3vDuQA0kPUrzVYBl3aO5w5ARAUT4gh5eMDMDIaw9T9vAg==
   dependencies:
-    "@odigos/ui-icons" "^0.0.11"
+    react "^19.0.0"
+    react-dom "^19.0.0"
+    styled-components "^6.1.15"
+    zustand "^5.0.3"
+
+"@odigos/ui-utils@^0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@odigos/ui-utils/-/ui-utils-0.0.22.tgz#de830a4232955d71ec34371e6cfad303e69726d5"
+  integrity sha512-NjwXdFF2jM20MtCcMPoltsWWArw0Z6v37nrNqOuM7O3RTprnGBHNmQXbNfaeQJ4GFs6B2Kw4dKnj0dxJxmJ2Sg==
+  dependencies:
+    "@odigos/ui-icons" "^0.0.12"
     "@odigos/ui-theme" "^0.0.15"
     javascript-time-ago "^2.5.11"
     react "^19.0.0"
     react-dom "^19.0.0"
+    styled-components "^6.1.15"
 
 "@rollup/plugin-commonjs@^28.0.2":
   version "28.0.2"
@@ -2170,6 +2182,17 @@ babel-plugin-polyfill-regenerator@^0.6.1:
   integrity sha512-LiWSbl4CRSIa5x/JAU6jZiG9eit9w6mz+yVMFwDE83LAWvt0AfGBoZ7HS/mkhrKuh2ZlzfVZYKoLjXdqw6Yt7Q==
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.6.3"
+
+babel-plugin-styled-components@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-2.1.4.tgz#9a1f37c7f32ef927b4b008b529feb4a2c82b1092"
+  integrity sha512-Xgp9g+A/cG47sUyRwwYxGM4bR/jDRg5N6it/8+HxCnbT5XNKSKDT9xm4oag/osgqjC2It/vH0yXsomOG6k558g==
+  dependencies:
+    "@babel/helper-annotate-as-pure" "^7.22.5"
+    "@babel/helper-module-imports" "^7.22.5"
+    "@babel/plugin-syntax-jsx" "^7.22.5"
+    lodash "^4.17.21"
+    picomatch "^2.3.1"
 
 babel-runtime@^6.26.0:
   version "6.26.0"

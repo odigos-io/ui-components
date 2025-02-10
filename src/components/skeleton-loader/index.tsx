@@ -1,6 +1,7 @@
 import React, { type CSSProperties, type FC } from 'react'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { FlexColumn } from '../../styled'
-import Theme, { styled } from '@odigos/ui-theme'
 
 interface SkeletonLoaderProps {
   maxWidth?: CSSProperties['maxWidth']

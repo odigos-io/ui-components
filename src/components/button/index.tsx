@@ -1,5 +1,6 @@
 import React, { type ButtonHTMLAttributes, FC, useRef } from 'react'
-import Theme, { css, styled } from '@odigos/ui-theme'
+import Theme from '@odigos/ui-theme'
+import styled, { css } from 'styled-components'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'danger' | 'warning'

@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
 import { Text } from '../text'
-import { styled } from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { CheckIcon } from '@odigos/ui-icons'
 import { FlexColumn, FlexRow } from '../../styled'
 

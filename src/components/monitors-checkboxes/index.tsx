@@ -2,7 +2,7 @@ import React, { type FC, useEffect, useRef, useState } from 'react'
 import { Checkbox } from '../checkbox'
 import { FieldLabel } from '../field-label'
 import { FieldError } from '../field-error'
-import { css, styled } from '@odigos/ui-theme'
+import styled, { css } from 'styled-components'
 import { MONITORS_OPTIONS, SIGNAL_TYPE } from '@odigos/ui-utils'
 
 interface MonitorsCheckboxesProps {

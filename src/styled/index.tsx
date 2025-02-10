@@ -1,4 +1,4 @@
-import { styled } from '@odigos/ui-theme'
+import styled from 'styled-components'
 
 // These are re-usable styled-components, they are not actual components
 

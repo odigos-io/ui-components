@@ -1,7 +1,8 @@
 import React from 'react'
 import { Text } from '../text'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { K8sLogo } from '@odigos/ui-icons'
-import Theme, { styled } from '@odigos/ui-theme'
 import { PLATFORM_TYPE } from '@odigos/ui-utils'
 
 // TODO: make this a dropdown as per Figma

@@ -1,10 +1,11 @@
 import React, { type CSSProperties, type FC, useEffect, useRef, useState } from 'react'
 import { Text } from '../text'
 import { Divider } from '../divider'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { FlexRow } from '../../styled'
 import { XIcon } from '@odigos/ui-icons'
 import { IconButton } from '../icon-button'
-import Theme, { styled } from '@odigos/ui-theme'
 import { getStatusIcon, NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface OnCloseParams {

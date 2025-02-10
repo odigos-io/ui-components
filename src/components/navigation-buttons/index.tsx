@@ -1,8 +1,9 @@
 import React, { type FC } from 'react'
 import { Button } from '../button'
 import { Tooltip } from '../tooltip'
+import Theme from '@odigos/ui-theme'
+import styled from 'styled-components'
 import { type SVG } from '@odigos/ui-icons'
-import Theme, { styled } from '@odigos/ui-theme'
 
 interface IButton {
   label: string

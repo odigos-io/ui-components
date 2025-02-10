@@ -1,7 +1,7 @@
 import React, { type FC, type CSSProperties } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
-import { styled } from '@odigos/ui-theme'
+import styled from 'styled-components'
 
 interface FieldLabelProps {
   title?: string
