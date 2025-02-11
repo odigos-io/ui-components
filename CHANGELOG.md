@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.60](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.59...ui-components-v0.0.60) (2025-02-11)
+
+
+### Bug Fixes
+
+* conditions - priorotize error title ([c053913](https://github.com/odigos-io/ui-components/commit/c05391378b1b19485777c11d8b2742b580ceabf1))
+* Error - encountered two children with the same key, `data-field-undefined`. ([0236aa2](https://github.com/odigos-io/ui-components/commit/0236aa2b17115ebbf1436cdbff9e83e1011e0969))
+
 ## [0.0.59](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.58...ui-components-v0.0.59) (2025-02-10)
 
 
