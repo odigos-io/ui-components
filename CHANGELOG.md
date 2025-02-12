@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.62](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.61...ui-components-v0.0.62) (2025-02-12)
+
+
+### Bug Fixes
+
+* conditions flex justify ([cdd03b5](https://github.com/odigos-io/ui-components/commit/cdd03b50c7aa87cab7585970497c2073ff8f04a5))
+
 ## [0.0.61](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.60...ui-components-v0.0.61) (2025-02-12)
 
 
