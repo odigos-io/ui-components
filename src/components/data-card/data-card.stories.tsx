@@ -14,7 +14,7 @@ export const Default: StoryFn<DataCardProps> = (props) => {
 
 Default.args = {
   title: 'Detected Containers',
-  titleBadge: 1,
+  titleBadge: 2,
   description: 'The system automatically instruments the containers it detects with a supported programming language.',
   data: [
     {
@@ -27,7 +27,18 @@ Default.args = {
         instrumentationMessage: '',
         otelDistroName: 'golang-community',
         runtimeVersion: '3.8',
-        otherAgent: null,
+      }),
+    },
+    {
+      type: DATA_CARD_FIELD_TYPES.SOURCE_CONTAINER,
+      width: '100%',
+      value: JSON.stringify({
+        containerName: 'not-my-container',
+        language: PROGRAMMING_LANGUAGES.NGINX,
+        instrumented: false,
+        instrumentationMessage: 'IgnoredContainer',
+        otelDistroName: '',
+        runtimeVersion: '',
       }),
     },
   ],

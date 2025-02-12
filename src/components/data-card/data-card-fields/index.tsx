@@ -17,7 +17,9 @@ import {
   parseJsonStringToPrettyString,
   PROGRAMMING_LANGUAGES,
   safeJsonParse,
+  splitCamelString,
 } from '@odigos/ui-utils'
+import { FlexRow } from '../../../styled'
 
 enum DATA_CARD_FIELD_TYPES {
   DIVIDER = 'divider',
@@ -58,6 +60,16 @@ const ItemTitle = styled(Text)`
   line-height: 16px;
 `
 
+const PreWrap = styled(Text)`
+  font-size: 12px;
+  white-space: pre-wrap;
+`
+
+const AlignCenter = styled(FlexRow)`
+  width: 100%;
+  justify-content: center;
+`
+
 const DataCardFields: FC<DataCardFieldsProps> = ({ data }) => {
   return (
     <ListContainer>
@@ -72,11 +84,6 @@ const DataCardFields: FC<DataCardFieldsProps> = ({ data }) => {
     </ListContainer>
   )
 }
-
-const PreWrap = styled(Text)`
-  font-size: 12px;
-  white-space: pre-wrap;
-`
 
 // We need to maintain this with new components every time we add a new type to "DATA_CARD_FIELD_TYPES"
 const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCardFieldsProps['data'][0]['value']) => {
@@ -135,7 +142,11 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
           isExtended={!!instrumentationMessage}
           renderExtended={() => {
             if (!!instrumentationMessage) {
-              return <NotificationNote type={NOTIFICATION_TYPE.INFO} message={instrumentationMessage} />
+              return (
+                <AlignCenter>
+                  <Status status={NOTIFICATION_TYPE.INFO} title={splitCamelString(instrumentationMessage)} />
+                </AlignCenter>
+              )
             }
 
             return null
