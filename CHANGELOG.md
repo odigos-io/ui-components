@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.0.61](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.60...ui-components-v0.0.61) (2025-02-12)
+
+
+### Features
+
+* change warning icons to spinner in conditions ([b8a1767](https://github.com/odigos-io/ui-components/commit/b8a17678c5269de2c61f490662e42f2691063ff3))
+* conditions type & reason ([fa641f1](https://github.com/odigos-io/ui-components/commit/fa641f1e53767fa9d17a4cef96c4dfc733a414d4))
+* replace notif note with status in source containers ([f5727a8](https://github.com/odigos-io/ui-components/commit/f5727a87f3095917004be6460d9a2470155d74d4))
+
+
+### Bug Fixes
+
+* condition dates, no wrap ([3eb9e39](https://github.com/odigos-io/ui-components/commit/3eb9e392694024cecd84b8a97967d7350d6d39df))
+* max text width for data tab ([40073d5](https://github.com/odigos-io/ui-components/commit/40073d58e6f2188da0c811cc31602882fa1adbc7))
+* priorotize error icon over loader ([157852a](https://github.com/odigos-io/ui-components/commit/157852af7965f8b68ba50e66922cad0b88769126))
+* status divider logic ([dba4c75](https://github.com/odigos-io/ui-components/commit/dba4c753b08e04a49b39e9110404657d4fce3f88))
+
 ## [0.0.60](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.59...ui-components-v0.0.60) (2025-02-11)
 
 
