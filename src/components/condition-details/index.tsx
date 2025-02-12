@@ -65,9 +65,9 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
   const warnings = conditions.filter(({ status }) => status === NOTIFICATION_TYPE.WARNING)
   const hasWarnings = !!warnings.length
 
-  const loading = !conditions.length || hasWarnings
+  const loading = (!conditions.length || hasWarnings) && !hasErrors
 
-  const headerText = hasErrors ? headerLabelFailed : loading || hasWarnings ? 'Loading...' : headerLabelSuccess
+  const headerText = hasErrors ? headerLabelFailed : loading ? 'Loading...' : headerLabelSuccess
   const HeaderIcon = getStatusIcon(hasErrors ? NOTIFICATION_TYPE.ERROR : NOTIFICATION_TYPE.SUCCESS, theme)
 
   return (
