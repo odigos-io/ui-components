@@ -129,7 +129,8 @@ const DataTab: FC<DataTabProps> = ({
       const actionsWidth = actionsRef.current.clientWidth
 
       // 85 is the sum of the container-padding, icon width, and flex-row-gap
-      setMaxWidth(containerWidth - actionsWidth - 85)
+      // we round to 100, to consider cases with actions
+      setMaxWidth(containerWidth - actionsWidth - 100)
     }
   }, [])
 
