@@ -88,7 +88,7 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
       {extend && (
         <Body>
           {conditions.map(({ status, message, lastTransitionTime }, idx) => {
-            const Icon = getStatusIcon(status, theme)
+            const Icon = status === NOTIFICATION_TYPE.WARNING ? () => FadeLoader({ scale: 0.8 }) : getStatusIcon(status, theme)
             const color = status === NOTIFICATION_TYPE.ERROR ? theme.text.error : theme.text.darker_grey
 
             return (
