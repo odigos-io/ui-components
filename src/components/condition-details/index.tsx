@@ -93,13 +93,17 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
             return (
               <Row key={`condition-${idx}`}>
                 <Icon />
+
                 <FlexRow $gap={12} style={{ width: '100%', justifyContent: 'space-between' }}>
-                  <TextNoWrap color={boldColor} size={12} weight={900}>
-                    {type}
-                  </TextNoWrap>
-                  <Text color={color} size={12}>
-                    {message || reason}
-                  </Text>
+                  <FlexRow $gap={12} style={{ width: '100%' }}>
+                    <TextNoWrap color={boldColor} size={12} weight={900}>
+                      {type}
+                    </TextNoWrap>
+                    <Text color={color} size={12}>
+                      {message || reason}
+                    </Text>
+                  </FlexRow>
+
                   <TextNoWrap color={color} size={12}>
                     {new Date(lastTransitionTime).toLocaleString()}
                   </TextNoWrap>
