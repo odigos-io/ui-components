@@ -45,7 +45,7 @@ const Row = styled.div`
   gap: 12px;
 `
 
-const DateText = styled(Text)`
+const TextNoWrap = styled(Text)`
   white-space: nowrap;
 `
 
@@ -74,33 +74,35 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
     <Container onClick={() => setExtend((prev) => !prev)} $hasErrors={hasErrors}>
       <Header>
         {loading ? <FadeLoader /> : <HeaderIcon />}
-
         <Text color={hasErrors ? theme.text.error : theme.text.grey} size={14}>
           {headerText}
         </Text>
         <Text color={hasErrors ? theme.text.error_secondary : theme.text.dark_grey} size={12} family='secondary'>
           ({hasErrors ? errors.length : conditions.length}/{conditions.length})
         </Text>
-
         <ExtendArrow extend={extend} align='right' />
       </Header>
 
       {extend && (
         <Body>
-          {conditions.map(({ status, message, lastTransitionTime }, idx) => {
+          {conditions.map(({ status, type, reason, message, lastTransitionTime }, idx) => {
             const Icon = status === NOTIFICATION_TYPE.WARNING ? () => FadeLoader({ scale: 0.8 }) : getStatusIcon(status, theme)
             const color = status === NOTIFICATION_TYPE.ERROR ? theme.text.error : theme.text.darker_grey
+            const boldColor = status === NOTIFICATION_TYPE.ERROR ? theme.text.error_secondary : theme.text.grey
 
             return (
               <Row key={`condition-${idx}`}>
                 <Icon />
-                <FlexRow style={{ width: '100%', justifyContent: 'space-between' }}>
+                <FlexRow $gap={12} style={{ width: '100%', justifyContent: 'space-between' }}>
+                  <TextNoWrap color={boldColor} size={12} weight={900}>
+                    {type}
+                  </TextNoWrap>
                   <Text color={color} size={12}>
-                    {message}
+                    {message || reason}
                   </Text>
-                  <DateText color={color} size={12}>
-                    {new Date(lastTransitionTime).toLocaleTimeString()}
-                  </DateText>
+                  <TextNoWrap color={color} size={12}>
+                    {new Date(lastTransitionTime).toLocaleString()}
+                  </TextNoWrap>
                 </FlexRow>
               </Row>
             )
