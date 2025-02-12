@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.64](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.63...ui-components-v0.0.64) (2025-02-12)
+
+
+### Features
+
+* add @rollup/plugin-json to rollup config ([60df9ec](https://github.com/odigos-io/ui-components/commit/60df9ec0dfb3e2fb226d40dd41106fd87e25b793))
+* export trace loader ([a410020](https://github.com/odigos-io/ui-components/commit/a4100204e828c427977fa57acc2c38a5204033c9))
+
 ## [0.0.63](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.62...ui-components-v0.0.63) (2025-02-12)
 
 
