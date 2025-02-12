@@ -67,13 +67,12 @@ const Status: FC<StatusProps> = ({ title, subtitle, size = 12, family = 'seconda
             </Text>
           )}
 
+          {!!title && !!subtitle && <Divider orientation='vertical' length={`${size - 2}px`} type={statusType} />}
+
           {!!subtitle && (
-            <TextWrapper>
-              <Divider orientation='vertical' length={`${size - 2}px`} type={statusType} />
-              <Text size={size - 2} family={family} color={theme.text[`${statusType}_secondary`]}>
-                {subtitle}
-              </Text>
-            </TextWrapper>
+            <Text size={size - 2} family={family} color={theme.text[`${statusType}_secondary`]}>
+              {subtitle}
+            </Text>
           )}
         </TextWrapper>
       )}
