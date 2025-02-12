@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.63](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.62...ui-components-v0.0.63) (2025-02-12)
+
+
+### Bug Fixes
+
+* utils deps ([dac5e91](https://github.com/odigos-io/ui-components/commit/dac5e9132f71c4f8d3026d505305fb9f85ccc3b6))
+
 ## [0.0.62](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.61...ui-components-v0.0.62) (2025-02-12)
 
 
