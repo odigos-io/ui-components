@@ -45,6 +45,10 @@ const Row = styled.div`
   gap: 12px;
 `
 
+const DateText = styled(Text)`
+  white-space: nowrap;
+`
+
 const ConditionDetails: FC<ConditionDetailsProps> = ({
   conditions: c,
   headerLabelFailed = 'Something Failed',
@@ -94,9 +98,9 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
                   <Text color={color} size={12}>
                     {message}
                   </Text>
-                  <Text color={color} size={12}>
+                  <DateText color={color} size={12}>
                     {new Date(lastTransitionTime).toLocaleTimeString()}
-                  </Text>
+                  </DateText>
                 </FlexRow>
               </Row>
             )
