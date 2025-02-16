@@ -96,7 +96,7 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
 
                 <FlexRow $gap={12} style={{ width: '100%', justifyContent: 'space-between' }}>
                   <Text color={color} size={12}>
-                    <TextNoWrap color={boldColor} size={12} weight={900}>
+                    <TextNoWrap color={boldColor} size={12} weight={700}>
                       {type}
                     </TextNoWrap>
                     {message || reason}
