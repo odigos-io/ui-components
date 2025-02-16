@@ -74,7 +74,7 @@ const DataCardFields: FC<DataCardFieldsProps> = ({ data }) => {
   return (
     <ListContainer>
       {data.map(({ type, title, tooltip, value, width = 'unset' }, idx) => (
-        <ListItem key={`data-field-${title || !!value ? JSON.stringify(value) : idx}`} $width={width}>
+        <ListItem key={`data-field-${title || (!!value ? JSON.stringify(value) : idx)}`} $width={width}>
           <Tooltip text={tooltip} withIcon>
             {!!title && <ItemTitle>{title}</ItemTitle>}
           </Tooltip>
