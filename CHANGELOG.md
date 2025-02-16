@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.68](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.67...ui-components-v0.0.68) (2025-02-16)
+
+
+### Bug Fixes
+
+* card divider width ([6ac73eb](https://github.com/odigos-io/ui-components/commit/6ac73eb5a0ef07da4578eab6e1bbbab88e055a01))
+
 ## [0.0.67](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.66...ui-components-v0.0.67) (2025-02-16)
 
 
