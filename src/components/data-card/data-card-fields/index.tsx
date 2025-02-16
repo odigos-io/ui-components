@@ -79,7 +79,7 @@ const DataCardFields: FC<DataCardFieldsProps> = ({ data }) => {
           $width={
             !!type && [DATA_CARD_FIELD_TYPES.CODE, DATA_CARD_FIELD_TYPES.TABLE].includes(type)
               ? 'inherit'
-              : !!type && [DATA_CARD_FIELD_TYPES.SOURCE_CONTAINER, DATA_CARD_FIELD_TYPES.LOADER].includes(type)
+              : !!type && [DATA_CARD_FIELD_TYPES.SOURCE_CONTAINER, DATA_CARD_FIELD_TYPES.LOADER, DATA_CARD_FIELD_TYPES.DIVIDER].includes(type)
               ? '100%'
               : 'unset'
           }
