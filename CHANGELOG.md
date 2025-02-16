@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.65](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.64...ui-components-v0.0.65) (2025-02-16)
+
+
+### Features
+
+* adjust bold weight ([944f9e2](https://github.com/odigos-io/ui-components/commit/944f9e23978a368714a680f1a096a0847553ba2d))
+
+
+### Bug Fixes
+
+* conditions layout ([741bd80](https://github.com/odigos-io/ui-components/commit/741bd80cb9bd9d3e605cc648b7f9413885d7e299))
+
 ## [0.0.64](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.63...ui-components-v0.0.64) (2025-02-12)
 
 
