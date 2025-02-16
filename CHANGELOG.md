@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.67](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.66...ui-components-v0.0.67) (2025-02-16)
+
+
+### Bug Fixes
+
+* bump utils ([56e1d69](https://github.com/odigos-io/ui-components/commit/56e1d69a7544c0a69e8a326295ac409efe6a5a4d))
+
 ## [0.0.66](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.65...ui-components-v0.0.66) (2025-02-16)
 
 
