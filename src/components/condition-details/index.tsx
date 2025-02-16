@@ -95,14 +95,12 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
                 <Icon />
 
                 <FlexRow $gap={12} style={{ width: '100%', justifyContent: 'space-between' }}>
-                  <FlexRow $gap={12} style={{ width: '100%' }}>
+                  <Text color={color} size={12}>
                     <TextNoWrap color={boldColor} size={12} weight={900}>
                       {type}
                     </TextNoWrap>
-                    <Text color={color} size={12}>
-                      {message || reason}
-                    </Text>
-                  </FlexRow>
+                    {message || reason}
+                  </Text>
 
                   <TextNoWrap color={color} size={12}>
                     {new Date(lastTransitionTime).toLocaleString()}
