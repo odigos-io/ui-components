@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.66](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.65...ui-components-v0.0.66) (2025-02-16)
+
+
+### Bug Fixes
+
+* keys for data card fields ([5b93522](https://github.com/odigos-io/ui-components/commit/5b935220f03a3c85aa76327b88477fa4d7b07f56))
+
 ## [0.0.65](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.64...ui-components-v0.0.65) (2025-02-16)
 
 
