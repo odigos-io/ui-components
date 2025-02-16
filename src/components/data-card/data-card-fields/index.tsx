@@ -8,7 +8,6 @@ import { Tooltip } from '../../tooltip'
 import { Divider } from '../../divider'
 import { DataTab } from '../../data-tab'
 import { MonitorsIcons } from '../../monitors-icons'
-import { NotificationNote } from '../../notification-note'
 import { InteractiveTable } from '../../interactive-table'
 import {
   capitalizeFirstLetter,
@@ -19,10 +18,12 @@ import {
   safeJsonParse,
   splitCamelString,
 } from '@odigos/ui-utils'
-import { FlexRow } from '../../../styled'
+import { CenterThis, FlexRow } from '../../../styled'
+import { FadeLoader } from '../../fade-loader'
 
 enum DATA_CARD_FIELD_TYPES {
   DIVIDER = 'divider',
+  LOADER = 'loader',
   MONITORS = 'monitors',
   ACTIVE_STATUS = 'active-status',
   SOURCE_CONTAINER = 'source-container',
@@ -36,7 +37,6 @@ interface DataCardFieldsProps {
     title?: string
     tooltip?: string
     value?: string | Record<string, any>
-    width?: string
   }[]
 }
 
@@ -73,8 +73,17 @@ const AlignCenter = styled(FlexRow)`
 const DataCardFields: FC<DataCardFieldsProps> = ({ data }) => {
   return (
     <ListContainer>
-      {data.map(({ type, title, tooltip, value, width = 'unset' }, idx) => (
-        <ListItem key={`data-field-${title || (!!value ? JSON.stringify(value) : idx)}`} $width={width}>
+      {data.map(({ type, title, tooltip, value }, idx) => (
+        <ListItem
+          key={`data-field-${title || (!!value ? JSON.stringify(value) : idx)}`}
+          $width={
+            !!type && [DATA_CARD_FIELD_TYPES.CODE, DATA_CARD_FIELD_TYPES.TABLE].includes(type)
+              ? 'inherit'
+              : !!type && [DATA_CARD_FIELD_TYPES.SOURCE_CONTAINER, DATA_CARD_FIELD_TYPES.LOADER].includes(type)
+              ? '100%'
+              : 'unset'
+          }
+        >
           <Tooltip text={tooltip} withIcon>
             {!!title && <ItemTitle>{title}</ItemTitle>}
           </Tooltip>
@@ -92,6 +101,13 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
   switch (type) {
     case DATA_CARD_FIELD_TYPES.DIVIDER:
       return <Divider length='100%' margin='0' />
+
+    case DATA_CARD_FIELD_TYPES.LOADER:
+      return (
+        <CenterThis>
+          <FadeLoader scale={1.2} />
+        </CenterThis>
+      )
 
     case DATA_CARD_FIELD_TYPES.MONITORS:
       return <MonitorsIcons monitors={value?.split(', ') || []} withLabels color={theme.colors.secondary} />

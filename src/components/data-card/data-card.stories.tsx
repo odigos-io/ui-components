@@ -19,7 +19,6 @@ Default.args = {
   data: [
     {
       type: DATA_CARD_FIELD_TYPES.SOURCE_CONTAINER,
-      width: '100%',
       value: JSON.stringify({
         containerName: 'my-container',
         language: PROGRAMMING_LANGUAGES.PYTHON,
@@ -31,7 +30,6 @@ Default.args = {
     },
     {
       type: DATA_CARD_FIELD_TYPES.SOURCE_CONTAINER,
-      width: '100%',
       value: JSON.stringify({
         containerName: 'not-my-container',
         language: PROGRAMMING_LANGUAGES.NGINX,
@@ -40,6 +38,9 @@ Default.args = {
         otelDistroName: '',
         runtimeVersion: '',
       }),
+    },
+    {
+      type: DATA_CARD_FIELD_TYPES.LOADER,
     },
   ],
 }
