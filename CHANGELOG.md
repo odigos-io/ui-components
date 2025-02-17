@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.69](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.68...ui-components-v0.0.69) (2025-02-17)
+
+
+### Features
+
+* add another example to interactive-table stories ([9c08a66](https://github.com/odigos-io/ui-components/commit/9c08a66e7695711fc89cbd72646bfd9329a1a305))
+* make interactive-table, interactive with onClicks ([efa5d8d](https://github.com/odigos-io/ui-components/commit/efa5d8dd8365ad939c959ed787dab26bafb88859))
+
 ## [0.0.68](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.67...ui-components-v0.0.68) (2025-02-16)
 
 
