@@ -10,6 +10,9 @@ interface ExtendArrowProps {
 
 const Container = styled.div<{ $align?: ExtendArrowProps['align'] }>`
   margin: ${({ $align }) => ($align === 'right' ? 'auto 0 auto auto' : $align === 'left' ? 'auto auto auto 0' : 'auto')};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const ExtendArrow: FC<ExtendArrowProps> = ({ extend, size = 14, align = 'center' }) => {
