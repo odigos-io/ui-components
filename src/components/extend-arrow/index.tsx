@@ -9,7 +9,7 @@ interface ExtendArrowProps {
 }
 
 const Container = styled.div<{ $align?: ExtendArrowProps['align'] }>`
-  margin: ${({ $align }) => ($align === 'right' ? 'auto 0 auto auto' : $align === 'left' ? 'auto auto auto 0' : 'auto')};
+  margin: ${({ $align }) => ($align === 'right' ? 'auto 6px auto auto' : $align === 'left' ? 'auto auto auto 6px' : 'auto')};
   display: flex;
   align-items: center;
   justify-content: center;
