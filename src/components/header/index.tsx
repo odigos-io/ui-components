@@ -11,7 +11,7 @@ interface HeaderProps {
 
 const Container = styled(FlexRow)`
   position: relative;
-  width: 100%;
+  width: calc(100% - 24px);
   padding: 12px;
   background-color: ${({ theme }) => theme.colors.dark_grey};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border + Theme.opacity.hex['050']};
