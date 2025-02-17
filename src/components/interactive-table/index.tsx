@@ -24,8 +24,9 @@ interface InteractiveTableProps {
 }
 
 const Container = styled.div`
-  position: relative;
   width: 100%;
+  position: relative;
+  z-index: 0;
 `
 
 const Table = styled.table`
