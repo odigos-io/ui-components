@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.0.70](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.69...ui-components-v0.0.70) (2025-02-17)
+
+
+### Features
+
+* move platform select to containers ([47abe21](https://github.com/odigos-io/ui-components/commit/47abe21e5b7f93171adbc4b12bebba1013151ceb))
+
+
+### Bug Fixes
+
+* build error ([71d4fe6](https://github.com/odigos-io/ui-components/commit/71d4fe635ac5e1fdb2e87db2707ca11540a5a714))
+* z-index for interactive table ([ee66258](https://github.com/odigos-io/ui-components/commit/ee662580364c40ca50fecd1d4b1887c6f0ef2528))
+
 ## [0.0.69](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.68...ui-components-v0.0.69) (2025-02-17)
 
 
