@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.0.71](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.70...ui-components-v0.0.71) (2025-02-17)
+
+
+### Bug Fixes
+
+* display for extend-arrow ([dcb5d24](https://github.com/odigos-io/ui-components/commit/dcb5d24e03657192fe1026c6ca0913cf4d8553e2))
+* header width ([51d12c7](https://github.com/odigos-io/ui-components/commit/51d12c7df3114218c54f38cdcdeaa592f81e5772))
+* margin for extend-arrow ([9cf893e](https://github.com/odigos-io/ui-components/commit/9cf893e252ecbf2eb926ebb13aac94784fb55005))
+
 ## [0.0.70](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.69...ui-components-v0.0.70) (2025-02-17)
 
 
