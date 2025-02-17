@@ -1,23 +1,27 @@
 import React from 'react'
 import { Text } from '../text'
+import { Status } from '../status'
 import Theme from '@odigos/ui-theme'
 import { FlexRow } from '../../styled'
 import { IconButton } from '../icon-button'
-import { type StoryFn } from '@storybook/react'
-import { CopyIcon, KeyIcon } from '@odigos/ui-icons'
+import { StoryObj, type StoryFn } from '@storybook/react'
 import { InteractiveTable, type InteractiveTableProps } from '.'
-import { getStatusIcon, isOverTime, NOTIFICATION_TYPE, useCopy, useTimeAgo } from '@odigos/ui-utils'
+import { CopyIcon, K8sLogo, KeyIcon, OdigosLogo } from '@odigos/ui-icons'
+import { getStatusIcon, isOverTime, MOCK_TOKENS, NOTIFICATION_TYPE, PLATFORM_TYPE, useCopy, useTimeAgo } from '@odigos/ui-utils'
 
 export default {
   title: 'Components/InteractiveTable',
   component: InteractiveTable,
 }
 
-export const Default: StoryFn<InteractiveTableProps> = (props) => {
+// Create a master template for mapping props to render
+const Template: StoryFn<InteractiveTableProps> = (props) => {
   return <InteractiveTable {...props} />
 }
 
-Default.args = {
+export const Tokens: StoryObj<InteractiveTableProps> = Template.bind({})
+
+Tokens.args = {
   columns: [
     { key: 'icon', title: '' },
     { key: 'name', title: 'Name' },
@@ -25,7 +29,7 @@ Default.args = {
     { key: 'token', title: 'Token' },
     { key: 'actions', title: '' },
   ],
-  rows: [{ token: '132456789', name: 'Test', expiresAt: 0 }].map(({ token, name, expiresAt }, idx) => [
+  rows: MOCK_TOKENS.map(({ token, name, expiresAt }, idx) => [
     { columnKey: 'icon', icon: KeyIcon },
     { columnKey: 'name', value: name },
     { columnKey: 'token', value: `${new Array(15).fill('•').join('')}` },
@@ -59,6 +63,61 @@ Default.args = {
           </FlexRow>
         )
       },
+    },
+  ]),
+}
+
+export const ComputePlatforms: StoryObj<InteractiveTableProps> = Template.bind({})
+
+ComputePlatforms.args = {
+  columns: [
+    { key: 'icon', title: '' },
+    { key: 'name', title: 'Name' },
+    { key: 'type', title: 'Type' },
+    { key: 'status', title: 'Status' },
+  ],
+  rows: [
+    {
+      id: 'My_new_kubernates_cluster',
+      type: PLATFORM_TYPE.K8S,
+      connectionStatus: NOTIFICATION_TYPE.SUCCESS,
+    },
+    {
+      id: 'Alon-org121',
+      type: PLATFORM_TYPE.VM,
+      connectionStatus: NOTIFICATION_TYPE.ERROR,
+    },
+    {
+      id: 'Amir-playground',
+      type: PLATFORM_TYPE.K8S,
+      connectionStatus: NOTIFICATION_TYPE.ERROR,
+    },
+    {
+      id: 'Lang-test',
+      type: PLATFORM_TYPE.K8S,
+      connectionStatus: NOTIFICATION_TYPE.ERROR,
+    },
+    {
+      id: 'Szymon_cluster_123',
+      type: PLATFORM_TYPE.VM,
+      connectionStatus: NOTIFICATION_TYPE.ERROR,
+    },
+  ].map(({ id, type, connectionStatus }) => [
+    { columnKey: 'icon', icon: type === PLATFORM_TYPE.K8S ? K8sLogo : OdigosLogo },
+    { columnKey: 'name', value: id },
+    { columnKey: 'type', value: type },
+    {
+      columnKey: 'status',
+      component: () => (
+        <div style={{ lineHeight: 1 }}>
+          <Status
+            title={connectionStatus === NOTIFICATION_TYPE.SUCCESS ? 'connection alive' : 'connection lost'}
+            status={connectionStatus}
+            withIcon
+            withBorder
+          />
+        </div>
+      ),
     },
   ]),
 }

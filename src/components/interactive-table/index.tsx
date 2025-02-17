@@ -92,11 +92,11 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows }) => {
               {columns.map(({ key }, ii) => {
                 const rowCell = row.find(({ columnKey }) => columnKey === key)
                 if (!rowCell) return null
-                const { value, icon: Icon, component: Component } = rowCell
+                const { value, icon, component: Component } = rowCell
 
                 return (
                   <TableData key={`row-${i}-cell-${key}`} $isFirst={ii === 0}>
-                    {!isEmpty(value) ? value : !!Icon ? <IconWrapped icon={Icon} /> : !!Component ? <Component /> : '-'}
+                    {!isEmpty(value) ? value : !!icon ? <IconWrapped icon={icon} /> : !!Component ? <Component /> : '-'}
                   </TableData>
                 )
               })}
