@@ -1,4 +1,4 @@
-import React, { type ReactNode, type FC } from 'react'
+import React, { type ReactNode, type FC, useState } from 'react'
 import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
 import { isEmpty } from '@odigos/ui-utils'
@@ -13,13 +13,14 @@ interface ColumnCell {
 interface RowCell {
   columnKey: string // used to bind the row cell to the column
   icon?: SVG
-  value?: string
   component?: () => ReactNode
+  value?: string | number | boolean
 }
 
 interface InteractiveTableProps {
   columns: ColumnCell[]
   rows: RowCell[][]
+  onRowClick?: (index: number) => void
 }
 
 const Container = styled.div`
@@ -49,8 +50,9 @@ const TableTitle = styled.th`
 
 const TableBody = styled.tbody``
 
-const TableRow = styled.tr`
+const TableRow = styled.tr<{ $withHover: boolean }>`
   line-height: 68px;
+  cursor: ${({ $withHover }) => ($withHover ? 'pointer' : 'default')};
 `
 
 const TableData = styled.td<{ $isFirst: boolean }>`
@@ -62,7 +64,7 @@ const TableData = styled.td<{ $isFirst: boolean }>`
   width: fit-content;
 `
 
-const RowBackground = styled.div<{ $index: number }>`
+const RowBackground = styled.div<{ $index: number; $hovered: boolean }>`
   position: absolute;
   top: ${({ $index }) => $index * 80 + 34}px;
   left: 0;
@@ -71,10 +73,13 @@ const RowBackground = styled.div<{ $index: number }>`
   height: 68px;
   margin: 12px 0;
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.dropdown_bg_2 + Theme.opacity.hex['040']};
+  background-color: ${({ theme, $hovered }) =>
+    $hovered ? theme.colors.majestic_blue + Theme.opacity.hex['030'] : theme.colors.dropdown_bg_2 + Theme.opacity.hex['040']};
 `
 
-const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows }) => {
+const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick }) => {
+  const [hoveredIndex, setHoveredIndex] = useState(-1)
+
   return (
     <Container>
       <Table>
@@ -88,7 +93,13 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows }) => {
 
         <TableBody>
           {rows.map((row, i) => (
-            <TableRow key={`row-${i}`}>
+            <TableRow
+              key={`row-${i}`}
+              onMouseEnter={() => !!onRowClick && setHoveredIndex(i)}
+              onMouseLeave={() => !!onRowClick && setHoveredIndex(-1)}
+              onClick={() => !!onRowClick && onRowClick(i)}
+              $withHover={!!onRowClick}
+            >
               {columns.map(({ key }, ii) => {
                 const rowCell = row.find(({ columnKey }) => columnKey === key)
                 if (!rowCell) return null
@@ -96,7 +107,7 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows }) => {
 
                 return (
                   <TableData key={`row-${i}-cell-${key}`} $isFirst={ii === 0}>
-                    {!isEmpty(value) ? value : !!icon ? <IconWrapped icon={icon} /> : !!Component ? <Component /> : '-'}
+                    {!!icon ? <IconWrapped icon={icon} /> : !!Component ? <Component /> : !isEmpty(value) ? value : '-'}
                   </TableData>
                 )
               })}
@@ -106,7 +117,7 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows }) => {
       </Table>
 
       {rows.map((_, i) => (
-        <RowBackground key={`bg-${i}`} $index={i} />
+        <RowBackground key={`bg-${i}`} $index={i} $hovered={hoveredIndex === i} />
       ))}
     </Container>
   )
