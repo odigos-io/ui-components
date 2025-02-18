@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.73](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.72...ui-components-v0.0.73) (2025-02-18)
+
+
+### Bug Fixes
+
+* deps for autocomplete ([b11e972](https://github.com/odigos-io/ui-components/commit/b11e972ecedce5ad621fd51c196b075e2d4d886e))
+
 ## [0.0.72](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.71...ui-components-v0.0.72) (2025-02-18)
 
 
