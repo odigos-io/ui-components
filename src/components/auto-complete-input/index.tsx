@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { type SVG } from '@odigos/ui-icons'
 
 interface Option {
-  id: string
+  type?: string
   label: string
   description?: string
   icon?: SVG
@@ -228,7 +228,7 @@ const AutocompleteInput: FC<AutocompleteInputProps> = ({
       {showOptions && (
         <OptionsList>
           {filteredOptions.map((option, index) => (
-            <OptionItem key={option.id} option={option} onClick={handleOptionClick} />
+            <OptionItem key={option.type || option.label} option={option} onClick={handleOptionClick} />
           ))}
         </OptionsList>
       )}
@@ -247,7 +247,11 @@ const OptionItem: FC<OptionItemProps> = ({ option, renderIcon = true, onClick })
   const Icon = option.icon
 
   return (
-    <OptionItemContainer data-id={`option-${option.id}`} $isList={hasSubItems} onMouseDown={() => (hasSubItems ? null : onClick(option))}>
+    <OptionItemContainer
+      data-id={`option-${option.type || option.label}`}
+      $isList={hasSubItems}
+      onMouseDown={() => (hasSubItems ? null : onClick(option))}
+    >
       {Icon && renderIcon && <Icon />}
 
       <OptionContent>
@@ -259,7 +263,7 @@ const OptionItem: FC<OptionItemProps> = ({ option, renderIcon = true, onClick })
         {hasSubItems && (
           <SubOptionsList>
             {option.items?.map((subOption) => (
-              <SubOptionContainer key={subOption.id}>
+              <SubOptionContainer key={subOption.type || subOption.label}>
                 <VerticalLine />
                 <OptionItem option={subOption} renderIcon={false} onClick={onClick} />
               </SubOptionContainer>

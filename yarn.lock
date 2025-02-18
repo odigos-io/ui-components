@@ -1191,10 +1191,10 @@
     styled-components "^6.1.15"
     zustand "^5.0.3"
 
-"@odigos/ui-utils@^0.0.31":
-  version "0.0.31"
-  resolved "https://registry.yarnpkg.com/@odigos/ui-utils/-/ui-utils-0.0.31.tgz#cd7ae9bbe59019256fbfd9fe4d78046a331f5296"
-  integrity sha512-8blDVtdkt/nr1y1R1xO2vq6tafMGJpvprCJip3TgMhv0FRWDyPMw0UX5XKmHD3kF4qN3WHzLYzV5wpiEQu3R6w==
+"@odigos/ui-utils@^0.0.33":
+  version "0.0.33"
+  resolved "https://registry.yarnpkg.com/@odigos/ui-utils/-/ui-utils-0.0.33.tgz#3a20ac9404caf02b54f2d3a7089b48dac0368619"
+  integrity sha512-qbdGpwLxLU7ffitNx4oXRSxU0Zpf3aACDm9wQAzTt2HERCHnQ6Is7KXD+trufBROd0I0SWfxt8BtrdPmoo5uDQ==
   dependencies:
     "@odigos/ui-icons" "^0.0.13"
     "@odigos/ui-theme" "^0.0.16"
