@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.72](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.71...ui-components-v0.0.72) (2025-02-18)
+
+
+### Features
+
+* use mock data for code stories ([6f8d173](https://github.com/odigos-io/ui-components/commit/6f8d1739a4fc0ffe1cb4d8f368545ae51c62289f))
+
+
+### Bug Fixes
+
+* bump deps (utils) ([470f06f](https://github.com/odigos-io/ui-components/commit/470f06f148ec82c38eaed2ea5d3c370f2055ea96))
+
 ## [0.0.71](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.70...ui-components-v0.0.71) (2025-02-17)
 
 
