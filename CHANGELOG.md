@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.75](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.74...ui-components-v0.0.75) (2025-02-19)
+
+
+### Bug Fixes
+
+* revert segment z-index ([dab2881](https://github.com/odigos-io/ui-components/commit/dab28812d34148128ac8f7ce65a0a4eec129ba9a))
+
 ## [0.0.74](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.73...ui-components-v0.0.74) (2025-02-19)
 
 
