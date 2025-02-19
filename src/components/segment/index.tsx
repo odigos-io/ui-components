@@ -20,7 +20,7 @@ interface SegmentProps {
 const Container = styled(FlexRow)`
   position: relative;
   gap: 0;
-  z-index: -1;
+  z-index: 0;
 `
 
 const Button = styled.button<{ $isFirstItem: boolean; $isLastItem: boolean }>`
