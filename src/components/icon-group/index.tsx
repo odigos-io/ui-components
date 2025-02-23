@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { type SVG } from '@odigos/ui-icons'
 import { IconWrapped } from '../icon-wrapped'
 import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import { ImageControlled } from '../image-controlled'
 
 interface IconGroupProps {
   icons?: SVG[]
@@ -44,11 +45,7 @@ const IconGroup: FC<IconGroupProps> = ({ icons = [], iconSrcs = [], status, size
 
   if (!!iconSrcs.length) {
     return (
-      <IconGroup
-        icons={iconSrcs.map((src) => (() => <img src={src} alt='' width={imgSize} height={imgSize} />) as unknown as SVG)}
-        status={status}
-        size={size}
-      />
+      <IconGroup icons={iconSrcs.map((src) => (() => <ImageControlled src={src} size={imgSize} />) as unknown as SVG)} status={status} size={size} />
     )
   }
 

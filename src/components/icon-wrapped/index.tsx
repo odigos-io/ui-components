@@ -1,7 +1,8 @@
-import React, { type FC, useState } from 'react'
+import React, { type FC } from 'react'
 import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
 import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import { ImageControlled } from '../image-controlled'
 import { OdigosLogo, type SVG } from '@odigos/ui-icons'
 
 interface IconWrappedProps {
@@ -26,19 +27,9 @@ const Container = styled.div<{ $status: IconWrappedProps['status']; $size: numbe
 `
 
 const IconWrapped: FC<IconWrappedProps> = ({ icon: Icon, src = '', alt = '', status, size = 36 }) => {
-  const [srcHasError, setSrcHasError] = useState(false)
-
-  if (!!src && !srcHasError) {
-    return (
-      <Container $status={status} $size={size}>
-        <img src={src} alt={alt} width={size - 16} height={size - 16} onError={() => setSrcHasError(true)} />
-      </Container>
-    )
-  }
-
   return (
     <Container $status={status} $size={size}>
-      {!!Icon ? <Icon size={size - 16} /> : <OdigosLogo size={size - 16} />}
+      {!!src ? <ImageControlled src={src} size={size - 16} /> : !!Icon ? <Icon size={size - 16} /> : <OdigosLogo size={size - 16} />}
     </Container>
   )
 }
