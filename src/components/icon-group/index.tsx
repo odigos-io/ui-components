@@ -34,7 +34,7 @@ const IconWrapper = styled.div<{ $status: IconGroupProps['status']; $size: numbe
   width: ${({ $size }) => $size}px;
   height: ${({ $size }) => $size}px;
   border-radius: 100%;
-  border: 2px solid ${({ $status, theme }) => ($status ? theme.text[$status] : theme.colors.primary)};
+  border: 1px solid ${({ theme }) => theme.colors.primary};
   background: ${({ $status, theme }) => ($status ? theme.colors[$status] : theme.colors.info)};
 `
 
