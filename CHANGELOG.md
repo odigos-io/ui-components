@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.0.76](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.75...ui-components-v0.0.76) (2025-02-23)
+
+
+### Features
+
+* add checkbox to data tab ([aebfe30](https://github.com/odigos-io/ui-components/commit/aebfe301ee86b9c65fd1409c35f7590a9f023c23))
+* add icon group component ([88da785](https://github.com/odigos-io/ui-components/commit/88da785786db9ab4fb220786b4dc17ec347b455b))
+* add image controlled component ([b6afc19](https://github.com/odigos-io/ui-components/commit/b6afc19162e1b0ca5a5488b4f183c8da98f7638d))
+
+
+### Bug Fixes
+
+* icon group border ([74ddf27](https://github.com/odigos-io/ui-components/commit/74ddf27a6a3ae3bf2c40216a6efa533c622b0463))
+
 ## [0.0.75](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.74...ui-components-v0.0.75) (2025-02-19)
 
 
