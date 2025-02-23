@@ -1,5 +1,4 @@
 import React from 'react'
-import { Checkbox } from '../..'
 import { DataTab, type DataTabProps } from '.'
 import { type StoryFn } from '@storybook/react'
 import { ErrorTriangleIcon } from '@odigos/ui-icons'
@@ -15,15 +14,19 @@ export const Default: StoryFn<DataTabProps> = (props) => {
 }
 
 Default.args = {
-  title: 'node-auth-service-v69',
+  title: 'auth-service-v69',
   subTitle: 'default • deployment',
-  iconSrc: getProgrammingLanguageIcon(PROGRAMMING_LANGUAGES.JAVASCRIPT),
+  iconSrcs: [
+    getProgrammingLanguageIcon(PROGRAMMING_LANGUAGES.GO),
+    getProgrammingLanguageIcon(PROGRAMMING_LANGUAGES.PYTHON),
+    getProgrammingLanguageIcon(PROGRAMMING_LANGUAGES.JAVASCRIPT),
+    getProgrammingLanguageIcon(PROGRAMMING_LANGUAGES.JAVA),
+    getProgrammingLanguageIcon(PROGRAMMING_LANGUAGES.DOTNET),
+    getProgrammingLanguageIcon(PROGRAMMING_LANGUAGES.NGINX),
+    getProgrammingLanguageIcon(PROGRAMMING_LANGUAGES.MYSQL),
+  ],
+  withCheckbox: true,
   isError: true,
-  renderActions: () => (
-    <>
-      <ErrorTriangleIcon size={20} />
-      <Checkbox />
-    </>
-  ),
+  renderActions: () => <ErrorTriangleIcon size={20} />,
   onClick: () => {},
 }

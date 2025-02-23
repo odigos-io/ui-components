@@ -4,6 +4,8 @@ import { Status } from '../status'
 import { Tooltip } from '../tooltip'
 import { Divider } from '../divider'
 import Theme from '@odigos/ui-theme'
+import { Checkbox } from '../checkbox'
+import { IconGroup } from '../icon-group'
 import { type SVG } from '@odigos/ui-icons'
 import { IconButton } from '../icon-button'
 import { IconWrapped } from '../icon-wrapped'
@@ -17,12 +19,18 @@ interface DataTabProps {
   title: string
   subTitle?: string
   icon?: SVG
+  icons?: SVG[]
   iconSrc?: string
+  iconSrcs?: string[]
   hoverText?: string
   monitors?: SIGNAL_TYPE[]
   monitorsWithLabels?: boolean
   isActive?: boolean
   isError?: boolean
+  withCheckbox?: boolean
+  isCheckboxDisabled?: boolean
+  isChecked?: boolean
+  onCheckboxChange?: (value: boolean) => void
   withExtend?: boolean
   isExtended?: boolean
   renderExtended?: () => ReactNode
@@ -102,12 +110,18 @@ const DataTab: FC<DataTabProps> = ({
   title,
   subTitle,
   icon,
+  icons,
   iconSrc,
+  iconSrcs,
   hoverText,
   monitors,
   monitorsWithLabels,
   isActive,
   isError,
+  withCheckbox,
+  isCheckboxDisabled,
+  isChecked,
+  onCheckboxChange,
   withExtend,
   isExtended,
   renderExtended,
@@ -171,9 +185,15 @@ const DataTab: FC<DataTabProps> = ({
   return (
     <Container ref={containerRef} $isError={isError} $withClick={!!onClick} onClick={onClick} {...props}>
       <FlexRow $gap={8}>
-        <div>
-          <IconWrapped icon={icon} src={iconSrc} status={isError ? NOTIFICATION_TYPE.ERROR : undefined} />
-        </div>
+        <FlexRow $gap={16}>
+          {withCheckbox && <Checkbox value={isChecked} onChange={onCheckboxChange} disabled={isCheckboxDisabled} />}
+
+          {!!icons?.length || !!iconSrcs?.length ? (
+            <IconGroup icons={icons} iconSrcs={iconSrcs} status={isError ? NOTIFICATION_TYPE.ERROR : undefined} />
+          ) : (
+            <IconWrapped icon={icon} src={iconSrc} status={isError ? NOTIFICATION_TYPE.ERROR : undefined} />
+          )}
+        </FlexRow>
 
         <FlexColumn $gap={4}>
           <Tooltip text={isTitleOverflowed ? title : undefined} withIcon={false}>
