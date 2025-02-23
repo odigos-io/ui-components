@@ -1,8 +1,8 @@
 import React, { type FC, useState } from 'react'
 import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
-import { OdigosLogo, SVG } from '@odigos/ui-icons'
 import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import { OdigosLogo, type SVG } from '@odigos/ui-icons'
 
 interface IconWrappedProps {
   icon?: SVG
