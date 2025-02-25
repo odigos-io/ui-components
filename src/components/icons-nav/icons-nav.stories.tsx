@@ -52,6 +52,7 @@ export const Default: StoryFn<IconsNavProps> = (props) => {
       onClick: () => {
         onClickIcon('overview-rules', setSubIcons, setMainIcons)
       },
+      tooltip: 'only rules',
     },
     {
       id: 'overview-sources',
@@ -60,6 +61,7 @@ export const Default: StoryFn<IconsNavProps> = (props) => {
       onClick: () => {
         onClickIcon('overview-sources', setSubIcons, setMainIcons)
       },
+      tooltip: 'only sources',
     },
     {
       id: 'overview-actions',
@@ -68,6 +70,7 @@ export const Default: StoryFn<IconsNavProps> = (props) => {
       onClick: () => {
         onClickIcon('overview-actions', setSubIcons, setMainIcons)
       },
+      tooltip: 'only actions',
     },
     {
       id: 'overview-destinations',
@@ -76,6 +79,7 @@ export const Default: StoryFn<IconsNavProps> = (props) => {
       onClick: () => {
         onClickIcon('overview-destinations', setSubIcons, setMainIcons)
       },
+      tooltip: 'only destinations',
     },
   ]
 

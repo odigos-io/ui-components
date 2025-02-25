@@ -3,12 +3,14 @@ import { Divider } from '../divider'
 import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
 import { type SVG } from '@odigos/ui-icons'
+import { Tooltip } from '../tooltip'
 
 interface NavIcon {
   id: string
   icon: SVG | FC
   selected: boolean
   onClick: () => void
+  tooltip?: string
 }
 
 interface IconsNavProps {
@@ -51,20 +53,24 @@ const IconWrap = styled.div<{ $selected: NavIcon['selected'] }>`
 const IconsNav: FC<IconsNavProps> = ({ orientation = 'vertical', flip, mainIcons, subIcons }) => {
   return (
     <Container $orientation={orientation} $flip={flip}>
-      {mainIcons.map(({ icon: Icon, selected, onClick }, idx) => (
-        <IconWrap key={`main-nav-icon-${idx}`} $selected={selected}>
-          <Icon onClick={onClick} />
-        </IconWrap>
+      {mainIcons.map(({ icon: Icon, selected, onClick, tooltip }, idx) => (
+        <Tooltip key={`main-nav-icon-${idx}`} text={tooltip}>
+          <IconWrap $selected={selected}>
+            <Icon onClick={onClick} />
+          </IconWrap>
+        </Tooltip>
       ))}
 
       {!!mainIcons.length && !!subIcons.length && (
         <Divider orientation={orientation === 'vertical' ? 'horizontal' : 'vertical'} margin='0' length='20px' />
       )}
 
-      {subIcons.map(({ icon: Icon, selected, onClick }, idx) => (
-        <IconWrap key={`sub-nav-icon-${idx}`} $selected={selected}>
-          <Icon onClick={onClick} />
-        </IconWrap>
+      {subIcons.map(({ icon: Icon, selected, onClick, tooltip }, idx) => (
+        <Tooltip key={`sub-nav-icon-${idx}`} text={tooltip}>
+          <IconWrap $selected={selected}>
+            <Icon onClick={onClick} />
+          </IconWrap>
+        </Tooltip>
       ))}
     </Container>
   )
