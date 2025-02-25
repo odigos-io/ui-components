@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.80](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.79...ui-components-v0.0.80) (2025-02-25)
+
+
+### Features
+
+* add props to interactive table ([9ccac4c](https://github.com/odigos-io/ui-components/commit/9ccac4c07869acac538a208643df5e528811bc4c))
+
 ## [0.0.79](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.78...ui-components-v0.0.79) (2025-02-25)
 
 
