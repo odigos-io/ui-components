@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import { Text } from '../text'
 import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
-import { InfoIcon } from '@odigos/ui-icons'
+import { InfoIcon, type SVG } from '@odigos/ui-icons'
+import { FlexRow } from '../../styled'
 
 interface Position {
   top: number
@@ -11,8 +12,11 @@ interface Position {
 }
 
 interface TooltipProps extends PropsWithChildren {
-  text?: string
   withIcon?: boolean
+  titleIcon?: SVG
+  title?: string
+  text?: string
+  timestamp?: string | number | Date
 }
 
 interface PopupProps extends PropsWithChildren, Position {}
@@ -22,9 +26,12 @@ const TooltipContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
+  cursor: help;
 `
 
-const Tooltip: FC<TooltipProps> = ({ text, withIcon, children }) => {
+const Tooltip: FC<TooltipProps> = ({ withIcon, titleIcon: TitleIcon, title, text, timestamp, children }) => {
+  const theme = Theme.useTheme()
+
   const [isHovered, setIsHovered] = useState(false)
   const [popupPosition, setPopupPosition] = useState<Position>({ top: 0, left: 0 })
   const popupRef = useRef<HTMLDivElement>(null)
@@ -51,7 +58,22 @@ const Tooltip: FC<TooltipProps> = ({ text, withIcon, children }) => {
       {withIcon && <InfoIcon />}
       {isHovered && (
         <Popup ref={popupRef} {...popupPosition}>
-          {text}
+          <Text size={12} color={theme.text.secondary}>
+            <FlexRow style={{ marginBottom: '4px' }} $gap={4}>
+              {TitleIcon && <TitleIcon fill={theme.text.secondary} size={12} />}
+              {title && <>{title}&nbsp;-&nbsp;</>}
+            </FlexRow>
+
+            <Text size={12} color={theme.text.info}>
+              {text}
+            </Text>
+
+            {!!timestamp && (
+              <Text size={10} color={theme.text.darker_grey} family='secondary' style={{ marginTop: '8px' }}>
+                {new Date(timestamp).toLocaleString()}
+              </Text>
+            )}
+          </Text>
         </Popup>
       )}
     </TooltipContainer>
@@ -74,13 +96,9 @@ const PopupContainer = styled.div<{ $top: number; $left: number }>`
 `
 
 const Popup = forwardRef<HTMLDivElement, PopupProps>(({ top, left, children }, ref) => {
-  const theme = Theme.useTheme()
-
   return ReactDOM.createPortal(
     <PopupContainer ref={ref} $top={top} $left={left}>
-      <Text size={12} color={theme.text.info}>
-        {children}
-      </Text>
+      {children}
     </PopupContainer>,
     document.body
   )
