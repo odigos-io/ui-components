@@ -29,42 +29,45 @@ Tokens.args = {
     { key: 'token', title: 'Token' },
     { key: 'actions', title: '' },
   ],
-  rows: MOCK_TOKENS.map(({ token, name, expiresAt }, idx) => [
-    { columnKey: 'icon', icon: KeyIcon },
-    { columnKey: 'name', value: name },
-    { columnKey: 'token', value: `${new Array(15).fill('•').join('')}` },
-    {
-      columnKey: 'expires_at',
-      component: () => {
-        const theme = Theme.useTheme()
+  rows: MOCK_TOKENS.map(({ token, name, expiresAt }, idx) => ({
+    cells: [
+      { columnKey: 'icon', icon: KeyIcon },
+      { columnKey: 'name', value: name },
+      { columnKey: 'token', value: `${new Array(15).fill('•').join('')}` },
+      {
+        columnKey: 'expires_at',
+        component: () => {
+          const theme = Theme.useTheme()
 
-        return (
-          <Text
-            size={14}
-            color={isOverTime(expiresAt, 0) ? theme.text.error : isOverTime(expiresAt, 604800000) ? theme.text.warning : theme.text.success}
-          >
-            {useTimeAgo().format(expiresAt)} ({new Date(expiresAt).toDateString().split(' ').slice(1).join(' ')})
-          </Text>
-        )
+          return (
+            <Text
+              size={14}
+              color={isOverTime(expiresAt, 0) ? theme.text.error : isOverTime(expiresAt, 604800000) ? theme.text.warning : theme.text.success}
+            >
+              {useTimeAgo().format(expiresAt)} ({new Date(expiresAt).toDateString().split(' ').slice(1).join(' ')})
+            </Text>
+          )
+        },
       },
-    },
-    {
-      columnKey: 'actions',
-      component: () => {
-        const theme = Theme.useTheme()
-        const { isCopied, copiedIndex, clickCopy } = useCopy()
-        const SuccessIcon = getStatusIcon(NOTIFICATION_TYPE.SUCCESS, theme)
+      {
+        columnKey: 'actions',
+        component: () => {
+          const theme = Theme.useTheme()
+          const { isCopied, copiedIndex, clickCopy } = useCopy()
+          const SuccessIcon = getStatusIcon(NOTIFICATION_TYPE.SUCCESS, theme)
 
-        return (
-          <FlexRow $gap={0}>
-            <IconButton size={32} onClick={() => clickCopy(token, idx)}>
-              {isCopied && copiedIndex === idx ? <SuccessIcon /> : <CopyIcon />}
-            </IconButton>
-          </FlexRow>
-        )
+          return (
+            <FlexRow $gap={0}>
+              <IconButton size={32} onClick={() => clickCopy(token, idx)}>
+                {isCopied && copiedIndex === idx ? <SuccessIcon /> : <CopyIcon />}
+              </IconButton>
+            </FlexRow>
+          )
+        },
       },
-    },
-  ]),
+    ],
+  })),
+  onRowClick: (row) => alert(`Row clicked: ${JSON.stringify(row)}`),
 }
 
 export const ComputePlatforms: StoryObj<InteractiveTableProps> = Template.bind({})
@@ -131,29 +134,30 @@ ComputePlatforms.args = {
       destinations: 1,
       apiTokens: 2,
     },
-  ].map(({ id, type, connectionStatus, sources, sourcesInstrumented, actions, destinations, apiTokens }) => [
-    { columnKey: 'icon', icon: type === PLATFORM_TYPE.K8S ? K8sLogo : OdigosLogo },
-    { columnKey: 'name', value: id },
-    { columnKey: 'type', value: type },
-    { columnKey: 'sources', value: `${sourcesInstrumented}/${sources} instrumented` },
-    { columnKey: 'actions', value: actions },
-    { columnKey: 'destinations', value: destinations },
-    { columnKey: 'api_tokens', value: apiTokens },
-    {
-      columnKey: 'status',
-      component: () => (
-        <div style={{ lineHeight: 1 }}>
-          <Status
-            title={connectionStatus === NOTIFICATION_TYPE.SUCCESS ? 'connection alive' : 'connection lost'}
-            status={connectionStatus}
-            withIcon
-            withBorder
-          />
-        </div>
-      ),
-    },
-  ]),
-  onRowClick: (row) => {
-    alert(`Row clicked: ${JSON.stringify(row)}`)
-  },
+  ].map(({ id, type, connectionStatus, sources, sourcesInstrumented, actions, destinations, apiTokens }) => ({
+    status: connectionStatus,
+    cells: [
+      { columnKey: 'icon', icon: type === PLATFORM_TYPE.K8S ? K8sLogo : OdigosLogo },
+      { columnKey: 'name', value: id },
+      { columnKey: 'type', value: type, textColor: '#b5b5b5' },
+      { columnKey: 'sources', value: `${sourcesInstrumented}/${sources} instrumented` },
+      { columnKey: 'actions', value: actions },
+      { columnKey: 'destinations', value: destinations },
+      { columnKey: 'api_tokens', value: apiTokens },
+      {
+        columnKey: 'status',
+        component: () => (
+          <div style={{ lineHeight: 1 }}>
+            <Status
+              title={connectionStatus === NOTIFICATION_TYPE.SUCCESS ? 'connection alive' : 'connection lost'}
+              status={connectionStatus}
+              withIcon
+              withBorder
+            />
+          </div>
+        ),
+      },
+    ],
+  })),
+  onRowClick: (row) => alert(`Row clicked: ${JSON.stringify(row)}`),
 }

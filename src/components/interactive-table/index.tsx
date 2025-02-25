@@ -1,9 +1,10 @@
-import React, { type ReactNode, type FC, useState } from 'react'
+import React, { type ReactNode, type FC, useState, CSSProperties } from 'react'
+import { Text } from '../text'
 import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
-import { isEmpty } from '@odigos/ui-utils'
 import { type SVG } from '@odigos/ui-icons'
 import { IconWrapped } from '../icon-wrapped'
+import { isEmpty, NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface ColumnCell {
   key: string // used to bind the row cell to the column
@@ -15,11 +16,15 @@ interface RowCell {
   icon?: SVG
   component?: () => ReactNode
   value?: string | number | boolean
+  textColor?: CSSProperties['color']
 }
 
 interface InteractiveTableProps {
   columns: ColumnCell[]
-  rows: RowCell[][]
+  rows: {
+    status?: NOTIFICATION_TYPE
+    cells: RowCell[]
+  }[]
   onRowClick?: (index: number) => void
 }
 
@@ -65,7 +70,7 @@ const TableData = styled.td<{ $isFirst: boolean }>`
   width: fit-content;
 `
 
-const RowBackground = styled.div<{ $index: number; $hovered: boolean }>`
+const RowBackground = styled.div<{ $index: number; $hovered: boolean; $status?: NOTIFICATION_TYPE }>`
   position: absolute;
   top: ${({ $index }) => $index * 80 + 34}px;
   left: 0;
@@ -74,8 +79,12 @@ const RowBackground = styled.div<{ $index: number; $hovered: boolean }>`
   height: 68px;
   margin: 12px 0;
   border-radius: 16px;
-  background-color: ${({ theme, $hovered }) =>
-    $hovered ? theme.colors.majestic_blue + Theme.opacity.hex['030'] : theme.colors.dropdown_bg_2 + Theme.opacity.hex['040']};
+  background-color: ${({ theme, $hovered, $status }) =>
+    $hovered
+      ? !!$status
+        ? theme.text[$status] + Theme.opacity.hex['030']
+        : theme.colors.majestic_blue + Theme.opacity.hex['040']
+      : (!!$status ? theme.colors[$status] : theme.colors.dropdown_bg_2) + Theme.opacity.hex['050']};
 `
 
 const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick }) => {
@@ -93,7 +102,7 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick
         </TableHead>
 
         <TableBody>
-          {rows.map((row, i) => (
+          {rows.map(({ cells }, i) => (
             <TableRow
               key={`row-${i}`}
               onMouseEnter={() => !!onRowClick && setHoveredIndex(i)}
@@ -102,13 +111,21 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick
               $withHover={!!onRowClick}
             >
               {columns.map(({ key }, ii) => {
-                const rowCell = row.find(({ columnKey }) => columnKey === key)
+                const rowCell = cells.find(({ columnKey }) => columnKey === key)
                 if (!rowCell) return null
-                const { value, icon, component: Component } = rowCell
+                const { value, textColor, icon, component: Component } = rowCell
 
                 return (
                   <TableData key={`row-${i}-cell-${key}`} $isFirst={ii === 0}>
-                    {!!icon ? <IconWrapped icon={icon} /> : !!Component ? <Component /> : !isEmpty(value) ? value : '-'}
+                    {!!icon ? (
+                      <IconWrapped icon={icon} />
+                    ) : !!Component ? (
+                      <Component />
+                    ) : (
+                      <Text size={14} color={textColor}>
+                        {!isEmpty(value) ? value : '-'}
+                      </Text>
+                    )}
                   </TableData>
                 )
               })}
@@ -117,8 +134,8 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick
         </TableBody>
       </Table>
 
-      {rows.map((_, i) => (
-        <RowBackground key={`bg-${i}`} $index={i} $hovered={hoveredIndex === i} />
+      {rows.map(({ status }, i) => (
+        <RowBackground key={`bg-${i}`} $index={i} $hovered={hoveredIndex === i} $status={status} />
       ))}
     </Container>
   )
