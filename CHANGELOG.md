@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.81](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.80...ui-components-v0.0.81) (2025-02-25)
+
+
+### Features
+
+* enhance tooltip with new props ([0d72d4f](https://github.com/odigos-io/ui-components/commit/0d72d4ffe47375db759a6e6a23ae35d1b0fbc232))
+
 ## [0.0.80](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.79...ui-components-v0.0.80) (2025-02-25)
 
 
