@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.0.77](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.76...ui-components-v0.0.77) (2025-02-25)
+
+
+### Features
+
+* add icon-title-badge component ([da2ee6b](https://github.com/odigos-io/ui-components/commit/da2ee6b42802945b3bc64721c0324093b4c17f00))
+* add icons-nav component ([60948e6](https://github.com/odigos-io/ui-components/commit/60948e64e4e3493a6a7620ce0379e80eb88865e8))
+* enhance badge with new props (status/icon) ([20ba5bf](https://github.com/odigos-io/ui-components/commit/20ba5bff3dd0b36e800c5a84a60aede88bb18f47))
+
 ## [0.0.76](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.75...ui-components-v0.0.76) (2025-02-23)
 
 
