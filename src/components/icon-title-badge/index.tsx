@@ -7,9 +7,9 @@ import { FadeLoader } from '../fade-loader'
 import { type SVG } from '@odigos/ui-icons'
 
 interface IconTitleBadgeProps {
-  icon: SVG
+  icon?: SVG
   title: string
-  badge: string | number
+  badge?: string | number
   loading?: boolean
 }
 
