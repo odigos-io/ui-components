@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.78](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.77...ui-components-v0.0.78) (2025-02-25)
+
+
+### Bug Fixes
+
+* optional props ([94f3825](https://github.com/odigos-io/ui-components/commit/94f3825d49523dc7dbbb0c8d69afdd4c6f072164))
+
 ## [0.0.77](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.76...ui-components-v0.0.77) (2025-02-25)
 
 
