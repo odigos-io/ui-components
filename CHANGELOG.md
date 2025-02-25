@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.79](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.78...ui-components-v0.0.79) (2025-02-25)
+
+
+### Features
+
+* add tooltip to icons-nav ([f7f42ec](https://github.com/odigos-io/ui-components/commit/f7f42ec0e727094e47cd81eeedf3f45299d7fbae))
+
 ## [0.0.78](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.77...ui-components-v0.0.78) (2025-02-25)
 
 
