@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.85](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.84...ui-components-v0.0.85) (2025-02-26)
+
+
+### Bug Fixes
+
+* table-row height, tooltip optional, row bg-color ([9be3e95](https://github.com/odigos-io/ui-components/commit/9be3e95cf5fb174786f3d942a31a1566bd32f14b))
+
 ## [0.0.84](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.83...ui-components-v0.0.84) (2025-02-26)
 
 
