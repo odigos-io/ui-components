@@ -53,6 +53,7 @@ const TableTitle = styled.th`
   font-size: 12px;
   font-weight: 500;
   text-align: left;
+  text-wrap: nowrap;
 `
 
 const TableBody = styled.tbody``

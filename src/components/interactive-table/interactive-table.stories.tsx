@@ -42,7 +42,7 @@ export const Tokens: StoryObj<InteractiveTableProps> = Template.bind({})
 Tokens.args = {
   columns: [
     { key: 'icon', title: '' },
-    { key: 'name', title: 'Name' },
+    { key: 'name', title: 'Audience also known as Name' },
     { key: 'expires_at', title: 'Expires' },
     { key: 'token', title: 'Token' },
     { key: 'actions', title: '' },
