@@ -56,12 +56,11 @@ const IconGroup: FC<IconGroupProps> = ({ icons = [], iconSrcs = [], status, size
   return (
     <Container $size={size}>
       {icons.map((Icon, idx) => {
-        const keyId = useId()
         if (idx > 2) return null
 
         return (
           <IconWrapper
-            key={keyId}
+            key={useId()}
             $status={status}
             $size={imgSize * 1.5}
             $top={icons.length > 2 ? (idx === 0 || idx === 1 ? 0 : imgSize * 1.4) : imgSize * 0.7}
