@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.84](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.83...ui-components-v0.0.84) (2025-02-26)
+
+
+### Bug Fixes
+
+* table head wrap ([0b7b237](https://github.com/odigos-io/ui-components/commit/0b7b2373bfd08046e34132226091871d79edebaa))
+
 ## [0.0.83](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.82...ui-components-v0.0.83) (2025-02-26)
 
 
