@@ -2,12 +2,30 @@ import React from 'react'
 import { Text } from '../text'
 import { Status } from '../status'
 import Theme from '@odigos/ui-theme'
+import { Tooltip } from '../tooltip'
 import { FlexRow } from '../../styled'
 import { IconButton } from '../icon-button'
+import { IconWrapped } from '../icon-wrapped'
+import { MonitorsIcons } from '../monitors-icons'
 import { StoryObj, type StoryFn } from '@storybook/react'
-import { InteractiveTable, type InteractiveTableProps } from '.'
-import { CopyIcon, K8sLogo, KeyIcon, OdigosLogo } from '@odigos/ui-icons'
-import { getPlatformIcon, getStatusIcon, isOverTime, MOCK_TOKENS, NOTIFICATION_TYPE, PLATFORM_TYPE, useCopy, useTimeAgo } from '@odigos/ui-utils'
+import { CopyIcon, ErrorTriangleIcon, KeyIcon } from '@odigos/ui-icons'
+import { InteractiveTable, RowCell, type InteractiveTableProps } from '.'
+import {
+  CONDITION_STATUS,
+  ENTITY_TYPES,
+  getActionIcon,
+  getEntityLabel,
+  getPlatformIcon,
+  getStatusIcon,
+  isOverTime,
+  MOCK_ACTIONS,
+  MOCK_TOKENS,
+  NOTIFICATION_TYPE,
+  PLATFORM_TYPE,
+  splitCamelString,
+  useCopy,
+  useTimeAgo,
+} from '@odigos/ui-utils'
 
 export default {
   title: 'Components/InteractiveTable',
@@ -159,5 +177,77 @@ ComputePlatforms.args = {
       },
     ],
   })),
+  onRowClick: (row) => alert(`Row clicked: ${JSON.stringify(row)}`),
+}
+
+export const Actions: StoryObj<InteractiveTableProps> = Template.bind({})
+
+Actions.args = {
+  columns: [
+    { key: 'icon', title: '' },
+    { key: 'name', title: 'Name' },
+    { key: 'type', title: 'Type' },
+    { key: 'signals', title: 'Monitoring' },
+    { key: 'active-status', title: 'Status' },
+    { key: 'conditions', title: 'Conditions' },
+    { key: 'notes', title: 'Notes' },
+  ],
+  rows: MOCK_ACTIONS.map((act) => {
+    const errors = act.conditions?.filter(({ status }) => status === CONDITION_STATUS.FALSE || status === NOTIFICATION_TYPE.ERROR) || []
+
+    return {
+      status: errors.length ? NOTIFICATION_TYPE.ERROR : undefined,
+      cells: [
+        {
+          columnKey: 'icon',
+          component: () => <IconWrapped icon={getActionIcon(act.type)} />,
+        },
+        { columnKey: 'name', value: getEntityLabel(act, ENTITY_TYPES.ACTION, { prioritizeDisplayName: true }) },
+        { columnKey: 'type', value: act.type, textColor: '#b5b5b5' },
+        { columnKey: 'notes', value: act.spec.notes, textColor: '#b5b5b5' },
+        {
+          columnKey: 'signals',
+          component: () => <MonitorsIcons withLabels monitors={act.spec.signals} />,
+        },
+        {
+          columnKey: 'active-status',
+          component: () => (
+            <div style={{ lineHeight: 1 }}>
+              <Status
+                status={act.spec.disabled ? NOTIFICATION_TYPE.ERROR : NOTIFICATION_TYPE.SUCCESS}
+                title={act.spec.disabled ? 'Inactive' : 'Active'}
+                withIcon
+                withBorder
+              />
+            </div>
+          ),
+        },
+        {
+          columnKey: 'conditions',
+          component: () => (
+            <div style={{ lineHeight: 1 }}>
+              {!!errors.length ? (
+                <FlexRow>
+                  {errors.map(({ type, reason, message, lastTransitionTime }) => (
+                    <Tooltip
+                      key={`${act.id}-${type}-${lastTransitionTime}`}
+                      titleIcon={ErrorTriangleIcon}
+                      title={splitCamelString(type)}
+                      text={message || splitCamelString(reason)}
+                      timestamp={lastTransitionTime}
+                    >
+                      <Status status={NOTIFICATION_TYPE.ERROR} title={splitCamelString(type)} withBorder withIcon />
+                    </Tooltip>
+                  ))}
+                </FlexRow>
+              ) : (
+                <Status status={NOTIFICATION_TYPE.SUCCESS} title='success' withBorder withIcon />
+              )}
+            </div>
+          ),
+        },
+      ] as RowCell[],
+    }
+  }),
   onRowClick: (row) => alert(`Row clicked: ${JSON.stringify(row)}`),
 }
