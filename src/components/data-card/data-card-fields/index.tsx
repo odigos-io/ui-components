@@ -8,7 +8,7 @@ import { Tooltip } from '../../tooltip'
 import { Divider } from '../../divider'
 import { DataTab } from '../../data-tab'
 import { MonitorsIcons } from '../../monitors-icons'
-import { InteractiveTable } from '../../interactive-table'
+import { InteractiveTable, RowCell } from '../../interactive-table'
 import {
   capitalizeFirstLetter,
   getProgrammingLanguageIcon,
@@ -124,13 +124,24 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
       )
 
     case DATA_CARD_FIELD_TYPES.CODE: {
-      const params = safeJsonParse(value, { language: '', code: '' })
+      const params = safeJsonParse(value, {
+        language: '',
+        code: '',
+      })
 
       return <Code {...params} />
     }
 
     case DATA_CARD_FIELD_TYPES.TABLE: {
-      const params = safeJsonParse(value, { columns: [], rows: [] })
+      const params = safeJsonParse(value, {
+        columns: [],
+        rows: [
+          {
+            status: undefined,
+            cells: [] as RowCell[],
+          },
+        ],
+      })
 
       return <InteractiveTable {...params} />
     }
