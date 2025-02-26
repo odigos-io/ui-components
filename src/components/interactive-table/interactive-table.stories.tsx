@@ -7,7 +7,7 @@ import { IconButton } from '../icon-button'
 import { StoryObj, type StoryFn } from '@storybook/react'
 import { InteractiveTable, type InteractiveTableProps } from '.'
 import { CopyIcon, K8sLogo, KeyIcon, OdigosLogo } from '@odigos/ui-icons'
-import { getStatusIcon, isOverTime, MOCK_TOKENS, NOTIFICATION_TYPE, PLATFORM_TYPE, useCopy, useTimeAgo } from '@odigos/ui-utils'
+import { getPlatformIcon, getStatusIcon, isOverTime, MOCK_TOKENS, NOTIFICATION_TYPE, PLATFORM_TYPE, useCopy, useTimeAgo } from '@odigos/ui-utils'
 
 export default {
   title: 'Components/InteractiveTable',
@@ -137,7 +137,7 @@ ComputePlatforms.args = {
   ].map(({ id, type, connectionStatus, sources, sourcesInstrumented, actions, destinations, apiTokens }) => ({
     status: connectionStatus,
     cells: [
-      { columnKey: 'icon', icon: type === PLATFORM_TYPE.K8S ? K8sLogo : OdigosLogo },
+      { columnKey: 'icon', icon: getPlatformIcon(type) },
       { columnKey: 'name', value: id },
       { columnKey: 'type', value: type, textColor: '#b5b5b5' },
       { columnKey: 'sources', value: `${sourcesInstrumented}/${sources} instrumented` },

@@ -141,4 +141,4 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick
   )
 }
 
-export { InteractiveTable, type InteractiveTableProps }
+export { InteractiveTable, type InteractiveTableProps, type ColumnCell, type RowCell }
