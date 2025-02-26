@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.83](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.82...ui-components-v0.0.83) (2025-02-26)
+
+
+### Bug Fixes
+
+* table text wrapping ([a1c8176](https://github.com/odigos-io/ui-components/commit/a1c81768b8dc8a43e48cbfb3a86ec27f3f4ea447))
+* tooltip empty space ([4c045c9](https://github.com/odigos-io/ui-components/commit/4c045c9a1b9ff02c61adc46131a69a48d4141a1a))
+
 ## [0.0.82](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.81...ui-components-v0.0.82) (2025-02-26)
 
 
