@@ -192,7 +192,7 @@ Actions.args = {
     { key: 'conditions', title: 'Conditions' },
     { key: 'notes', title: 'Notes' },
   ],
-  rows: MOCK_ACTIONS.map((act) => {
+  rows: MOCK_ACTIONS.map((act, i) => {
     const errors = act.conditions?.filter(({ status }) => status === CONDITION_STATUS.FALSE || status === NOTIFICATION_TYPE.ERROR) || []
 
     return {
@@ -204,7 +204,7 @@ Actions.args = {
         },
         { columnKey: 'name', value: getEntityLabel(act, ENTITY_TYPES.ACTION, { prioritizeDisplayName: true }) },
         { columnKey: 'type', value: act.type, textColor: '#b5b5b5' },
-        { columnKey: 'notes', value: act.spec.notes, textColor: '#b5b5b5' },
+        { columnKey: 'notes', value: [3, 5, 6].includes(i) ? '' : act.spec.notes, textColor: '#b5b5b5' },
         {
           columnKey: 'signals',
           component: () => <MonitorsIcons withLabels monitors={act.spec.signals} />,

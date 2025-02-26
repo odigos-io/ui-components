@@ -18,6 +18,7 @@ interface RowCell {
   component?: () => ReactNode
   value?: string | number | boolean
   textColor?: CSSProperties['color']
+  withTooltip?: boolean
 }
 
 interface InteractiveTableProps {
@@ -82,10 +83,8 @@ const RowBackground = styled.div<{ $height: number; $top: number; $hovered: bool
   border-radius: 16px;
   background-color: ${({ theme, $hovered, $status }) =>
     $hovered
-      ? !!$status
-        ? theme.text[$status] + Theme.opacity.hex['030']
-        : theme.colors.majestic_blue + Theme.opacity.hex['040']
-      : (!!$status ? theme.colors[$status] : theme.colors.dropdown_bg_2) + Theme.opacity.hex['050']};
+      ? theme.colors.majestic_blue + Theme.opacity.hex['010']
+      : (!!$status ? theme.colors[$status] : theme.colors.dropdown_bg_2) + Theme.opacity.hex['020']};
 `
 
 const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick }) => {
@@ -139,7 +138,7 @@ const Row: FC<{ index: number; columns: ColumnCell[]; cells: RowCell[]; onClick?
       {columns.map(({ key }, i) => {
         const rowCell = cells.find(({ columnKey }) => columnKey === key)
         if (!rowCell) return null
-        const { value, textColor, icon, component: Component } = rowCell
+        const { value, textColor, withTooltip, icon, component: Component } = rowCell
 
         return (
           <TableData key={useId()} $isFirst={i === 0}>
@@ -148,7 +147,7 @@ const Row: FC<{ index: number; columns: ColumnCell[]; cells: RowCell[]; onClick?
             ) : !!Component ? (
               <Component />
             ) : (
-              <Tooltip text={!!value ? String(value) : ''}>
+              <Tooltip text={withTooltip && !!value ? String(value) : ''}>
                 <Text
                   size={14}
                   color={textColor}
@@ -158,7 +157,7 @@ const Row: FC<{ index: number; columns: ColumnCell[]; cells: RowCell[]; onClick?
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     display: '-webkit-box',
-                    WebkitLineClamp: 3,
+                    WebkitLineClamp: 2,
                     WebkitBoxOrient: 'vertical',
                   }}
                 >
