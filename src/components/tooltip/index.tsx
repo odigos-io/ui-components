@@ -59,10 +59,12 @@ const Tooltip: FC<TooltipProps> = ({ withIcon, titleIcon: TitleIcon, title, text
       {isHovered && (
         <Popup ref={popupRef} {...popupPosition}>
           <Text size={12} color={theme.text.secondary}>
-            <FlexRow style={{ marginBottom: '4px' }} $gap={4}>
-              {TitleIcon && <TitleIcon fill={theme.text.secondary} size={12} />}
-              {title && <>{title}&nbsp;-&nbsp;</>}
-            </FlexRow>
+            {(!!TitleIcon || !!title) && (
+              <FlexRow style={{ marginBottom: '4px' }} $gap={4}>
+                {TitleIcon && <TitleIcon fill={theme.text.secondary} size={12} />}
+                {title && <>{title}&nbsp;-&nbsp;</>}
+              </FlexRow>
+            )}
 
             <Text size={12} color={theme.text.info}>
               {text}
