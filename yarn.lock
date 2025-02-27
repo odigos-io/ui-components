@@ -1261,7 +1261,7 @@
     styled-components "^6.1.15"
     zustand "^5.0.3"
 
-"@odigos/ui-utils@^0.0.35":
+"@odigos/ui-utils@^0.0.36":
   version "0.0.35"
   resolved "https://registry.yarnpkg.com/@odigos/ui-utils/-/ui-utils-0.0.35.tgz#db932bc6e9cdb194f159f7cbd69a9494263b09bb"
   integrity sha512-61w/mq6qmIEEVhw2BSMQHhHHX5nsYgG3KMkcv/NZQDAgyD1Q4nKWk8tq7axQWT1plo9JBd9ZNh9MOHHDE/CX9g==
