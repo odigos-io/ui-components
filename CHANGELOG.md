@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.86](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.85...ui-components-v0.0.86) (2025-02-27)
+
+
+### Bug Fixes
+
+* bump to trigger release-please ([96e2a51](https://github.com/odigos-io/ui-components/commit/96e2a51d930ec7d854a4342f94d77a195f9fff32))
+
 ## [0.0.85](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.84...ui-components-v0.0.85) (2025-02-26)
 
 
