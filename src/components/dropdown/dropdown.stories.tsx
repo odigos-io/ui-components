@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { type StoryFn } from '@storybook/react'
-import { Dropdown, type DropdownProps } from '.'
+import { Dropdown, type DropdownOption, type DropdownProps } from '.'
 
 export default {
   title: 'Components/Dropdown',
@@ -8,7 +8,7 @@ export default {
 }
 
 export const Default: StoryFn<DropdownProps> = (props) => {
-  const [val, setVal] = useState({ id: '', value: '' })
+  const [val, setVal] = useState<DropdownOption>({ id: '', value: '' })
 
   return (
     <Dropdown
@@ -26,6 +26,7 @@ export const Default: StoryFn<DropdownProps> = (props) => {
 }
 
 Default.args = {
+  disabled: false,
   showSearch: true,
   title: 'Languages',
   options: [

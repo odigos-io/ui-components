@@ -18,6 +18,7 @@ import {
   getPlatformIcon,
   getStatusIcon,
   isOverTime,
+  mapConditions,
   MOCK_ACTIONS,
   MOCK_TOKENS,
   NOTIFICATION_TYPE,
@@ -228,15 +229,15 @@ Actions.args = {
             <div style={{ lineHeight: 1 }}>
               {!!errors.length ? (
                 <FlexRow>
-                  {errors.map(({ type, reason, message, lastTransitionTime }) => (
+                  {mapConditions(errors).map(({ type, reason, message, lastTransitionTime }) => (
                     <Tooltip
                       key={`${act.id}-${type}-${lastTransitionTime}`}
                       titleIcon={ErrorTriangleIcon}
-                      title={splitCamelString(type)}
-                      text={message || splitCamelString(reason)}
+                      title={type}
+                      text={message || reason || ''}
                       timestamp={lastTransitionTime}
                     >
-                      <Status status={NOTIFICATION_TYPE.ERROR} title={splitCamelString(type)} withBorder withIcon />
+                      <Status status={NOTIFICATION_TYPE.ERROR} title={type} withBorder withIcon />
                     </Tooltip>
                   ))}
                 </FlexRow>

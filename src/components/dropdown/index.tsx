@@ -14,8 +14,8 @@ import { useOnClickOutside } from '@odigos/ui-utils'
 import { CheckIcon, CrossIcon, SearchIcon } from '@odigos/ui-icons'
 
 interface DropdownOption {
-  id: string
-  value: string
+  id?: string | null
+  value?: string | null
 }
 
 interface DropdownProps {
@@ -27,30 +27,38 @@ interface DropdownProps {
   onSelect?: (option: DropdownOption) => void
   onDeselect?: (option: DropdownOption) => void
   isMulti?: boolean
+  disabled?: boolean
   required?: boolean
   showSearch?: boolean
   errorMessage?: string
 }
 
-const RootContainer = styled.div`
+const RootContainer = styled.div<{ $disabled: DropdownProps['disabled'] }>`
   display: flex;
   flex-direction: column;
   min-width: 120px;
   width: 100%;
+  opacity: ${({ $disabled }) => ($disabled ? 0.5 : 1)};
 `
 
 const RelativeContainer = styled.div`
   position: relative;
 `
 
-const DropdownHeader = styled.div<{ $isOpen: boolean; $isMulti?: boolean; $hasSelections: boolean; $hasError: boolean }>`
+const DropdownHeader = styled.div<{
+  $isOpen: boolean
+  $isMulti?: boolean
+  $hasSelections: boolean
+  $hasError: boolean
+  $disabled: DropdownProps['disabled']
+}>`
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 36px;
   padding: ${({ $isMulti, $hasSelections }) => ($isMulti && $hasSelections ? '0 16px 0 6px' : '0 16px')};
   border-radius: 32px;
-  cursor: pointer;
+  cursor: ${({ $disabled }) => ($disabled ? 'not-allowed' : 'pointer')};
 
   ${({ $isOpen, $isMulti, theme }) =>
     $isOpen && !$isMulti
@@ -70,7 +78,8 @@ const DropdownHeader = styled.div<{ $isOpen: boolean; $isMulti?: boolean; $hasSe
     `}
 
   &:hover {
-    border-color: ${({ $isMulti, $hasSelections, theme }) => ($isMulti && $hasSelections ? theme.colors.border : theme.colors.secondary)};
+    border-color: ${({ $isMulti, $hasSelections, $disabled, theme }) =>
+      $disabled ? 'auto' : $isMulti && $hasSelections ? theme.colors.border : theme.colors.secondary};
   }
 `
 
@@ -88,6 +97,7 @@ const Dropdown: FC<DropdownProps> = ({
   title,
   tooltip,
   placeholder,
+  disabled = false,
   isMulti = false,
   showSearch = false,
   required = false,
@@ -115,7 +125,7 @@ const Dropdown: FC<DropdownProps> = ({
   const arrLen = Array.isArray(value) ? value.length : 0
 
   return (
-    <RootContainer>
+    <RootContainer $disabled={disabled}>
       <FieldLabel title={title} required={required} tooltip={tooltip} />
 
       <RelativeContainer ref={containerRef}>
@@ -124,7 +134,8 @@ const Dropdown: FC<DropdownProps> = ({
           $isMulti={isMulti}
           $hasSelections={Array.isArray(value) ? !!value.length : false}
           $hasError={!!errorMessage}
-          onClick={toggleOpen}
+          $disabled={disabled}
+          onClick={() => !disabled && toggleOpen()}
         >
           <DropdownPlaceholder value={value} placeholder={placeholder} onDeselect={onDeselect} />
           <IconWrapper>
@@ -252,13 +263,13 @@ const DropdownList: FC<{
   showSearch: DropdownProps['showSearch']
 }> = ({ openUpwards, options, value, onSelect, onDeselect, isMulti, showSearch }) => {
   const [searchText, setSearchText] = useState('')
-  const filteredOptions = options.filter((option) => option.value.toLowerCase().includes(searchText))
+  const filteredOptions = options.filter((option) => option.value?.toLowerCase().includes(searchText?.toLowerCase()))
 
   return (
     <AbsoluteContainer $openUpwards={openUpwards}>
       {showSearch && (
         <SearchInputContainer>
-          <Input placeholder='Search...' icon={SearchIcon} value={searchText} onChange={(e) => setSearchText(e.target.value.toLowerCase())} />
+          <Input placeholder='Search...' icon={SearchIcon} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
           <Divider thickness={1} margin='8px 0 0 0' />
         </SearchInputContainer>
       )}
@@ -266,9 +277,9 @@ const DropdownList: FC<{
       {filteredOptions.length === 0 ? (
         <NoDataFound subTitle={showSearch && !!searchText ? undefined : ' '} />
       ) : (
-        filteredOptions.map((opt) => (
+        filteredOptions.map((opt, idx) => (
           <DropdownListItem
-            key={`dropdown-option-${opt.id}`}
+            key={`dropdown-option-${opt.id || idx}`}
             option={opt}
             value={value}
             isMulti={isMulti}
@@ -308,7 +319,7 @@ const DropdownListItem: FC<{
     return (
       <DropdownItem className={isSelected ? 'selected' : ''}>
         <Checkbox
-          title={option.value}
+          title={option.value || ''}
           titleColor={theme.text.secondary}
           value={isSelected}
           onChange={(toAdd) => (toAdd ? onSelect?.(option) : onDeselect?.(option))}
@@ -326,4 +337,4 @@ const DropdownListItem: FC<{
   )
 }
 
-export { Dropdown, type DropdownProps }
+export { Dropdown, type DropdownProps, type DropdownOption }
