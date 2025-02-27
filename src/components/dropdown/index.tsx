@@ -263,13 +263,13 @@ const DropdownList: FC<{
   showSearch: DropdownProps['showSearch']
 }> = ({ openUpwards, options, value, onSelect, onDeselect, isMulti, showSearch }) => {
   const [searchText, setSearchText] = useState('')
-  const filteredOptions = options.filter((option) => option.value?.toLowerCase().includes(searchText))
+  const filteredOptions = options.filter((option) => option.value?.toLowerCase().includes(searchText?.toLowerCase()))
 
   return (
     <AbsoluteContainer $openUpwards={openUpwards}>
       {showSearch && (
         <SearchInputContainer>
-          <Input placeholder='Search...' icon={SearchIcon} value={searchText} onChange={(e) => setSearchText(e.target.value.toLowerCase())} />
+          <Input placeholder='Search...' icon={SearchIcon} value={searchText} onChange={(e) => setSearchText(e.target.value)} />
           <Divider thickness={1} margin='8px 0 0 0' />
         </SearchInputContainer>
       )}
