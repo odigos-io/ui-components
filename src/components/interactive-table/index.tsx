@@ -32,21 +32,25 @@ interface InteractiveTableProps {
 
 const Container = styled.div`
   width: 100%;
-  position: relative;
-  z-index: 0;
 `
 
 const Table = styled.table`
-  border-collapse: collapse;
   width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
 `
 
 const TableHead = styled.thead`
-  border-top: 1px solid ${({ theme }) => theme.colors.dropdown_bg_2};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.dropdown_bg_2};
+  // only supported with "border-collapse: collapse;"
+  // border-top: 1px solid ${({ theme }) => theme.colors.dropdown_bg_2};
+  // border-bottom: 1px solid ${({ theme }) => theme.colors.dropdown_bg_2};
 `
 
 const TableTitle = styled.th`
+  // only required with "border-collapse: separate;"
+  border-top: 1px solid ${({ theme }) => theme.colors.dropdown_bg_2};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.dropdown_bg_2};
+
   padding: 8px;
   color: ${({ theme }) => theme.text.darker_grey};
   font-family: ${({ theme }) => theme.font_family.secondary};
@@ -60,31 +64,34 @@ const TableTitle = styled.th`
 const TableBody = styled.tbody``
 
 const TableRow = styled.tr<{ $withHover: boolean }>`
-  // line-height: 68px;
   cursor: ${({ $withHover }) => ($withHover ? 'pointer' : 'default')};
 `
 
 const TableData = styled.td<{ $isFirst: boolean }>`
-  padding: 12px 8px 12px ${({ $isFirst }) => ($isFirst ? '16px' : '8px')};
+  position: relative;
+  width: fit-content;
+  padding: 16px 8px 16px ${({ $isFirst }) => ($isFirst ? '16px' : '8px')};
   color: ${({ theme }) => theme.text.secondary};
   font-family: ${({ theme }) => theme.font_family.primary};
   font-size: 14px;
   white-space: nowrap;
-  width: fit-content;
 `
 
-const RowBackground = styled.div<{ $height: number; $top: number; $hovered: boolean; $status?: NOTIFICATION_TYPE }>`
+const RowBackground = styled.div<{ $height: number; $width: number; $top: number; $hovered: boolean; $status?: NOTIFICATION_TYPE }>`
   position: absolute;
-  top: ${({ $top }) => $top + 38}px;
+  top: 0;
   left: 0;
-  z-index: -1;
-  width: 100%;
-  height: ${({ $height }) => $height - 6}px;
+  width: ${({ $width }) => $width}px;
+  height: ${({ $height }) => $height}px;
   border-radius: 16px;
   background-color: ${({ theme, $hovered, $status }) =>
     $hovered
-      ? theme.colors.majestic_blue + Theme.opacity.hex['010']
-      : (!!$status ? theme.colors[$status] : theme.colors.dropdown_bg_2) + Theme.opacity.hex['020']};
+      ? !!$status
+        ? theme.text[$status] + Theme.opacity.hex['020']
+        : theme.colors.majestic_blue + Theme.opacity.hex['030']
+      : !!$status
+      ? theme.text[$status] + Theme.opacity.hex['010']
+      : theme.colors.secondary + Theme.opacity.hex['005']};
 `
 
 const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick }) => {
@@ -123,7 +130,7 @@ const Row: FC<{ index: number; columns: ColumnCell[]; cells: RowCell[]; onClick?
   onClick,
   status,
 }) => {
-  const { containerRef, containerHeight } = useContainerSize()
+  const { containerRef, containerHeight, containerWidth } = useContainerSize()
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -166,7 +173,9 @@ const Row: FC<{ index: number; columns: ColumnCell[]; cells: RowCell[]; onClick?
               </Tooltip>
             )}
 
-            <RowBackground $height={containerHeight} $top={containerHeight * index} $hovered={isHovered} $status={status} />
+            {i === 0 && (
+              <RowBackground $height={containerHeight} $width={containerWidth} $top={containerHeight * index} $hovered={isHovered} $status={status} />
+            )}
           </TableData>
         )
       })}

@@ -6,7 +6,7 @@ const DarkModeSettings = () => {
   const { darkMode } = Theme.useDarkMode()
 
   useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#000' : '#fff'
+    document.body.style.backgroundColor = darkMode ? '#111111' : '#EEEEEE'
   }, [darkMode])
 
   return null

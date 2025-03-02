@@ -53,22 +53,23 @@ const Container = styled.div<{ $withClick: boolean; $isError: DataTabProps['isEr
     $isError ? theme.text.error + Theme.opacity.hex['010'] : theme.colors.secondary + Theme.opacity.hex['005']};
 
   ${({ $withClick, $isError, theme }) =>
-    $withClick &&
-    css`
+    $withClick
+      ? css`
+          &:hover {
+            cursor: pointer;
+            background-color: ${$isError ? theme.text.error + Theme.opacity.hex['020'] : theme.colors.secondary + Theme.opacity.hex['010']};
+            ${ControlledVisibility} {
+              visibility: visible;
+            }
+          }
+        `
+      : `
       &:hover {
-        cursor: pointer;
-        background-color: ${$isError ? theme.text.error + Theme.opacity.hex['020'] : theme.colors.secondary + Theme.opacity.hex['010']};
         ${ControlledVisibility} {
           visibility: visible;
         }
       }
     `}
-
-  &:hover {
-    ${ControlledVisibility} {
-      visibility: visible;
-    }
-  }
 `
 
 const Title = styled(Text)<{ $maxWidth: number }>`
