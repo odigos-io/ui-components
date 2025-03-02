@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.87](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.86...ui-components-v0.0.87) (2025-03-02)
+
+
+### Bug Fixes
+
+* match table bg-colors to data-tab bg-colors ([1b4d9f1](https://github.com/odigos-io/ui-components/commit/1b4d9f1d5da39c59bb0e845cfad43efc1f3a8bbf))
+
 ## [0.0.86](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.85...ui-components-v0.0.86) (2025-02-27)
 
 
