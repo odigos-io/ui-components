@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.88](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.87...ui-components-v0.0.88) (2025-03-03)
+
+
+### Features
+
+* support "warning" status in conditions-details ([2e7d918](https://github.com/odigos-io/ui-components/commit/2e7d918ee2873a6cb9c8b432ebe96e0060a963eb))
+* support other status types in data-tab ([8a85c1e](https://github.com/odigos-io/ui-components/commit/8a85c1e4d50c3dea0f911759374643c92078bc6f))
+
 ## [0.0.87](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.86...ui-components-v0.0.87) (2025-03-02)
 
 
