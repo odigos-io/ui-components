@@ -5,23 +5,32 @@ import styled from 'styled-components'
 import { FlexRow } from '../../styled'
 import { FadeLoader } from '../fade-loader'
 import { ExtendArrow } from '../extend-arrow'
-import { type Condition, type FetchedCondition, getStatusIcon, mapConditions, NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import { type Condition, getStatusIcon, mapConditions, NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface ConditionDetailsProps {
-  conditions: (FetchedCondition | Condition)[]
-  headerLabelFailed?: string
+  conditions: Condition[]
+  headerLabelError?: string
+  headerLabelWarning?: string
   headerLabelSuccess?: string
 }
 
-const Container = styled.div<{ $hasErrors: boolean }>`
+const Container = styled.div<{ $status: Condition['status'] }>`
   border-radius: 24px;
-  background-color: ${({ theme, $hasErrors }) =>
-    $hasErrors ? theme.text.error + Theme.opacity.hex['010'] : theme.colors.secondary + Theme.opacity.hex['005']};
-  cursor: pointer;
+  background-color: ${({ theme, $status }) =>
+    $status === NOTIFICATION_TYPE.ERROR
+      ? theme.text.error + Theme.opacity.hex['010']
+      : $status === NOTIFICATION_TYPE.WARNING
+      ? theme.text.warning + Theme.opacity.hex['010']
+      : theme.colors.secondary + Theme.opacity.hex['005']};
   &:hover {
-    background-color: ${({ theme, $hasErrors }) =>
-      $hasErrors ? theme.text.error + Theme.opacity.hex['020'] : theme.colors.secondary + Theme.opacity.hex['010']};
+    background-color: ${({ theme, $status }) =>
+      $status === NOTIFICATION_TYPE.ERROR
+        ? theme.text.error + Theme.opacity.hex['020']
+        : $status === NOTIFICATION_TYPE.WARNING
+        ? theme.text.warning + Theme.opacity.hex['020']
+        : theme.colors.secondary + Theme.opacity.hex['010']};
   }
+  cursor: pointer;
   transition: background 0.3s;
 `
 
@@ -51,7 +60,8 @@ const TextNoWrap = styled(Text)`
 
 const ConditionDetails: FC<ConditionDetailsProps> = ({
   conditions: c,
-  headerLabelFailed = 'Something Failed',
+  headerLabelError = 'Something Failed',
+  headerLabelWarning = 'Something Went Wrong',
   headerLabelSuccess = 'Everything Successful',
 }) => {
   const theme = Theme.useTheme()
@@ -61,24 +71,31 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
 
   const errors = conditions.filter(({ status }) => status === NOTIFICATION_TYPE.ERROR)
   const hasErrors = !!errors.length
-
   const warnings = conditions.filter(({ status }) => status === NOTIFICATION_TYPE.WARNING)
   const hasWarnings = !!warnings.length
+  const loadings = conditions.filter(({ status }) => status === 'loading')
+  const hasLoadings = !!loadings.length
 
-  const loading = (!conditions.length || hasWarnings) && !hasErrors
+  const loading = (!conditions.length || hasLoadings) && !hasErrors && !hasWarnings
 
-  const headerText = hasErrors ? headerLabelFailed : loading ? 'Loading...' : headerLabelSuccess
-  const HeaderIcon = getStatusIcon(hasErrors ? NOTIFICATION_TYPE.ERROR : NOTIFICATION_TYPE.SUCCESS, theme)
+  const overallStatus = hasErrors ? NOTIFICATION_TYPE.ERROR : hasWarnings ? NOTIFICATION_TYPE.WARNING : NOTIFICATION_TYPE.SUCCESS
+  const HeaderIcon = getStatusIcon(overallStatus, theme)
+
+  const headerText = hasErrors ? headerLabelError : hasWarnings ? headerLabelWarning : loading ? 'Loading...' : headerLabelSuccess
+  const headerTextColor = hasErrors ? theme.text.error : hasWarnings ? theme.text.warning : theme.text.grey
+
+  const headerSubText = `(${hasErrors ? errors.length : hasWarnings ? warnings.length : conditions.length}/${conditions.length})`
+  const headerSubTextColor = hasErrors ? theme.text.error_secondary : hasWarnings ? theme.text.warning_secondary : theme.text.dark_grey
 
   return (
-    <Container onClick={() => setExtend((prev) => !prev)} $hasErrors={hasErrors}>
+    <Container onClick={() => setExtend((prev) => !prev)} $status={overallStatus}>
       <Header>
         {loading ? <FadeLoader /> : <HeaderIcon />}
-        <Text color={hasErrors ? theme.text.error : theme.text.grey} size={14}>
+        <Text color={headerTextColor} size={14}>
           {headerText}
         </Text>
-        <Text color={hasErrors ? theme.text.error_secondary : theme.text.dark_grey} size={12} family='secondary'>
-          ({hasErrors ? errors.length : conditions.length}/{conditions.length})
+        <Text color={headerSubTextColor} size={12} family='secondary'>
+          {headerSubText}
         </Text>
         <ExtendArrow extend={extend} align='right' />
       </Header>
@@ -86,9 +103,19 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
       {extend && (
         <Body>
           {conditions.map(({ status, type, reason, message, lastTransitionTime }, idx) => {
-            const Icon = status === NOTIFICATION_TYPE.WARNING ? () => FadeLoader({ scale: 0.8 }) : getStatusIcon(status, theme)
-            const color = status === NOTIFICATION_TYPE.ERROR ? theme.text.error : theme.text.darker_grey
-            const boldColor = status === NOTIFICATION_TYPE.ERROR ? theme.text.error_secondary : theme.text.grey
+            const Icon = status === 'loading' ? () => FadeLoader({ scale: 0.8 }) : getStatusIcon(status, theme)
+            const color =
+              status === NOTIFICATION_TYPE.ERROR
+                ? theme.text.error
+                : status === NOTIFICATION_TYPE.WARNING
+                ? theme.text.warning
+                : theme.text.darker_grey
+            const boldColor =
+              status === NOTIFICATION_TYPE.ERROR
+                ? theme.text.error_secondary
+                : status === NOTIFICATION_TYPE.WARNING
+                ? theme.text.warning_secondary
+                : theme.text.grey
 
             return (
               <Row key={`condition-${idx}`}>

@@ -11,7 +11,6 @@ import { StoryObj, type StoryFn } from '@storybook/react'
 import { CopyIcon, ErrorTriangleIcon, KeyIcon } from '@odigos/ui-icons'
 import { InteractiveTable, RowCell, type InteractiveTableProps } from '.'
 import {
-  CONDITION_STATUS,
   ENTITY_TYPES,
   getActionIcon,
   getEntityLabel,
@@ -23,7 +22,6 @@ import {
   MOCK_TOKENS,
   NOTIFICATION_TYPE,
   PLATFORM_TYPE,
-  splitCamelString,
   useCopy,
   useTimeAgo,
 } from '@odigos/ui-utils'
@@ -194,7 +192,7 @@ Actions.args = {
     { key: 'notes', title: 'Notes' },
   ],
   rows: MOCK_ACTIONS.map((act, i) => {
-    const errors = act.conditions?.filter(({ status }) => status === CONDITION_STATUS.FALSE || status === NOTIFICATION_TYPE.ERROR) || []
+    const errors = act.conditions?.filter(({ status }) => status === NOTIFICATION_TYPE.ERROR) || []
 
     return {
       status: errors.length ? NOTIFICATION_TYPE.ERROR : undefined,
