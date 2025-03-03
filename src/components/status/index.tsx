@@ -4,13 +4,14 @@ import { Divider } from '../divider'
 import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
 import { getStatusIcon, NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import { FadeLoader } from '../fade-loader'
 
 interface StatusProps {
   title?: string
   subtitle?: string
   size?: number
   family?: 'primary' | 'secondary'
-  status?: NOTIFICATION_TYPE
+  status?: NOTIFICATION_TYPE | 'loading'
   withIcon?: boolean
   withBorder?: boolean
   withBackground?: boolean
@@ -45,17 +46,26 @@ const TextWrapper = styled.div`
   align-items: center;
 `
 
-const Status: FC<StatusProps> = ({ title, subtitle, size = 12, family = 'secondary', status, withIcon, withBorder, withBackground }) => {
+const Status: FC<StatusProps> = ({
+  title,
+  subtitle,
+  size = 12,
+  family = 'secondary',
+  status = NOTIFICATION_TYPE.DEFAULT,
+  withIcon,
+  withBorder,
+  withBackground,
+}) => {
   const theme = Theme.useTheme()
 
-  const statusType = status || NOTIFICATION_TYPE.DEFAULT
-  const StatusIcon = getStatusIcon(statusType, theme)
+  const statusType = status === 'loading' ? NOTIFICATION_TYPE.INFO : status
+  const StatusIcon = status === 'loading' ? () => <FadeLoader scale={0.8} /> : () => getStatusIcon(statusType, theme)({ size: size + 2 })
 
   return (
     <Container $size={size} $status={statusType} $withIcon={withIcon} $withBorder={withBorder} $withBackground={withBackground}>
       {withIcon && (
         <IconWrapper>
-          <StatusIcon size={size + 2} />
+          <StatusIcon />
         </IconWrapper>
       )}
 
