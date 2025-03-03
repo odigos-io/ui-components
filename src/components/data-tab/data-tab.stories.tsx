@@ -2,7 +2,7 @@ import React from 'react'
 import { DataTab, type DataTabProps } from '.'
 import { type StoryFn } from '@storybook/react'
 import { ErrorTriangleIcon } from '@odigos/ui-icons'
-import { getProgrammingLanguageIcon, PROGRAMMING_LANGUAGES } from '@odigos/ui-utils'
+import { getProgrammingLanguageIcon, NOTIFICATION_TYPE, PROGRAMMING_LANGUAGES } from '@odigos/ui-utils'
 
 export default {
   title: 'Components/DataTab',
@@ -26,7 +26,7 @@ Default.args = {
     getProgrammingLanguageIcon(PROGRAMMING_LANGUAGES.MYSQL),
   ],
   withCheckbox: true,
-  isError: true,
+  status: NOTIFICATION_TYPE.ERROR,
   renderActions: () => <ErrorTriangleIcon size={20} />,
   onClick: () => {},
 }

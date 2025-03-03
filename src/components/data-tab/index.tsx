@@ -23,10 +23,10 @@ interface DataTabProps {
   iconSrc?: string
   iconSrcs?: string[]
   hoverText?: string
+  status?: NOTIFICATION_TYPE
   monitors?: SIGNAL_TYPE[]
   monitorsWithLabels?: boolean
   isActive?: boolean
-  isError?: boolean
   withCheckbox?: boolean
   isCheckboxDisabled?: boolean
   isChecked?: boolean
@@ -42,22 +42,22 @@ const ControlledVisibility = styled.div`
   visibility: hidden;
 `
 
-const Container = styled.div<{ $withClick: boolean; $isError: DataTabProps['isError'] }>`
+const Container = styled.div<{ $withClick: boolean; $status: DataTabProps['status'] }>`
   display: flex;
   flex-direction: column;
   align-self: stretch;
   padding: 16px;
   width: calc(100% - 32px);
   border-radius: 16px;
-  background-color: ${({ $isError, theme }) =>
-    $isError ? theme.text.error + Theme.opacity.hex['010'] : theme.colors.secondary + Theme.opacity.hex['005']};
+  background-color: ${({ $status, theme }) =>
+    !!$status ? theme.text[$status] + Theme.opacity.hex['010'] : theme.colors.secondary + Theme.opacity.hex['005']};
 
-  ${({ $withClick, $isError, theme }) =>
+  ${({ $withClick, $status, theme }) =>
     $withClick
       ? css`
           &:hover {
             cursor: pointer;
-            background-color: ${$isError ? theme.text.error + Theme.opacity.hex['020'] : theme.colors.secondary + Theme.opacity.hex['010']};
+            background-color: ${!!$status ? theme.text[$status] + Theme.opacity.hex['020'] : theme.colors.secondary + Theme.opacity.hex['010']};
             ${ControlledVisibility} {
               visibility: visible;
             }
@@ -115,10 +115,10 @@ const DataTab: FC<DataTabProps> = ({
   iconSrc,
   iconSrcs,
   hoverText,
+  status,
   monitors,
   monitorsWithLabels,
   isActive,
-  isError,
   withCheckbox,
   isCheckboxDisabled,
   isChecked,
@@ -184,15 +184,15 @@ const DataTab: FC<DataTabProps> = ({
   }
 
   return (
-    <Container ref={containerRef} $isError={isError} $withClick={!!onClick} onClick={onClick} {...props}>
+    <Container ref={containerRef} $status={status} $withClick={!!onClick} onClick={onClick} {...props}>
       <FlexRow $gap={8}>
         <FlexRow $gap={16}>
           {withCheckbox && <Checkbox value={isChecked} onChange={onCheckboxChange} disabled={isCheckboxDisabled} />}
 
           {!!icons?.length || !!iconSrcs?.length ? (
-            <IconGroup icons={icons} iconSrcs={iconSrcs} status={isError ? NOTIFICATION_TYPE.ERROR : undefined} />
+            <IconGroup icons={icons} iconSrcs={iconSrcs} status={status} />
           ) : (
-            <IconWrapped icon={icon} src={iconSrc} status={isError ? NOTIFICATION_TYPE.ERROR : undefined} />
+            <IconWrapped icon={icon} src={iconSrc} status={status} />
           )}
         </FlexRow>
 
