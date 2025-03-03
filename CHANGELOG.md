@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.89](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.88...ui-components-v0.0.89) (2025-03-03)
+
+
+### Features
+
+* support "loading" in status component ([54cfb87](https://github.com/odigos-io/ui-components/commit/54cfb87ebdae67622f1533b98e6a78e852aae197))
+
 ## [0.0.88](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.87...ui-components-v0.0.88) (2025-03-03)
 
 
