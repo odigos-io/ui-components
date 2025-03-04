@@ -1,15 +1,17 @@
-import React, { type ReactNode, type FC, useState, CSSProperties, useId } from 'react'
+import React, { type ReactNode, type FC, useState, CSSProperties, useId, useMemo } from 'react'
 import { Text } from '../text'
 import { Tooltip } from '../tooltip'
 import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
-import { type SVG } from '@odigos/ui-icons'
+import { FlexRow } from '../../styled'
 import { IconWrapped } from '../icon-wrapped'
+import { SortArrowsIcon, type SVG } from '@odigos/ui-icons'
 import { isEmpty, NOTIFICATION_TYPE, useContainerSize } from '@odigos/ui-utils'
 
 interface ColumnCell {
   key: string // used to bind the row cell to the column
   title: string
+  sortable?: boolean
 }
 
 interface RowCell {
@@ -52,12 +54,23 @@ const TableTitle = styled.th`
   border-bottom: 1px solid ${({ theme }) => theme.colors.dropdown_bg_2};
 
   padding: 8px;
-  color: ${({ theme }) => theme.text.darker_grey};
+`
+
+const SortClickable = styled(FlexRow)`
+  cursor: pointer;
+  &:hover {
+    * {
+      color: ${({ theme }) => theme.text.secondary};
+    }
+  }
+`
+
+const Title = styled(Text)<{ $isSorted?: boolean }>`
+  color: ${({ theme, $isSorted }) => ($isSorted ? theme.text.grey : theme.text.darker_grey)};
   font-family: ${({ theme }) => theme.font_family.secondary};
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 500;
-  text-align: left;
   text-wrap: nowrap;
 `
 
@@ -94,20 +107,84 @@ const RowBackground = styled.div<{ $height: number; $width: number; $top: number
       : theme.colors.secondary + Theme.opacity.hex['005']};
 `
 
+enum SORT_DIRECTION {
+  ASC = 'asc',
+  DESC = 'desc',
+}
+
 const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick }) => {
+  const [sortDirection, setSortDirection] = useState<SORT_DIRECTION>(SORT_DIRECTION.ASC)
+  const [sortBy, setSortBy] = useState<string>(
+    (() => {
+      const lsVal = localStorage.getItem('odigos-sort-by')
+
+      if (!!lsVal) {
+        const found = columns.find(({ key }) => key === lsVal)
+        if (!!found) return lsVal
+      }
+
+      return 'name'
+    })()
+  )
+
+  const onSort = (key: string) => {
+    if (sortBy === key) {
+      setSortDirection((prev) => (prev === SORT_DIRECTION.ASC ? SORT_DIRECTION.DESC : SORT_DIRECTION.ASC))
+    } else {
+      setSortBy(key)
+      setSortDirection(SORT_DIRECTION.ASC)
+      localStorage.setItem('odigos-sort-by', key)
+    }
+  }
+
+  const sorted = useMemo(() => {
+    const getCellValue = (row: InteractiveTableProps['rows'][0], key: string) => {
+      return row.cells.find(({ columnKey }) => columnKey === key)?.value ?? null
+    }
+
+    const compareValues = (a: unknown, b: unknown) => {
+      if (typeof a === 'number' && typeof b === 'number') return a - b
+      if (typeof a === 'string' && typeof b === 'string') return a.localeCompare(b)
+      if (typeof a === 'boolean' && typeof b === 'boolean') return a === b ? 0 : a ? 1 : -1
+
+      // Fallback (handles null, undefined, mixed types)
+      return String(a).localeCompare(String(b))
+    }
+
+    return !!sortBy
+      ? rows.sort((a, b) => {
+          const valueA = getCellValue(a, sortBy)
+          const valueB = getCellValue(b, sortBy)
+
+          const direction = sortDirection === SORT_DIRECTION.ASC ? 1 : -1
+
+          return direction * compareValues(valueA, valueB)
+        })
+      : rows
+  }, [rows, sortBy, sortDirection])
+
   return (
     <Container>
       <Table>
         <TableHead>
           <tr>
-            {columns.map(({ key, title }) => (
-              <TableTitle key={`column-${key}`}>{title}</TableTitle>
+            {columns.map(({ key, title, sortable }) => (
+              <TableTitle key={`column-${key}`}>
+                {sortable ? (
+                  <SortClickable onClick={() => onSort(key)}>
+                    <SortArrowsIcon />
+                    <Title $isSorted>{title}</Title>
+                  </SortClickable>
+                ) : (
+                  <Title>{title}</Title>
+                )}
+              </TableTitle>
             ))}
           </tr>
         </TableHead>
 
         <TableBody>
-          {rows.map(({ status, cells }, i) => (
+          {sorted.map(({ status, cells }, i) => (
             <Row
               key={`row-${i}`}
               index={i}

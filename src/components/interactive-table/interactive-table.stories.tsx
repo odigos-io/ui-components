@@ -92,13 +92,13 @@ export const ComputePlatforms: StoryObj<InteractiveTableProps> = Template.bind({
 ComputePlatforms.args = {
   columns: [
     { key: 'icon', title: '' },
-    { key: 'name', title: 'Name' },
+    { key: 'name', title: 'Name', sortable: true },
     { key: 'type', title: 'Type' },
     { key: 'status', title: 'Status' },
     { key: 'sources', title: 'Sources' },
-    { key: 'actions', title: 'Actions' },
-    { key: 'destinations', title: 'Destinations' },
-    { key: 'api_tokens', title: 'API Tokens' },
+    { key: 'actions', title: 'Actions', sortable: true },
+    { key: 'destinations', title: 'Destinations', sortable: true },
+    { key: 'api_tokens', title: 'API Tokens', sortable: true },
   ],
   rows: [
     {
