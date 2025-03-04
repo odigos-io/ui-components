@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.90](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.89...ui-components-v0.0.90) (2025-03-04)
+
+
+### Features
+
+* sort and faded ([#95](https://github.com/odigos-io/ui-components/issues/95)) ([2416c5a](https://github.com/odigos-io/ui-components/commit/2416c5a7a1330194a00fdbac6b9c77692bb32930))
+
 ## [0.0.89](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.88...ui-components-v0.0.89) (2025-03-03)
 
 
