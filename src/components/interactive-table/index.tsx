@@ -66,8 +66,8 @@ const SortClickable = styled(FlexRow)`
   }
 `
 
-const Title = styled(Text)<{ $isSorted?: boolean }>`
-  color: ${({ theme, $isSorted }) => ($isSorted ? theme.text.grey : theme.text.darker_grey)};
+const Title = styled(Text)`
+  color: ${({ theme }) => theme.text.darker_grey};
   font-family: ${({ theme }) => theme.font_family.secondary};
   text-transform: uppercase;
   font-size: 12px;
@@ -175,7 +175,7 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick
                 {sortable ? (
                   <SortClickable onClick={() => onSort(key)}>
                     <SortArrowsIcon />
-                    <Title $isSorted>{title}</Title>
+                    <Title>{title}</Title>
                   </SortClickable>
                 ) : (
                   <Title>{title}</Title>
