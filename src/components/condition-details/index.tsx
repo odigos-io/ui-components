@@ -103,15 +103,24 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
       {extend && (
         <Body>
           {conditions.map(({ status, type, reason, message, lastTransitionTime }, idx) => {
-            const Icon = status === 'loading' ? () => FadeLoader({ scale: 0.8 }) : getStatusIcon(status, theme)
+            const Icon =
+              status === 'loading'
+                ? () => FadeLoader({ scale: 0.8 })
+                : status === 'disabled'
+                ? getStatusIcon(NOTIFICATION_TYPE.INFO, theme)
+                : getStatusIcon(status, theme)
             const color =
-              status === NOTIFICATION_TYPE.ERROR
+              status === 'disabled'
+                ? theme.text.info
+                : status === NOTIFICATION_TYPE.ERROR
                 ? theme.text.error
                 : status === NOTIFICATION_TYPE.WARNING
                 ? theme.text.warning
                 : theme.text.darker_grey
             const boldColor =
-              status === NOTIFICATION_TYPE.ERROR
+              status === 'disabled'
+                ? theme.text.info_secondary
+                : status === NOTIFICATION_TYPE.ERROR
                 ? theme.text.error_secondary
                 : status === NOTIFICATION_TYPE.WARNING
                 ? theme.text.warning_secondary
