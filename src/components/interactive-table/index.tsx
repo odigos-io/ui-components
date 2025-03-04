@@ -27,6 +27,7 @@ interface InteractiveTableProps {
   columns: ColumnCell[]
   rows: {
     status?: NOTIFICATION_TYPE
+    faded?: boolean
     cells: RowCell[]
   }[]
   onRowClick?: (index: number) => void
@@ -76,8 +77,9 @@ const Title = styled(Text)<{ $isSorted?: boolean }>`
 
 const TableBody = styled.tbody``
 
-const TableRow = styled.tr<{ $withHover: boolean }>`
+const TableRow = styled.tr<{ $withHover: boolean; $faded?: boolean }>`
   cursor: ${({ $withHover }) => ($withHover ? 'pointer' : 'default')};
+  opacity: ${({ $faded }) => ($faded ? 0.5 : 1)};
 `
 
 const TableData = styled.td<{ $isFirst: boolean }>`
@@ -184,7 +186,7 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick
         </TableHead>
 
         <TableBody>
-          {sorted.map(({ status, cells }, i) => (
+          {sorted.map(({ status, faded, cells }, i) => (
             <Row
               key={`row-${i}`}
               index={i}
@@ -192,6 +194,7 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick
               cells={cells}
               onClick={!!onRowClick ? () => onRowClick(i) : undefined}
               status={status}
+              faded={faded}
             />
           ))}
         </TableBody>
@@ -200,13 +203,16 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick
   )
 }
 
-const Row: FC<{ index: number; columns: ColumnCell[]; cells: RowCell[]; onClick?: () => void; status?: NOTIFICATION_TYPE }> = ({
-  index,
-  columns,
-  cells,
-  onClick,
-  status,
-}) => {
+interface RowProps {
+  index: number
+  columns: ColumnCell[]
+  cells: RowCell[]
+  onClick?: () => void
+  status?: NOTIFICATION_TYPE
+  faded?: boolean
+}
+
+const Row: FC<RowProps> = ({ index, columns, cells, onClick, status, faded }) => {
   const { containerRef, containerHeight, containerWidth } = useContainerSize()
   const [isHovered, setIsHovered] = useState(false)
 
@@ -218,6 +224,7 @@ const Row: FC<{ index: number; columns: ColumnCell[]; cells: RowCell[]; onClick?
       onMouseLeave={() => !!onClick && setIsHovered(false)}
       onClick={() => !!onClick && onClick()}
       $withHover={!!onClick}
+      $faded={faded}
     >
       {columns.map(({ key }, i) => {
         const rowCell = cells.find(({ columnKey }) => columnKey === key)

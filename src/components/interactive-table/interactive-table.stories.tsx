@@ -47,6 +47,7 @@ Tokens.args = {
     { key: 'actions', title: '' },
   ],
   rows: MOCK_TOKENS.map(({ token, name, expiresAt }, idx) => ({
+    faded: idx !== 0,
     cells: [
       { columnKey: 'icon', icon: KeyIcon },
       { columnKey: 'name', value: name },

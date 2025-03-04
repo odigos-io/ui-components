@@ -24,6 +24,7 @@ interface DataTabProps {
   iconSrcs?: string[]
   hoverText?: string
   status?: NOTIFICATION_TYPE
+  faded?: boolean
   monitors?: SIGNAL_TYPE[]
   monitorsWithLabels?: boolean
   isActive?: boolean
@@ -42,7 +43,7 @@ const ControlledVisibility = styled.div`
   visibility: hidden;
 `
 
-const Container = styled.div<{ $withClick: boolean; $status: DataTabProps['status'] }>`
+const Container = styled.div<{ $withClick: boolean; $status: DataTabProps['status']; $faded: DataTabProps['faded'] }>`
   display: flex;
   flex-direction: column;
   align-self: stretch;
@@ -51,6 +52,7 @@ const Container = styled.div<{ $withClick: boolean; $status: DataTabProps['statu
   border-radius: 16px;
   background-color: ${({ $status, theme }) =>
     !!$status ? theme.text[$status] + Theme.opacity.hex['010'] : theme.colors.secondary + Theme.opacity.hex['005']};
+  opacity: ${({ $faded }) => ($faded ? 0.5 : 1)};
 
   ${({ $withClick, $status, theme }) =>
     $withClick
@@ -116,6 +118,7 @@ const DataTab: FC<DataTabProps> = ({
   iconSrcs,
   hoverText,
   status,
+  faded,
   monitors,
   monitorsWithLabels,
   isActive,
@@ -184,7 +187,7 @@ const DataTab: FC<DataTabProps> = ({
   }
 
   return (
-    <Container ref={containerRef} $status={status} $withClick={!!onClick} onClick={onClick} {...props}>
+    <Container ref={containerRef} $status={status} $faded={faded} $withClick={!!onClick} onClick={onClick} {...props}>
       <FlexRow $gap={8}>
         <FlexRow $gap={16}>
           {withCheckbox && <Checkbox value={isChecked} onChange={onCheckboxChange} disabled={isCheckboxDisabled} />}
