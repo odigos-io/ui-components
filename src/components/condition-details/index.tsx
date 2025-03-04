@@ -1,4 +1,4 @@
-import React, { type FC, useState } from 'react'
+import React, { type FC, useCallback, useMemo, useState } from 'react'
 import { Text } from '../text'
 import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
@@ -69,13 +69,13 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
 
   const conditions = mapConditions(c)
 
-  const errors = conditions.filter(({ status }) => status === NOTIFICATION_TYPE.ERROR)
+  const errors = useMemo(() => conditions.filter(({ status }) => status === NOTIFICATION_TYPE.ERROR), [conditions])
   const hasErrors = !!errors.length
-  const warnings = conditions.filter(({ status }) => status === NOTIFICATION_TYPE.WARNING)
+  const warnings = useMemo(() => conditions.filter(({ status }) => status === NOTIFICATION_TYPE.WARNING), [conditions])
   const hasWarnings = !!warnings.length
-  const disableds = conditions.filter(({ status }) => status === 'disabled')
+  const disableds = useMemo(() => conditions.filter(({ status }) => status === 'disabled'), [conditions])
   const hasDisableds = !!disableds.length
-  const loadings = conditions.filter(({ status }) => status === 'loading')
+  const loadings = useMemo(() => conditions.filter(({ status }) => status === 'loading'), [conditions])
   const hasLoadings = !!loadings.length
 
   const loading = (!conditions.length || hasLoadings) && !hasErrors && !hasWarnings && !hasDisableds
@@ -102,8 +102,10 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
   const headerSubText = `(${hasErrors ? errors.length : hasWarnings ? warnings.length : conditions.length}/${conditions.length})`
   const headerSubTextColor = hasErrors ? theme.text.error_secondary : hasWarnings ? theme.text.warning_secondary : theme.text.info_secondary
 
+  const toggleExtend = useCallback(() => setExtend((prev) => !prev), [])
+
   return (
-    <Container onClick={() => setExtend((prev) => !prev)} $status={overallStatus}>
+    <Container onClick={toggleExtend} $status={overallStatus}>
       <Header>
         {loading ? <FadeLoader /> : <HeaderIcon />}
         <Text color={headerTextColor} size={14}>
@@ -120,7 +122,7 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
           {conditions.map(({ status, type, reason, message, lastTransitionTime }, idx) => {
             const Icon =
               status === 'loading'
-                ? () => FadeLoader({ scale: 0.8 })
+                ? () => <FadeLoader scale={0.8} />
                 : status === 'disabled'
                 ? getStatusIcon(NOTIFICATION_TYPE.INFO, theme)
                 : getStatusIcon(status, theme)

@@ -1,12 +1,10 @@
-import React, { type ReactNode, type FC, useState, CSSProperties, useId, useMemo } from 'react'
+import React, { type ReactNode, type FC, useState, CSSProperties, useMemo, useCallback } from 'react'
+import { Row } from './row'
 import { Text } from '../text'
-import { Tooltip } from '../tooltip'
-import Theme from '@odigos/ui-theme'
-import styled from 'styled-components'
 import { FlexRow } from '../../styled'
-import { IconWrapped } from '../icon-wrapped'
+import styled from 'styled-components'
+import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
 import { SortArrowsIcon, type SVG } from '@odigos/ui-icons'
-import { isEmpty, NOTIFICATION_TYPE, useContainerSize } from '@odigos/ui-utils'
 
 interface ColumnCell {
   key: string // used to bind the row cell to the column
@@ -77,38 +75,6 @@ const Title = styled(Text)`
 
 const TableBody = styled.tbody``
 
-const TableRow = styled.tr<{ $withHover: boolean; $faded?: boolean }>`
-  cursor: ${({ $withHover }) => ($withHover ? 'pointer' : 'default')};
-  opacity: ${({ $faded }) => ($faded ? 0.5 : 1)};
-`
-
-const TableData = styled.td<{ $isFirst: boolean }>`
-  position: relative;
-  width: fit-content;
-  padding: 16px 8px 16px ${({ $isFirst }) => ($isFirst ? '16px' : '8px')};
-  color: ${({ theme }) => theme.text.secondary};
-  font-family: ${({ theme }) => theme.font_family.primary};
-  font-size: 14px;
-  white-space: nowrap;
-`
-
-const RowBackground = styled.div<{ $height: number; $width: number; $top: number; $hovered: boolean; $status?: NOTIFICATION_TYPE }>`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: ${({ $width }) => $width}px;
-  height: ${({ $height }) => $height}px;
-  border-radius: 16px;
-  background-color: ${({ theme, $hovered, $status }) =>
-    $hovered
-      ? !!$status
-        ? theme.text[$status] + Theme.opacity.hex['020']
-        : theme.colors.majestic_blue + Theme.opacity.hex['030']
-      : !!$status
-      ? theme.text[$status] + Theme.opacity.hex['010']
-      : theme.colors.secondary + Theme.opacity.hex['005']};
-`
-
 enum SORT_DIRECTION {
   ASC = 'asc',
   DESC = 'desc',
@@ -116,28 +82,19 @@ enum SORT_DIRECTION {
 
 const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick }) => {
   const [sortDirection, setSortDirection] = useState<SORT_DIRECTION>(SORT_DIRECTION.ASC)
-  const [sortBy, setSortBy] = useState<string>(
-    (() => {
-      const lsVal = localStorage.getItem('odigos-sort-by')
+  const [sortBy, setSortBy] = useState<string>('name')
 
-      if (!!lsVal) {
-        const found = columns.find(({ key }) => key === lsVal)
-        if (!!found) return lsVal
+  const onSort = useCallback(
+    (key: string) => {
+      if (sortBy === key) {
+        setSortDirection((prev) => (prev === SORT_DIRECTION.ASC ? SORT_DIRECTION.DESC : SORT_DIRECTION.ASC))
+      } else {
+        setSortBy(key)
+        setSortDirection(SORT_DIRECTION.ASC)
       }
-
-      return 'name'
-    })()
+    },
+    [sortBy]
   )
-
-  const onSort = (key: string) => {
-    if (sortBy === key) {
-      setSortDirection((prev) => (prev === SORT_DIRECTION.ASC ? SORT_DIRECTION.DESC : SORT_DIRECTION.ASC))
-    } else {
-      setSortBy(key)
-      setSortDirection(SORT_DIRECTION.ASC)
-      localStorage.setItem('odigos-sort-by', key)
-    }
-  }
 
   const sorted = useMemo(() => {
     const getCellValue = (row: InteractiveTableProps['rows'][0], key: string) => {
@@ -154,7 +111,7 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick
     }
 
     return !!sortBy
-      ? rows.sort((a, b) => {
+      ? [...rows].sort((a, b) => {
           const valueA = getCellValue(a, sortBy)
           const valueB = getCellValue(b, sortBy)
 
@@ -200,70 +157,6 @@ const InteractiveTable: FC<InteractiveTableProps> = ({ columns, rows, onRowClick
         </TableBody>
       </Table>
     </Container>
-  )
-}
-
-interface RowProps {
-  index: number
-  columns: ColumnCell[]
-  cells: RowCell[]
-  onClick?: () => void
-  status?: NOTIFICATION_TYPE
-  faded?: boolean
-}
-
-const Row: FC<RowProps> = ({ index, columns, cells, onClick, status, faded }) => {
-  const { containerRef, containerHeight, containerWidth } = useContainerSize()
-  const [isHovered, setIsHovered] = useState(false)
-
-  return (
-    <TableRow
-      // @ts-ignore
-      ref={containerRef}
-      onMouseEnter={() => !!onClick && setIsHovered(true)}
-      onMouseLeave={() => !!onClick && setIsHovered(false)}
-      onClick={() => !!onClick && onClick()}
-      $withHover={!!onClick}
-      $faded={faded}
-    >
-      {columns.map(({ key }, i) => {
-        const rowCell = cells.find(({ columnKey }) => columnKey === key)
-        if (!rowCell) return null
-        const { value, textColor, withTooltip, icon, component: Component } = rowCell
-
-        return (
-          <TableData key={useId()} $isFirst={i === 0}>
-            {!!icon ? (
-              <IconWrapped icon={icon} />
-            ) : !!Component ? (
-              <Component />
-            ) : (
-              <Tooltip text={withTooltip && !!value ? String(value) : ''}>
-                <Text
-                  size={14}
-                  color={textColor}
-                  style={{
-                    lineHeight: '16px',
-                    textWrap: 'wrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    display: '-webkit-box',
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                  }}
-                >
-                  {!isEmpty(value) ? value : '-'}
-                </Text>
-              </Tooltip>
-            )}
-
-            {i === 0 && (
-              <RowBackground $height={containerHeight} $width={containerWidth} $top={containerHeight * index} $hovered={isHovered} $status={status} />
-            )}
-          </TableData>
-        )
-      })}
-    </TableRow>
   )
 }
 
