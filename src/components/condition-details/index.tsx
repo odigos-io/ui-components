@@ -61,7 +61,7 @@ const TextNoWrap = styled(Text)`
 const ConditionDetails: FC<ConditionDetailsProps> = ({
   conditions: c,
   headerLabelError = 'Something Failed',
-  headerLabelWarning = 'Something Went Wrong',
+  headerLabelWarning = "Something isn't right",
   headerLabelSuccess = 'Everything Successful',
 }) => {
   const theme = Theme.useTheme()
@@ -73,19 +73,34 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
   const hasErrors = !!errors.length
   const warnings = conditions.filter(({ status }) => status === NOTIFICATION_TYPE.WARNING)
   const hasWarnings = !!warnings.length
+  const disableds = conditions.filter(({ status }) => status === 'disabled')
+  const hasDisableds = !!disableds.length
   const loadings = conditions.filter(({ status }) => status === 'loading')
   const hasLoadings = !!loadings.length
 
-  const loading = (!conditions.length || hasLoadings) && !hasErrors && !hasWarnings
+  const loading = (!conditions.length || hasLoadings) && !hasErrors && !hasWarnings && !hasDisableds
 
-  const overallStatus = hasErrors ? NOTIFICATION_TYPE.ERROR : hasWarnings ? NOTIFICATION_TYPE.WARNING : NOTIFICATION_TYPE.SUCCESS
+  const overallStatus = hasErrors
+    ? NOTIFICATION_TYPE.ERROR
+    : hasWarnings
+    ? NOTIFICATION_TYPE.WARNING
+    : hasDisableds
+    ? NOTIFICATION_TYPE.INFO
+    : NOTIFICATION_TYPE.SUCCESS
+
   const HeaderIcon = getStatusIcon(overallStatus, theme)
-
-  const headerText = hasErrors ? headerLabelError : hasWarnings ? headerLabelWarning : loading ? 'Loading...' : headerLabelSuccess
-  const headerTextColor = hasErrors ? theme.text.error : hasWarnings ? theme.text.warning : theme.text.grey
-
+  const headerText = hasErrors
+    ? headerLabelError
+    : hasWarnings
+    ? headerLabelWarning
+    : hasDisableds
+    ? headerLabelWarning
+    : loading
+    ? 'Loading...'
+    : headerLabelSuccess
+  const headerTextColor = hasErrors ? theme.text.error : hasWarnings ? theme.text.warning : theme.text.info
   const headerSubText = `(${hasErrors ? errors.length : hasWarnings ? warnings.length : conditions.length}/${conditions.length})`
-  const headerSubTextColor = hasErrors ? theme.text.error_secondary : hasWarnings ? theme.text.warning_secondary : theme.text.dark_grey
+  const headerSubTextColor = hasErrors ? theme.text.error_secondary : hasWarnings ? theme.text.warning_secondary : theme.text.info_secondary
 
   return (
     <Container onClick={() => setExtend((prev) => !prev)} $status={overallStatus}>
@@ -116,7 +131,7 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
                 ? theme.text.error
                 : status === NOTIFICATION_TYPE.WARNING
                 ? theme.text.warning
-                : theme.text.darker_grey
+                : theme.text.info
             const boldColor =
               status === 'disabled'
                 ? theme.text.info_secondary
@@ -124,7 +139,7 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
                 ? theme.text.error_secondary
                 : status === NOTIFICATION_TYPE.WARNING
                 ? theme.text.warning_secondary
-                : theme.text.grey
+                : theme.text.info_secondary
 
             return (
               <Row key={`condition-${idx}`}>
