@@ -63,6 +63,12 @@ SuccessConditions.args = {
   conditions: CONDITIONS,
 }
 
+export const DisabledConditions: StoryObj<ConditionDetailsProps> = Template.bind({})
+
+DisabledConditions.args = {
+  conditions: CONDITIONS.map((c, idx) => ({ ...c, status: idx === CONDITIONS.length - 1 ? 'disabled' : c.status })),
+}
+
 export const ErrorConditions: StoryObj<ConditionDetailsProps> = Template.bind({})
 
 ErrorConditions.args = {
