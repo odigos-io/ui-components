@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { FlexRow } from '../../styled'
 import { FadeLoader } from '../fade-loader'
 import { ExtendArrow } from '../extend-arrow'
-import { type Condition, getStatusIcon, mapConditions, NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import { type Condition, getStatusIcon, mapConditions, NOTIFICATION_TYPE, OTHER_STATUS } from '@odigos/ui-utils'
 
 interface ConditionDetailsProps {
   conditions: Condition[]
@@ -73,9 +73,9 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
   const hasErrors = !!errors.length
   const warnings = useMemo(() => conditions.filter(({ status }) => status === NOTIFICATION_TYPE.WARNING), [conditions])
   const hasWarnings = !!warnings.length
-  const disableds = useMemo(() => conditions.filter(({ status }) => status === 'disabled'), [conditions])
+  const disableds = useMemo(() => conditions.filter(({ status }) => status === OTHER_STATUS.DISABLED), [conditions])
   const hasDisableds = !!disableds.length
-  const loadings = useMemo(() => conditions.filter(({ status }) => status === 'loading'), [conditions])
+  const loadings = useMemo(() => conditions.filter(({ status }) => status === OTHER_STATUS.LOADING), [conditions])
   const hasLoadings = !!loadings.length
 
   const loading = (!conditions.length || hasLoadings) && !hasErrors && !hasWarnings && !hasDisableds
@@ -98,6 +98,7 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
     : loading
     ? 'Loading...'
     : headerLabelSuccess
+
   const headerTextColor = hasErrors ? theme.text.error : hasWarnings ? theme.text.warning : theme.text.info
   const headerSubText = `(${hasErrors ? errors.length : hasWarnings ? warnings.length : conditions.length}/${conditions.length})`
   const headerSubTextColor = hasErrors ? theme.text.error_secondary : hasWarnings ? theme.text.warning_secondary : theme.text.info_secondary

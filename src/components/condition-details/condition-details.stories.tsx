@@ -1,7 +1,7 @@
 import React from 'react'
 import { StoryObj, type StoryFn } from '@storybook/react'
-import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
 import { ConditionDetails, type ConditionDetailsProps } from '.'
+import { NOTIFICATION_TYPE, OTHER_STATUS } from '@odigos/ui-utils'
 
 export default {
   title: 'Components/ConditionDetails',
@@ -53,7 +53,8 @@ export const MixedConditions: StoryObj<ConditionDetailsProps> = Template.bind({}
 MixedConditions.args = {
   conditions: CONDITIONS.map((c, idx) => ({
     ...c,
-    status: idx === 0 ? NOTIFICATION_TYPE.SUCCESS : idx === 1 ? NOTIFICATION_TYPE.WARNING : idx === 2 ? NOTIFICATION_TYPE.ERROR : 'loading',
+    status:
+      idx === 0 ? NOTIFICATION_TYPE.SUCCESS : idx === 1 ? NOTIFICATION_TYPE.WARNING : idx === 2 ? NOTIFICATION_TYPE.ERROR : OTHER_STATUS.LOADING,
   })),
 }
 
@@ -66,7 +67,7 @@ SuccessConditions.args = {
 export const DisabledConditions: StoryObj<ConditionDetailsProps> = Template.bind({})
 
 DisabledConditions.args = {
-  conditions: CONDITIONS.map((c, idx) => ({ ...c, status: idx === CONDITIONS.length - 1 ? 'disabled' : c.status })),
+  conditions: CONDITIONS.map((c, idx) => ({ ...c, status: idx === CONDITIONS.length - 1 ? OTHER_STATUS.DISABLED : c.status })),
 }
 
 export const ErrorConditions: StoryObj<ConditionDetailsProps> = Template.bind({})
@@ -84,5 +85,5 @@ WarningConditions.args = {
 export const LoadingConditions: StoryObj<ConditionDetailsProps> = Template.bind({})
 
 LoadingConditions.args = {
-  conditions: CONDITIONS.map((c, idx) => ({ ...c, status: idx === CONDITIONS.length - 1 ? 'loading' : c.status })),
+  conditions: CONDITIONS.map((c, idx) => ({ ...c, status: idx === CONDITIONS.length - 1 ? OTHER_STATUS.LOADING : c.status })),
 }
