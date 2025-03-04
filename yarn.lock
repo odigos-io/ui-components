@@ -1261,10 +1261,10 @@
     styled-components "^6.1.15"
     zustand "^5.0.3"
 
-"@odigos/ui-utils@^0.0.39":
-  version "0.0.39"
-  resolved "https://registry.yarnpkg.com/@odigos/ui-utils/-/ui-utils-0.0.39.tgz#f4d33d4d29a992aab9bb197e34f77e23d3cade7f"
-  integrity sha512-JnIcYydSeha270ibw7y1UYRPOx9dsbqb8+HOVZ9JGELHkn1SYRJhXdfABdEKOLexgtXM36Gdh4RTgFe+06tdmw==
+"@odigos/ui-utils@^0.0.41":
+  version "0.0.41"
+  resolved "https://registry.yarnpkg.com/@odigos/ui-utils/-/ui-utils-0.0.41.tgz#424393d698cde7748918131c0a5cec836fe92ff4"
+  integrity sha512-/qM6iz+yxhyUx8dEY/0mMJSP6SdD9rmUvuEptjkqcIo+R00kUe2QOtAf4Ud0p5bPfHrnbdYTP5JqKjyvdq/m3Q==
   dependencies:
     "@odigos/ui-icons" "^0.0.14"
     "@odigos/ui-theme" "^0.0.16"

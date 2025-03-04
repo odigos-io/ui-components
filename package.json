@@ -24,7 +24,7 @@
   "peerDependencies": {
     "@odigos/ui-icons": "^0.0.14",
     "@odigos/ui-theme": "^0.0.16",
-    "@odigos/ui-utils": "^0.0.39",
+    "@odigos/ui-utils": "^0.0.41",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@odigos/ui-icons": "^0.0.14",
     "@odigos/ui-theme": "^0.0.16",
-    "@odigos/ui-utils": "^0.0.39",
+    "@odigos/ui-utils": "^0.0.41",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
