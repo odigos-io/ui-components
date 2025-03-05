@@ -1,4 +1,4 @@
-import React, { type FC, useCallback, useMemo, useState } from 'react'
+import React, { type FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { Text } from '../text'
 import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
@@ -79,6 +79,10 @@ const ConditionDetails: FC<ConditionDetailsProps> = ({
   const hasLoadings = !!loadings.length
 
   const loading = (!conditions.length || hasLoadings) && !hasErrors && !hasWarnings && !hasDisableds
+
+  useEffect(() => {
+    setExtend(hasErrors || hasWarnings || hasDisableds || hasLoadings)
+  }, [hasErrors, hasWarnings, hasDisableds, hasLoadings])
 
   const overallStatus = hasErrors
     ? NOTIFICATION_TYPE.ERROR
