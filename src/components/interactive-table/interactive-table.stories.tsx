@@ -4,6 +4,8 @@ import { Status } from '../status'
 import Theme from '@odigos/ui-theme'
 import { Tooltip } from '../tooltip'
 import { FlexRow } from '../../styled'
+import { Checkbox } from '../checkbox'
+import { IconGroup } from '../icon-group'
 import { IconButton } from '../icon-button'
 import { IconWrapped } from '../icon-wrapped'
 import { MonitorsIcons } from '../monitors-icons'
@@ -11,14 +13,21 @@ import { StoryObj, type StoryFn } from '@storybook/react'
 import { CopyIcon, ErrorTriangleIcon, KeyIcon } from '@odigos/ui-icons'
 import { InteractiveTable, RowCell, type InteractiveTableProps } from '.'
 import {
+  DISPLAY_TITLES,
   ENTITY_TYPES,
+  formatBytes,
   getActionIcon,
+  getConditionsBooleans,
+  getContainersIcons,
+  getContainersInstrumentedCount,
   getEntityLabel,
+  getMetricForEntity,
   getPlatformIcon,
   getStatusIcon,
   isOverTime,
   mapConditions,
   MOCK_ACTIONS,
+  MOCK_SOURCES,
   MOCK_TOKENS,
   NOTIFICATION_TYPE,
   PLATFORM_TYPE,
@@ -47,7 +56,6 @@ Tokens.args = {
     { key: 'actions', title: '' },
   ],
   rows: MOCK_TOKENS.map(({ token, name, expiresAt }, idx) => ({
-    faded: idx !== 0,
     cells: [
       { columnKey: 'icon', icon: KeyIcon },
       { columnKey: 'name', value: name },
@@ -177,6 +185,69 @@ ComputePlatforms.args = {
       },
     ],
   })),
+  onRowClick: (row) => alert(`Row clicked: ${JSON.stringify(row)}`),
+}
+
+export const Sources: StoryObj<InteractiveTableProps> = Template.bind({})
+
+Sources.args = {
+  columns: [
+    { key: 'checkbox-and-icon', title: '' },
+    { key: 'name', title: DISPLAY_TITLES.NAME, sortable: true },
+    { key: 'type', title: 'Kubernetes Type', sortable: true },
+    { key: 'namespace', title: DISPLAY_TITLES.NAMESPACE, sortable: true },
+    { key: 'containers', title: DISPLAY_TITLES.DETECTED_CONTAINERS },
+    { key: 'conditions', title: 'Conditions' },
+    { key: 'throughput', title: 'Throughput', sortable: true },
+  ],
+  rows: MOCK_SOURCES.map((source) => {
+    const id = { namespace: source.namespace, name: source.name, kind: source.kind }
+    const { hasErrors, hasWarnings, hasDisableds } = getConditionsBooleans(source.conditions || [])
+
+    return {
+      status: hasErrors ? NOTIFICATION_TYPE.ERROR : hasWarnings ? NOTIFICATION_TYPE.WARNING : undefined,
+      faded: hasDisableds,
+      cells: [
+        {
+          columnKey: 'checkbox-and-icon',
+          component: () => (
+            <FlexRow $gap={16}>
+              <Checkbox />
+              <IconGroup iconSrcs={getContainersIcons(source.containers)} />
+            </FlexRow>
+          ),
+        },
+        {
+          columnKey: 'name',
+          value: getEntityLabel(source, ENTITY_TYPES.SOURCE, { extended: true }),
+        },
+        {
+          columnKey: 'type',
+          value: source.kind,
+        },
+        {
+          columnKey: 'namespace',
+          value: source.namespace,
+        },
+        {
+          columnKey: 'throughput',
+          value: formatBytes(getMetricForEntity({ sources: [], destinations: [] }, ENTITY_TYPES.SOURCE, id).throughput),
+        },
+        {
+          columnKey: 'conditions',
+          // component: () => <TableCellConditions conditions={source.conditions || []} />,
+        },
+        {
+          columnKey: 'containers',
+          component: () => (
+            <div style={{ lineHeight: 1 }}>
+              <Status status={NOTIFICATION_TYPE.INFO} title={getContainersInstrumentedCount(source.containers)} withBorder />
+            </div>
+          ),
+        },
+      ] as RowCell[],
+    }
+  }),
   onRowClick: (row) => alert(`Row clicked: ${JSON.stringify(row)}`),
 }
 

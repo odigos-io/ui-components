@@ -1,18 +1,24 @@
-import React, { type ReactNode, type FC } from 'react'
+import React, { type ReactNode, type FC, useState } from 'react'
 import { Text } from '../text'
 import { Badge } from '../badge'
+import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
+import { FlexRow } from '../../styled'
+import { ExtendArrow } from '../extend-arrow'
 import { DataCardFields, type DataCardFieldsProps, DATA_CARD_FIELD_TYPES } from './data-card-fields'
+import { Status } from '../status'
+import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
 
 interface DataCardProps {
   title?: string
   titleBadge?: string | number
   description?: string
+  action?: ReactNode | (() => ReactNode)
+  withExtend?: boolean
   data: DataCardFieldsProps['data']
-  action?: ReactNode
 }
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<{ $clickable: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -21,6 +27,13 @@ const CardContainer = styled.div`
   padding: 24px;
   border-radius: 24px;
   border: 1px solid ${({ theme }) => theme.colors.border};
+  cursor: ${({ $clickable }) => ($clickable ? 'pointer' : 'default')};
+  transition: background-color 0.3s;
+  ${({ $clickable, theme }) =>
+    $clickable &&
+    `&:hover {
+      background-color: ${theme.colors.secondary + Theme.opacity.hex['010']};
+    }`}
 `
 
 const Header = styled.div`
@@ -43,21 +56,27 @@ const Description = styled(Text)`
   color: ${({ theme }) => theme.text.grey};
 `
 
-const ActionWrapper = styled.div`
+const ActionWrapper = styled(FlexRow)`
   margin-left: auto;
+  gap: 8px;
 `
 
-const DataCard: FC<DataCardProps> = ({ title = 'Details', titleBadge, description, data, action }) => {
+const DataCard: FC<DataCardProps> = ({ title = 'Details', titleBadge, description, action: Action, withExtend, data }) => {
+  const [extend, setExtend] = useState(false)
+
   return (
-    <CardContainer>
-      {!!title || !!description || !!action ? (
+    <CardContainer $clickable={!!withExtend} onClick={() => withExtend && setExtend((prev) => !prev)}>
+      {!!title || !!description || !!Action ? (
         <Header>
-          {(!!title || !!action) && (
+          {(!!title || !!Action) && (
             <Title>
               {title}
               {/* NOT undefined, because we should allow zero (0) values */}
               {titleBadge !== undefined && <Badge label={titleBadge} />}
-              <ActionWrapper>{action}</ActionWrapper>
+              <ActionWrapper>
+                {typeof Action === 'function' ? <Action /> : Action}
+                {withExtend && <ExtendArrow extend={false} />}
+              </ActionWrapper>
             </Title>
           )}
 
@@ -65,7 +84,7 @@ const DataCard: FC<DataCardProps> = ({ title = 'Details', titleBadge, descriptio
         </Header>
       ) : null}
 
-      <DataCardFields data={data} />
+      {(!withExtend || (withExtend && extend)) && <DataCardFields data={data} />}
     </CardContainer>
   )
 }
