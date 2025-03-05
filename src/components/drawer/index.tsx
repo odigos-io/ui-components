@@ -52,8 +52,8 @@ const Drawer: FC<DrawerProps> = ({
   position = 'right',
   width = '300px',
   children,
-  header: { icon, iconSrc, title, titleTooltip, replaceTitleWith, actionButtons },
-  footer: { isOpen: footerIsOpen, leftButtons, rightButtons },
+  header: headerProps,
+  footer: footerProps,
 }) => {
   useKeyDown(
     {
@@ -77,17 +77,9 @@ const Drawer: FC<DrawerProps> = ({
 
       <Transition data-id='drawer' enter={isOpen} $position={position} $width={width}>
         <DrawerBody>
-          <DrawerHeader
-            onClose={onClose}
-            icon={icon}
-            iconSrc={iconSrc}
-            title={title}
-            titleTooltip={titleTooltip}
-            replaceTitleWith={replaceTitleWith}
-            actionButtons={actionButtons}
-          />
+          <DrawerHeader onClose={onClose} {...headerProps} />
           <Content>{children}</Content>
-          <DrawerFooter isOpen={footerIsOpen} leftButtons={leftButtons} rightButtons={rightButtons} />
+          <DrawerFooter {...footerProps} />
         </DrawerBody>
       </Transition>
     </>,
