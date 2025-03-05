@@ -2,11 +2,10 @@ import React, { type FC, type ReactNode } from 'react'
 import { Text } from '../../text'
 import styled from 'styled-components'
 import { Tooltip } from '../../tooltip'
+import { FlexRow } from '../../../styled'
 import { IconWrapped } from '../../icon-wrapped'
 import { XIcon, type SVG } from '@odigos/ui-icons'
 import { Button, type ButtonProps } from '../../button'
-import { FlexRow } from '../../../styled'
-import Theme from '@odigos/ui-theme'
 
 interface DrawerHeaderProps {
   onClose: () => void
@@ -81,8 +80,6 @@ const DrawerHeader: FC<DrawerHeaderProps> = ({
   actionButtons = [],
   tabs,
 }) => {
-  const theme = Theme.useTheme()
-
   return (
     <Container>
       <TopRow>
