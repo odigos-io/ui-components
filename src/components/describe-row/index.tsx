@@ -4,7 +4,7 @@ import { Status } from '../status'
 import { Tooltip } from '../tooltip'
 import styled from 'styled-components'
 import { FlexColumn, FlexRow } from '../../styled'
-import { NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import { NOTIFICATION_TYPE, OTHER_STATUS } from '@odigos/ui-utils'
 
 interface DescribeRowProps {
   title?: string
@@ -12,7 +12,7 @@ interface DescribeRowProps {
   tooltip?: string
   value?: {
     text?: string
-    status?: NOTIFICATION_TYPE
+    status?: NOTIFICATION_TYPE | 'transitioning' // from Odigos backend...
   }
 }
 
@@ -55,7 +55,12 @@ const DescribeRow: FC<DescribeRowProps> = ({ title, subTitle, tooltip, value }) 
 
       <ValueWrapper>
         {!!value?.status ? (
-          <Status status={value?.status} title={value?.text || value?.status} withBorder withIcon />
+          <Status
+            status={value.status === 'transitioning' ? OTHER_STATUS.LOADING : value.status}
+            title={value.text || value.status}
+            withBorder
+            withIcon
+          />
         ) : (
           <ValueText>{value?.text || '-'}</ValueText>
         )}

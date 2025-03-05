@@ -217,7 +217,14 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
           title={containerName}
           subTitle={`${processes.length} Processes`}
           renderActions={() => {
-            return <Status status={NOTIFICATION_TYPE.INFO} title='Instrumentation Device' subtitle={actualDevice.subTitle || 'none'} withBorder />
+            return (
+              <Status
+                status={NOTIFICATION_TYPE.INFO}
+                title='Instrumentation Device'
+                subtitle={!actualDevice.subTitle || actualDevice.subTitle === '[]' ? 'none' : actualDevice.subTitle}
+                withBorder
+              />
+            )
           }}
           isExtended={!!processes.length}
           renderExtended={() => {
