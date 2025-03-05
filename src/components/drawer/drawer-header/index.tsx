@@ -5,6 +5,8 @@ import { Tooltip } from '../../tooltip'
 import { IconWrapped } from '../../icon-wrapped'
 import { XIcon, type SVG } from '@odigos/ui-icons'
 import { Button, type ButtonProps } from '../../button'
+import { FlexRow } from '../../../styled'
+import Theme from '@odigos/ui-theme'
 
 interface DrawerHeaderProps {
   onClose: () => void
@@ -14,17 +16,28 @@ interface DrawerHeaderProps {
   titleTooltip?: string
   replaceTitleWith?: () => ReactNode
   actionButtons?: (ButtonProps & { 'data-id': string })[]
+  tabs?: {
+    label: string
+    icon?: SVG
+    onClick: () => void
+    selected?: boolean
+  }[]
 }
 
 const Container = styled.section`
-  display: flex;
-  height: 76px;
   padding: 0px 32px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+`
+
+const TopRow = styled.div`
+  height: 76px;
+  display: flex;
   justify-content: space-between;
   flex-shrink: 0;
   align-self: stretch;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 `
+
+const BottomRow = styled(FlexRow)``
 
 const SectionItemsWrapper = styled.div<{ $gap?: number }>`
   display: flex;
@@ -47,38 +60,65 @@ const ActionButton = styled(Button)`
 
 const CloseButton = styled(Button)``
 
+const Tab = styled(Text)<{ $selected?: boolean }>`
+  padding: 12px;
+  font-size: 14px;
+  color: ${({ theme, $selected }) => ($selected ? theme.text.secondary : theme.text.grey)};
+  border-bottom: 2px solid ${({ theme, $selected }) => ($selected ? theme.colors.majestic_blue : 'transparent')};
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`
+
 const DrawerHeader: FC<DrawerHeaderProps> = ({
+  onClose,
   icon,
   iconSrc,
   title,
   titleTooltip,
   replaceTitleWith: ReplaceTitleWith,
   actionButtons = [],
-  onClose,
+  tabs,
 }) => {
+  const theme = Theme.useTheme()
+
   return (
     <Container>
-      <SectionItemsWrapper>
-        {(!!icon || !!iconSrc) && <IconWrapped icon={icon} src={iconSrc} alt='Drawer Item' />}
+      <TopRow>
+        <SectionItemsWrapper>
+          {(!!icon || !!iconSrc) && <IconWrapped icon={icon} src={iconSrc} alt='Drawer Item' />}
 
-        {!!ReplaceTitleWith ? (
-          <ReplaceTitleWith />
-        ) : (
-          <Tooltip text={titleTooltip} withIcon>
-            {title && <Title>{title}</Title>}
-          </Tooltip>
-        )}
-      </SectionItemsWrapper>
+          {!!ReplaceTitleWith ? (
+            <ReplaceTitleWith />
+          ) : (
+            <Tooltip text={titleTooltip} withIcon>
+              {title && <Title>{title}</Title>}
+            </Tooltip>
+          )}
+        </SectionItemsWrapper>
 
-      <SectionItemsWrapper $gap={2}>
-        {actionButtons.map((btn, i) => (
-          <ActionButton key={`header-action-button-${i}`} {...btn} />
-        ))}
+        <SectionItemsWrapper $gap={2}>
+          {actionButtons.map((btn, i) => (
+            <ActionButton key={`header-action-button-${i}`} {...btn} />
+          ))}
 
-        <CloseButton data-id='drawer-close' variant='secondary' onClick={onClose}>
-          <XIcon size={12} />
-        </CloseButton>
-      </SectionItemsWrapper>
+          <CloseButton data-id='drawer-close' variant='secondary' onClick={onClose}>
+            <XIcon size={12} />
+          </CloseButton>
+        </SectionItemsWrapper>
+      </TopRow>
+
+      {!!tabs?.length && (
+        <BottomRow>
+          {tabs.map(({ label, icon: Icon, onClick, selected }) => (
+            <Tab key={`drawer-header-tab-${label}`} onClick={onClick} $selected={selected}>
+              {label}
+              {Icon && <Icon />}
+            </Tab>
+          ))}
+        </BottomRow>
+      )}
     </Container>
   )
 }
