@@ -1,13 +1,19 @@
-import React, { type FC } from 'react'
+import React, { useId, type FC } from 'react'
 import { Text } from '../../text'
 import { Code } from '../../code'
+import { Badge } from '../../badge'
 import Theme from '@odigos/ui-theme'
 import { Status } from '../../status'
 import styled from 'styled-components'
 import { Tooltip } from '../../tooltip'
 import { Divider } from '../../divider'
 import { DataTab } from '../../data-tab'
+import { FadeLoader } from '../../fade-loader'
+import { IconButton } from '../../icon-button'
+import { DescribeRow } from '../../describe-row'
 import { MonitorsIcons } from '../../monitors-icons'
+import { CheckIcon, CopyIcon } from '@odigos/ui-icons'
+import { CenterThis, FlexColumn, FlexRow } from '../../../styled'
 import { InteractiveTable, RowCell } from '../../interactive-table'
 import {
   capitalizeFirstLetter,
@@ -17,18 +23,21 @@ import {
   PROGRAMMING_LANGUAGES,
   safeJsonParse,
   splitCamelString,
+  useCopy,
 } from '@odigos/ui-utils'
-import { CenterThis, FlexRow } from '../../../styled'
-import { FadeLoader } from '../../fade-loader'
 
 enum DATA_CARD_FIELD_TYPES {
-  DIVIDER = 'divider',
-  LOADER = 'loader',
-  MONITORS = 'monitors',
-  ACTIVE_STATUS = 'active-status',
-  SOURCE_CONTAINER = 'source-container',
   CODE = 'code',
   TABLE = 'table',
+  BADGE = 'badge',
+  LOADER = 'loader',
+  DIVIDER = 'divider',
+  MONITORS = 'monitors',
+  COPY_TEXT = 'copy-text',
+  DESCRIBE_ROW = 'describe-row',
+  ACTIVE_STATUS = 'active-status',
+  POD_CONTAINER = 'pod-container',
+  SOURCE_CONTAINER = 'source-container',
 }
 
 interface DataCardFieldsProps {
@@ -70,6 +79,20 @@ const AlignCenter = styled(FlexRow)`
   justify-content: center;
 `
 
+const FlexColStretched = styled(FlexColumn)`
+  width: 100%;
+`
+
+const CopyWrapper = styled(FlexRow)`
+  width: 100%;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.secondary + Theme.opacity.hex['010']};
+  pre {
+    color: ${({ theme }) => theme.text.default};
+    font-size: 12px;
+  }
+`
+
 const DataCardFields: FC<DataCardFieldsProps> = ({ data }) => {
   return (
     <ListContainer>
@@ -79,7 +102,15 @@ const DataCardFields: FC<DataCardFieldsProps> = ({ data }) => {
           $width={
             !!type && [DATA_CARD_FIELD_TYPES.CODE, DATA_CARD_FIELD_TYPES.TABLE].includes(type)
               ? 'inherit'
-              : !!type && [DATA_CARD_FIELD_TYPES.SOURCE_CONTAINER, DATA_CARD_FIELD_TYPES.LOADER, DATA_CARD_FIELD_TYPES.DIVIDER].includes(type)
+              : !!type &&
+                [
+                  DATA_CARD_FIELD_TYPES.LOADER,
+                  DATA_CARD_FIELD_TYPES.DIVIDER,
+                  DATA_CARD_FIELD_TYPES.COPY_TEXT,
+                  DATA_CARD_FIELD_TYPES.DESCRIBE_ROW,
+                  DATA_CARD_FIELD_TYPES.POD_CONTAINER,
+                  DATA_CARD_FIELD_TYPES.SOURCE_CONTAINER,
+                ].includes(type)
               ? '100%'
               : 'unset'
           }
@@ -97,22 +128,53 @@ const DataCardFields: FC<DataCardFieldsProps> = ({ data }) => {
 // We need to maintain this with new components every time we add a new type to "DATA_CARD_FIELD_TYPES"
 const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCardFieldsProps['data'][0]['value']) => {
   const theme = Theme.useTheme()
+  const { clickCopy, isCopied } = useCopy()
 
   switch (type) {
-    case DATA_CARD_FIELD_TYPES.DIVIDER:
+    case DATA_CARD_FIELD_TYPES.DIVIDER: {
       return <Divider length='100%' margin='0' />
+    }
 
-    case DATA_CARD_FIELD_TYPES.LOADER:
+    case DATA_CARD_FIELD_TYPES.LOADER: {
       return (
         <CenterThis>
           <FadeLoader scale={1.2} />
         </CenterThis>
       )
+    }
 
-    case DATA_CARD_FIELD_TYPES.MONITORS:
+    case DATA_CARD_FIELD_TYPES.MONITORS: {
       return <MonitorsIcons monitors={value?.split(', ') || []} withLabels color={theme.colors.secondary} />
+    }
 
-    case DATA_CARD_FIELD_TYPES.ACTIVE_STATUS:
+    case DATA_CARD_FIELD_TYPES.BADGE: {
+      const params = safeJsonParse(value, { label: '-', filled: false })
+
+      return <Badge {...params} />
+    }
+
+    case DATA_CARD_FIELD_TYPES.CODE: {
+      const params = safeJsonParse(value, { language: '', code: '' })
+
+      return <Code {...params} />
+    }
+
+    case DATA_CARD_FIELD_TYPES.DESCRIBE_ROW: {
+      const params = safeJsonParse(value, { title: '', subTitle: '', tooltip: '', value: { text: undefined, status: undefined } })
+
+      return <DescribeRow {...params} />
+    }
+
+    case DATA_CARD_FIELD_TYPES.TABLE: {
+      const params = safeJsonParse(value, {
+        columns: [],
+        rows: [{ status: undefined, cells: [] as RowCell[] }],
+      })
+
+      return <InteractiveTable {...params} />
+    }
+
+    case DATA_CARD_FIELD_TYPES.ACTIVE_STATUS: {
       return (
         <Status
           status={value == 'true' ? NOTIFICATION_TYPE.SUCCESS : NOTIFICATION_TYPE.ERROR}
@@ -122,28 +184,66 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
           withBorder
         />
       )
-
-    case DATA_CARD_FIELD_TYPES.CODE: {
-      const params = safeJsonParse(value, {
-        language: '',
-        code: '',
-      })
-
-      return <Code {...params} />
     }
 
-    case DATA_CARD_FIELD_TYPES.TABLE: {
-      const params = safeJsonParse(value, {
-        columns: [],
-        rows: [
-          {
-            status: undefined,
-            cells: [] as RowCell[],
-          },
-        ],
+    case DATA_CARD_FIELD_TYPES.COPY_TEXT: {
+      const str = typeof value === 'string' ? value : JSON.stringify(value)
+
+      return (
+        <CopyWrapper>
+          <IconButton
+            onClick={(e) => {
+              e.stopPropagation()
+              clickCopy(str)
+            }}
+            tooltip={isCopied ? 'Copied!' : 'Copy'}
+          >
+            {isCopied ? <CheckIcon /> : <CopyIcon />}
+          </IconButton>
+          <pre>{str}</pre>
+        </CopyWrapper>
+      )
+    }
+
+    case DATA_CARD_FIELD_TYPES.POD_CONTAINER: {
+      const { containerName, actualDevice, processes } = safeJsonParse(value, {
+        containerName: '',
+        actualDevice: { title: '', subTitle: '', tooltip: '' },
+        processes: [{ health: NOTIFICATION_TYPE.INFO, message: '', identifyingAttributes: [] }],
       })
 
-      return <InteractiveTable {...params} />
+      return (
+        <DataTab
+          title={containerName}
+          subTitle={`${processes.length} Processes`}
+          renderActions={() => {
+            return <Status status={NOTIFICATION_TYPE.INFO} title='Instrumentation Device' subtitle={actualDevice.subTitle || 'none'} withBorder />
+          }}
+          isExtended={!!processes.length}
+          renderExtended={() => {
+            return (
+              <FlexColStretched $gap={24}>
+                {processes.map((process, idx) => (
+                  <FlexColStretched key={`process-${idx}`} $gap={8}>
+                    <DescribeRow
+                      title={`Process #${idx + 1}`}
+                      subTitle={process.message || ''}
+                      value={{
+                        text: process.health === NOTIFICATION_TYPE.SUCCESS ? 'healthy' : 'unhealthy',
+                        status: process.health,
+                      }}
+                    />
+
+                    {process.identifyingAttributes.map(({ name, value }) => (
+                      <DescribeRow key={useId()} title={name} subTitle='' value={{ text: value, status: undefined }} />
+                    ))}
+                  </FlexColStretched>
+                ))}
+              </FlexColStretched>
+            )
+          }}
+        />
+      )
     }
 
     case DATA_CARD_FIELD_TYPES.SOURCE_CONTAINER: {
@@ -194,7 +294,7 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
     }
 
     default: {
-      return <PreWrap>{parseJsonStringToPrettyString(typeof value === 'string' ? value || '-' : '-')}</PreWrap>
+      return <PreWrap>{parseJsonStringToPrettyString(typeof value === 'string' ? value || '-' : '')}</PreWrap>
     }
   }
 }

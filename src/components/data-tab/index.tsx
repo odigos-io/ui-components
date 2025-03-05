@@ -194,9 +194,9 @@ const DataTab: FC<DataTabProps> = ({
 
           {!!icons?.length || !!iconSrcs?.length ? (
             <IconGroup icons={icons} iconSrcs={iconSrcs} status={status} />
-          ) : (
+          ) : !!icon || !!iconSrc ? (
             <IconWrapped icon={icon} src={iconSrc} status={status} />
-          )}
+          ) : null}
         </FlexRow>
 
         <FlexColumn $gap={4}>
