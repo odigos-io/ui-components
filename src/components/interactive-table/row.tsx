@@ -47,6 +47,7 @@ const RowBackground = styled.div<{ $height: number; $width: number; $top: number
   position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
   width: ${({ $width }) => $width}px;
   height: ${({ $height }) => $height}px;
   border-radius: 16px;
