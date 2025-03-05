@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.92](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.91...ui-components-v0.0.92) (2025-03-05)
+
+
+### Features
+
+* add tabs to drawer header ([#100](https://github.com/odigos-io/ui-components/issues/100)) ([5b5bae4](https://github.com/odigos-io/ui-components/commit/5b5bae4de9cbe41d562b77f2faf6c7afee5e09db))
+
 ## [0.0.91](https://github.com/odigos-io/ui-components/compare/ui-components-v0.0.90...ui-components-v0.0.91) (2025-03-05)
 
 
