@@ -36,6 +36,8 @@ const Container = styled.div`
 `
 
 const Table = styled.table`
+  position: relative;
+  z-index: 0;
   width: 100%;
   border-collapse: separate;
   border-spacing: 0 12px;

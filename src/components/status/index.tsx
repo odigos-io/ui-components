@@ -4,14 +4,14 @@ import { Divider } from '../divider'
 import Theme from '@odigos/ui-theme'
 import styled from 'styled-components'
 import { FadeLoader } from '../fade-loader'
-import { getStatusIcon, NOTIFICATION_TYPE } from '@odigos/ui-utils'
+import { getStatusIcon, NOTIFICATION_TYPE, OTHER_STATUS } from '@odigos/ui-utils'
 
 interface StatusProps {
   title?: string
   subtitle?: string
   size?: number
   family?: 'primary' | 'secondary'
-  status?: NOTIFICATION_TYPE | 'loading'
+  status?: NOTIFICATION_TYPE | OTHER_STATUS.LOADING
   withIcon?: boolean
   withBorder?: boolean
   withBackground?: boolean
@@ -58,8 +58,8 @@ const Status: FC<StatusProps> = ({
 }) => {
   const theme = Theme.useTheme()
 
-  const statusType = status === 'loading' ? NOTIFICATION_TYPE.INFO : status
-  const StatusIcon = status === 'loading' ? () => <FadeLoader scale={0.8} /> : () => getStatusIcon(statusType, theme)({ size: size + 2 })
+  const statusType = status === OTHER_STATUS.LOADING ? NOTIFICATION_TYPE.INFO : status
+  const StatusIcon = status === OTHER_STATUS.LOADING ? () => <FadeLoader scale={0.8} /> : () => getStatusIcon(statusType, theme)({ size: size + 2 })
 
   return (
     <Container $size={size} $status={statusType} $withIcon={withIcon} $withBorder={withBorder} $withBackground={withBackground}>

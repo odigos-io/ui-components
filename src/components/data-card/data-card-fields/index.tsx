@@ -215,9 +215,16 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
       return (
         <DataTab
           title={containerName}
-          subTitle={`${processes.length} Processes`}
+          subTitle={`${processes.length} Instrumented Processes`}
           renderActions={() => {
-            return <Status status={NOTIFICATION_TYPE.INFO} title='Instrumentation Device' subtitle={actualDevice.subTitle || 'none'} withBorder />
+            return (
+              <Status
+                status={NOTIFICATION_TYPE.INFO}
+                title='Instrumentation Device'
+                subtitle={!actualDevice.subTitle || actualDevice.subTitle === '[]' ? 'none' : actualDevice.subTitle}
+                withBorder
+              />
+            )
           }}
           isExtended={!!processes.length}
           renderExtended={() => {
@@ -226,7 +233,7 @@ const renderValue = (type: DataCardFieldsProps['data'][0]['type'], value: DataCa
                 {processes.map((process, idx) => (
                   <FlexColStretched key={`process-${idx}`} $gap={8}>
                     <DescribeRow
-                      title={`Process #${idx + 1}`}
+                      title={`Instrumented Process #${idx + 1}`}
                       subTitle={process.message || ''}
                       value={{
                         text: process.health === NOTIFICATION_TYPE.SUCCESS ? 'healthy' : 'unhealthy',
